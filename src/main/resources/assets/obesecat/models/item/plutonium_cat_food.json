@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "obesecat:item/plutonium_cat_food"
+  }
+}

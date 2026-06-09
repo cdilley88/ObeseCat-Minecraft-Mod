@@ -1,0 +1,17 @@
+{
+  "item.paco.bark1": {
+    "sounds": [
+      "obesecat:item/paco/bark1"
+    ]
+  },
+  "item.paco.bark2": {
+    "sounds": [
+      "obesecat:item/paco/bark2"
+    ]
+  },
+  "item.paco.bark3": {
+    "sounds": [
+      "obesecat:item/paco/bark3"
+    ]
+  }
+}
