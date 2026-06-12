@@ -1,6 +1,14 @@
 package com.fende.obesecat.registry;
 
 import com.fende.obesecat.ObeseCatMod;
+import com.fende.obesecat.item.AssaultPacoItem;
+import com.fende.obesecat.item.AttackPacoItem;
+import com.fende.obesecat.item.BoomStickItem;
+import com.fende.obesecat.item.ConcussivePacoItem;
+import com.fende.obesecat.item.FireBoomStickItem;
+import com.fende.obesecat.item.FireStickItem;
+import com.fende.obesecat.item.HellhoundPacoItem;
+import com.fende.obesecat.item.JRobertPacoheimerItem;
 import com.fende.obesecat.item.PacoItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.SpawnEggItem;
@@ -28,6 +36,54 @@ public final class ModItems {
     public static final DeferredItem<PacoItem> PACO = ITEMS.registerItem(
             "paco",
             PacoItem::new,
+            new Item.Properties().stacksTo(1)
+    );
+
+    public static final DeferredItem<ConcussivePacoItem> CONCUSSIVE_PACO = ITEMS.registerItem(
+            "concussive_paco",
+            ConcussivePacoItem::new,
+            new Item.Properties().stacksTo(1)
+    );
+
+    public static final DeferredItem<AttackPacoItem> ATTACK_PACO = ITEMS.registerItem(
+            "attack_paco",
+            AttackPacoItem::new,
+            new Item.Properties().stacksTo(1)
+    );
+
+    public static final DeferredItem<AssaultPacoItem> ASSAULT_PACO = ITEMS.registerItem(
+            "assault_paco",
+            AssaultPacoItem::new,
+            new Item.Properties().stacksTo(1)
+    );
+
+    public static final DeferredItem<JRobertPacoheimerItem> J_ROBERT_PACOHEIMER = ITEMS.registerItem(
+            "j_robert_pacoheimer",
+            JRobertPacoheimerItem::new,
+            new Item.Properties().stacksTo(1)
+    );
+
+    public static final DeferredItem<HellhoundPacoItem> HELLHOUND_PACO = ITEMS.registerItem(
+            "hellhound_paco",
+            HellhoundPacoItem::new,
+            new Item.Properties().stacksTo(1)
+    );
+
+    public static final DeferredItem<BoomStickItem> BOOM_STICK = ITEMS.registerItem(
+            "boom_stick",
+            BoomStickItem::new,
+            new Item.Properties().stacksTo(1)
+    );
+
+    public static final DeferredItem<FireStickItem> FIRE_STICK = ITEMS.registerItem(
+            "fire_stick",
+            FireStickItem::new,
+            new Item.Properties().stacksTo(1)
+    );
+
+    public static final DeferredItem<FireBoomStickItem> FIRE_BOOM_STICK = ITEMS.registerItem(
+            "fire_boom_stick",
+            FireBoomStickItem::new,
             new Item.Properties().stacksTo(1)
     );
 

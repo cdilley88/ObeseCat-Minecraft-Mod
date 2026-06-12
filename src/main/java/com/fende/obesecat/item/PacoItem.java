@@ -21,8 +21,7 @@ import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 
 public class PacoItem extends Item {
-    private static final double RANGE = 64.0D;
-    private static final float DAMAGE = 2.0F;
+    protected static final double RANGE = 64.0D;
     private static final String STINK_KEY = "PacoStink";
     private static final int MAX_STINK = 10;
     private static final int BARK_COOLDOWN_TICKS = 5;
@@ -39,35 +38,53 @@ public class PacoItem extends Item {
             return InteractionResultHolder.fail(stack);
         }
 
-        SoundEvent bark = switch (level.random.nextInt(3)) {
-            case 0 -> ModSounds.PACO_BARK_1.get();
-            case 1 -> ModSounds.PACO_BARK_2.get();
-            default -> ModSounds.PACO_BARK_3.get();
-        };
+        SoundEvent bark = getBarkSound(level);
         level.playSound(null, player.getX(), player.getY(), player.getZ(), bark, SoundSource.PLAYERS, 1.0F, 0.95F + (level.random.nextFloat() * 0.1F));
 
         if (!level.isClientSide()) {
-            LivingEntity target = findTarget(player);
-            if (target != null) {
-                target.hurt(player.damageSources().playerAttack(player), DAMAGE);
-            }
+            applyBarkEffect(player);
 
-            int stink = getStink(stack) + 1;
-            if (stink >= MAX_STINK) {
-                setStink(stack, 0);
-                player.getCooldowns().addCooldown(this, STINK_COOLDOWN_TICKS);
-            } else {
-                setStink(stack, stink);
-                player.getCooldowns().addCooldown(this, BARK_COOLDOWN_TICKS);
+            if (usesStinkMeter()) {
+                int stink = getStink(stack) + 1;
+                if (stink >= MAX_STINK) {
+                    setStink(stack, 0);
+                    player.getCooldowns().addCooldown(this, getStinkCooldownTicks());
+                } else {
+                    setStink(stack, stink);
+                    player.getCooldowns().addCooldown(this, getBarkCooldownTicks());
+                }
             }
         }
 
         return InteractionResultHolder.sidedSuccess(stack, level.isClientSide());
     }
 
+    protected void applyBarkEffect(Player player) {
+    }
+
+    protected SoundEvent getBarkSound(Level level) {
+        return switch (level.random.nextInt(3)) {
+            case 0 -> ModSounds.PACO_BARK_1.get();
+            case 1 -> ModSounds.PACO_BARK_2.get();
+            default -> ModSounds.PACO_BARK_3.get();
+        };
+    }
+
+    protected int getBarkCooldownTicks() {
+        return BARK_COOLDOWN_TICKS;
+    }
+
+    protected int getStinkCooldownTicks() {
+        return STINK_COOLDOWN_TICKS;
+    }
+
+    protected boolean usesStinkMeter() {
+        return false;
+    }
+
     @Override
     public boolean isBarVisible(ItemStack stack) {
-        return getStink(stack) > 0;
+        return usesStinkMeter() && getStink(stack) > 0;
     }
 
     @Override
@@ -84,7 +101,7 @@ public class PacoItem extends Item {
         return red << 16 | green << 8 | blue;
     }
 
-    private LivingEntity findTarget(Player player) {
+    protected LivingEntity findTarget(Player player) {
         Vec3 start = player.getEyePosition();
         Vec3 end = start.add(player.getViewVector(1.0F).scale(RANGE));
         HitResult blockHit = player.pick(RANGE, 1.0F, false);
@@ -102,7 +119,7 @@ public class PacoItem extends Item {
         return entityHit != null && entityHit.getEntity() instanceof LivingEntity livingEntity ? livingEntity : null;
     }
 
-    private boolean isValidTarget(Player player, Entity entity) {
+    private static boolean isValidTarget(Player player, Entity entity) {
         return entity instanceof LivingEntity
                 && entity != player
                 && entity.isAlive()

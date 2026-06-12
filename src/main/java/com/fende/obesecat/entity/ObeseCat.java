@@ -1,5 +1,6 @@
 package com.fende.obesecat.entity;
 
+import com.fende.obesecat.network.NuclearFlashPayload;
 import com.fende.obesecat.registry.ModItems;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -8,8 +9,6 @@ import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.animal.Cat;
@@ -22,10 +21,12 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
+import net.neoforged.neoforge.network.PacketDistributor;
 
 public class ObeseCat extends Cat {
     private static final int MAX_REACTIVE_MEALS = 3;
     private static final int EXPLOSION_COUNTDOWN_TICKS = 200;
+    private static final int FLASH_TO_CRATER_DELAY_TICKS = 10;
     private static final int LITHIUM_CRATER_RADIUS = 100;
     private static final int LITHIUM_CRATER_MAX_DEPTH = 50;
     private static final int PLUTONIUM_CRATER_RADIUS = Math.max(1, LITHIUM_CRATER_RADIUS / 6);
@@ -36,6 +37,7 @@ public class ObeseCat extends Cat {
             SynchedEntityData.defineId(ObeseCat.class, EntityDataSerializers.INT);
     private int armedCraterRadius = PLUTONIUM_CRATER_RADIUS;
     private int armedCraterMaxDepth = PLUTONIUM_CRATER_MAX_DEPTH;
+    private int detonationDelayTicks = 0;
 
     public ObeseCat(EntityType<? extends Cat> entityType, Level level) {
         super(entityType, level);
@@ -70,6 +72,15 @@ public class ObeseCat extends Cat {
     @Override
     public void tick() {
         super.tick();
+        if (!this.level().isClientSide() && this.detonationDelayTicks > 0) {
+            this.detonationDelayTicks--;
+            if (this.detonationDelayTicks <= 0) {
+                explodeFatMan();
+                this.discard();
+            }
+            return;
+        }
+
         int countdown = this.getExplosionCountdownTicks();
         if (countdown <= 0) {
             return;
@@ -77,8 +88,9 @@ public class ObeseCat extends Cat {
 
         if (!this.level().isClientSide()) {
             if (countdown == 1) {
-                explodeFatMan();
-                this.discard();
+                this.entityData.set(EXPLOSION_COUNTDOWN, 0);
+                triggerNuclearFlash(this.blockPosition(), this.armedCraterRadius);
+                this.detonationDelayTicks = FLASH_TO_CRATER_DELAY_TICKS;
             } else {
                 this.entityData.set(EXPLOSION_COUNTDOWN, countdown - 1);
             }
@@ -92,6 +104,7 @@ public class ObeseCat extends Cat {
         compound.putInt("ExplosionCountdown", this.getExplosionCountdownTicks());
         compound.putInt("ArmedCraterRadius", this.armedCraterRadius);
         compound.putInt("ArmedCraterMaxDepth", this.armedCraterMaxDepth);
+        compound.putInt("DetonationDelayTicks", this.detonationDelayTicks);
     }
 
     @Override
@@ -107,6 +120,7 @@ public class ObeseCat extends Cat {
         this.armedCraterMaxDepth = compound.contains("ArmedCraterMaxDepth")
                 ? Math.max(1, compound.getInt("ArmedCraterMaxDepth"))
                 : legacyLithium ? LITHIUM_CRATER_MAX_DEPTH : PLUTONIUM_CRATER_MAX_DEPTH;
+        this.detonationDelayTicks = Math.max(compound.getInt("DetonationDelayTicks"), 0);
     }
 
     public int getReactiveMeals() {
@@ -225,18 +239,28 @@ public class ObeseCat extends Cat {
     }
 
     private void playCustomBlastEffects(Level level, BlockPos origin, int craterRadius) {
-        float volume = craterRadius >= LITHIUM_CRATER_RADIUS ? 8.0F : 4.0F;
-        double offset = Math.max(4.0D, craterRadius * 0.18D);
-        level.playSound(null, origin.getX(), origin.getY(), origin.getZ(), SoundEvents.GENERIC_EXPLODE.value(), SoundSource.BLOCKS, volume, 0.75F);
-        level.playSound(null, origin.getX() + offset, origin.getY(), origin.getZ() - offset * 0.7D, SoundEvents.GENERIC_EXPLODE.value(), SoundSource.BLOCKS, volume, 0.9F);
-        level.playSound(null, origin.getX() - offset * 0.8D, origin.getY(), origin.getZ() + offset, SoundEvents.GENERIC_EXPLODE.value(), SoundSource.BLOCKS, volume, 1.05F);
-
         if (level instanceof ServerLevel serverLevel) {
             int emitterCount = Math.max(1, craterRadius / 25);
             int smokeCount = Math.max(35, craterRadius * 2);
             double smokeSpread = craterRadius * 0.8D;
             serverLevel.sendParticles(ParticleTypes.EXPLOSION_EMITTER, origin.getX() + 0.5D, origin.getY() + 1.0D, origin.getZ() + 0.5D, emitterCount, 5.0D, 1.5D, 5.0D, 0.0D);
             serverLevel.sendParticles(ParticleTypes.LARGE_SMOKE, origin.getX() + 0.5D, origin.getY() + 2.0D, origin.getZ() + 0.5D, smokeCount, smokeSpread, Math.max(6.0D, craterRadius * 0.18D), smokeSpread, 0.08D);
+        }
+    }
+
+    private void triggerNuclearFlash(BlockPos origin, int craterRadius) {
+        if (this.level() instanceof ServerLevel serverLevel) {
+            double flashRadius = craterRadius >= LITHIUM_CRATER_RADIUS ? 384.0D : 128.0D;
+            float flashIntensity = craterRadius >= LITHIUM_CRATER_RADIUS ? 1.0F : 0.65F;
+            PacketDistributor.sendToPlayersNear(
+                    serverLevel,
+                    null,
+                    origin.getX() + 0.5D,
+                    origin.getY() + 0.5D,
+                    origin.getZ() + 0.5D,
+                    flashRadius,
+                    new NuclearFlashPayload(origin, flashIntensity)
+            );
         }
     }
 

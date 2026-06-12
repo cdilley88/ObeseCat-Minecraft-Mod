@@ -1,0 +1,27 @@
+package com.fende.obesecat.item;
+
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+
+public class AttackPacoItem extends ConcussivePacoItem {
+    protected static final float ATTACK_DAMAGE = 2.0F;
+
+    public AttackPacoItem(Properties properties) {
+        super(properties);
+    }
+
+    @Override
+    protected void applyBarkEffect(Player player) {
+        LivingEntity target = findTarget(player);
+        if (target == null) {
+            return;
+        }
+
+        applyKnockback(player, target);
+        target.hurt(player.damageSources().playerAttack(player), getAttackDamage());
+    }
+
+    protected float getAttackDamage() {
+        return ATTACK_DAMAGE;
+    }
+}

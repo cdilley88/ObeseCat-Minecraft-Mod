@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    {
+      "item": "obesecat:paco"
+    },
+    {
+      "item": "obesecat:lithium_deuteride_cat_food"
+    }
+  ],
+  "result": {
+    "id": "obesecat:j_robert_pacoheimer",
+    "count": 1
+  }
+}

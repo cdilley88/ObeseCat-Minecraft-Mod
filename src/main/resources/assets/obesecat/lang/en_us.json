@@ -3,5 +3,14 @@
   "item.obesecat.obese_cat_spawn_egg": "Fat Man Spawn Egg",
   "item.obesecat.plutonium_cat_food": "Plutonium Cat Food",
   "item.obesecat.lithium_deuteride_cat_food": "Lithium Deuteride Cat Food",
-  "item.obesecat.paco": "Paco"
+  "item.obesecat.paco": "Paco",
+  "item.obesecat.concussive_paco": "Concussive Paco",
+  "item.obesecat.attack_paco": "Attack Paco",
+  "item.obesecat.assault_paco": "Assault Paco",
+  "item.obesecat.j_robert_pacoheimer": "J. Paco Barkkenheimer",
+  "item.obesecat.hellhound_paco": "Hellhound Paco",
+  "item.obesecat.boom_stick": "Boom Stick",
+  "item.obesecat.fire_stick": "Fire Stick",
+  "item.obesecat.fire_boom_stick": "Fire Boom Stick",
+  "block.obesecat.atomic_fire": "Atomic Fire"
 }

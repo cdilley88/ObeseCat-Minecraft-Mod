@@ -13,5 +13,20 @@
     "sounds": [
       "obesecat:item/paco/bark3"
     ]
+  },
+  "item.paco.hellbark1": {
+    "sounds": [
+      "obesecat:item/paco/hellbark1"
+    ]
+  },
+  "item.paco.hellbark2": {
+    "sounds": [
+      "obesecat:item/paco/hellbark2"
+    ]
+  },
+  "item.paco.hellbark3": {
+    "sounds": [
+      "obesecat:item/paco/hellbark3"
+    ]
   }
 }

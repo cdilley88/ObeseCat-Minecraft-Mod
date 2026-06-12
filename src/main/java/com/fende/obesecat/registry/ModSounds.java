@@ -14,6 +14,9 @@ public final class ModSounds {
     public static final DeferredHolder<SoundEvent, SoundEvent> PACO_BARK_1 = register("item.paco.bark1");
     public static final DeferredHolder<SoundEvent, SoundEvent> PACO_BARK_2 = register("item.paco.bark2");
     public static final DeferredHolder<SoundEvent, SoundEvent> PACO_BARK_3 = register("item.paco.bark3");
+    public static final DeferredHolder<SoundEvent, SoundEvent> PACO_HELLBARK_1 = register("item.paco.hellbark1");
+    public static final DeferredHolder<SoundEvent, SoundEvent> PACO_HELLBARK_2 = register("item.paco.hellbark2");
+    public static final DeferredHolder<SoundEvent, SoundEvent> PACO_HELLBARK_3 = register("item.paco.hellbark3");
 
     private static DeferredHolder<SoundEvent, SoundEvent> register(String name) {
         return SOUND_EVENTS.register(name, () -> SoundEvent.createVariableRangeEvent(
