@@ -12,6 +12,7 @@ import net.neoforged.neoforge.event.tick.LevelTickEvent;
 
 public final class AtomicFireSphere {
     public static final int RADIUS = 100;
+    public static final int BIG_RADIUS = 200;
     public static final int SHELL_THICKNESS = 2;
     public static final int LIFETIME_TICKS = 300;
 
@@ -22,12 +23,20 @@ public final class AtomicFireSphere {
     }
 
     public static void create(ServerLevel level, BlockPos origin) {
-        List<BlockPos> placedBlocks = placeShell(level, origin, RADIUS);
+        create(level, origin, RADIUS);
+    }
+
+    public static void create(ServerLevel level, BlockPos origin, int radius) {
+        List<BlockPos> placedBlocks = placeShell(level, origin, radius);
         ACTIVE_SPHERES.add(new ActiveSphere(level, placedBlocks, LIFETIME_TICKS));
     }
 
     public static void createDelayed(ServerLevel level, BlockPos origin, int delayTicks) {
-        PENDING_SPHERES.add(new PendingSphere(level, origin.immutable(), Math.max(delayTicks, 0)));
+        createDelayed(level, origin, delayTicks, RADIUS);
+    }
+
+    public static void createDelayed(ServerLevel level, BlockPos origin, int delayTicks, int radius) {
+        PENDING_SPHERES.add(new PendingSphere(level, origin.immutable(), Math.max(delayTicks, 0), Math.max(1, radius)));
     }
 
     public static void onLevelTick(LevelTickEvent.Post event) {
@@ -44,7 +53,7 @@ public final class AtomicFireSphere {
 
             pending.delayTicks--;
             if (pending.delayTicks <= 0) {
-                create(level, pending.origin);
+                create(level, pending.origin, pending.radius);
                 pendingIterator.remove();
             }
         }
@@ -139,12 +148,14 @@ public final class AtomicFireSphere {
     private static final class PendingSphere {
         private final ServerLevel level;
         private final BlockPos origin;
+        private final int radius;
         private int delayTicks;
 
-        private PendingSphere(ServerLevel level, BlockPos origin, int delayTicks) {
+        private PendingSphere(ServerLevel level, BlockPos origin, int delayTicks, int radius) {
             this.level = level;
             this.origin = origin;
             this.delayTicks = delayTicks;
+            this.radius = radius;
         }
     }
 }

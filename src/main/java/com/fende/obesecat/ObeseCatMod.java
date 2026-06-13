@@ -64,12 +64,14 @@ public class ObeseCatMod {
             event.accept(ModItems.BOOM_STICK.get());
             event.accept(ModItems.FIRE_STICK.get());
             event.accept(ModItems.FIRE_BOOM_STICK.get());
+            event.accept(ModItems.BIG_FIRE_BOOM_STICK.get());
         }
         if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES) {
             event.accept(ModItems.TOILET.get());
             event.accept(ModItems.BOOM_STICK.get());
             event.accept(ModItems.FIRE_STICK.get());
             event.accept(ModItems.FIRE_BOOM_STICK.get());
+            event.accept(ModItems.BIG_FIRE_BOOM_STICK.get());
         }
     }
 }

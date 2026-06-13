@@ -1,8 +1,11 @@
 package com.fende.obesecat.item;
 
 import com.fende.obesecat.registry.ModSounds;
+import java.util.List;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
@@ -13,6 +16,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.ProjectileUtil;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
@@ -80,6 +84,19 @@ public class PacoItem extends Item {
 
     protected boolean usesStinkMeter() {
         return false;
+    }
+
+    protected String getCaptionKey() {
+        return getClass() == PacoItem.class ? "item.obesecat.paco.caption" : null;
+    }
+
+    @Override
+    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
+        super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
+        String captionKey = getCaptionKey();
+        if (captionKey != null) {
+            tooltipComponents.add(Component.translatable(captionKey).withStyle(ChatFormatting.YELLOW));
+        }
     }
 
     @Override

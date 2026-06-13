@@ -33,6 +33,11 @@ public class ConcussivePacoItem extends PacoItem {
     }
 
     @Override
+    protected String getCaptionKey() {
+        return "item.obesecat.concussive_paco.caption";
+    }
+
+    @Override
     public boolean isFoil(ItemStack stack) {
         return true;
     }

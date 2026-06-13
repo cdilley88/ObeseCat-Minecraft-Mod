@@ -24,4 +24,9 @@ public class AttackPacoItem extends ConcussivePacoItem {
     protected float getAttackDamage() {
         return ATTACK_DAMAGE;
     }
+
+    @Override
+    protected String getCaptionKey() {
+        return "item.obesecat.attack_paco.caption";
+    }
 }

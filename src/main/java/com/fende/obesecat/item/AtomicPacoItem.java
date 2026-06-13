@@ -41,6 +41,11 @@ public class AtomicPacoItem extends PacoItem {
     }
 
     @Override
+    protected String getCaptionKey() {
+        return "item.obesecat.atomic_paco.caption";
+    }
+
+    @Override
     public boolean isFoil(net.minecraft.world.item.ItemStack stack) {
         return true;
     }

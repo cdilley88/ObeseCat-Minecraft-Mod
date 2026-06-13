@@ -47,6 +47,11 @@ public class JRobertPacoheimerItem extends PacoItem {
     }
 
     @Override
+    protected String getCaptionKey() {
+        return "item.obesecat.j_robert_pacoheimer.caption";
+    }
+
+    @Override
     public boolean isFoil(net.minecraft.world.item.ItemStack stack) {
         return true;
     }
