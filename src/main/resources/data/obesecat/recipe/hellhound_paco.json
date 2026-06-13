@@ -3,10 +3,10 @@
   "category": "equipment",
   "ingredients": [
     {
-      "item": "obesecat:paco"
+      "item": "obesecat:assault_paco"
     },
     {
-      "item": "minecraft:blaze_powder"
+      "item": "minecraft:dragon_head"
     }
   ],
   "result": {

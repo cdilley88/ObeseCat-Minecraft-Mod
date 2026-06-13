@@ -2,6 +2,7 @@ package com.fende.obesecat.entity;
 
 import com.fende.obesecat.network.NuclearFlashPayload;
 import com.fende.obesecat.registry.ModItems;
+import com.fende.obesecat.world.AtomicFireSphere;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -38,6 +39,7 @@ public class ObeseCat extends Cat {
     private int armedCraterRadius = PLUTONIUM_CRATER_RADIUS;
     private int armedCraterMaxDepth = PLUTONIUM_CRATER_MAX_DEPTH;
     private int detonationDelayTicks = 0;
+    private boolean armedAtomicFireSphere = false;
 
     public ObeseCat(EntityType<? extends Cat> entityType, Level level) {
         super(entityType, level);
@@ -55,13 +57,13 @@ public class ObeseCat extends Cat {
         ItemStack stack = player.getItemInHand(hand);
         if (stack.is(ModItems.PLUTONIUM_CAT_FOOD.get()) && this.getExplosionCountdownTicks() <= 0) {
             if (!this.level().isClientSide()) {
-                feedReactiveFood(player, stack, PLUTONIUM_CRATER_RADIUS, PLUTONIUM_CRATER_MAX_DEPTH);
+                feedReactiveFood(player, stack, PLUTONIUM_CRATER_RADIUS, PLUTONIUM_CRATER_MAX_DEPTH, false);
             }
             return InteractionResult.sidedSuccess(this.level().isClientSide());
         }
         if (stack.is(ModItems.LITHIUM_DEUTERIDE_CAT_FOOD.get()) && this.getExplosionCountdownTicks() <= 0) {
             if (!this.level().isClientSide()) {
-                feedReactiveFood(player, stack, LITHIUM_CRATER_RADIUS, LITHIUM_CRATER_MAX_DEPTH);
+                feedReactiveFood(player, stack, LITHIUM_CRATER_RADIUS, LITHIUM_CRATER_MAX_DEPTH, true);
             }
             return InteractionResult.sidedSuccess(this.level().isClientSide());
         }
@@ -105,6 +107,7 @@ public class ObeseCat extends Cat {
         compound.putInt("ArmedCraterRadius", this.armedCraterRadius);
         compound.putInt("ArmedCraterMaxDepth", this.armedCraterMaxDepth);
         compound.putInt("DetonationDelayTicks", this.detonationDelayTicks);
+        compound.putBoolean("ArmedAtomicFireSphere", this.armedAtomicFireSphere);
     }
 
     @Override
@@ -121,6 +124,9 @@ public class ObeseCat extends Cat {
                 ? Math.max(1, compound.getInt("ArmedCraterMaxDepth"))
                 : legacyLithium ? LITHIUM_CRATER_MAX_DEPTH : PLUTONIUM_CRATER_MAX_DEPTH;
         this.detonationDelayTicks = Math.max(compound.getInt("DetonationDelayTicks"), 0);
+        this.armedAtomicFireSphere = compound.contains("ArmedAtomicFireSphere")
+                ? compound.getBoolean("ArmedAtomicFireSphere")
+                : legacyLithium;
     }
 
     public int getReactiveMeals() {
@@ -144,7 +150,7 @@ public class ObeseCat extends Cat {
         return 1.2F + (0.15F * this.getReactiveMeals());
     }
 
-    private void feedReactiveFood(Player player, ItemStack stack, int craterRadius, int craterMaxDepth) {
+    private void feedReactiveFood(Player player, ItemStack stack, int craterRadius, int craterMaxDepth, boolean atomicFireSphere) {
         int meals = Math.min(this.getReactiveMeals() + 1, MAX_REACTIVE_MEALS);
         this.entityData.set(REACTIVE_MEALS, meals);
         this.setPersistenceRequired();
@@ -156,12 +162,17 @@ public class ObeseCat extends Cat {
         if (meals >= MAX_REACTIVE_MEALS) {
             this.armedCraterRadius = craterRadius;
             this.armedCraterMaxDepth = craterMaxDepth;
+            this.armedAtomicFireSphere = atomicFireSphere;
             this.entityData.set(EXPLOSION_COUNTDOWN, EXPLOSION_COUNTDOWN_TICKS);
         }
     }
 
     private void explodeFatMan() {
+        BlockPos origin = this.blockPosition();
         carveCustomCrater(this.armedCraterRadius, this.armedCraterMaxDepth);
+        if (this.armedAtomicFireSphere && this.level() instanceof ServerLevel serverLevel) {
+            AtomicFireSphere.createDelayed(serverLevel, origin, 2);
+        }
     }
 
     private void carveCustomCrater(int craterRadius, int craterMaxDepth) {

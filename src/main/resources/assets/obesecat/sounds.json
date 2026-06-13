@@ -28,5 +28,20 @@
     "sounds": [
       "obesecat:item/paco/hellbark3"
     ]
+  },
+  "block.toilet.stink1": {
+    "sounds": [
+      "obesecat:block/toilet/stink1"
+    ]
+  },
+  "block.toilet.stink2": {
+    "sounds": [
+      "obesecat:block/toilet/stink2"
+    ]
+  },
+  "block.toilet.stink3": {
+    "sounds": [
+      "obesecat:block/toilet/stink3"
+    ]
   }
 }

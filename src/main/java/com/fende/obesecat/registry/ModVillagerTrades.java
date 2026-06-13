@@ -19,7 +19,6 @@ public final class ModVillagerTrades {
 
         event.getTrades().get(NOVICE).add(trade(new ItemStack(ModItems.OBESE_CAT_SPAWN_EGG.get())));
         event.getTrades().get(NOVICE).add(trade(new ItemStack(ModItems.PLUTONIUM_CAT_FOOD.get())));
-        event.getTrades().get(NOVICE).add(trade(new ItemStack(ModItems.LITHIUM_DEUTERIDE_CAT_FOOD.get())));
         event.getTrades().get(NOVICE).add(trade(new ItemStack(ModItems.PACO.get())));
     }
 

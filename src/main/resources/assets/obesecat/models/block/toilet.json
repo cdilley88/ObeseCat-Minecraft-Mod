@@ -1,0 +1,76 @@
+{
+  "textures": {
+    "porcelain": "minecraft:block/quartz_block_side",
+    "porcelain_top": "minecraft:block/quartz_block_top",
+    "water": "minecraft:block/water_still"
+  },
+  "elements": [
+    {
+      "from": [5, 0, 5],
+      "to": [11, 4, 11],
+      "faces": {
+        "down": { "texture": "#porcelain" },
+        "up": { "texture": "#porcelain_top" },
+        "north": { "texture": "#porcelain" },
+        "south": { "texture": "#porcelain" },
+        "west": { "texture": "#porcelain" },
+        "east": { "texture": "#porcelain" }
+      }
+    },
+    {
+      "from": [3, 4, 3],
+      "to": [13, 8, 13],
+      "faces": {
+        "down": { "texture": "#porcelain" },
+        "up": { "texture": "#porcelain_top" },
+        "north": { "texture": "#porcelain" },
+        "south": { "texture": "#porcelain" },
+        "west": { "texture": "#porcelain" },
+        "east": { "texture": "#porcelain" }
+      }
+    },
+    {
+      "from": [5, 8, 5],
+      "to": [11, 8.1, 11],
+      "faces": {
+        "up": { "texture": "#water", "tintindex": 0 }
+      }
+    },
+    {
+      "from": [2, 8, 2],
+      "to": [14, 10, 14],
+      "faces": {
+        "down": { "texture": "#porcelain" },
+        "up": { "texture": "#porcelain_top" },
+        "north": { "texture": "#porcelain" },
+        "south": { "texture": "#porcelain" },
+        "west": { "texture": "#porcelain" },
+        "east": { "texture": "#porcelain" }
+      }
+    },
+    {
+      "from": [3, 10, 11],
+      "to": [13, 16, 15],
+      "faces": {
+        "down": { "texture": "#porcelain" },
+        "up": { "texture": "#porcelain_top" },
+        "north": { "texture": "#porcelain" },
+        "south": { "texture": "#porcelain" },
+        "west": { "texture": "#porcelain" },
+        "east": { "texture": "#porcelain" }
+      }
+    },
+    {
+      "from": [4, 15, 10],
+      "to": [12, 16, 16],
+      "faces": {
+        "down": { "texture": "#porcelain" },
+        "up": { "texture": "#porcelain_top" },
+        "north": { "texture": "#porcelain" },
+        "south": { "texture": "#porcelain" },
+        "west": { "texture": "#porcelain" },
+        "east": { "texture": "#porcelain" }
+      }
+    }
+  ]
+}

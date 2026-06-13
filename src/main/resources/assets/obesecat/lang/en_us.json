@@ -7,10 +7,12 @@
   "item.obesecat.concussive_paco": "Concussive Paco",
   "item.obesecat.attack_paco": "Attack Paco",
   "item.obesecat.assault_paco": "Assault Paco",
+  "item.obesecat.atomic_paco": "Atomic Paco",
   "item.obesecat.j_robert_pacoheimer": "J. Paco Barkkenheimer",
   "item.obesecat.hellhound_paco": "Hellhound Paco",
   "item.obesecat.boom_stick": "Boom Stick",
   "item.obesecat.fire_stick": "Fire Stick",
   "item.obesecat.fire_boom_stick": "Fire Boom Stick",
-  "block.obesecat.atomic_fire": "Atomic Fire"
+  "block.obesecat.atomic_fire": "Atomic Fire",
+  "block.obesecat.toilet": "Toilet"
 }

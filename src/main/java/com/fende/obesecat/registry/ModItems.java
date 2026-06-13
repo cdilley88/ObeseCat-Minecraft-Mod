@@ -2,6 +2,7 @@ package com.fende.obesecat.registry;
 
 import com.fende.obesecat.ObeseCatMod;
 import com.fende.obesecat.item.AssaultPacoItem;
+import com.fende.obesecat.item.AtomicPacoItem;
 import com.fende.obesecat.item.AttackPacoItem;
 import com.fende.obesecat.item.BoomStickItem;
 import com.fende.obesecat.item.ConcussivePacoItem;
@@ -10,6 +11,7 @@ import com.fende.obesecat.item.FireStickItem;
 import com.fende.obesecat.item.HellhoundPacoItem;
 import com.fende.obesecat.item.JRobertPacoheimerItem;
 import com.fende.obesecat.item.PacoItem;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.SpawnEggItem;
 import net.neoforged.neoforge.registries.DeferredItem;
@@ -63,6 +65,12 @@ public final class ModItems {
             new Item.Properties().stacksTo(1)
     );
 
+    public static final DeferredItem<AtomicPacoItem> ATOMIC_PACO = ITEMS.registerItem(
+            "atomic_paco",
+            AtomicPacoItem::new,
+            new Item.Properties().stacksTo(1)
+    );
+
     public static final DeferredItem<HellhoundPacoItem> HELLHOUND_PACO = ITEMS.registerItem(
             "hellhound_paco",
             HellhoundPacoItem::new,
@@ -85,6 +93,11 @@ public final class ModItems {
             "fire_boom_stick",
             FireBoomStickItem::new,
             new Item.Properties().stacksTo(1)
+    );
+
+    public static final DeferredItem<BlockItem> TOILET = ITEMS.register(
+            "toilet",
+            () -> new BlockItem(ModBlocks.TOILET.get(), new Item.Properties())
     );
 
     private ModItems() {
