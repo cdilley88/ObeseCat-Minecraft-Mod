@@ -10,6 +10,7 @@ import net.neoforged.neoforge.event.LootTableLoadEvent;
 public final class ModLootTables {
     private static final String DUNGEON_TOILET_POOL = "obesecat:dungeon_toilet";
     private static final String END_CITY_LITHIUM_POOL = "obesecat:end_city_lithium_deuteride";
+    private static final String END_CITY_WORMHOLE_EMBER_POOL = "obesecat:end_city_wormhole_ember";
 
     public static void addLoot(LootTableLoadEvent event) {
         if (event.getKey().equals(BuiltInLootTables.SIMPLE_DUNGEON) && event.getTable().getPool(DUNGEON_TOILET_POOL) == null) {
@@ -27,6 +28,15 @@ public final class ModLootTables {
                     .setRolls(ConstantValue.exactly(1.0F))
                     .when(LootItemRandomChanceCondition.randomChance(0.28F))
                     .add(LootItem.lootTableItem(ModItems.LITHIUM_DEUTERIDE_CAT_FOOD.get()))
+                    .build());
+        }
+
+        if (event.getKey().equals(BuiltInLootTables.END_CITY_TREASURE) && event.getTable().getPool(END_CITY_WORMHOLE_EMBER_POOL) == null) {
+            event.getTable().addPool(LootPool.lootPool()
+                    .name(END_CITY_WORMHOLE_EMBER_POOL)
+                    .setRolls(ConstantValue.exactly(1.0F))
+                    .when(LootItemRandomChanceCondition.randomChance(0.18F))
+                    .add(LootItem.lootTableItem(ModItems.WORMHOLE_EMBER.get()))
                     .build());
         }
     }

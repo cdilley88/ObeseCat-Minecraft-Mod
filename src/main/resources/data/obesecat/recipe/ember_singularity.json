@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "EEE",
+    "ESE",
+    "EEE"
+  ],
+  "key": {
+    "E": {
+      "item": "minecraft:ender_eye"
+    },
+    "S": {
+      "item": "obesecat:ember"
+    }
+  },
+  "result": {
+    "id": "obesecat:ember_singularity",
+    "count": 1
+  }
+}

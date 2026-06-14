@@ -6,12 +6,17 @@ import com.fende.obesecat.item.AtomicPacoItem;
 import com.fende.obesecat.item.AttackPacoItem;
 import com.fende.obesecat.item.BigFireBoomStickItem;
 import com.fende.obesecat.item.BoomStickItem;
+import com.fende.obesecat.item.CaptionedItem;
 import com.fende.obesecat.item.ConcussivePacoItem;
+import com.fende.obesecat.item.EmberSingularityItem;
+import com.fende.obesecat.item.EnigmaEmberItem;
 import com.fende.obesecat.item.FireBoomStickItem;
 import com.fende.obesecat.item.FireStickItem;
 import com.fende.obesecat.item.HellhoundPacoItem;
 import com.fende.obesecat.item.JRobertPacoheimerItem;
 import com.fende.obesecat.item.PacoItem;
+import com.fende.obesecat.item.TinyPlanetItem;
+import com.fende.obesecat.item.WormholeEmberItem;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
@@ -41,6 +46,42 @@ public final class ModItems {
             "paco",
             PacoItem::new,
             new Item.Properties().stacksTo(1)
+    );
+
+    public static final DeferredItem<CaptionedItem> EMBER = ITEMS.registerItem(
+            "ember",
+            properties -> new CaptionedItem(properties, "item.obesecat.ember.caption"),
+            new Item.Properties().stacksTo(1)
+    );
+
+    public static final DeferredItem<CaptionedItem> MR_KITTY = ITEMS.registerItem(
+            "mr_kitty",
+            properties -> new CaptionedItem(properties, "item.obesecat.mr_kitty.caption"),
+            new Item.Properties().stacksTo(1)
+    );
+
+    public static final DeferredItem<EmberSingularityItem> EMBER_SINGULARITY = ITEMS.registerItem(
+            "ember_singularity",
+            EmberSingularityItem::new,
+            new Item.Properties().stacksTo(1).rarity(Rarity.RARE)
+    );
+
+    public static final DeferredItem<WormholeEmberItem> WORMHOLE_EMBER = ITEMS.registerItem(
+            "wormhole_ember",
+            WormholeEmberItem::new,
+            new Item.Properties().stacksTo(1).rarity(Rarity.EPIC)
+    );
+
+    public static final DeferredItem<EnigmaEmberItem> ENIGMA_EMBER = ITEMS.registerItem(
+            "enigma_ember",
+            EnigmaEmberItem::new,
+            new Item.Properties().stacksTo(1).rarity(Rarity.EPIC)
+    );
+
+    public static final DeferredItem<TinyPlanetItem> TINY_PLANET = ITEMS.registerItem(
+            "tiny_planet",
+            TinyPlanetItem::new,
+            new Item.Properties().stacksTo(1).rarity(Rarity.RARE)
     );
 
     public static final DeferredItem<ConcussivePacoItem> CONCUSSIVE_PACO = ITEMS.registerItem(

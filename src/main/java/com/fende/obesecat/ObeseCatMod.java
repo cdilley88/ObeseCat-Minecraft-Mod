@@ -8,8 +8,10 @@ import com.fende.obesecat.registry.ModNetworking;
 import com.fende.obesecat.registry.ModSounds;
 import com.fende.obesecat.registry.ModVillagerTrades;
 import com.fende.obesecat.world.AtomicFireSphere;
+import com.fende.obesecat.world.EmberSingularityMagnet;
 import com.fende.obesecat.world.NuclearCatExplosion;
 import com.fende.obesecat.world.PacoBarkBurst;
+import com.fende.obesecat.world.TinyPlanetProtection;
 import com.fende.obesecat.world.ToiletSinkAnimation;
 import net.minecraft.world.entity.animal.Cat;
 import net.minecraft.world.item.CreativeModeTabs;
@@ -35,7 +37,9 @@ public class ObeseCatMod {
 
         NeoForge.EVENT_BUS.addListener(NuclearCatExplosion::onLevelTick);
         NeoForge.EVENT_BUS.addListener(AtomicFireSphere::onLevelTick);
+        NeoForge.EVENT_BUS.addListener(EmberSingularityMagnet::onLevelTick);
         NeoForge.EVENT_BUS.addListener(PacoBarkBurst::onLevelTick);
+        NeoForge.EVENT_BUS.addListener(TinyPlanetProtection::onLevelTick);
         NeoForge.EVENT_BUS.addListener(ToiletSinkAnimation::onLevelTick);
         NeoForge.EVENT_BUS.addListener(ModVillagerTrades::addTrades);
         NeoForge.EVENT_BUS.addListener(ModLootTables::addLoot);
@@ -55,6 +59,12 @@ public class ObeseCatMod {
         }
         if (event.getTabKey() == CreativeModeTabs.COMBAT) {
             event.accept(ModItems.PACO.get());
+            event.accept(ModItems.EMBER.get());
+            event.accept(ModItems.MR_KITTY.get());
+            event.accept(ModItems.EMBER_SINGULARITY.get());
+            event.accept(ModItems.WORMHOLE_EMBER.get());
+            event.accept(ModItems.ENIGMA_EMBER.get());
+            event.accept(ModItems.TINY_PLANET.get());
             event.accept(ModItems.CONCUSSIVE_PACO.get());
             event.accept(ModItems.ATTACK_PACO.get());
             event.accept(ModItems.ASSAULT_PACO.get());
@@ -68,6 +78,10 @@ public class ObeseCatMod {
         }
         if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES) {
             event.accept(ModItems.TOILET.get());
+            event.accept(ModItems.EMBER_SINGULARITY.get());
+            event.accept(ModItems.WORMHOLE_EMBER.get());
+            event.accept(ModItems.ENIGMA_EMBER.get());
+            event.accept(ModItems.TINY_PLANET.get());
             event.accept(ModItems.BOOM_STICK.get());
             event.accept(ModItems.FIRE_STICK.get());
             event.accept(ModItems.FIRE_BOOM_STICK.get());
