@@ -9,8 +9,11 @@ import net.neoforged.neoforge.event.LootTableLoadEvent;
 
 public final class ModLootTables {
     private static final String DUNGEON_TOILET_POOL = "obesecat:dungeon_toilet";
+    private static final String DUNGEON_MR_KITTYS_PAWS_POOL = "obesecat:dungeon_mr_kittys_paws";
     private static final String END_CITY_LITHIUM_POOL = "obesecat:end_city_lithium_deuteride";
     private static final String END_CITY_WORMHOLE_EMBER_POOL = "obesecat:end_city_wormhole_ember";
+    private static final String END_CITY_ENIGMA_EMBER_POOL = "obesecat:end_city_enigma_ember";
+    private static final String BASTION_NIGHT_VISION_MR_KITTY_POOL = "obesecat:bastion_night_vision_mr_kitty";
 
     public static void addLoot(LootTableLoadEvent event) {
         if (event.getKey().equals(BuiltInLootTables.SIMPLE_DUNGEON) && event.getTable().getPool(DUNGEON_TOILET_POOL) == null) {
@@ -19,6 +22,15 @@ public final class ModLootTables {
                     .setRolls(ConstantValue.exactly(1.0F))
                     .when(LootItemRandomChanceCondition.randomChance(0.22F))
                     .add(LootItem.lootTableItem(ModItems.TOILET.get()))
+                    .build());
+        }
+
+        if (event.getKey().equals(BuiltInLootTables.SIMPLE_DUNGEON) && event.getTable().getPool(DUNGEON_MR_KITTYS_PAWS_POOL) == null) {
+            event.getTable().addPool(LootPool.lootPool()
+                    .name(DUNGEON_MR_KITTYS_PAWS_POOL)
+                    .setRolls(ConstantValue.exactly(1.0F))
+                    .when(LootItemRandomChanceCondition.randomChance(0.08F))
+                    .add(LootItem.lootTableItem(ModItems.MR_KITTYS_PAWS.get()))
                     .build());
         }
 
@@ -39,6 +51,31 @@ public final class ModLootTables {
                     .add(LootItem.lootTableItem(ModItems.WORMHOLE_EMBER.get()))
                     .build());
         }
+
+        if (event.getKey().equals(BuiltInLootTables.END_CITY_TREASURE) && event.getTable().getPool(END_CITY_ENIGMA_EMBER_POOL) == null) {
+            event.getTable().addPool(LootPool.lootPool()
+                    .name(END_CITY_ENIGMA_EMBER_POOL)
+                    .setRolls(ConstantValue.exactly(1.0F))
+                    .when(LootItemRandomChanceCondition.randomChance(0.10F))
+                    .add(LootItem.lootTableItem(ModItems.ENIGMA_EMBER.get()))
+                    .build());
+        }
+
+        if (isBastionLoot(event) && event.getTable().getPool(BASTION_NIGHT_VISION_MR_KITTY_POOL) == null) {
+            event.getTable().addPool(LootPool.lootPool()
+                    .name(BASTION_NIGHT_VISION_MR_KITTY_POOL)
+                    .setRolls(ConstantValue.exactly(1.0F))
+                    .when(LootItemRandomChanceCondition.randomChance(0.12F))
+                    .add(LootItem.lootTableItem(ModItems.NIGHT_VISION_MR_KITTY.get()))
+                    .build());
+        }
+    }
+
+    private static boolean isBastionLoot(LootTableLoadEvent event) {
+        return event.getKey().equals(BuiltInLootTables.BASTION_TREASURE)
+                || event.getKey().equals(BuiltInLootTables.BASTION_OTHER)
+                || event.getKey().equals(BuiltInLootTables.BASTION_BRIDGE)
+                || event.getKey().equals(BuiltInLootTables.BASTION_HOGLIN_STABLE);
     }
 
     private ModLootTables() {

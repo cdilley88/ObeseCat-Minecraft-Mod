@@ -9,7 +9,9 @@ import com.fende.obesecat.registry.ModSounds;
 import com.fende.obesecat.registry.ModVillagerTrades;
 import com.fende.obesecat.world.AtomicFireSphere;
 import com.fende.obesecat.world.EmberSingularityMagnet;
+import com.fende.obesecat.world.MrKittysPawsManager;
 import com.fende.obesecat.world.NuclearCatExplosion;
+import com.fende.obesecat.world.NightVisionMrKittyManager;
 import com.fende.obesecat.world.PacoBarkBurst;
 import com.fende.obesecat.world.TinyPlanetProtection;
 import com.fende.obesecat.world.ToiletSinkAnimation;
@@ -38,11 +40,13 @@ public class ObeseCatMod {
         NeoForge.EVENT_BUS.addListener(NuclearCatExplosion::onLevelTick);
         NeoForge.EVENT_BUS.addListener(AtomicFireSphere::onLevelTick);
         NeoForge.EVENT_BUS.addListener(EmberSingularityMagnet::onLevelTick);
+        NeoForge.EVENT_BUS.addListener(NightVisionMrKittyManager::onLevelTick);
         NeoForge.EVENT_BUS.addListener(PacoBarkBurst::onLevelTick);
         NeoForge.EVENT_BUS.addListener(TinyPlanetProtection::onLevelTick);
         NeoForge.EVENT_BUS.addListener(ToiletSinkAnimation::onLevelTick);
         NeoForge.EVENT_BUS.addListener(ModVillagerTrades::addTrades);
         NeoForge.EVENT_BUS.addListener(ModLootTables::addLoot);
+        NeoForge.EVENT_BUS.addListener(MrKittysPawsManager::onLivingFall);
     }
 
     private void registerAttributes(EntityAttributeCreationEvent event) {
@@ -61,6 +65,8 @@ public class ObeseCatMod {
             event.accept(ModItems.PACO.get());
             event.accept(ModItems.EMBER.get());
             event.accept(ModItems.MR_KITTY.get());
+            event.accept(ModItems.NIGHT_VISION_MR_KITTY.get());
+            event.accept(ModItems.MR_KITTYS_PAWS.get());
             event.accept(ModItems.EMBER_SINGULARITY.get());
             event.accept(ModItems.WORMHOLE_EMBER.get());
             event.accept(ModItems.ENIGMA_EMBER.get());
@@ -82,6 +88,8 @@ public class ObeseCatMod {
             event.accept(ModItems.WORMHOLE_EMBER.get());
             event.accept(ModItems.ENIGMA_EMBER.get());
             event.accept(ModItems.TINY_PLANET.get());
+            event.accept(ModItems.NIGHT_VISION_MR_KITTY.get());
+            event.accept(ModItems.MR_KITTYS_PAWS.get());
             event.accept(ModItems.BOOM_STICK.get());
             event.accept(ModItems.FIRE_STICK.get());
             event.accept(ModItems.FIRE_BOOM_STICK.get());

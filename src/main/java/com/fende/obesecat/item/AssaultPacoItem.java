@@ -20,7 +20,7 @@ public class AssaultPacoItem extends AttackPacoItem {
 
     @Override
     protected float getAttackDamage() {
-        return ATTACK_DAMAGE * 2.0F;
+        return ATTACK_DAMAGE * 4.0F;
     }
 
     @Override

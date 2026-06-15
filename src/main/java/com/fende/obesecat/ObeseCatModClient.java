@@ -1,6 +1,8 @@
 package com.fende.obesecat;
 
+import com.fende.obesecat.client.FissionFirestormOverlay;
 import com.fende.obesecat.client.NuclearFlashOverlay;
+import com.fende.obesecat.client.NightVisionOverlay;
 import com.fende.obesecat.client.ObeseCatRenderer;
 import com.fende.obesecat.client.ObeseCatTimerOverlay;
 import com.fende.obesecat.client.model.FatManModel;
@@ -44,6 +46,8 @@ public class ObeseCatModClient {
 
     private void registerGuiLayers(RegisterGuiLayersEvent event) {
         event.registerAboveAll(ObeseCatTimerOverlay.ID, ObeseCatTimerOverlay::render);
+        event.registerAboveAll(NightVisionOverlay.ID, NightVisionOverlay::render);
+        event.registerAboveAll(FissionFirestormOverlay.ID, FissionFirestormOverlay::render);
         event.registerAboveAll(NuclearFlashOverlay.ID, NuclearFlashOverlay::render);
     }
 }

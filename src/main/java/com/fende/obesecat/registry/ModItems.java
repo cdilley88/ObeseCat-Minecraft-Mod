@@ -14,6 +14,8 @@ import com.fende.obesecat.item.FireBoomStickItem;
 import com.fende.obesecat.item.FireStickItem;
 import com.fende.obesecat.item.HellhoundPacoItem;
 import com.fende.obesecat.item.JRobertPacoheimerItem;
+import com.fende.obesecat.item.MrKittysPawsItem;
+import com.fende.obesecat.item.NightVisionMrKittyItem;
 import com.fende.obesecat.item.PacoItem;
 import com.fende.obesecat.item.TinyPlanetItem;
 import com.fende.obesecat.item.WormholeEmberItem;
@@ -58,6 +60,18 @@ public final class ModItems {
             "mr_kitty",
             properties -> new CaptionedItem(properties, "item.obesecat.mr_kitty.caption"),
             new Item.Properties().stacksTo(1)
+    );
+
+    public static final DeferredItem<NightVisionMrKittyItem> NIGHT_VISION_MR_KITTY = ITEMS.registerItem(
+            "night_vision_mr_kitty",
+            NightVisionMrKittyItem::new,
+            new Item.Properties().stacksTo(1).rarity(Rarity.RARE)
+    );
+
+    public static final DeferredItem<MrKittysPawsItem> MR_KITTYS_PAWS = ITEMS.registerItem(
+            "mr_kittys_paws",
+            MrKittysPawsItem::new,
+            new Item.Properties().stacksTo(1).rarity(Rarity.RARE)
     );
 
     public static final DeferredItem<EmberSingularityItem> EMBER_SINGULARITY = ITEMS.registerItem(
