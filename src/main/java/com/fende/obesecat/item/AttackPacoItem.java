@@ -4,6 +4,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 
 public class AttackPacoItem extends ConcussivePacoItem {
+    private static final double ATTACK_RANGE = 20.0D;
     protected static final float ATTACK_DAMAGE = 2.0F;
 
     public AttackPacoItem(Properties properties) {
@@ -23,6 +24,11 @@ public class AttackPacoItem extends ConcussivePacoItem {
 
     protected float getAttackDamage() {
         return ATTACK_DAMAGE;
+    }
+
+    @Override
+    protected double getRange() {
+        return ATTACK_RANGE;
     }
 
     @Override

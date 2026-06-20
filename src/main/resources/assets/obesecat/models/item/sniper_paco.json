@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "obesecat:item/j_robert_pacoheimer"
+    "layer0": "obesecat:item/paco"
   }
 }

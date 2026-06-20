@@ -1,6 +1,7 @@
 package com.fende.obesecat.entity;
 
 import com.fende.obesecat.network.NuclearFlashPayload;
+import com.fende.obesecat.registry.ModBlocks;
 import com.fende.obesecat.registry.ModItems;
 import com.fende.obesecat.world.AtomicFireSphere;
 import net.minecraft.nbt.CompoundTag;
@@ -169,13 +170,14 @@ public class ObeseCat extends Cat {
 
     private void explodeFatMan() {
         BlockPos origin = this.blockPosition();
-        carveCustomCrater(this.armedCraterRadius, this.armedCraterMaxDepth);
+        BlockPos craterCenter = carveCustomCrater(this.armedCraterRadius, this.armedCraterMaxDepth);
         if (this.armedAtomicFireSphere && this.level() instanceof ServerLevel serverLevel) {
+            placeTrinititeAtCraterCenter(serverLevel, craterCenter);
             AtomicFireSphere.createDelayed(serverLevel, origin, 2);
         }
     }
 
-    private void carveCustomCrater(int craterRadius, int craterMaxDepth) {
+    private BlockPos carveCustomCrater(int craterRadius, int craterMaxDepth) {
         Level level = this.level();
         BlockPos origin = this.blockPosition();
         playCustomBlastEffects(level, origin, craterRadius);
@@ -185,6 +187,7 @@ public class ObeseCat extends Cat {
         int centerZ = origin.getZ();
         int minY = level.getMinBuildHeight() + 1;
         int rimPadding = Math.max(3, craterRadius / 7);
+        BlockPos craterCenter = origin;
 
         for (int dx = -craterRadius - rimPadding; dx <= craterRadius + rimPadding; dx++) {
             for (int dz = -craterRadius - rimPadding; dz <= craterRadius + rimPadding; dz++) {
@@ -215,6 +218,10 @@ public class ObeseCat extends Cat {
 
                 int topY = surfaceY + (normalized < 0.28D ? 3 : 1);
                 int bottomY = Math.max(minY, surfaceY - maxDepth);
+                if (dx == 0 && dz == 0) {
+                    craterCenter = new BlockPos(x, bottomY, z);
+                }
+
                 for (int y = topY; y >= bottomY; y--) {
                     BlockPos pos = new BlockPos(x, y, z);
                     BlockState state = level.getBlockState(pos);
@@ -226,6 +233,24 @@ public class ObeseCat extends Cat {
                 maybePlaceBlastFire(level, x, bottomY, z, normalized);
             }
         }
+
+        return craterCenter;
+    }
+
+    private void placeTrinititeAtCraterCenter(ServerLevel level, BlockPos craterCenter) {
+        BlockState trinitite = ModBlocks.TRINITITE.get().defaultBlockState();
+        BlockPos.MutableBlockPos mutablePos = craterCenter.mutable();
+
+        for (int offset = 0; offset <= 8; offset++) {
+            mutablePos.set(craterCenter.getX(), craterCenter.getY() + offset, craterCenter.getZ());
+            BlockState state = level.getBlockState(mutablePos);
+            if (state.isAir() || state.canBeReplaced()) {
+                level.setBlock(mutablePos, trinitite, 3);
+                return;
+            }
+        }
+
+        level.setBlock(craterCenter.above(), trinitite, 3);
     }
 
     private void deleteMobsAtGroundZero(Level level, BlockPos origin, int craterRadius, int craterMaxDepth) {

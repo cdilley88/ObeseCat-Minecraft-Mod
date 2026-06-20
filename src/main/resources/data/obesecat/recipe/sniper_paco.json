@@ -6,11 +6,14 @@
       "item": "obesecat:assault_paco"
     },
     {
-      "item": "minecraft:dragon_head"
+      "item": "minecraft:nether_star"
+    },
+    {
+      "item": "minecraft:spyglass"
     }
   ],
   "result": {
-    "id": "obesecat:hellhound_paco",
+    "id": "obesecat:sniper_paco",
     "count": 1
   }
 }

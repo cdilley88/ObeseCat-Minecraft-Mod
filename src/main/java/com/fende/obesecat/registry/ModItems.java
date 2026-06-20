@@ -15,8 +15,10 @@ import com.fende.obesecat.item.FireStickItem;
 import com.fende.obesecat.item.HellhoundPacoItem;
 import com.fende.obesecat.item.JRobertPacoheimerItem;
 import com.fende.obesecat.item.MrKittysPawsItem;
+import com.fende.obesecat.item.ManhattanPhysicistSpawnEggItem;
 import com.fende.obesecat.item.NightVisionMrKittyItem;
 import com.fende.obesecat.item.PacoItem;
+import com.fende.obesecat.item.SniperPacoItem;
 import com.fende.obesecat.item.TinyPlanetItem;
 import com.fende.obesecat.item.WormholeEmberItem;
 import net.minecraft.world.item.BlockItem;
@@ -32,6 +34,12 @@ public final class ModItems {
     public static final DeferredItem<SpawnEggItem> OBESE_CAT_SPAWN_EGG = ITEMS.registerItem(
             "obese_cat_spawn_egg",
             properties -> new SpawnEggItem(ModEntities.OBESE_CAT.get(), 0xD66B24, 0xFFF1D6, properties)
+    );
+
+    public static final DeferredItem<ManhattanPhysicistSpawnEggItem> MANHATTAN_PHYSICIST_SPAWN_EGG = ITEMS.registerItem(
+            "manhattan_physicist_spawn_egg",
+            ManhattanPhysicistSpawnEggItem::new,
+            new Item.Properties().stacksTo(64)
     );
 
     public static final DeferredItem<Item> PLUTONIUM_CAT_FOOD = ITEMS.registerSimpleItem(
@@ -116,6 +124,12 @@ public final class ModItems {
             new Item.Properties().stacksTo(1).rarity(Rarity.RARE)
     );
 
+    public static final DeferredItem<SniperPacoItem> SNIPER_PACO = ITEMS.registerItem(
+            "sniper_paco",
+            SniperPacoItem::new,
+            new Item.Properties().stacksTo(1).rarity(Rarity.RARE)
+    );
+
     public static final DeferredItem<JRobertPacoheimerItem> J_ROBERT_PACOHEIMER = ITEMS.registerItem(
             "j_robert_pacoheimer",
             JRobertPacoheimerItem::new,
@@ -131,6 +145,11 @@ public final class ModItems {
     public static final DeferredItem<HellhoundPacoItem> HELLHOUND_PACO = ITEMS.registerItem(
             "hellhound_paco",
             HellhoundPacoItem::new,
+            new Item.Properties().stacksTo(1).rarity(Rarity.RARE)
+    );
+
+    public static final DeferredItem<Item> OPPENHEIMERS_HAT = ITEMS.registerSimpleItem(
+            "oppenheimers_hat",
             new Item.Properties().stacksTo(1).rarity(Rarity.RARE)
     );
 
@@ -161,6 +180,16 @@ public final class ModItems {
     public static final DeferredItem<BlockItem> TOILET = ITEMS.register(
             "toilet",
             () -> new BlockItem(ModBlocks.TOILET.get(), new Item.Properties())
+    );
+
+    public static final DeferredItem<BlockItem> TRINITITE = ITEMS.register(
+            "trinitite",
+            () -> new BlockItem(ModBlocks.TRINITITE.get(), new Item.Properties().rarity(Rarity.RARE))
+    );
+
+    public static final DeferredItem<BlockItem> NUCLEAR_LIBRARY = ITEMS.register(
+            "nuclear_library",
+            () -> new BlockItem(ModBlocks.NUCLEAR_LIBRARY.get(), new Item.Properties().rarity(Rarity.UNCOMMON))
     );
 
     private ModItems() {

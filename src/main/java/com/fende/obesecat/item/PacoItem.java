@@ -25,7 +25,7 @@ import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 
 public class PacoItem extends Item {
-    protected static final double RANGE = 64.0D;
+    protected static final double DEFAULT_RANGE = 64.0D;
     private static final String STINK_KEY = "PacoStink";
     private static final int MAX_STINK = 10;
     private static final int BARK_COOLDOWN_TICKS = 5;
@@ -86,6 +86,10 @@ public class PacoItem extends Item {
         return false;
     }
 
+    protected double getRange() {
+        return DEFAULT_RANGE;
+    }
+
     protected String getCaptionKey() {
         return getClass() == PacoItem.class ? "item.obesecat.paco.caption" : null;
     }
@@ -119,10 +123,11 @@ public class PacoItem extends Item {
     }
 
     protected LivingEntity findTarget(Player player) {
+        double range = getRange();
         Vec3 start = player.getEyePosition();
-        Vec3 end = start.add(player.getViewVector(1.0F).scale(RANGE));
-        HitResult blockHit = player.pick(RANGE, 1.0F, false);
-        double maxDistance = blockHit.getType() == HitResult.Type.MISS ? RANGE * RANGE : blockHit.getLocation().distanceToSqr(start);
+        Vec3 end = start.add(player.getViewVector(1.0F).scale(range));
+        HitResult blockHit = player.pick(range, 1.0F, false);
+        double maxDistance = blockHit.getType() == HitResult.Type.MISS ? range * range : blockHit.getLocation().distanceToSqr(start);
         AABB searchBox = player.getBoundingBox().expandTowards(end.subtract(start)).inflate(1.0D);
         EntityHitResult entityHit = ProjectileUtil.getEntityHitResult(
                 player,

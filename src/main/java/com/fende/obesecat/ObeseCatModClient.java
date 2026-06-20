@@ -29,7 +29,10 @@ public class ObeseCatModClient {
     }
 
     private void clientSetup(FMLClientSetupEvent event) {
-        event.enqueueWork(() -> ItemBlockRenderTypes.setRenderLayer(ModBlocks.ATOMIC_FIRE.get(), RenderType.cutout()));
+        event.enqueueWork(() -> {
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.ATOMIC_FIRE.get(), RenderType.cutout());
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.TRINITITE.get(), RenderType.translucent());
+        });
     }
 
     private void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
