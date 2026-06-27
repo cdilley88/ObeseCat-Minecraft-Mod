@@ -1,7 +1,11 @@
 package com.fende.obesecat.world;
 
+import com.fende.obesecat.registry.ModVillagerTrades;
 import net.minecraft.network.chat.Component;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.GlobalPos;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.entity.ai.memory.MemoryModuleType;
 import net.minecraft.world.entity.npc.Villager;
 import net.minecraft.world.entity.npc.VillagerType;
 import net.neoforged.neoforge.event.entity.EntityJoinLevelEvent;
@@ -22,23 +26,35 @@ public final class ManhattanPhysicistSpawner {
             return;
         }
 
-        configureVillager(villager);
+        configureVillager(villager, ManhattanBunkerWorkstation.findNearestWorkstation(event.getLevel(), villager.blockPosition(), 12));
     }
 
     public static void configureVillager(Villager villager) {
-        villager.setVillagerData(villager.getVillagerData()
-                .setType(VillagerType.PLAINS)
-                .setProfession(ModVillagers.MANHATTAN_PHYSICIST.get())
-                .setLevel(1));
-        villager.setCustomName(Component.literal("Manhattan Physicist"));
-        villager.setPersistenceRequired();
-        villager.addTag(STRUCTURE_ENTITY_TAG);
+        configureVillager(villager, null);
+    }
+
+    public static void configureVillager(Villager villager, BlockPos workstationPos) {
+        if (villager.level() instanceof ServerLevel serverLevel && workstationPos != null) {
+            villager.getBrain().eraseMemory(MemoryModuleType.POTENTIAL_JOB_SITE);
+            villager.getBrain().setMemory(MemoryModuleType.JOB_SITE, GlobalPos.of(serverLevel.dimension(), workstationPos));
+            LOGGER.info("Bound Manhattan Physicist villager at {} to Nuclear Library at {}", villager.blockPosition(), workstationPos);
+        }
 
         if (villager.level() instanceof ServerLevel serverLevel) {
             villager.refreshBrain(serverLevel);
         }
 
-        LOGGER.info("Assigned Manhattan Physicist profession to villager at {}", villager.blockPosition());
+        villager.setVillagerData(villager.getVillagerData()
+                .setType(VillagerType.PLAINS)
+                .setProfession(ModVillagers.MANHATTAN_PHYSICIST.get())
+                .setLevel(1));
+        villager.setVillagerXp(0);
+        villager.setCustomName(Component.literal("Manhattan Physicist"));
+        villager.setPersistenceRequired();
+        villager.addTag(STRUCTURE_ENTITY_TAG);
+        villager.overrideOffers(ModVillagerTrades.createManhattanPhysicistOffers(villager));
+
+        LOGGER.info("Assigned Manhattan Physicist profession and custom trades to villager at {}", villager.blockPosition());
     }
 
     private ManhattanPhysicistSpawner() {

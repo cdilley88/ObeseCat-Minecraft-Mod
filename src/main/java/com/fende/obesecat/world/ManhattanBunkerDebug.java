@@ -108,9 +108,10 @@ public final class ManhattanBunkerDebug {
                 pos.getX() + size.getX() - 1, pos.getY() + size.getY() - 1, pos.getZ() + size.getZ() - 1
         );
         int replaced = ManhattanBunkerWorkstation.replaceLecterns(level, box);
+        int cleaned = ManhattanBunkerWorkstation.cleanInteriorFloor(level, box);
 
-        source.sendSuccess(() -> Component.literal("Placed Manhattan bunker template at " + pos.getX() + " " + pos.getY() + " " + pos.getZ() + " and converted " + replaced + " lectern(s)"), true);
-        LOGGER.info("Placed Manhattan bunker template at {} and converted {} lectern(s)", pos, replaced);
+        source.sendSuccess(() -> Component.literal("Placed Manhattan bunker template at " + pos.getX() + " " + pos.getY() + " " + pos.getZ() + ", converted " + replaced + " lectern(s), and cleaned " + cleaned + " floor block(s)"), true);
+        LOGGER.info("Placed Manhattan bunker template at {}, converted {} lectern(s), and cleaned {} floor block(s)", pos, replaced, cleaned);
         return 1;
     }
 

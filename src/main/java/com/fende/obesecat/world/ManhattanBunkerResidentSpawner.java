@@ -57,6 +57,10 @@ public final class ManhattanBunkerResidentSpawner {
         if (replaced > 0) {
             LOGGER.info("Replaced {} vanilla lectern(s) with Nuclear Library blocks in Manhattan bunker at {}", replaced, box.getCenter());
         }
+        int cleaned = ManhattanBunkerWorkstation.cleanInteriorFloor(level, box);
+        if (cleaned > 0) {
+            LOGGER.info("Cleaned {} bunker floor/interior plant block(s) at {}", cleaned, box.getCenter());
+        }
 
         AABB searchBox = new AABB(
                 box.minX(), box.minY(), box.minZ(),
@@ -69,6 +73,7 @@ public final class ManhattanBunkerResidentSpawner {
             return;
         }
 
+        BlockPos workstationPos = ManhattanBunkerWorkstation.findWorkstationPos(level, box);
         BlockPos spawnPos = ManhattanBunkerWorkstation.findSpawnPos(level, box);
         if (spawnPos == null) {
             spawnPos = new BlockPos((box.minX() + box.maxX()) / 2, box.minY() + 1, (box.minZ() + box.maxZ()) / 2);
@@ -82,7 +87,7 @@ public final class ManhattanBunkerResidentSpawner {
         }
 
         villager.moveTo(spawnPos.getX() + 0.5D, spawnPos.getY(), spawnPos.getZ() + 0.5D, 0.0F, 0.0F);
-        ManhattanPhysicistSpawner.configureVillager(villager);
+        ManhattanPhysicistSpawner.configureVillager(villager, workstationPos);
         level.addFreshEntity(villager);
         LOGGER.info("Spawned Manhattan Physicist inside Manhattan bunker at {}", spawnPos);
     }

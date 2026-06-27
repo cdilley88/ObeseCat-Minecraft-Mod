@@ -56,7 +56,7 @@ public final class ModLootTables {
             event.getTable().addPool(LootPool.lootPool()
                     .name(END_CITY_ENIGMA_EMBER_POOL)
                     .setRolls(ConstantValue.exactly(1.0F))
-                    .when(LootItemRandomChanceCondition.randomChance(0.10F))
+                    .when(LootItemRandomChanceCondition.randomChance(0.18F))
                     .add(LootItem.lootTableItem(ModItems.ENIGMA_EMBER.get()))
                     .build());
         }

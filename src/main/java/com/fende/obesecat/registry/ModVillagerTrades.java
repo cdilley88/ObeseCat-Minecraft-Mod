@@ -2,6 +2,8 @@ package com.fende.obesecat.registry;
 
 import net.minecraft.world.entity.npc.VillagerProfession;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.trading.MerchantOffer;
+import net.minecraft.world.item.trading.MerchantOffers;
 import net.neoforged.neoforge.common.BasicItemListing;
 import net.neoforged.neoforge.event.village.VillagerTradesEvent;
 import org.slf4j.Logger;
@@ -18,8 +20,8 @@ public final class ModVillagerTrades {
     public static void addTrades(VillagerTradesEvent event) {
         if (event.getType() == ModVillagers.MANHATTAN_PHYSICIST.get()) {
             LOGGER.info("Registering Manhattan Physicist-specific trades");
-            event.getTrades().get(NOVICE).add(trinititeTrade(new ItemStack(ModItems.HELLHOUND_PACO.get())));
-            event.getTrades().get(NOVICE).add(trinititeTrade(new ItemStack(ModItems.OPPENHEIMERS_HAT.get()), 5));
+            event.getTrades().get(NOVICE).add(hellhoundPacoTrade());
+            event.getTrades().get(NOVICE).add(oppenheimersHatTrade());
             return;
         }
 
@@ -44,6 +46,27 @@ public final class ModVillagerTrades {
 
     private static BasicItemListing trinititeTrade(ItemStack itemForSale, int trinititeCost) {
         return new BasicItemListing(new ItemStack(ModItems.TRINITITE.get(), trinititeCost), itemForSale, MAX_TRADES, XP, PRICE_MULTIPLIER);
+    }
+
+    public static MerchantOffers createManhattanPhysicistOffers(net.minecraft.world.entity.Entity trader) {
+        MerchantOffers offers = new MerchantOffers();
+        addOffer(offers, hellhoundPacoTrade().getOffer(trader, trader.getRandom()));
+        addOffer(offers, oppenheimersHatTrade().getOffer(trader, trader.getRandom()));
+        return offers;
+    }
+
+    private static BasicItemListing hellhoundPacoTrade() {
+        return trinititeTrade(new ItemStack(ModItems.HELLHOUND_PACO.get()));
+    }
+
+    private static BasicItemListing oppenheimersHatTrade() {
+        return trinititeTrade(new ItemStack(ModItems.OPPENHEIMERS_HAT.get()), 5);
+    }
+
+    private static void addOffer(MerchantOffers offers, MerchantOffer offer) {
+        if (offer != null) {
+            offers.add(offer);
+        }
     }
 
     private ModVillagerTrades() {

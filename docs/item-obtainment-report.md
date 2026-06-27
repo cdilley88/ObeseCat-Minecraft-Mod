@@ -123,7 +123,7 @@ Loot is injected at runtime by `ModLootTables.addLoot`. Each entry creates a sep
 | `minecraft:chests/simple_dungeon` | Mr. Kitty's Paws | `obesecat:dungeon_mr_kittys_paws` | 8% | 1 | 1 |
 | `minecraft:chests/end_city_treasure` | Lithium Deuteride Cat Food | `obesecat:end_city_lithium_deuteride` | 28% | 1 | 1 |
 | `minecraft:chests/end_city_treasure` | Wormhole Ember | `obesecat:end_city_wormhole_ember` | 18% | 1 | 1 |
-| `minecraft:chests/end_city_treasure` | Enigma Ember | `obesecat:end_city_enigma_ember` | 10% | 1 | 1 |
+| `minecraft:chests/end_city_treasure` | Enigma Ember | `obesecat:end_city_enigma_ember` | 18% | 1 | 1 |
 | `minecraft:chests/bastion_treasure` | Night Vision Mr. Kitty | `obesecat:bastion_night_vision_mr_kitty` | 12% | 1 | 1 |
 | `minecraft:chests/bastion_other` | Night Vision Mr. Kitty | `obesecat:bastion_night_vision_mr_kitty` | 12% | 1 | 1 |
 | `minecraft:chests/bastion_bridge` | Night Vision Mr. Kitty | `obesecat:bastion_night_vision_mr_kitty` | 12% | 1 | 1 |
@@ -135,8 +135,8 @@ Combined chance notes, assuming independent pools:
 | --- | --- | ---: |
 | Simple Dungeon | At least one ObeseCat loot item | 28.24% |
 | Simple Dungeon | Both Toilet and Mr. Kitty's Paws | 1.76% |
-| End City Treasure | At least one ObeseCat loot item | 46.86% |
-| End City Treasure | All three End City ObeseCat items | 0.50% |
+| End City Treasure | At least one ObeseCat loot item | 51.59% |
+| End City Treasure | All three End City ObeseCat items | 0.91% |
 | Any single Bastion table listed above | Night Vision Mr. Kitty | 12% |
 
 ## Crafting Recipes
@@ -194,7 +194,7 @@ Vanilla placement picks from placeable variants that fit the wall, then chooses 
 | Mr. Kitty's Paws | Loot | Simple Dungeon, 8%. |
 | Ember Singularity | Crafting | Ember + 8 Eyes of Ender. |
 | Wormhole Ember | Loot | End City Treasure, 18%. |
-| Enigma Ember | Loot | End City Treasure, 10%. |
+| Enigma Ember | Loot | End City Treasure, 18%. |
 | Tiny Planet | Crafting | Mr. Kitty + Nether Star. |
 | Concussive Paco | Crafting | Paco + Piston. |
 | Attack Paco | Crafting | Concussive Paco + Diamond. |
@@ -229,7 +229,7 @@ Vanilla placement picks from placeable variants that fit the wall, then chooses 
 - Several registered items have no survival acquisition route. If they are debug or creative-only items, they should be explicitly marked that way somewhere.
 - Manhattan Physicist Spawn Egg is intentionally creative-only for testing the bunker villager path.
 - Farmer trades are very cheap and very early. A novice Farmer can sell the spawn egg and multiple base items for 1 emerald each.
-- End City loot has a high combined chance: about 46.86% for at least one ObeseCat item in an End City treasure chest.
+- End City loot has a high combined chance: about 51.59% for at least one ObeseCat item in an End City treasure chest.
 - Loot chances are not currently data-driven or grouped by item tier/stage. Balancing requires manual code inspection.
 - There are no recipe unlock advancements or player-facing guidance files in the current data folder.
 - Curios tags exist for some items, but those tags only define equip slots. They do not create acquisition paths.
