@@ -2,6 +2,8 @@ package com.fende.obesecat.gametest;
 
 import com.fende.obesecat.ObeseCatMod;
 import com.fende.obesecat.inventory.TransmutationCubeInventory;
+import com.fende.obesecat.inventory.TransmutationCubeSlot;
+import com.fende.obesecat.item.TransmutationCubeItem;
 import com.fende.obesecat.registry.ModItems;
 import net.minecraft.gametest.framework.GameTest;
 import net.minecraft.gametest.framework.GameTestHelper;
@@ -27,7 +29,13 @@ public final class TransmutationCubeGameTests {
         helper.assertTrue(reopened.getItem(0).getCount() == 3, "Saved item count must persist");
         ItemStack anotherCube = new ItemStack(ModItems.TRANSMUTATION_CUBE.get());
         helper.assertFalse(reopened.canPlaceItem(1, anotherCube), "A cube inventory must reject another cube");
+        TransmutationCubeSlot slot = new TransmutationCubeSlot(reopened, 1, 0, 0);
+        helper.assertFalse(slot.mayPlace(anotherCube), "A cube slot must reject another cube");
         helper.assertFalse(cube.canFitInsideContainerItems(), "A cube must reject generic container-item nesting");
+        helper.assertFalse(
+                ((TransmutationCubeItem) cube.getItem()).canFitInsideContainerItems(),
+                "A cube item must reject generic container-item nesting through the deprecated API"
+        );
 
         reopened.removeItemNoUpdate(0);
         TransmutationCubeInventory reopenedAfterRemoval = new TransmutationCubeInventory(cube);
