@@ -20,6 +20,7 @@ import com.fende.obesecat.item.NightVisionMrKittyItem;
 import com.fende.obesecat.item.PacoItem;
 import com.fende.obesecat.item.SniperPacoItem;
 import com.fende.obesecat.item.TinyPlanetItem;
+import com.fende.obesecat.item.TransmutationCubeItem;
 import com.fende.obesecat.item.WormholeEmberItem;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -103,6 +104,12 @@ public final class ModItems {
     public static final DeferredItem<TinyPlanetItem> TINY_PLANET = ITEMS.registerItem(
             "tiny_planet",
             TinyPlanetItem::new,
+            new Item.Properties().stacksTo(1).rarity(Rarity.RARE)
+    );
+
+    public static final DeferredItem<TransmutationCubeItem> TRANSMUTATION_CUBE = ITEMS.registerItem(
+            "transmutation_cube",
+            TransmutationCubeItem::new,
             new Item.Properties().stacksTo(1).rarity(Rarity.RARE)
     );
 
