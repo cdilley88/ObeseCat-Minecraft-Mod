@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    {
+      "item": "minecraft:chest"
+    },
+    {
+      "item": "minecraft:crafting_table"
+    },
+    {
+      "item": "obesecat:trinitite"
+    }
+  ],
+  "result": {
+    "id": "obesecat:transmutation_cube",
+    "count": 1
+  }
+}

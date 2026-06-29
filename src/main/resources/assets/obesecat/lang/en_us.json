@@ -55,6 +55,8 @@
   "painting.obesecat.paco.title": "Paco",
   "painting.obesecat.paco.author": "Casey Dilley",
   "block.obesecat.toilet": "Toilet",
+  "item.obesecat.transmutation_cube": "Transmutation Cube",
+  "item.obesecat.transmutation_cube.caption": "You have quite a treasure...",
   "container.obesecat.transmutation_cube": "Transmutation Cube",
   "container.obesecat.transmutation_cube.transmute": "Transmutation"
 }

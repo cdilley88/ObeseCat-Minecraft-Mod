@@ -114,6 +114,7 @@ public class ObeseCatMod {
             event.accept(ModItems.WORMHOLE_EMBER.get());
             event.accept(ModItems.ENIGMA_EMBER.get());
             event.accept(ModItems.TINY_PLANET.get());
+            event.accept(ModItems.TRANSMUTATION_CUBE.get());
             event.accept(ModItems.NIGHT_VISION_MR_KITTY.get());
             event.accept(ModItems.MR_KITTYS_PAWS.get());
             event.accept(ModItems.BOOM_STICK.get());
