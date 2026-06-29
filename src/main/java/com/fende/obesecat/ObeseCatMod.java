@@ -4,6 +4,7 @@ import com.fende.obesecat.registry.ModBlocks;
 import com.fende.obesecat.registry.ModEntities;
 import com.fende.obesecat.registry.ModItems;
 import com.fende.obesecat.registry.ModLootTables;
+import com.fende.obesecat.registry.ModMenus;
 import com.fende.obesecat.registry.ModNetworking;
 import com.fende.obesecat.registry.ModSounds;
 import com.fende.obesecat.registry.ModVillagerTrades;
@@ -38,6 +39,7 @@ public class ObeseCatMod {
         ModBlocks.BLOCKS.register(modEventBus);
         ModEntities.ENTITY_TYPES.register(modEventBus);
         ModItems.ITEMS.register(modEventBus);
+        ModMenus.MENUS.register(modEventBus);
         ModSounds.SOUND_EVENTS.register(modEventBus);
         ModVillagers.POI_TYPES.register(modEventBus);
         ModVillagers.PROFESSIONS.register(modEventBus);
