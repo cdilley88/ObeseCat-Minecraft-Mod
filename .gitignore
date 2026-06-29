@@ -46,3 +46,6 @@ repo/
 /mdk-expanded/
 /mdk.zip
 **/lib/modules
+
+### Local Git Worktrees ###
+/.worktrees/
