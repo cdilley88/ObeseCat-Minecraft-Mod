@@ -23,6 +23,15 @@ public final class TransmutationCubeInventory extends SimpleContainer {
         return !(stack.getItem() instanceof TransmutationCubeItem);
     }
 
+    @Override
+    public ItemStack removeItemNoUpdate(int index) {
+        ItemStack removed = super.removeItemNoUpdate(index);
+        if (!removed.isEmpty()) {
+            setChanged();
+        }
+        return removed;
+    }
+
     private void save() {
         cubeStack.set(DataComponents.CONTAINER, ItemContainerContents.fromItems(getItems()));
     }
