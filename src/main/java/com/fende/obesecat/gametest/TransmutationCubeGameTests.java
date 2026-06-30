@@ -5,6 +5,9 @@ import com.fende.obesecat.inventory.TransmutationCubeInventory;
 import com.fende.obesecat.inventory.TransmutationCubeMenu;
 import com.fende.obesecat.inventory.TransmutationCubeSlot;
 import com.fende.obesecat.item.TransmutationCubeItem;
+import com.fende.obesecat.recipe.TransmutationIngredient;
+import com.fende.obesecat.recipe.TransmutationInput;
+import com.fende.obesecat.recipe.TransmutationRecipe;
 import com.fende.obesecat.registry.ModItems;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.gametest.framework.GameTest;
@@ -19,10 +22,54 @@ import net.minecraft.world.level.GameType;
 import net.neoforged.neoforge.gametest.GameTestHolder;
 import net.neoforged.neoforge.gametest.PrefixGameTestTemplate;
 
+import java.util.List;
+
 @GameTestHolder(ObeseCatMod.MOD_ID)
 @PrefixGameTestTemplate(false)
 public final class TransmutationCubeGameTests {
     private static final String TEMPLATE = "village/plains/houses/manhattan_bunker";
+
+    @GameTest(template = TEMPLATE)
+    public static void transmutationRecipeMatchesExactUnorderedContents(GameTestHelper helper) {
+        TransmutationRecipe recipe = new TransmutationRecipe(
+                List.of(
+                        new TransmutationIngredient(ModItems.PACO.get(), 1),
+                        new TransmutationIngredient(ModItems.OPPENHEIMERS_HAT.get(), 1)
+                ),
+                new ItemStack(ModItems.J_ROBERT_PACOHEIMER.get())
+        );
+
+        SimpleContainer contents = new SimpleContainer(TransmutationCubeInventory.SLOT_COUNT);
+        contents.setItem(11, new ItemStack(ModItems.PACO.get()));
+        contents.setItem(2, new ItemStack(ModItems.OPPENHEIMERS_HAT.get()));
+        helper.assertTrue(recipe.matches(TransmutationInput.copyOf(contents), helper.getLevel()),
+                "Recipe must match items in arbitrary cube slots");
+
+        contents.clearContent();
+        contents.setItem(0, new ItemStack(ModItems.OPPENHEIMERS_HAT.get()));
+        contents.setItem(10, new ItemStack(ModItems.PACO.get()));
+        helper.assertTrue(recipe.matches(TransmutationInput.copyOf(contents), helper.getLevel()),
+                "Recipe must ignore input ordering");
+
+        contents.setItem(5, new ItemStack(Items.DIAMOND));
+        helper.assertFalse(recipe.matches(TransmutationInput.copyOf(contents), helper.getLevel()),
+                "An extra item must reject an otherwise valid recipe");
+
+        contents.clearContent();
+        contents.setItem(0, new ItemStack(ModItems.PACO.get()));
+        helper.assertFalse(recipe.matches(TransmutationInput.copyOf(contents), helper.getLevel()),
+                "A missing ingredient must reject the recipe");
+
+        contents.setItem(1, new ItemStack(Items.LEATHER_HELMET));
+        helper.assertFalse(recipe.matches(TransmutationInput.copyOf(contents), helper.getLevel()),
+                "A wrong item must reject the recipe");
+
+        contents.setItem(2, new ItemStack(ModItems.PACO.get()));
+        contents.setItem(1, new ItemStack(ModItems.OPPENHEIMERS_HAT.get()));
+        helper.assertFalse(recipe.matches(TransmutationInput.copyOf(contents), helper.getLevel()),
+                "A duplicate ingredient must reject the exact recipe");
+        helper.succeed();
+    }
 
     @GameTest(template = TEMPLATE)
     public static void contentsPersistAndCubesCannotNest(GameTestHelper helper) {
