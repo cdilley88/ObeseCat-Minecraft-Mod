@@ -10,6 +10,7 @@ import net.minecraft.core.component.DataComponents;
 import net.minecraft.gametest.framework.GameTest;
 import net.minecraft.gametest.framework.GameTestHelper;
 import net.minecraft.world.InteractionHand;
+import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -37,6 +38,9 @@ public final class TransmutationCubeGameTests {
         helper.assertFalse(reopened.canPlaceItem(1, anotherCube), "A cube inventory must reject another cube");
         TransmutationCubeSlot slot = new TransmutationCubeSlot(reopened, 1, 0, 0);
         helper.assertFalse(slot.mayPlace(anotherCube), "A cube slot must reject another cube");
+        SimpleContainer clientInventory = new SimpleContainer(TransmutationCubeInventory.SLOT_COUNT);
+        TransmutationCubeSlot clientSlot = new TransmutationCubeSlot(clientInventory, 1, 0, 0);
+        helper.assertFalse(clientSlot.mayPlace(anotherCube), "A client cube slot must reject another cube");
         helper.assertFalse(cube.canFitInsideContainerItems(), "A cube must reject generic container-item nesting");
         helper.assertFalse(
                 ((TransmutationCubeItem) cube.getItem()).canFitInsideContainerItems(),

@@ -1,5 +1,6 @@
 package com.fende.obesecat.inventory;
 
+import com.fende.obesecat.item.TransmutationCubeItem;
 import net.minecraft.world.Container;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
@@ -11,6 +12,7 @@ public final class TransmutationCubeSlot extends Slot {
 
     @Override
     public boolean mayPlace(ItemStack stack) {
-        return container.canPlaceItem(getContainerSlot(), stack);
+        return !(stack.getItem() instanceof TransmutationCubeItem)
+                && container.canPlaceItem(getContainerSlot(), stack);
     }
 }
