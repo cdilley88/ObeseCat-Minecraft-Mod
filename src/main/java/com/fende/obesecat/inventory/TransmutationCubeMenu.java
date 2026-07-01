@@ -1,7 +1,11 @@
 package com.fende.obesecat.inventory;
 
 import com.fende.obesecat.registry.ModMenus;
+import com.fende.obesecat.recipe.TransmutationInput;
+import com.fende.obesecat.recipe.TransmutationRecipe;
+import com.fende.obesecat.registry.ModRecipeTypes;
 import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.Container;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.SimpleContainer;
@@ -10,6 +14,10 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.RecipeHolder;
+import net.minecraft.core.NonNullList;
+
+import java.util.Optional;
 
 public class TransmutationCubeMenu extends AbstractContainerMenu {
     public static final int TRANSMUTE_BUTTON_ID = 0;
@@ -77,7 +85,34 @@ public class TransmutationCubeMenu extends AbstractContainerMenu {
 
     @Override
     public boolean clickMenuButton(Player player, int id) {
-        return id == TRANSMUTE_BUTTON_ID;
+        if (id != TRANSMUTE_BUTTON_ID) {
+            return false;
+        }
+        if (!(player instanceof ServerPlayer serverPlayer)) {
+            return true;
+        }
+        if (!stillValid(serverPlayer) || !(cubeInventory instanceof TransmutationCubeInventory persistentInventory)) {
+            return false;
+        }
+
+        TransmutationInput input = TransmutationInput.copyOf(cubeInventory);
+        Optional<RecipeHolder<TransmutationRecipe>> match = serverPlayer.level().getRecipeManager()
+                .getRecipeFor(ModRecipeTypes.TRANSMUTATION.get(), input, serverPlayer.level());
+        if (match.isEmpty()) {
+            return true;
+        }
+
+        ItemStack output = match.get().value().assemble(input, serverPlayer.level().registryAccess());
+        int outputSlot = input.lowestOccupiedSlot();
+        if (output.isEmpty() || outputSlot < 0) {
+            return true;
+        }
+
+        NonNullList<ItemStack> replacement = NonNullList.withSize(TransmutationCubeInventory.SLOT_COUNT, ItemStack.EMPTY);
+        replacement.set(outputSlot, output);
+        persistentInventory.replaceContents(replacement);
+        broadcastChanges();
+        return true;
     }
 
     @Override

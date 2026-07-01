@@ -6,6 +6,8 @@ import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.ItemContainerContents;
 
+import java.util.List;
+
 public final class TransmutationCubeInventory extends SimpleContainer {
     public static final int SLOT_COUNT = 12;
 
@@ -21,6 +23,17 @@ public final class TransmutationCubeInventory extends SimpleContainer {
     @Override
     public boolean canPlaceItem(int slot, ItemStack stack) {
         return !(stack.getItem() instanceof TransmutationCubeItem);
+    }
+
+    public void replaceContents(List<ItemStack> contents) {
+        if (contents.size() != SLOT_COUNT) {
+            throw new IllegalArgumentException("Cube replacement must contain exactly 12 slots");
+        }
+
+        for (int slot = 0; slot < SLOT_COUNT; slot++) {
+            getItems().set(slot, contents.get(slot).copy());
+        }
+        setChanged();
     }
 
     @Override

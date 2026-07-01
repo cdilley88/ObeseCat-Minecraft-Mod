@@ -10,9 +10,11 @@ import com.fende.obesecat.recipe.TransmutationInput;
 import com.fende.obesecat.recipe.TransmutationRecipe;
 import com.fende.obesecat.registry.ModItems;
 import net.minecraft.core.component.DataComponents;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.gametest.framework.GameTest;
 import net.minecraft.gametest.framework.GameTestHelper;
 import net.minecraft.world.InteractionHand;
+import net.minecraft.core.NonNullList;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -101,38 +103,156 @@ public final class TransmutationCubeGameTests {
     }
 
     @GameTest(template = TEMPLATE)
-    public static void menuRejectsQuickMoveAndButtonIsInert(GameTestHelper helper) {
-        Player player = helper.makeMockPlayer(GameType.CREATIVE);
+    public static void menuExecutesTransmutationAndPersistsResult(GameTestHelper helper) {
+        var serverPlayer = helper.makeMockServerPlayerInLevel();
         ItemStack openedCube = new ItemStack(ModItems.TRANSMUTATION_CUBE.get());
-        player.setItemInHand(InteractionHand.MAIN_HAND, openedCube);
-        player.getInventory().setItem(9, new ItemStack(ModItems.TRANSMUTATION_CUBE.get()));
+        serverPlayer.setItemInHand(InteractionHand.MAIN_HAND, openedCube);
 
-        TransmutationCubeMenu menu = new TransmutationCubeMenu(1, player.getInventory(), InteractionHand.MAIN_HAND);
-        menu.getCubeInventory().setItem(0, new ItemStack(Items.EMERALD, 2));
-        ItemContainerContents before = openedCube.getOrDefault(DataComponents.CONTAINER, ItemContainerContents.EMPTY);
+        TransmutationCubeMenu menu = new TransmutationCubeMenu(1, serverPlayer.getInventory(), InteractionHand.MAIN_HAND);
+        menu.getCubeInventory().setItem(2, new ItemStack(ModItems.OPPENHEIMERS_HAT.get()));
+        menu.getCubeInventory().setItem(11, new ItemStack(ModItems.PACO.get()));
 
-        helper.assertTrue(
-                menu.clickMenuButton(player, TransmutationCubeMenu.TRANSMUTE_BUTTON_ID),
-                "Known button id must be accepted"
+        ResourceLocation recipeId = ResourceLocation.fromNamespaceAndPath(
+                ObeseCatMod.MOD_ID,
+                "j_robert_pacoheimer_transmutation"
         );
         helper.assertTrue(
-                before.equals(openedCube.getOrDefault(DataComponents.CONTAINER, ItemContainerContents.EMPTY)),
-                "Dummy button must not mutate contents"
+                helper.getLevel().getRecipeManager().byKey(recipeId).isPresent(),
+                "The transmutation recipe must be loaded"
         );
-        helper.assertFalse(menu.clickMenuButton(player, 99), "Unknown button ids must be rejected");
+        helper.assertFalse(
+                helper.getLevel().getRecipeManager()
+                        .byKey(ResourceLocation.fromNamespaceAndPath(ObeseCatMod.MOD_ID, "j_robert_pacoheimer"))
+                        .isPresent(),
+                "The old crafting recipe must be removed"
+        );
+
+        helper.assertTrue(menu.clickMenuButton(serverPlayer, TransmutationCubeMenu.TRANSMUTE_BUTTON_ID),
+                "Known button id must be accepted on the server");
+        ItemContainerContents afterTransmute = openedCube.getOrDefault(DataComponents.CONTAINER, ItemContainerContents.EMPTY);
         helper.assertTrue(
-                menu.quickMoveStack(player, TransmutationCubeInventory.SLOT_COUNT).isEmpty(),
+                afterTransmute.equals(contentsWithSlots(
+                        new ItemStack(ModItems.J_ROBERT_PACOHEIMER.get()),
+                        2
+                )),
+                "Successful transmutation must leave the result in the lowest occupied slot"
+        );
+        TransmutationCubeInventory reopened = new TransmutationCubeInventory(openedCube);
+        helper.assertTrue(
+                reopened.getItem(2).is(ModItems.J_ROBERT_PACOHEIMER.get()),
+                "Reopening the same cube stack must preserve the result"
+        );
+        helper.assertTrue(reopened.getItem(0).isEmpty(), "Reopening must not recreate consumed ingredients");
+        helper.assertTrue(reopened.getItem(11).isEmpty(), "Reopening must keep the remaining slots empty");
+
+        serverPlayer.getInventory().setItem(9, new ItemStack(ModItems.TRANSMUTATION_CUBE.get()));
+        helper.assertTrue(
+                menu.quickMoveStack(serverPlayer, TransmutationCubeInventory.SLOT_COUNT).isEmpty(),
                 "Shift-clicked cube must not enter cube storage"
         );
         helper.assertTrue(
-                player.getInventory().getItem(9).is(ModItems.TRANSMUTATION_CUBE.get()),
+                serverPlayer.getInventory().getItem(9).is(ModItems.TRANSMUTATION_CUBE.get()),
                 "Rejected nested cube must remain in player inventory"
         );
-        helper.assertTrue(menu.stillValid(player), "Menu must remain valid while the same held stack is present");
 
-        player.setItemInHand(InteractionHand.MAIN_HAND, ItemStack.EMPTY);
-        helper.assertFalse(menu.stillValid(player), "Menu must become invalid if the opened cube leaves its hand");
+        ItemStack reversedCube = new ItemStack(ModItems.TRANSMUTATION_CUBE.get());
+        serverPlayer.setItemInHand(InteractionHand.MAIN_HAND, reversedCube);
+        TransmutationCubeMenu reversedMenu = new TransmutationCubeMenu(2, serverPlayer.getInventory(), InteractionHand.MAIN_HAND);
+        reversedMenu.getCubeInventory().setItem(0, new ItemStack(ModItems.PACO.get()));
+        reversedMenu.getCubeInventory().setItem(10, new ItemStack(ModItems.OPPENHEIMERS_HAT.get()));
+        helper.assertTrue(
+                reversedMenu.clickMenuButton(serverPlayer, TransmutationCubeMenu.TRANSMUTE_BUTTON_ID),
+                "The recipe must match regardless of ingredient ordering"
+        );
+        helper.assertTrue(
+                reversedCube.getOrDefault(DataComponents.CONTAINER, ItemContainerContents.EMPTY)
+                        .equals(contentsWithSlots(new ItemStack(ModItems.J_ROBERT_PACOHEIMER.get()), 0)),
+                "The result must land in the lowest occupied slot"
+        );
+
+        serverPlayer.setItemInHand(InteractionHand.MAIN_HAND, openedCube);
+        menu.getCubeInventory().clearContent();
+        menu.getCubeInventory().setItem(2, new ItemStack(ModItems.OPPENHEIMERS_HAT.get()));
+        menu.getCubeInventory().setItem(11, new ItemStack(ModItems.PACO.get()));
+        ItemContainerContents beforeInvalidClick = openedCube.getOrDefault(DataComponents.CONTAINER, ItemContainerContents.EMPTY);
+        helper.assertFalse(menu.clickMenuButton(serverPlayer, 99), "Unknown button ids must be rejected");
+        helper.assertTrue(
+                beforeInvalidClick.equals(openedCube.getOrDefault(DataComponents.CONTAINER, ItemContainerContents.EMPTY)),
+                "Unknown button ids must not mutate contents"
+        );
+
+        menu.getCubeInventory().clearContent();
+        menu.getCubeInventory().setItem(2, new ItemStack(ModItems.OPPENHEIMERS_HAT.get()));
+        menu.getCubeInventory().setItem(11, new ItemStack(ModItems.PACO.get()));
+        menu.getCubeInventory().setItem(5, new ItemStack(Items.DIAMOND));
+        ItemContainerContents beforeExtra = openedCube.getOrDefault(DataComponents.CONTAINER, ItemContainerContents.EMPTY);
+        helper.assertTrue(menu.clickMenuButton(serverPlayer, TransmutationCubeMenu.TRANSMUTE_BUTTON_ID),
+                "Server transmute clicks should still be accepted when the recipe does not match");
+        helper.assertTrue(
+                beforeExtra.equals(openedCube.getOrDefault(DataComponents.CONTAINER, ItemContainerContents.EMPTY)),
+                "An extra item must prevent mutation"
+        );
+
+        menu.getCubeInventory().clearContent();
+        menu.getCubeInventory().setItem(0, new ItemStack(ModItems.PACO.get()));
+        ItemContainerContents beforeMissing = openedCube.getOrDefault(DataComponents.CONTAINER, ItemContainerContents.EMPTY);
+        helper.assertTrue(menu.clickMenuButton(serverPlayer, TransmutationCubeMenu.TRANSMUTE_BUTTON_ID),
+                "Server transmute clicks should still be accepted when an ingredient is missing");
+        helper.assertTrue(
+                beforeMissing.equals(openedCube.getOrDefault(DataComponents.CONTAINER, ItemContainerContents.EMPTY)),
+                "A missing ingredient must prevent mutation"
+        );
+
+        menu.getCubeInventory().clearContent();
+        menu.getCubeInventory().setItem(0, new ItemStack(ModItems.PACO.get()));
+        menu.getCubeInventory().setItem(1, new ItemStack(ModItems.OPPENHEIMERS_HAT.get()));
+        menu.getCubeInventory().setItem(2, new ItemStack(Items.LEATHER_HELMET));
+        ItemContainerContents beforeWrong = openedCube.getOrDefault(DataComponents.CONTAINER, ItemContainerContents.EMPTY);
+        helper.assertTrue(menu.clickMenuButton(serverPlayer, TransmutationCubeMenu.TRANSMUTE_BUTTON_ID),
+                "Server transmute clicks should still be accepted when the wrong item is present");
+        helper.assertTrue(
+                beforeWrong.equals(openedCube.getOrDefault(DataComponents.CONTAINER, ItemContainerContents.EMPTY)),
+                "A wrong item must prevent mutation"
+        );
+
+        menu.getCubeInventory().clearContent();
+        menu.getCubeInventory().setItem(0, new ItemStack(ModItems.PACO.get()));
+        menu.getCubeInventory().setItem(1, new ItemStack(ModItems.PACO.get()));
+        menu.getCubeInventory().setItem(2, new ItemStack(ModItems.OPPENHEIMERS_HAT.get()));
+        ItemContainerContents beforeDuplicate = openedCube.getOrDefault(DataComponents.CONTAINER, ItemContainerContents.EMPTY);
+        helper.assertTrue(menu.clickMenuButton(serverPlayer, TransmutationCubeMenu.TRANSMUTE_BUTTON_ID),
+                "Server transmute clicks should still be accepted when duplicate items are present");
+        helper.assertTrue(
+                beforeDuplicate.equals(openedCube.getOrDefault(DataComponents.CONTAINER, ItemContainerContents.EMPTY)),
+                "A duplicate ingredient must prevent mutation"
+        );
+
+        Player clientSidePlayer = helper.makeMockPlayer(GameType.CREATIVE);
+        ItemStack clientCube = new ItemStack(ModItems.TRANSMUTATION_CUBE.get());
+        clientSidePlayer.setItemInHand(InteractionHand.MAIN_HAND, clientCube);
+        TransmutationCubeMenu clientMenu = new TransmutationCubeMenu(3, clientSidePlayer.getInventory(), InteractionHand.MAIN_HAND);
+        clientMenu.getCubeInventory().setItem(0, new ItemStack(Items.EMERALD, 2));
+        ItemContainerContents clientBefore = clientCube.getOrDefault(DataComponents.CONTAINER, ItemContainerContents.EMPTY);
+        helper.assertTrue(
+                clientMenu.clickMenuButton(clientSidePlayer, TransmutationCubeMenu.TRANSMUTE_BUTTON_ID),
+                "Known button id must be accepted for non-server callers"
+        );
+        helper.assertTrue(
+                clientBefore.equals(clientCube.getOrDefault(DataComponents.CONTAINER, ItemContainerContents.EMPTY)),
+                "Non-server callers must not mutate cube contents"
+        );
+        helper.assertFalse(clientMenu.clickMenuButton(clientSidePlayer, 99), "Unknown button ids must be rejected");
+        helper.assertTrue(menu.stillValid(serverPlayer), "Menu must remain valid while the same held stack is present");
+
+        serverPlayer.setItemInHand(InteractionHand.MAIN_HAND, ItemStack.EMPTY);
+        helper.assertFalse(menu.stillValid(serverPlayer), "Menu must become invalid if the opened cube leaves its hand");
         helper.succeed();
+    }
+
+    private static ItemContainerContents contentsWithSlots(ItemStack item, int slot) {
+        NonNullList<ItemStack> stacks = NonNullList.withSize(TransmutationCubeInventory.SLOT_COUNT, ItemStack.EMPTY);
+        stacks.set(slot, item);
+        return ItemContainerContents.fromItems(stacks);
     }
 
     private TransmutationCubeGameTests() {
