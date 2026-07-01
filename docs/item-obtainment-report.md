@@ -30,7 +30,8 @@ Current acquisition mechanisms:
 | Manhattan Physicist trades | `ModVillagerTrades.java` and `ModVillagers.java` | Adds Trinitite-priced trades to Manhattan Physicists spawned in bunkers. |
 | Manhattan bunker standalone worldgen | `data/obesecat/worldgen/structure/manhattan_bunker.json`, `data/obesecat/worldgen/structure_set/manhattan_bunker.json`, `data/obesecat/worldgen/template_pool/manhattan_bunker/start_pool.json`, and `data/obesecat/structure/village/plains/houses/manhattan_bunker.nbt` | Uses the proper jigsaw structure system, independent of village generation. |
 | Loot injection | `ModLootTables.java` | Adds runtime loot pools to vanilla dungeon, End City, and Bastion loot tables. |
-| Crafting recipes | `src/main/resources/data/obesecat/recipe/*.json` | Adds eight crafting recipes. |
+| Crafting recipes | `src/main/resources/data/obesecat/recipe/*.json` | Adds seven crafting recipes. |
+| Transmutation recipes | `src/main/resources/data/obesecat/recipe/*_transmutation.json` | Adds one cube-based transmutation route. |
 | Fat Man detonation | `ObeseCat.java` | Adds one Trinitite block at the crater center for lithium-deuteride Fat Man detonations. |
 | Painting variant registry | `data/obesecat/painting_variant/*.json` and `data/minecraft/tags/painting_variant/placeable.json` | Adds custom artwork to the vanilla Painting item variant pool. |
 | Creative tabs | `ObeseCatMod.java` | Adds many items to creative tabs only. Not survival acquisition. |
@@ -150,7 +151,6 @@ Combined chance notes, assuming independent pools:
 | Atomic Paco | Shapeless | Hellhound Paco + Plutonium Cat Food | 1 Trinitite + 1 emerald |
 | Tiny Planet | Shapeless | Mr. Kitty + Nether Star | 1 emerald + 1 nether star |
 | Ember Singularity | Shaped | 8 Eyes of Ender around Ember | 1 emerald + 8 eyes of ender |
-| Transmutation Cube | Shapeless | Chest + Crafting Table + Trinitite block | One Trinitite block plus common utility blocks |
 
 ## Transmutation Recipes
 
