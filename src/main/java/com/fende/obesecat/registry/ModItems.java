@@ -186,6 +186,12 @@ public final class ModItems {
             skillSwordProperties(Rarity.UNCOMMON)
     );
 
+    public static final DeferredItem<CaptionedItem> HOLY_KNIGHT_TOKEN = ITEMS.registerItem(
+            "holy_knight_token",
+            properties -> new CaptionedItem(properties, "item.obesecat.holy_knight_token.caption"),
+            new Item.Properties().stacksTo(1).rarity(Rarity.RARE)
+    );
+
     public static final DeferredItem<Item> OPPENHEIMERS_HAT = ITEMS.registerSimpleItem(
             "oppenheimers_hat",
             new Item.Properties().stacksTo(1).rarity(Rarity.RARE)

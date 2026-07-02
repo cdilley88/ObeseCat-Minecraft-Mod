@@ -136,6 +136,37 @@ public final class TransmutationCubeGameTests {
     }
 
     @GameTest(template = TEMPLATE)
+    public static void stasisSwordTransmutationRecipeIsLoaded(GameTestHelper helper) {
+        ResourceLocation recipeId = ResourceLocation.fromNamespaceAndPath(
+                ObeseCatMod.MOD_ID,
+                "stasis_sword_transmutation"
+        );
+        helper.assertTrue(
+                helper.getLevel().getRecipeManager().byKey(recipeId).isPresent(),
+                "The Stasis Sword transmutation recipe must be loaded"
+        );
+
+        TransmutationRecipe recipe = helper.getLevel().getRecipeManager()
+                .byKey(recipeId)
+                .map(recipeHolder -> (TransmutationRecipe) recipeHolder.value())
+                .orElseThrow();
+
+        SimpleContainer contents = new SimpleContainer(TransmutationCubeInventory.SLOT_COUNT);
+        contents.setItem(3, new ItemStack(ModItems.HOLY_SWORD.get()));
+        contents.setItem(7, new ItemStack(ModItems.HOLY_KNIGHT_TOKEN.get()));
+        helper.assertTrue(
+                recipe.matches(TransmutationInput.copyOf(contents), helper.getLevel()),
+                "Holy Sword plus Holy Knight Token must match the Stasis Sword recipe in any cube slots"
+        );
+        helper.assertTrue(
+                recipe.assemble(TransmutationInput.copyOf(contents), helper.getLevel().registryAccess())
+                        .is(ModItems.STASIS_SWORD.get()),
+                "The first skill-sword recipe must output Stasis Sword"
+        );
+        helper.succeed();
+    }
+
+    @GameTest(template = TEMPLATE)
     public static void contentsPersistAndCubesCannotNest(GameTestHelper helper) {
         ItemStack cube = new ItemStack(ModItems.TRANSMUTATION_CUBE.get());
         TransmutationCubeInventory firstOpen = new TransmutationCubeInventory(cube);

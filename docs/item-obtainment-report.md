@@ -31,7 +31,7 @@ Current acquisition mechanisms:
 | Manhattan bunker standalone worldgen | `data/obesecat/worldgen/structure/manhattan_bunker.json`, `data/obesecat/worldgen/structure_set/manhattan_bunker.json`, `data/obesecat/worldgen/template_pool/manhattan_bunker/start_pool.json`, and `data/obesecat/structure/village/plains/houses/manhattan_bunker.nbt` | Uses the proper jigsaw structure system, independent of village generation. |
 | Loot injection | `ModLootTables.java` | Adds runtime loot pools to vanilla dungeon, End City, and Bastion loot tables. |
 | Crafting recipes | `src/main/resources/data/obesecat/recipe/*.json` | Adds seven crafting recipes. |
-| Transmutation recipes | `src/main/resources/data/obesecat/recipe/*_transmutation.json` | Adds one cube-based transmutation route. |
+| Transmutation recipes | `src/main/resources/data/obesecat/recipe/*_transmutation.json` | Adds four cube-based transmutation routes. |
 | Fat Man detonation | `ObeseCat.java` | Adds one Trinitite block at the crater center for lithium-deuteride Fat Man detonations. |
 | Painting variant registry | `data/obesecat/painting_variant/*.json` and `data/minecraft/tags/painting_variant/placeable.json` | Adds custom artwork to the vanilla Painting item variant pool. |
 | Creative tabs | `ObeseCatMod.java` | Adds many items to creative tabs only. Not survival acquisition. |
@@ -158,7 +158,9 @@ Combined chance notes, assuming independent pools:
 | Output | Recipe type | Inputs | Notes |
 | --- | --- | --- | --- |
 | J. Paco Barkkenheimer | Transmutation Cube | Exactly one Paco and one Oppenheimer's Hat, in any order, in any of the cube's 12 slots; no extra items or counts | One J. Paco Barkkenheimer is left inside the cube. This transmutation is the sole survival acquisition route; the old crafting-table route was removed. |
+| Hellhound Paco | Transmutation Cube | Exactly one Paco and one Blaze Powder, in any order, in any of the cube's 12 slots; no extra items or counts | One Hellhound Paco is left inside the cube after a successful transmutation. |
 | Cow Level Portal | Transmutation Cube | Exactly one Virt's Leg and one Tome of Town Portal, in any order, in any of the cube's 12 slots; no extra items or counts | One Cow Level Portal is left inside the cube after a successful transmutation. |
+| Stasis Sword | Transmutation Cube | Exactly one Holy Sword and one Holy Knight Token, in any order, in any of the cube's 12 slots; no extra items or counts | One Stasis Sword is left inside the cube after a successful transmutation. |
 
 ## Weapon Balance Notes
 
@@ -215,6 +217,9 @@ Vanilla placement picks from placeable variants that fit the wall, then chooses 
 | J. Paco Barkkenheimer | Transmutation Cube | Exactly one Paco and one Oppenheimer's Hat, in any order, in any of the cube's 12 slots; no extra items or counts. Output stays inside the cube. | This transmutation is the sole survival acquisition route; the old crafting-table route was removed. |
 | Atomic Paco | Crafting | Hellhound Paco + Plutonium Cat Food. Hellhound Paco now comes from Manhattan Physicist trading, making the notable minimum cost 1 Trinitite + 1 emerald. |
 | Hellhound Paco | Manhattan Physicist trade | Spawned Manhattan Physicist in a Manhattan Bunker, 1 Trinitite, 12 max uses, 1 XP, 0.05 price multiplier. |
+| Holy Sword | No survival path found yet | Registered as an uncommon sword item. It serves as the base Transmutation Cube sword ingredient and intentionally passes on right-click for now. |
+| Holy Knight Token | No survival path found yet | Registered as a rare captioned item with caption `A blade remembers its oath.` It is currently only used as the exact catalyst input for the Stasis Sword transmutation. |
+| Stasis Sword | Transmutation Cube | Exactly one Holy Sword and one Holy Knight Token, in any order, in any of the cube's 12 slots; no extra items or counts. Output stays inside the cube. Rare rarity. Caption: Life is short... Bury! |
 | Oppenheimer's Hat | Manhattan Physicist trade | Spawned Manhattan Physicist in a Manhattan Bunker, 5 Trinitite, 12 max uses, 1 XP, 0.05 price multiplier. |
 | Boom Stick | No survival path found | Registered and added to creative tab, but no trade, loot, or recipe found. |
 | Fire Stick | No survival path found | Registered and added to creative tab, but no trade, loot, or recipe found. |

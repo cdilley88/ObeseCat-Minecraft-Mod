@@ -1,0 +1,17 @@
+{
+  "type": "obesecat:transmutation",
+  "ingredients": [
+    {
+      "item": "obesecat:holy_sword",
+      "count": 1
+    },
+    {
+      "item": "obesecat:holy_knight_token",
+      "count": 1
+    }
+  ],
+  "result": {
+    "id": "obesecat:stasis_sword",
+    "count": 1
+  }
+}
