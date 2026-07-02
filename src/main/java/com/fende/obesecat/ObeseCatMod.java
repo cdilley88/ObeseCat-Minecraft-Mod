@@ -19,6 +19,8 @@ import com.fende.obesecat.world.MrKittysPawsManager;
 import com.fende.obesecat.world.NuclearCatExplosion;
 import com.fende.obesecat.world.NightVisionMrKittyManager;
 import com.fende.obesecat.world.PacoBarkBurst;
+import com.fende.obesecat.world.SniperPacoManager;
+import com.fende.obesecat.world.StasisSwordManager;
 import com.fende.obesecat.world.TinyPlanetProtection;
 import com.fende.obesecat.world.ToiletSinkAnimation;
 import net.minecraft.world.entity.animal.Cat;
@@ -56,6 +58,8 @@ public class ObeseCatMod {
         NeoForge.EVENT_BUS.addListener(EmberSingularityMagnet::onLevelTick);
         NeoForge.EVENT_BUS.addListener(NightVisionMrKittyManager::onLevelTick);
         NeoForge.EVENT_BUS.addListener(PacoBarkBurst::onLevelTick);
+        NeoForge.EVENT_BUS.addListener(SniperPacoManager::onAttackEntity);
+        NeoForge.EVENT_BUS.addListener(StasisSwordManager::onLevelTick);
         NeoForge.EVENT_BUS.addListener(TinyPlanetProtection::onLevelTick);
         NeoForge.EVENT_BUS.addListener(ToiletSinkAnimation::onLevelTick);
         NeoForge.EVENT_BUS.addListener(ModVillagerTrades::addTrades);
@@ -85,6 +89,9 @@ public class ObeseCatMod {
         if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
             event.accept(ModItems.TRINITITE.get());
             event.accept(ModItems.OPPENHEIMERS_HAT.get());
+            event.accept(ModItems.VIRTS_LEG.get());
+            event.accept(ModItems.TP_TOME.get());
+            event.accept(ModItems.COW_LEVEL_PORTAL.get());
         }
         if (event.getTabKey() == CreativeModeTabs.COMBAT) {
             event.accept(ModItems.PACO.get());
@@ -104,6 +111,8 @@ public class ObeseCatMod {
             event.accept(ModItems.J_ROBERT_PACOHEIMER.get());
             event.accept(ModItems.HELLHOUND_PACO.get());
             event.accept(ModItems.OPPENHEIMERS_HAT.get());
+            event.accept(ModItems.HOLY_SWORD.get());
+            event.accept(ModItems.STASIS_SWORD.get());
             event.accept(ModItems.BOOM_STICK.get());
             event.accept(ModItems.FIRE_STICK.get());
             event.accept(ModItems.FIRE_BOOM_STICK.get());

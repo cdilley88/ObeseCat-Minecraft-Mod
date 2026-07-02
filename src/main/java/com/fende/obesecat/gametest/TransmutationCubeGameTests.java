@@ -35,21 +35,21 @@ public final class TransmutationCubeGameTests {
     public static void transmutationRecipeMatchesExactUnorderedContents(GameTestHelper helper) {
         TransmutationRecipe recipe = new TransmutationRecipe(
                 List.of(
-                        new TransmutationIngredient(ModItems.PACO.get(), 1),
-                        new TransmutationIngredient(ModItems.OPPENHEIMERS_HAT.get(), 1)
+                        new TransmutationIngredient(ModItems.ASSAULT_PACO.get(), 1),
+                        new TransmutationIngredient(Items.SPYGLASS, 1)
                 ),
-                new ItemStack(ModItems.J_ROBERT_PACOHEIMER.get())
+                new ItemStack(ModItems.SNIPER_PACO.get())
         );
 
         SimpleContainer contents = new SimpleContainer(TransmutationCubeInventory.SLOT_COUNT);
-        contents.setItem(11, new ItemStack(ModItems.PACO.get()));
-        contents.setItem(2, new ItemStack(ModItems.OPPENHEIMERS_HAT.get()));
+        contents.setItem(11, new ItemStack(ModItems.ASSAULT_PACO.get()));
+        contents.setItem(2, new ItemStack(Items.SPYGLASS));
         helper.assertTrue(recipe.matches(TransmutationInput.copyOf(contents), helper.getLevel()),
                 "Recipe must match items in arbitrary cube slots");
 
         contents.clearContent();
-        contents.setItem(0, new ItemStack(ModItems.OPPENHEIMERS_HAT.get()));
-        contents.setItem(10, new ItemStack(ModItems.PACO.get()));
+        contents.setItem(0, new ItemStack(Items.SPYGLASS));
+        contents.setItem(10, new ItemStack(ModItems.ASSAULT_PACO.get()));
         helper.assertTrue(recipe.matches(TransmutationInput.copyOf(contents), helper.getLevel()),
                 "Recipe must ignore input ordering");
 
@@ -58,7 +58,7 @@ public final class TransmutationCubeGameTests {
                 "An extra item must reject an otherwise valid recipe");
 
         contents.clearContent();
-        contents.setItem(0, new ItemStack(ModItems.PACO.get()));
+        contents.setItem(0, new ItemStack(ModItems.ASSAULT_PACO.get()));
         helper.assertFalse(recipe.matches(TransmutationInput.copyOf(contents), helper.getLevel()),
                 "A missing ingredient must reject the recipe");
 
@@ -66,10 +66,72 @@ public final class TransmutationCubeGameTests {
         helper.assertFalse(recipe.matches(TransmutationInput.copyOf(contents), helper.getLevel()),
                 "A wrong item must reject the recipe");
 
-        contents.setItem(2, new ItemStack(ModItems.PACO.get()));
-        contents.setItem(1, new ItemStack(ModItems.OPPENHEIMERS_HAT.get()));
+        contents.setItem(2, new ItemStack(ModItems.ASSAULT_PACO.get()));
+        contents.setItem(1, new ItemStack(Items.SPYGLASS));
         helper.assertFalse(recipe.matches(TransmutationInput.copyOf(contents), helper.getLevel()),
                 "A duplicate ingredient must reject the exact recipe");
+        helper.succeed();
+    }
+
+    @GameTest(template = TEMPLATE)
+    public static void hellhoundPacoTransmutationRecipeIsLoaded(GameTestHelper helper) {
+        ResourceLocation recipeId = ResourceLocation.fromNamespaceAndPath(
+                ObeseCatMod.MOD_ID,
+                "hellhound_paco_transmutation"
+        );
+        helper.assertTrue(
+                helper.getLevel().getRecipeManager().byKey(recipeId).isPresent(),
+                "The Hellhound Paco transmutation recipe must be loaded"
+        );
+
+        TransmutationRecipe recipe = helper.getLevel().getRecipeManager()
+                .byKey(recipeId)
+                .map(recipeHolder -> (TransmutationRecipe) recipeHolder.value())
+                .orElseThrow();
+
+        SimpleContainer contents = new SimpleContainer(TransmutationCubeInventory.SLOT_COUNT);
+        contents.setItem(4, new ItemStack(ModItems.PACO.get()));
+        contents.setItem(9, new ItemStack(Items.BLAZE_POWDER));
+        helper.assertTrue(
+                recipe.matches(TransmutationInput.copyOf(contents), helper.getLevel()),
+                "Paco plus blaze powder must match the Hellhound recipe in any cube slots"
+        );
+        helper.assertTrue(
+                recipe.assemble(TransmutationInput.copyOf(contents), helper.getLevel().registryAccess())
+                        .is(ModItems.HELLHOUND_PACO.get()),
+                "The Hellhound recipe must transmute into Hellhound Paco"
+        );
+        helper.succeed();
+    }
+
+    @GameTest(template = TEMPLATE)
+    public static void cowLevelPortalTransmutationRecipeIsLoaded(GameTestHelper helper) {
+        ResourceLocation recipeId = ResourceLocation.fromNamespaceAndPath(
+                ObeseCatMod.MOD_ID,
+                "cow_level_portal_transmutation"
+        );
+        helper.assertTrue(
+                helper.getLevel().getRecipeManager().byKey(recipeId).isPresent(),
+                "The Cow Level Portal transmutation recipe must be loaded"
+        );
+
+        TransmutationRecipe recipe = helper.getLevel().getRecipeManager()
+                .byKey(recipeId)
+                .map(recipeHolder -> (TransmutationRecipe) recipeHolder.value())
+                .orElseThrow();
+
+        SimpleContainer contents = new SimpleContainer(TransmutationCubeInventory.SLOT_COUNT);
+        contents.setItem(1, new ItemStack(ModItems.TP_TOME.get()));
+        contents.setItem(8, new ItemStack(ModItems.VIRTS_LEG.get()));
+        helper.assertTrue(
+                recipe.matches(TransmutationInput.copyOf(contents), helper.getLevel()),
+                "Tome of Town Portal plus Virt's Leg must match the Cow Level Portal recipe in any cube slots"
+        );
+        helper.assertTrue(
+                recipe.assemble(TransmutationInput.copyOf(contents), helper.getLevel().registryAccess())
+                        .is(ModItems.COW_LEVEL_PORTAL.get()),
+                "The Cow Level Portal recipe must transmute into Cow Level Portal"
+        );
         helper.succeed();
     }
 
@@ -119,6 +181,18 @@ public final class TransmutationCubeGameTests {
         helper.assertTrue(
                 helper.getLevel().getRecipeManager().byKey(recipeId).isPresent(),
                 "The transmutation recipe must be loaded"
+        );
+        helper.assertTrue(
+                helper.getLevel().getRecipeManager()
+                        .byKey(ResourceLocation.fromNamespaceAndPath(ObeseCatMod.MOD_ID, "sniper_paco"))
+                        .isPresent(),
+                "The sniper crafting recipe must be loaded"
+        );
+        helper.assertTrue(
+                helper.getLevel().getRecipeManager()
+                        .byKey(ResourceLocation.fromNamespaceAndPath(ObeseCatMod.MOD_ID, "sniper_paco_decraft"))
+                        .isPresent(),
+                "The sniper deconstruction recipe must be loaded"
         );
         helper.assertFalse(
                 helper.getLevel().getRecipeManager()
@@ -246,6 +320,20 @@ public final class TransmutationCubeGameTests {
 
         serverPlayer.setItemInHand(InteractionHand.MAIN_HAND, ItemStack.EMPTY);
         helper.assertFalse(menu.stillValid(serverPlayer), "Menu must become invalid if the opened cube leaves its hand");
+        helper.succeed();
+    }
+
+    @GameTest(template = TEMPLATE)
+    public static void sniperPacoLeavesSpyglassInCraftingGrid(GameTestHelper helper) {
+        ItemStack sniperPaco = new ItemStack(ModItems.SNIPER_PACO.get());
+        helper.assertTrue(
+                sniperPaco.getItem().hasCraftingRemainingItem(),
+                "Sniper Paco should leave a crafting remainder"
+        );
+        helper.assertTrue(
+                sniperPaco.getItem().getCraftingRemainingItem(sniperPaco).is(Items.SPYGLASS),
+                "Sniper Paco should return a spyglass when used in crafting"
+        );
         helper.succeed();
     }
 

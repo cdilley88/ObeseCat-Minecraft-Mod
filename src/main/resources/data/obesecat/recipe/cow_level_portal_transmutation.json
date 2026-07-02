@@ -1,0 +1,17 @@
+{
+  "type": "obesecat:transmutation",
+  "ingredients": [
+    {
+      "item": "obesecat:tp_tome",
+      "count": 1
+    },
+    {
+      "item": "obesecat:virts_leg",
+      "count": 1
+    }
+  ],
+  "result": {
+    "id": "obesecat:cow_level_portal",
+    "count": 1
+  }
+}

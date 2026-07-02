@@ -4,8 +4,10 @@ import com.fende.obesecat.registry.ModMenus;
 import com.fende.obesecat.recipe.TransmutationInput;
 import com.fende.obesecat.recipe.TransmutationRecipe;
 import com.fende.obesecat.registry.ModRecipeTypes;
+import com.fende.obesecat.registry.ModSounds;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.Container;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.SimpleContainer;
@@ -111,6 +113,16 @@ public class TransmutationCubeMenu extends AbstractContainerMenu {
         NonNullList<ItemStack> replacement = NonNullList.withSize(TransmutationCubeInventory.SLOT_COUNT, ItemStack.EMPTY);
         replacement.set(outputSlot, output);
         persistentInventory.replaceContents(replacement);
+        serverPlayer.level().playSound(
+                null,
+                serverPlayer.getX(),
+                serverPlayer.getY(),
+                serverPlayer.getZ(),
+                ModSounds.TRANSMUTE.get(),
+                SoundSource.PLAYERS,
+                1.0F,
+                0.98F + serverPlayer.level().random.nextFloat() * 0.06F
+        );
         broadcastChanges();
         return true;
     }

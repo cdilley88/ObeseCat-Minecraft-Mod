@@ -19,13 +19,18 @@ import com.fende.obesecat.item.ManhattanPhysicistSpawnEggItem;
 import com.fende.obesecat.item.NightVisionMrKittyItem;
 import com.fende.obesecat.item.PacoItem;
 import com.fende.obesecat.item.SniperPacoItem;
+import com.fende.obesecat.item.StasisSwordItem;
 import com.fende.obesecat.item.TinyPlanetItem;
 import com.fende.obesecat.item.TransmutationCubeItem;
 import com.fende.obesecat.item.WormholeEmberItem;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.SpawnEggItem;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.Tiers;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -69,6 +74,24 @@ public final class ModItems {
             "mr_kitty",
             properties -> new CaptionedItem(properties, "item.obesecat.mr_kitty.caption"),
             new Item.Properties().stacksTo(1)
+    );
+
+    public static final DeferredItem<CaptionedItem> VIRTS_LEG = ITEMS.registerItem(
+            "virts_leg",
+            properties -> new CaptionedItem(properties, "item.obesecat.virts_leg.caption"),
+            new Item.Properties().stacksTo(1).rarity(Rarity.RARE)
+    );
+
+    public static final DeferredItem<CaptionedItem> TP_TOME = ITEMS.registerItem(
+            "tp_tome",
+            properties -> new CaptionedItem(properties, "item.obesecat.tp_tome.caption"),
+            new Item.Properties().stacksTo(1).rarity(Rarity.RARE)
+    );
+
+    public static final DeferredItem<CaptionedItem> COW_LEVEL_PORTAL = ITEMS.registerItem(
+            "cow_level_portal",
+            properties -> new CaptionedItem(properties, "item.obesecat.cow_level_portal.caption"),
+            new Item.Properties().stacksTo(1).rarity(Rarity.EPIC)
     );
 
     public static final DeferredItem<NightVisionMrKittyItem> NIGHT_VISION_MR_KITTY = ITEMS.registerItem(
@@ -134,7 +157,7 @@ public final class ModItems {
     public static final DeferredItem<SniperPacoItem> SNIPER_PACO = ITEMS.registerItem(
             "sniper_paco",
             SniperPacoItem::new,
-            new Item.Properties().stacksTo(1).rarity(Rarity.RARE)
+            new Item.Properties().stacksTo(1).rarity(Rarity.RARE).craftRemainder(Items.SPYGLASS)
     );
 
     public static final DeferredItem<JRobertPacoheimerItem> J_ROBERT_PACOHEIMER = ITEMS.registerItem(
@@ -153,6 +176,15 @@ public final class ModItems {
             "hellhound_paco",
             HellhoundPacoItem::new,
             new Item.Properties().stacksTo(1).rarity(Rarity.RARE)
+    );
+
+    public static final DeferredItem<Item> HOLY_SWORD = ITEMS.register(
+            "holy_sword",
+            () -> new Item(new Item.Properties()
+                    .stacksTo(1)
+                    .rarity(Rarity.UNCOMMON)
+                    .attributes(SwordItem.createAttributes(Tiers.DIAMOND, 3, -2.4F))
+                    .component(DataComponents.TOOL, SwordItem.createToolProperties()))
     );
 
     public static final DeferredItem<Item> OPPENHEIMERS_HAT = ITEMS.registerSimpleItem(
@@ -182,6 +214,16 @@ public final class ModItems {
             "big_fire_boom_stick",
             BigFireBoomStickItem::new,
             new Item.Properties().stacksTo(1).rarity(Rarity.RARE)
+    );
+
+    public static final DeferredItem<StasisSwordItem> STASIS_SWORD = ITEMS.registerItem(
+            "stasis_sword",
+            StasisSwordItem::new,
+            new Item.Properties()
+                    .stacksTo(1)
+                    .rarity(Rarity.RARE)
+                    .attributes(SwordItem.createAttributes(Tiers.DIAMOND, 3, -2.4F))
+                    .component(DataComponents.TOOL, SwordItem.createToolProperties())
     );
 
     public static final DeferredItem<BlockItem> TOILET = ITEMS.register(

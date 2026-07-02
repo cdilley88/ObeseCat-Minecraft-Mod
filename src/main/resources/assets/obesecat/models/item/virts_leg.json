@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "obesecat:item/hellpaco"
+    "layer0": "obesecat:item/virts_leg"
   }
 }

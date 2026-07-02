@@ -1,5 +1,11 @@
 # Developer Notes
 
+## Transmutation System Reference
+
+For the live Transmutation Cube architecture, recipe format, current invariants, and future-chat handoff template, see:
+
+- [docs/transmutation-system-reference.md](./transmutation-system-reference.md)
+
 ## High-Resolution Fat Man Model Direction
 
 Future model polish should start by checking whether GeckoLib supports this exact stack:

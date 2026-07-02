@@ -129,6 +129,7 @@ Loot is injected at runtime by `ModLootTables.addLoot`. Each entry creates a sep
 | `minecraft:chests/bastion_other` | Night Vision Mr. Kitty | `obesecat:bastion_night_vision_mr_kitty` | 12% | 1 | 1 |
 | `minecraft:chests/bastion_bridge` | Night Vision Mr. Kitty | `obesecat:bastion_night_vision_mr_kitty` | 12% | 1 | 1 |
 | `minecraft:chests/bastion_hoglin_stable` | Night Vision Mr. Kitty | `obesecat:bastion_night_vision_mr_kitty` | 12% | 1 | 1 |
+| `minecraft:entities/warden` | Virt's Leg | `obesecat:warden_virts_leg` | 100% | 1 | 1 |
 
 Combined chance notes, assuming independent pools:
 
@@ -157,6 +158,7 @@ Combined chance notes, assuming independent pools:
 | Output | Recipe type | Inputs | Notes |
 | --- | --- | --- | --- |
 | J. Paco Barkkenheimer | Transmutation Cube | Exactly one Paco and one Oppenheimer's Hat, in any order, in any of the cube's 12 slots; no extra items or counts | One J. Paco Barkkenheimer is left inside the cube. This transmutation is the sole survival acquisition route; the old crafting-table route was removed. |
+| Cow Level Portal | Transmutation Cube | Exactly one Virt's Leg and one Tome of Town Portal, in any order, in any of the cube's 12 slots; no extra items or counts | One Cow Level Portal is left inside the cube after a successful transmutation. |
 
 ## Weapon Balance Notes
 
@@ -196,6 +198,9 @@ Vanilla placement picks from placeable variants that fit the wall, then chooses 
 | Paco | Farmer trade | Novice Farmer, 1 emerald, 12 max uses. |
 | Ember | Farmer trade | Novice Farmer, 1 emerald, 12 max uses. |
 | Mr. Kitty | Farmer trade | Novice Farmer, 1 emerald, 12 max uses. |
+| Virt's Leg | Loot | Warden, 100%. Rare rarity. Caption: Really? A Cow Level? |
+| Tome of Town Portal | No survival path found yet | Registered as a rare item with caption `Yep, a Cow Level`. It is currently used as an exact transmutation input for Cow Level Portal. |
+| Cow Level Portal | Transmutation Cube | Exactly one Virt's Leg and one Tome of Town Portal, in any order, in any of the cube's 12 slots; no extra items or counts. Output stays inside the cube. | Epic rarity. Caption: Moo Moo Farm? |
 | Night Vision Mr. Kitty | Loot | Bastion treasure, other, bridge, and hoglin stable tables, 12% each. |
 | Mr. Kitty's Paws | Loot | Simple Dungeon, 8%. |
 | Ember Singularity | Crafting | Ember + 8 Eyes of Ender. |
