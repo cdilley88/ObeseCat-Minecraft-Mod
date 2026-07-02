@@ -14,6 +14,7 @@ import com.fende.obesecat.item.EnigmaEmberItem;
 import com.fende.obesecat.item.FireBoomStickItem;
 import com.fende.obesecat.item.FireStickItem;
 import com.fende.obesecat.item.HellhoundPacoItem;
+import com.fende.obesecat.item.HolySwordItem;
 import com.fende.obesecat.item.JRobertPacoheimerItem;
 import com.fende.obesecat.item.MrKittysPawsItem;
 import com.fende.obesecat.item.ManhattanPhysicistSpawnEggItem;
@@ -179,13 +180,10 @@ public final class ModItems {
             new Item.Properties().stacksTo(1).rarity(Rarity.RARE)
     );
 
-    public static final DeferredItem<Item> HOLY_SWORD = ITEMS.register(
+    public static final DeferredItem<HolySwordItem> HOLY_SWORD = ITEMS.registerItem(
             "holy_sword",
-            () -> new Item(new Item.Properties()
-                    .stacksTo(1)
-                    .rarity(Rarity.UNCOMMON)
-                    .attributes(SwordItem.createAttributes(Tiers.DIAMOND, 3, -2.4F))
-                    .component(DataComponents.TOOL, SwordItem.createToolProperties()))
+            HolySwordItem::new,
+            skillSwordProperties(Rarity.UNCOMMON)
     );
 
     public static final DeferredItem<Item> OPPENHEIMERS_HAT = ITEMS.registerSimpleItem(
@@ -220,11 +218,7 @@ public final class ModItems {
     public static final DeferredItem<StasisSwordItem> STASIS_SWORD = ITEMS.registerItem(
             "stasis_sword",
             StasisSwordItem::new,
-            new Item.Properties()
-                    .stacksTo(1)
-                    .rarity(Rarity.RARE)
-                    .attributes(SwordItem.createAttributes(Tiers.DIAMOND, 3, -2.4F))
-                    .component(DataComponents.TOOL, SwordItem.createToolProperties())
+            skillSwordProperties(Rarity.RARE)
     );
 
     public static final DeferredItem<BlockItem> TOILET = ITEMS.register(
@@ -243,5 +237,13 @@ public final class ModItems {
     );
 
     private ModItems() {
+    }
+
+    private static Item.Properties skillSwordProperties(Rarity rarity) {
+        return new Item.Properties()
+                .stacksTo(1)
+                .rarity(rarity)
+                .attributes(SwordItem.createAttributes(Tiers.DIAMOND, 3, -2.4F))
+                .component(DataComponents.TOOL, SwordItem.createToolProperties());
     }
 }
