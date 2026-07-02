@@ -30,7 +30,8 @@ Current acquisition mechanisms:
 | Manhattan Physicist trades | `ModVillagerTrades.java` and `ModVillagers.java` | Adds Trinitite-priced trades to Manhattan Physicists spawned in bunkers. |
 | Manhattan bunker standalone worldgen | `data/obesecat/worldgen/structure/manhattan_bunker.json`, `data/obesecat/worldgen/structure_set/manhattan_bunker.json`, `data/obesecat/worldgen/template_pool/manhattan_bunker/start_pool.json`, and `data/obesecat/structure/village/plains/houses/manhattan_bunker.nbt` | Uses the proper jigsaw structure system, independent of village generation. |
 | Loot injection | `ModLootTables.java` | Adds runtime loot pools to vanilla dungeon, End City, and Bastion loot tables. |
-| Crafting recipes | `src/main/resources/data/obesecat/recipe/*.json` | Adds eight crafting recipes. |
+| Crafting recipes | `src/main/resources/data/obesecat/recipe/*.json` | Adds seven crafting recipes. |
+| Transmutation recipes | `src/main/resources/data/obesecat/recipe/*_transmutation.json` | Adds one cube-based transmutation route. |
 | Fat Man detonation | `ObeseCat.java` | Adds one Trinitite block at the crater center for lithium-deuteride Fat Man detonations. |
 | Painting variant registry | `data/obesecat/painting_variant/*.json` and `data/minecraft/tags/painting_variant/placeable.json` | Adds custom artwork to the vanilla Painting item variant pool. |
 | Creative tabs | `ObeseCatMod.java` | Adds many items to creative tabs only. Not survival acquisition. |
@@ -128,6 +129,7 @@ Loot is injected at runtime by `ModLootTables.addLoot`. Each entry creates a sep
 | `minecraft:chests/bastion_other` | Night Vision Mr. Kitty | `obesecat:bastion_night_vision_mr_kitty` | 12% | 1 | 1 |
 | `minecraft:chests/bastion_bridge` | Night Vision Mr. Kitty | `obesecat:bastion_night_vision_mr_kitty` | 12% | 1 | 1 |
 | `minecraft:chests/bastion_hoglin_stable` | Night Vision Mr. Kitty | `obesecat:bastion_night_vision_mr_kitty` | 12% | 1 | 1 |
+| `minecraft:entities/warden` | Virt's Leg | `obesecat:warden_virts_leg` | 100% | 1 | 1 |
 
 Combined chance notes, assuming independent pools:
 
@@ -190,6 +192,9 @@ Vanilla placement picks from placeable variants that fit the wall, then chooses 
 | Paco | Farmer trade | Novice Farmer, 1 emerald, 12 max uses. |
 | Ember | Farmer trade | Novice Farmer, 1 emerald, 12 max uses. |
 | Mr. Kitty | Farmer trade | Novice Farmer, 1 emerald, 12 max uses. |
+| Virt's Leg | Loot | Warden, 100%. No crafting recipe yet. Rare rarity. Caption: Really? A Cow Level? |
+| Tome of Town Portal | No survival path found yet | Registered as a rare item with caption `Yep, a Cow Level`. Intended as the second half of a future transmutation recipe, but currently has no crafting recipe, loot source, or use behavior. |
+| Cow Level Portal | No survival path found yet | Registered as an epic item with caption `Moo Moo Farm?`. Intended as a future transmutation output, but currently has no crafting recipe, loot source, or use behavior in this checkout. |
 | Night Vision Mr. Kitty | Loot | Bastion treasure, other, bridge, and hoglin stable tables, 12% each. |
 | Mr. Kitty's Paws | Loot | Simple Dungeon, 8%. |
 | Ember Singularity | Crafting | Ember + 8 Eyes of Ender. |

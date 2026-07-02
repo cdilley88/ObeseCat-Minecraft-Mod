@@ -70,6 +70,24 @@ public final class ModItems {
             new Item.Properties().stacksTo(1)
     );
 
+    public static final DeferredItem<CaptionedItem> VIRTS_LEG = ITEMS.registerItem(
+            "virts_leg",
+            properties -> new CaptionedItem(properties, "item.obesecat.virts_leg.caption"),
+            new Item.Properties().stacksTo(1).rarity(Rarity.RARE)
+    );
+
+    public static final DeferredItem<CaptionedItem> TP_TOME = ITEMS.registerItem(
+            "tp_tome",
+            properties -> new CaptionedItem(properties, "item.obesecat.tp_tome.caption"),
+            new Item.Properties().stacksTo(1).rarity(Rarity.RARE)
+    );
+
+    public static final DeferredItem<CaptionedItem> COW_LEVEL_PORTAL = ITEMS.registerItem(
+            "cow_level_portal",
+            properties -> new CaptionedItem(properties, "item.obesecat.cow_level_portal.caption"),
+            new Item.Properties().stacksTo(1).rarity(Rarity.EPIC)
+    );
+
     public static final DeferredItem<NightVisionMrKittyItem> NIGHT_VISION_MR_KITTY = ITEMS.registerItem(
             "night_vision_mr_kitty",
             NightVisionMrKittyItem::new,

@@ -80,6 +80,9 @@ public class ObeseCatMod {
         if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
             event.accept(ModItems.TRINITITE.get());
             event.accept(ModItems.OPPENHEIMERS_HAT.get());
+            event.accept(ModItems.VIRTS_LEG.get());
+            event.accept(ModItems.TP_TOME.get());
+            event.accept(ModItems.COW_LEVEL_PORTAL.get());
         }
         if (event.getTabKey() == CreativeModeTabs.COMBAT) {
             event.accept(ModItems.PACO.get());
