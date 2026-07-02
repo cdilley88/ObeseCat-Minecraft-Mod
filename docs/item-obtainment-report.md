@@ -80,7 +80,7 @@ Manhattan Physicist items sold:
 | Item | Cost | Output | Max uses | XP | Notes |
 | --- | ---: | ---: | ---: | ---: | --- |
 | Hellhound Paco | 1 Trinitite | 1 | 12 | 1 | First test trade for the Trinitite economy. Replaces the old Hellhound Paco crafting recipe. |
-| Oppenheimer's Hat | 5 Trinitite | 1 | 12 | 1 | Rare trade-only crafting component for J. Paco Barkkenheimer. |
+| Oppenheimer's Hat | 5 Trinitite | 1 | 12 | 1 | Rare trade-only transmutation component for J. Paco Barkkenheimer. |
 
 ## Worldgen Structures
 
@@ -150,9 +150,14 @@ Combined chance notes, assuming independent pools:
 | Assault Paco | Shapeless | Attack Paco + Nether Star | 1 emerald + 1 piston + 1 diamond + 1 nether star |
 | Sniper Paco | Shapeless | Assault Paco + Nether Star + Spyglass | 1 emerald + 1 piston + 1 diamond + 2 nether stars + 1 spyglass |
 | Atomic Paco | Shapeless | Hellhound Paco + Plutonium Cat Food | 1 Trinitite + 1 emerald |
-| J. Paco Barkkenheimer | Shapeless | Atomic Paco + Oppenheimer's Hat | 6 Trinitite + 1 emerald |
 | Tiny Planet | Shapeless | Mr. Kitty + Nether Star | 1 emerald + 1 nether star |
 | Ember Singularity | Shaped | 8 Eyes of Ender around Ember | 1 emerald + 8 eyes of ender |
+
+## Transmutation Recipes
+
+| Output | Recipe type | Inputs | Notes |
+| --- | --- | --- | --- |
+| J. Paco Barkkenheimer | Transmutation Cube | Exactly one Paco and one Oppenheimer's Hat, in any order, in any of the cube's 12 slots; no extra items or counts | One J. Paco Barkkenheimer is left inside the cube. This transmutation is the sole survival acquisition route; the old crafting-table route was removed. |
 
 ## Weapon Balance Notes
 
@@ -201,11 +206,12 @@ Vanilla placement picks from placeable variants that fit the wall, then chooses 
 | Wormhole Ember | Loot | End City Treasure, 18%. |
 | Enigma Ember | Loot | End City Treasure, 18%. |
 | Tiny Planet | Crafting | Mr. Kitty + Nether Star. |
+| Transmutation Cube | Crafting | `obesecat:transmutation_cube` is survival-obtainable from a shapeless Chest + Crafting Table + Trinitite block recipe. Its persistent 12-slot inventory works, and it now powers the cube's transmutation recipes. |
 | Concussive Paco | Crafting | Paco + Piston. |
 | Attack Paco | Crafting | Concussive Paco + Diamond. |
 | Assault Paco | Crafting | Attack Paco + Nether Star. |
 | Sniper Paco | Crafting | Assault Paco + Nether Star + Spyglass. Fires one 50-block, 8-heart shot, then requires a right-click reload with a 2.5 second delay before firing again. Caption: Long Range Barks. Rare rarity. |
-| J. Paco Barkkenheimer | Crafting | Atomic Paco + Oppenheimer's Hat. Notable minimum cost is 6 Trinitite + 1 emerald because Atomic Paco already depends on Hellhound Paco from the Manhattan Physicist. |
+| J. Paco Barkkenheimer | Transmutation Cube | Exactly one Paco and one Oppenheimer's Hat, in any order, in any of the cube's 12 slots; no extra items or counts. Output stays inside the cube. | This transmutation is the sole survival acquisition route; the old crafting-table route was removed. |
 | Atomic Paco | Crafting | Hellhound Paco + Plutonium Cat Food. Hellhound Paco now comes from Manhattan Physicist trading, making the notable minimum cost 1 Trinitite + 1 emerald. |
 | Hellhound Paco | Manhattan Physicist trade | Spawned Manhattan Physicist in a Manhattan Bunker, 1 Trinitite, 12 max uses, 1 XP, 0.05 price multiplier. |
 | Oppenheimer's Hat | Manhattan Physicist trade | Spawned Manhattan Physicist in a Manhattan Bunker, 5 Trinitite, 12 max uses, 1 XP, 0.05 price multiplier. |

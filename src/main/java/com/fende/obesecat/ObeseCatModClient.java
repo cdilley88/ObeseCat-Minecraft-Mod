@@ -5,10 +5,12 @@ import com.fende.obesecat.client.NuclearFlashOverlay;
 import com.fende.obesecat.client.NightVisionOverlay;
 import com.fende.obesecat.client.ObeseCatRenderer;
 import com.fende.obesecat.client.ObeseCatTimerOverlay;
+import com.fende.obesecat.client.TransmutationCubeScreen;
 import com.fende.obesecat.client.model.FatManModel;
 import com.fende.obesecat.entity.ObeseCat;
 import com.fende.obesecat.registry.ModBlocks;
 import com.fende.obesecat.registry.ModEntities;
+import com.fende.obesecat.registry.ModMenus;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRenderer;
@@ -18,6 +20,7 @@ import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.event.RegisterGuiLayersEvent;
+import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 
 @Mod(value = ObeseCatMod.MOD_ID, dist = Dist.CLIENT)
 public class ObeseCatModClient {
@@ -26,6 +29,7 @@ public class ObeseCatModClient {
         modEventBus.addListener(this::registerLayerDefinitions);
         modEventBus.addListener(this::registerRenderers);
         modEventBus.addListener(this::registerGuiLayers);
+        modEventBus.addListener(this::registerMenuScreens);
     }
 
     private void clientSetup(FMLClientSetupEvent event) {
@@ -52,5 +56,9 @@ public class ObeseCatModClient {
         event.registerAboveAll(NightVisionOverlay.ID, NightVisionOverlay::render);
         event.registerAboveAll(FissionFirestormOverlay.ID, FissionFirestormOverlay::render);
         event.registerAboveAll(NuclearFlashOverlay.ID, NuclearFlashOverlay::render);
+    }
+
+    private void registerMenuScreens(RegisterMenuScreensEvent event) {
+        event.register(ModMenus.TRANSMUTATION_CUBE.get(), TransmutationCubeScreen::new);
     }
 }

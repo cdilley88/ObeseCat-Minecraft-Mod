@@ -1,0 +1,17 @@
+{
+  "type": "obesecat:transmutation",
+  "ingredients": [
+    {
+      "item": "obesecat:paco",
+      "count": 1
+    },
+    {
+      "item": "obesecat:oppenheimers_hat",
+      "count": 1
+    }
+  ],
+  "result": {
+    "id": "obesecat:j_robert_pacoheimer",
+    "count": 1
+  }
+}

@@ -3,7 +3,9 @@ package com.fende.obesecat;
 import com.fende.obesecat.registry.ModBlocks;
 import com.fende.obesecat.registry.ModEntities;
 import com.fende.obesecat.registry.ModItems;
+import com.fende.obesecat.registry.ModRecipeTypes;
 import com.fende.obesecat.registry.ModLootTables;
+import com.fende.obesecat.registry.ModMenus;
 import com.fende.obesecat.registry.ModNetworking;
 import com.fende.obesecat.registry.ModSounds;
 import com.fende.obesecat.registry.ModVillagerTrades;
@@ -39,6 +41,9 @@ public class ObeseCatMod {
         ModBlocks.BLOCKS.register(modEventBus);
         ModEntities.ENTITY_TYPES.register(modEventBus);
         ModItems.ITEMS.register(modEventBus);
+        ModRecipeTypes.RECIPE_TYPES.register(modEventBus);
+        ModRecipeTypes.RECIPE_SERIALIZERS.register(modEventBus);
+        ModMenus.MENUS.register(modEventBus);
         ModSounds.SOUND_EVENTS.register(modEventBus);
         ModVillagers.POI_TYPES.register(modEventBus);
         ModVillagers.PROFESSIONS.register(modEventBus);
@@ -117,6 +122,7 @@ public class ObeseCatMod {
             event.accept(ModItems.WORMHOLE_EMBER.get());
             event.accept(ModItems.ENIGMA_EMBER.get());
             event.accept(ModItems.TINY_PLANET.get());
+            event.accept(ModItems.TRANSMUTATION_CUBE.get());
             event.accept(ModItems.NIGHT_VISION_MR_KITTY.get());
             event.accept(ModItems.MR_KITTYS_PAWS.get());
             event.accept(ModItems.BOOM_STICK.get());
