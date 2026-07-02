@@ -30,7 +30,15 @@ public class SkillSwordItem extends Item {
             return InteractionResultHolder.pass(stack);
         }
 
-        if (!(level instanceof ServerLevel serverLevel) || !cast(serverLevel, player, usedHand, stack)) {
+        if (useClientCastValidation(level, player)) {
+            if (!canCastClient(player, usedHand, stack)) {
+                return InteractionResultHolder.pass(stack);
+            }
+        } else if (level instanceof ServerLevel serverLevel) {
+            if (!cast(serverLevel, player, usedHand, stack)) {
+                return InteractionResultHolder.pass(stack);
+            }
+        } else {
             return InteractionResultHolder.pass(stack);
         }
 
@@ -101,6 +109,14 @@ public class SkillSwordItem extends Item {
     @Nullable
     protected String captionKey() {
         return null;
+    }
+
+    protected boolean useClientCastValidation(Level level, Player player) {
+        return level.isClientSide();
+    }
+
+    protected boolean canCastClient(Player player, InteractionHand usedHand, ItemStack stack) {
+        return false;
     }
 
     protected boolean cast(ServerLevel level, Player player, InteractionHand usedHand, ItemStack stack) {

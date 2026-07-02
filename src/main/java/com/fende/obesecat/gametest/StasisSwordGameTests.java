@@ -1,17 +1,23 @@
 package com.fende.obesecat.gametest;
 
 import com.fende.obesecat.ObeseCatMod;
+import com.fende.obesecat.item.SkillSwordItem;
 import com.fende.obesecat.registry.ModItems;
+import net.minecraft.commands.arguments.EntityAnchorArgument;
 import com.fende.obesecat.world.StasisSwordManager;
 import net.minecraft.core.BlockPos;
 import net.minecraft.gametest.framework.GameTest;
 import net.minecraft.gametest.framework.GameTestHelper;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.phys.Vec3;
+import net.neoforged.neoforge.common.ItemAbilities;
 import net.neoforged.neoforge.gametest.GameTestHolder;
 import net.neoforged.neoforge.gametest.PrefixGameTestTemplate;
 
@@ -19,6 +25,29 @@ import net.neoforged.neoforge.gametest.PrefixGameTestTemplate;
 @PrefixGameTestTemplate(false)
 public final class StasisSwordGameTests {
     private static final String TEMPLATE = "village/plains/houses/manhattan_bunker";
+
+    @GameTest(template = TEMPLATE)
+    public static void stasisSwordStillUsesSharedSwordShell(GameTestHelper helper) {
+        ItemStack sword = new ItemStack(ModItems.STASIS_SWORD.get());
+
+        helper.assertTrue(
+                sword.getItem().getUseAnimation(sword) == UseAnim.NONE,
+                "Stasis Sword should keep the instant sword-cast use animation"
+        );
+        helper.assertTrue(
+                sword.getItem() instanceof SkillSwordItem,
+                "Stasis Sword should move onto the shared Skill Sword shell"
+        );
+        helper.assertTrue(
+                sword.getItem().canPerformAction(sword, ItemAbilities.SWORD_SWEEP),
+                "Stasis Sword should still expose default sword actions after the refactor"
+        );
+        helper.assertTrue(
+                sword.getItem().isFoil(sword),
+                "Stasis Sword should stay visually enchanted"
+        );
+        helper.succeed();
+    }
 
     @GameTest(template = TEMPLATE)
     public static void stasisSwordPlacesAndShattersIceFormation(GameTestHelper helper) {
@@ -47,6 +76,25 @@ public final class StasisSwordGameTests {
         helper.assertTrue(
                 helper.getLevel().getBlockState(firstBlock).is(Blocks.ICE),
                 "The stasis ice structure should place ice blocks"
+        );
+
+        var player = helper.makeMockServerPlayerInLevel();
+        player.setItemInHand(InteractionHand.MAIN_HAND, sword);
+        player.teleportTo(origin.getX() + 0.5D, origin.getY() + 1.0D, origin.getZ() - 3.5D);
+        player.lookAt(EntityAnchorArgument.Anchor.EYES, Vec3.atCenterOf(origin));
+
+        InteractionResultHolder<ItemStack> result = sword.getItem().use(helper.getLevel(), player, InteractionHand.MAIN_HAND);
+        helper.assertTrue(
+                result.getResult() == InteractionResult.CONSUME,
+                "A valid Stasis Sword cast should keep the old server-side consume semantics after the shared-shell refactor"
+        );
+        helper.assertTrue(
+                result.getObject() == sword,
+                "Stasis Sword should keep the held stack when cast"
+        );
+        helper.assertTrue(
+                player.getCooldowns().isOnCooldown(ModItems.STASIS_SWORD.get()),
+                "A successful stasis cast should still apply cooldown"
         );
 
         helper.runAfterDelay(StasisSwordManager.SHATTER_DELAY_TICKS + 1L, () -> {
