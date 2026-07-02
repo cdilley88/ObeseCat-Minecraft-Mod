@@ -9,6 +9,7 @@ import com.fende.obesecat.registry.ModSounds;
 import com.fende.obesecat.registry.ModVillagerTrades;
 import com.fende.obesecat.registry.ModVillagers;
 import com.fende.obesecat.world.AtomicFireSphere;
+import com.fende.obesecat.world.CowLevelSafetyManager;
 import com.fende.obesecat.world.EmberSingularityMagnet;
 import com.fende.obesecat.world.ManhattanBunkerDebug;
 import com.fende.obesecat.world.ManhattanBunkerResidentSpawner;
@@ -55,6 +56,7 @@ public class ObeseCatMod {
         NeoForge.EVENT_BUS.addListener(ToiletSinkAnimation::onLevelTick);
         NeoForge.EVENT_BUS.addListener(ModVillagerTrades::addTrades);
         NeoForge.EVENT_BUS.addListener(ModLootTables::addLoot);
+        NeoForge.EVENT_BUS.addListener(CowLevelSafetyManager::onEntityJoinLevel);
         NeoForge.EVENT_BUS.addListener(MrKittysPawsManager::onLivingFall);
         NeoForge.EVENT_BUS.addListener(ManhattanBunkerResidentSpawner::onChunkLoad);
         NeoForge.EVENT_BUS.addListener(ManhattanPhysicistSpawner::onEntityJoinLevel);

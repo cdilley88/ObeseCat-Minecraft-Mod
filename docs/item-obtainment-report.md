@@ -194,7 +194,7 @@ Vanilla placement picks from placeable variants that fit the wall, then chooses 
 | Mr. Kitty | Farmer trade | Novice Farmer, 1 emerald, 12 max uses. |
 | Virt's Leg | Loot | Warden, 100%. No crafting recipe yet. Rare rarity. Caption: Really? A Cow Level? |
 | Tome of Town Portal | No survival path found yet | Registered as a rare item with caption `Yep, a Cow Level`. Intended as the second half of a future transmutation recipe, but currently has no crafting recipe, loot source, or use behavior. |
-| Cow Level Portal | No survival path found yet | Registered as an epic item with caption `Moo Moo Farm?`. Intended as a future transmutation output, but currently has no crafting recipe, loot source, or use behavior in this checkout. |
+| Cow Level Portal | Planned transmutation output | Registered as an epic item with caption `Moo Moo Farm?`. Intended as the transmutation output from Tome of Town Portal plus Virt's Leg. Right-click in the Overworld sends the player to Secret Cow Level; right-click inside Secret Cow Level returns the player to their Overworld bed or fallback world spawn. It remains inert in unrelated dimensions by design. |
 | Night Vision Mr. Kitty | Loot | Bastion treasure, other, bridge, and hoglin stable tables, 12% each. |
 | Mr. Kitty's Paws | Loot | Simple Dungeon, 8%. |
 | Ember Singularity | Crafting | Ember + 8 Eyes of Ender. |

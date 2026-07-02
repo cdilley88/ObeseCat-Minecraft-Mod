@@ -7,6 +7,7 @@ import com.fende.obesecat.item.AttackPacoItem;
 import com.fende.obesecat.item.BigFireBoomStickItem;
 import com.fende.obesecat.item.BoomStickItem;
 import com.fende.obesecat.item.CaptionedItem;
+import com.fende.obesecat.item.CowLevelPortalItem;
 import com.fende.obesecat.item.ConcussivePacoItem;
 import com.fende.obesecat.item.EmberSingularityItem;
 import com.fende.obesecat.item.EnigmaEmberItem;
@@ -82,9 +83,9 @@ public final class ModItems {
             new Item.Properties().stacksTo(1).rarity(Rarity.RARE)
     );
 
-    public static final DeferredItem<CaptionedItem> COW_LEVEL_PORTAL = ITEMS.registerItem(
+    public static final DeferredItem<CowLevelPortalItem> COW_LEVEL_PORTAL = ITEMS.registerItem(
             "cow_level_portal",
-            properties -> new CaptionedItem(properties, "item.obesecat.cow_level_portal.caption"),
+            CowLevelPortalItem::new,
             new Item.Properties().stacksTo(1).rarity(Rarity.EPIC)
     );
 
