@@ -1,22 +1,21 @@
 package com.fende.obesecat.item;
 
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.component.CustomData;
+import net.minecraft.world.item.ItemUtils;
+import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
+import net.neoforged.neoforge.common.ItemAbilities;
+import net.neoforged.neoforge.common.ItemAbility;
+import com.fende.obesecat.world.SniperPacoState;
 
 public class SniperPacoItem extends PacoItem {
-    private static final double SNIPER_RANGE = 50.0D;
-    private static final float SNIPER_DAMAGE = 16.0F;
-    private static final int RELOAD_TICKS = 50;
-    private static final String LOADED_KEY = "SniperPacoLoaded";
+    private static final double SNIPER_RANGE = 70.0D;
 
     public SniperPacoItem(Properties properties) {
         super(properties);
@@ -24,32 +23,8 @@ public class SniperPacoItem extends PacoItem {
 
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand usedHand) {
-        ItemStack stack = player.getItemInHand(usedHand);
-        if (player.getCooldowns().isOnCooldown(this)) {
-            return InteractionResultHolder.fail(stack);
-        }
-
-        if (!isLoaded(stack)) {
-            if (!level.isClientSide()) {
-                setLoaded(stack, true);
-                player.getCooldowns().addCooldown(this, RELOAD_TICKS);
-            }
-            return InteractionResultHolder.sidedSuccess(stack, level.isClientSide());
-        }
-
-        if (!level.isClientSide()) {
-            SoundEvent bark = getBarkSound(level);
-            level.playSound(null, player.getX(), player.getY(), player.getZ(), bark, SoundSource.PLAYERS, 1.0F, 0.88F + (level.random.nextFloat() * 0.08F));
-
-            LivingEntity target = findTarget(player);
-            if (target != null) {
-                target.hurt(player.damageSources().playerAttack(player), SNIPER_DAMAGE);
-            }
-
-            setLoaded(stack, false);
-        }
-
-        return InteractionResultHolder.sidedSuccess(stack, level.isClientSide());
+        player.playSound(SoundEvents.SPYGLASS_USE, 1.0F, 1.0F);
+        return ItemUtils.startUsingInstantly(level, player, usedHand);
     }
 
     @Override
@@ -63,22 +38,42 @@ public class SniperPacoItem extends PacoItem {
     }
 
     @Override
+    public UseAnim getUseAnimation(ItemStack stack) {
+        return UseAnim.SPYGLASS;
+    }
+
+    @Override
+    public int getUseDuration(ItemStack stack, LivingEntity livingEntity) {
+        return 1200;
+    }
+
+    @Override
+    public void releaseUsing(ItemStack stack, Level level, LivingEntity livingEntity, int timeCharged) {
+        livingEntity.playSound(SoundEvents.SPYGLASS_STOP_USING, 1.0F, 1.0F);
+    }
+
+    @Override
+    public boolean canPerformAction(ItemStack stack, ItemAbility itemAbility) {
+        return ItemAbilities.DEFAULT_SPYGLASS_ACTIONS.contains(itemAbility);
+    }
+
+    @Override
+    public boolean isBarVisible(ItemStack stack) {
+        return true;
+    }
+
+    @Override
+    public int getBarWidth(ItemStack stack) {
+        return Math.round(13.0F * SniperPacoState.getAmmo(stack) / (float) SniperPacoState.CLIP_SIZE);
+    }
+
+    @Override
+    public int getBarColor(ItemStack stack) {
+        return 0x55FF55;
+    }
+
+    @Override
     protected String getCaptionKey() {
         return "item.obesecat.sniper_paco.caption";
-    }
-
-    private static boolean isLoaded(ItemStack stack) {
-        CompoundTag tag = stack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag();
-        return !tag.contains(LOADED_KEY) || tag.getBoolean(LOADED_KEY);
-    }
-
-    private static void setLoaded(ItemStack stack, boolean loaded) {
-        CustomData.update(DataComponents.CUSTOM_DATA, stack, tag -> {
-            if (loaded) {
-                tag.remove(LOADED_KEY);
-            } else {
-                tag.putBoolean(LOADED_KEY, false);
-            }
-        });
     }
 }

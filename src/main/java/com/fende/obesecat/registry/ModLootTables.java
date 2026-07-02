@@ -21,6 +21,7 @@ public final class ModLootTables {
     private static final String END_CITY_LITHIUM_POOL = "obesecat:end_city_lithium_deuteride";
     private static final String END_CITY_WORMHOLE_EMBER_POOL = "obesecat:end_city_wormhole_ember";
     private static final String END_CITY_ENIGMA_EMBER_POOL = "obesecat:end_city_enigma_ember";
+    private static final String ANCIENT_CITY_HOLY_SWORD_POOL = "obesecat:ancient_city_holy_sword";
     private static final String BASTION_NIGHT_VISION_MR_KITTY_POOL = "obesecat:bastion_night_vision_mr_kitty";
     private static final String WARDEN_VIRTS_LEG_POOL = "obesecat:warden_virts_leg";
 
@@ -67,6 +68,15 @@ public final class ModLootTables {
                     .setRolls(ConstantValue.exactly(1.0F))
                     .when(LootItemRandomChanceCondition.randomChance(0.18F))
                     .add(LootItem.lootTableItem(ModItems.ENIGMA_EMBER.get()))
+                    .build());
+        }
+
+        if (event.getKey().equals(BuiltInLootTables.ANCIENT_CITY) && event.getTable().getPool(ANCIENT_CITY_HOLY_SWORD_POOL) == null) {
+            event.getTable().addPool(LootPool.lootPool()
+                    .name(ANCIENT_CITY_HOLY_SWORD_POOL)
+                    .setRolls(ConstantValue.exactly(1.0F))
+                    .when(LootItemRandomChanceCondition.randomChance(0.12F))
+                    .add(LootItem.lootTableItem(ModItems.HOLY_SWORD.get()))
                     .build());
         }
 

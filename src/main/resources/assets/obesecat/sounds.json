@@ -29,6 +29,16 @@
       "obesecat:item/paco/hellbark3"
     ]
   },
+  "item.transmute": {
+    "sounds": [
+      "obesecat:item/transmute"
+    ]
+  },
+  "item.stasisice": {
+    "sounds": [
+      "obesecat:item/stasisice"
+    ]
+  },
   "block.toilet.stink1": {
     "sounds": [
       "obesecat:block/toilet/stink1"

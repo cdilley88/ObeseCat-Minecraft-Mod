@@ -5,6 +5,7 @@ import com.fende.obesecat.client.NuclearFlashOverlay;
 import com.fende.obesecat.client.NightVisionOverlay;
 import com.fende.obesecat.client.ObeseCatRenderer;
 import com.fende.obesecat.client.ObeseCatTimerOverlay;
+import com.fende.obesecat.client.SniperPacoInputHandler;
 import com.fende.obesecat.client.TransmutationCubeScreen;
 import com.fende.obesecat.client.model.FatManModel;
 import com.fende.obesecat.entity.ObeseCat;
@@ -18,6 +19,8 @@ import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.common.Mod;
+import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.neoforge.client.event.InputEvent;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.event.RegisterGuiLayersEvent;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
@@ -30,6 +33,7 @@ public class ObeseCatModClient {
         modEventBus.addListener(this::registerRenderers);
         modEventBus.addListener(this::registerGuiLayers);
         modEventBus.addListener(this::registerMenuScreens);
+        NeoForge.EVENT_BUS.addListener(SniperPacoInputHandler::onMouseButton);
     }
 
     private void clientSetup(FMLClientSetupEvent event) {

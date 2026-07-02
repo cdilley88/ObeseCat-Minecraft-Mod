@@ -3,14 +3,11 @@
   "category": "equipment",
   "ingredients": [
     {
-      "item": "obesecat:assault_paco"
-    },
-    {
-      "item": "minecraft:spyglass"
+      "item": "obesecat:sniper_paco"
     }
   ],
   "result": {
-    "id": "obesecat:sniper_paco",
+    "id": "obesecat:assault_paco",
     "count": 1
   }
 }

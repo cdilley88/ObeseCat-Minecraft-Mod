@@ -26,6 +26,11 @@ public class HellhoundPacoItem extends PacoItem {
     }
 
     @Override
+    protected String getCaptionKey() {
+        return "item.obesecat.hellhound_paco.caption";
+    }
+
+    @Override
     protected SoundEvent getBarkSound(Level level) {
         return switch (level.random.nextInt(3)) {
             case 0 -> ModSounds.PACO_HELLBARK_1.get();

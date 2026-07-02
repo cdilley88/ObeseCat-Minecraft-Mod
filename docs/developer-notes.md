@@ -1,12 +1,10 @@
 # Developer Notes
 
-## Transmutation Cube Reference
+## Transmutation System Reference
 
-If a future thread needs to work on the Transmutation Cube, start here first:
+For the live Transmutation Cube architecture, recipe format, current invariants, and future-chat handoff template, see:
 
-- [../.worktrees/transmutation-cube/docs/transmutation-system-reference.md](../.worktrees/transmutation-cube/docs/transmutation-system-reference.md)
-
-That reference captures the live system behavior, core invariants, data-only recipe template, current recipes, and the main code/test touchpoints.
+- [docs/transmutation-system-reference.md](./transmutation-system-reference.md)
 
 ## High-Resolution Fat Man Model Direction
 
