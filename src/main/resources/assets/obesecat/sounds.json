@@ -39,6 +39,11 @@
       "obesecat:item/stasisice"
     ]
   },
+  "item.splitpunch": {
+    "sounds": [
+      "obesecat:item/splitpunch"
+    ]
+  },
   "block.toilet.stink1": {
     "sounds": [
       "obesecat:block/toilet/stink1"

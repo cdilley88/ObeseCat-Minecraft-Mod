@@ -21,6 +21,7 @@ import com.fende.obesecat.item.ManhattanPhysicistSpawnEggItem;
 import com.fende.obesecat.item.NightVisionMrKittyItem;
 import com.fende.obesecat.item.PacoItem;
 import com.fende.obesecat.item.SniperPacoItem;
+import com.fende.obesecat.item.SplitPunchSwordItem;
 import com.fende.obesecat.item.StasisSwordItem;
 import com.fende.obesecat.item.TinyPlanetItem;
 import com.fende.obesecat.item.TransmutationCubeItem;
@@ -42,6 +43,11 @@ public final class ModItems {
     public static final DeferredItem<SpawnEggItem> OBESE_CAT_SPAWN_EGG = ITEMS.registerItem(
             "obese_cat_spawn_egg",
             properties -> new SpawnEggItem(ModEntities.OBESE_CAT.get(), 0xD66B24, 0xFFF1D6, properties)
+    );
+
+    public static final DeferredItem<SpawnEggItem> COW_KING_SPAWN_EGG = ITEMS.registerItem(
+            "cow_king_spawn_egg",
+            properties -> new SpawnEggItem(ModEntities.COW_KING.get(), 0x8B6914, 0xFFD700, properties)
     );
 
     public static final DeferredItem<ManhattanPhysicistSpawnEggItem> MANHATTAN_PHYSICIST_SPAWN_EGG = ITEMS.registerItem(
@@ -192,6 +198,12 @@ public final class ModItems {
             new Item.Properties().stacksTo(1).rarity(Rarity.RARE)
     );
 
+    public static final DeferredItem<CaptionedItem> WHITE_KNIGHT_SYMBOL = ITEMS.registerItem(
+            "white_knight_symbol",
+            properties -> new CaptionedItem(properties, "item.obesecat.white_knight_symbol.caption"),
+            new Item.Properties().stacksTo(1).rarity(Rarity.RARE)
+    );
+
     public static final DeferredItem<Item> OPPENHEIMERS_HAT = ITEMS.registerSimpleItem(
             "oppenheimers_hat",
             new Item.Properties().stacksTo(1).rarity(Rarity.RARE)
@@ -225,6 +237,18 @@ public final class ModItems {
             "stasis_sword",
             StasisSwordItem::new,
             skillSwordProperties(Rarity.RARE)
+    );
+
+    public static final DeferredItem<SplitPunchSwordItem> SPLIT_PUNCH = ITEMS.registerItem(
+            "split_punch",
+            SplitPunchSwordItem::new,
+            skillSwordProperties(Rarity.RARE)
+    );
+
+    // Internal display-only item — carries the SplitPunchGFX texture for the cast ItemDisplay entity.
+    public static final DeferredItem<Item> SPLIT_PUNCH_GFX = ITEMS.registerSimpleItem(
+            "split_punch_gfx",
+            new Item.Properties().stacksTo(1)
     );
 
     public static final DeferredItem<BlockItem> TOILET = ITEMS.register(

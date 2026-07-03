@@ -1,0 +1,17 @@
+{
+  "type": "obesecat:transmutation",
+  "ingredients": [
+    {
+      "item": "obesecat:holy_sword",
+      "count": 1
+    },
+    {
+      "item": "obesecat:white_knight_symbol",
+      "count": 1
+    }
+  ],
+  "result": {
+    "id": "obesecat:split_punch",
+    "count": 1
+  }
+}

@@ -22,7 +22,7 @@ public final class ModEntities {
 
     public static final DeferredHolder<EntityType<?>, EntityType<CowKing>> COW_KING = ENTITY_TYPES.register(
             "cow_king",
-            () -> EntityType.Builder.of(CowKing::new, MobCategory.CREATURE)
+            () -> EntityType.Builder.of(CowKing::new, MobCategory.MONSTER)
                     .sized(0.9F, 1.4F)
                     .clientTrackingRange(8)
                     .build(ObeseCatMod.MOD_ID + ":cow_king")

@@ -10,8 +10,8 @@ import com.fende.obesecat.registry.ModNetworking;
 import com.fende.obesecat.registry.ModSounds;
 import com.fende.obesecat.registry.ModVillagerTrades;
 import com.fende.obesecat.registry.ModVillagers;
-import com.fende.obesecat.entity.CowKing;
 import com.fende.obesecat.world.AtomicFireSphere;
+import com.fende.obesecat.world.CowKingFortSpawner;
 import com.fende.obesecat.world.CowLevelSafetyManager;
 import com.fende.obesecat.world.EmberSingularityMagnet;
 import com.fende.obesecat.world.ManhattanBunkerDebug;
@@ -22,10 +22,12 @@ import com.fende.obesecat.world.NuclearCatExplosion;
 import com.fende.obesecat.world.NightVisionMrKittyManager;
 import com.fende.obesecat.world.PacoBarkBurst;
 import com.fende.obesecat.world.SniperPacoManager;
+import com.fende.obesecat.world.SplitPunchManager;
 import com.fende.obesecat.world.StasisSwordManager;
 import com.fende.obesecat.world.TinyPlanetProtection;
 import com.fende.obesecat.world.ToiletSinkAnimation;
 import net.minecraft.world.entity.animal.Cat;
+import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
@@ -67,6 +69,8 @@ public class ObeseCatMod {
         NeoForge.EVENT_BUS.addListener(ToiletSinkAnimation::onLevelTick);
         NeoForge.EVENT_BUS.addListener(ModVillagerTrades::addTrades);
         NeoForge.EVENT_BUS.addListener(ModLootTables::addLoot);
+        NeoForge.EVENT_BUS.addListener(CowKingFortSpawner::onChunkLoad);
+        NeoForge.EVENT_BUS.addListener(CowKingFortSpawner::onLevelTick);
         NeoForge.EVENT_BUS.addListener(CowLevelSafetyManager::onEntityJoinLevel);
         NeoForge.EVENT_BUS.addListener(MrKittysPawsManager::onLivingFall);
         NeoForge.EVENT_BUS.addListener(ManhattanBunkerResidentSpawner::onChunkLoad);
@@ -79,11 +83,13 @@ public class ObeseCatMod {
 
     private void registerAttributes(EntityAttributeCreationEvent event) {
         event.put(ModEntities.OBESE_CAT.get(), Cat.createAttributes().build());
+        event.put(ModEntities.COW_KING.get(), Monster.createMonsterAttributes().build());
     }
 
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
         if (event.getTabKey() == CreativeModeTabs.SPAWN_EGGS) {
             event.accept(ModItems.OBESE_CAT_SPAWN_EGG.get());
+            event.accept(ModItems.COW_KING_SPAWN_EGG.get());
             event.accept(ModItems.MANHATTAN_PHYSICIST_SPAWN_EGG.get());
         }
         if (event.getTabKey() == CreativeModeTabs.FOOD_AND_DRINKS) {
@@ -96,6 +102,7 @@ public class ObeseCatMod {
             event.accept(ModItems.VIRTS_LEG.get());
             event.accept(ModItems.TP_TOME.get());
             event.accept(ModItems.HOLY_KNIGHT_TOKEN.get());
+            event.accept(ModItems.WHITE_KNIGHT_SYMBOL.get());
             event.accept(ModItems.COW_LEVEL_PORTAL.get());
         }
         if (event.getTabKey() == CreativeModeTabs.COMBAT) {
@@ -118,6 +125,7 @@ public class ObeseCatMod {
             event.accept(ModItems.OPPENHEIMERS_HAT.get());
             event.accept(ModItems.HOLY_SWORD.get());
             event.accept(ModItems.STASIS_SWORD.get());
+            event.accept(ModItems.SPLIT_PUNCH.get());
             event.accept(ModItems.BOOM_STICK.get());
             event.accept(ModItems.FIRE_STICK.get());
             event.accept(ModItems.FIRE_BOOM_STICK.get());

@@ -217,7 +217,7 @@ Vanilla placement picks from placeable variants that fit the wall, then chooses 
 | J. Paco Barkkenheimer | Transmutation Cube | Exactly one Paco and one Oppenheimer's Hat, in any order, in any of the cube's 12 slots; no extra items or counts. Output stays inside the cube. | This transmutation is the sole survival acquisition route; the old crafting-table route was removed. |
 | Atomic Paco | Crafting | Hellhound Paco + Plutonium Cat Food. Hellhound Paco now comes from Manhattan Physicist trading, making the notable minimum cost 1 Trinitite + 1 emerald. |
 | Hellhound Paco | Manhattan Physicist trade | Spawned Manhattan Physicist in a Manhattan Bunker, 1 Trinitite, 12 max uses, 1 XP, 0.05 price multiplier. |
-| Holy Sword | No survival path found yet | Registered as an uncommon sword item. It serves as the base Transmutation Cube sword ingredient and intentionally passes on right-click for now. |
+| Holy Sword | Loot | Ancient City chest loot, 12%. Uncommon rarity. Serves as the base Transmutation Cube sword ingredient and intentionally passes on right-click for now. |
 | Holy Knight Token | No survival path found yet | Registered as a rare captioned item with caption `A blade remembers its oath.` It is currently only used as the exact catalyst input for the Stasis Sword transmutation. |
 | Stasis Sword | Transmutation Cube | Exactly one Holy Sword and one Holy Knight Token, in any order, in any of the cube's 12 slots; no extra items or counts. Output stays inside the cube. Rare rarity. Caption: Life is short... Bury! |
 | Oppenheimer's Hat | Manhattan Physicist trade | Spawned Manhattan Physicist in a Manhattan Bunker, 5 Trinitite, 12 max uses, 1 XP, 0.05 price multiplier. |

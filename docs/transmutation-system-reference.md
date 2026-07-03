@@ -100,6 +100,10 @@ These are the currently confirmed transmutation recipe JSONs:
   - Paco + Blaze Powder -> Hellhound Paco
 - `j_robert_pacoheimer_transmutation.json`
   - Paco + Oppenheimer's Hat -> J. Paco Barkkenheimer
+- `cow_level_portal_transmutation.json`
+  - Tome of Town Portal + Virt's Leg -> Cow Level Portal
+- `stasis_sword_transmutation.json`
+  - Holy Sword + Holy Knight Token -> Stasis Sword
 
 ## Code touchpoints
 

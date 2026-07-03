@@ -24,6 +24,7 @@ public final class ModLootTables {
     private static final String ANCIENT_CITY_HOLY_SWORD_POOL = "obesecat:ancient_city_holy_sword";
     private static final String BASTION_NIGHT_VISION_MR_KITTY_POOL = "obesecat:bastion_night_vision_mr_kitty";
     private static final String WARDEN_VIRTS_LEG_POOL = "obesecat:warden_virts_leg";
+    private static final String PIGLIN_BARTER_TP_TOME_POOL = "obesecat:piglin_barter_tp_tome";
 
     public static void addLoot(LootTableLoadEvent event) {
         if (event.getKey().equals(BuiltInLootTables.SIMPLE_DUNGEON) && event.getTable().getPool(DUNGEON_TOILET_POOL) == null) {
@@ -94,6 +95,15 @@ public final class ModLootTables {
                     .name(WARDEN_VIRTS_LEG_POOL)
                     .setRolls(ConstantValue.exactly(1.0F))
                     .add(LootItem.lootTableItem(ModItems.VIRTS_LEG.get()))
+                    .build());
+        }
+
+        if (event.getKey().equals(BuiltInLootTables.PIGLIN_BARTERING) && event.getTable().getPool(PIGLIN_BARTER_TP_TOME_POOL) == null) {
+            event.getTable().addPool(LootPool.lootPool()
+                    .name(PIGLIN_BARTER_TP_TOME_POOL)
+                    .setRolls(ConstantValue.exactly(1.0F))
+                    .when(LootItemRandomChanceCondition.randomChance(0.05F))
+                    .add(LootItem.lootTableItem(ModItems.TP_TOME.get()))
                     .build());
         }
     }
