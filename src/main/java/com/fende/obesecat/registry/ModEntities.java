@@ -1,6 +1,7 @@
 package com.fende.obesecat.registry;
 
 import com.fende.obesecat.ObeseCatMod;
+import com.fende.obesecat.entity.CowKing;
 import com.fende.obesecat.entity.ObeseCat;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.entity.EntityType;
@@ -18,6 +19,14 @@ public final class ModEntities {
                     .sized(0.9F, 0.84F)
                     .clientTrackingRange(8)
                     .build(ObeseCatMod.MOD_ID + ":obese_cat"));
+
+    public static final DeferredHolder<EntityType<?>, EntityType<CowKing>> COW_KING = ENTITY_TYPES.register(
+            "cow_king",
+            () -> EntityType.Builder.of(CowKing::new, MobCategory.CREATURE)
+                    .sized(0.9F, 1.4F)
+                    .clientTrackingRange(8)
+                    .build(ObeseCatMod.MOD_ID + ":cow_king")
+    );
 
     private ModEntities() {
     }

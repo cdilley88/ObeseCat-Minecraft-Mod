@@ -1,6 +1,7 @@
 package com.fende.obesecat;
 
 import com.fende.obesecat.client.FissionFirestormOverlay;
+import com.fende.obesecat.client.CowKingRenderer;
 import com.fende.obesecat.client.NuclearFlashOverlay;
 import com.fende.obesecat.client.NightVisionOverlay;
 import com.fende.obesecat.client.ObeseCatRenderer;
@@ -53,6 +54,7 @@ public class ObeseCatModClient {
                 ModEntities.OBESE_CAT.get(),
                 context -> (EntityRenderer<ObeseCat>) (EntityRenderer<?>) new ObeseCatRenderer(context)
         );
+        event.registerEntityRenderer(ModEntities.COW_KING.get(), context -> new CowKingRenderer(context));
     }
 
     private void registerGuiLayers(RegisterGuiLayersEvent event) {

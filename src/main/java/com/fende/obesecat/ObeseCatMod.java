@@ -10,6 +10,7 @@ import com.fende.obesecat.registry.ModNetworking;
 import com.fende.obesecat.registry.ModSounds;
 import com.fende.obesecat.registry.ModVillagerTrades;
 import com.fende.obesecat.registry.ModVillagers;
+import com.fende.obesecat.entity.CowKing;
 import com.fende.obesecat.world.AtomicFireSphere;
 import com.fende.obesecat.world.CowLevelSafetyManager;
 import com.fende.obesecat.world.EmberSingularityMagnet;
@@ -60,6 +61,7 @@ public class ObeseCatMod {
         NeoForge.EVENT_BUS.addListener(NightVisionMrKittyManager::onLevelTick);
         NeoForge.EVENT_BUS.addListener(PacoBarkBurst::onLevelTick);
         NeoForge.EVENT_BUS.addListener(SniperPacoManager::onAttackEntity);
+        NeoForge.EVENT_BUS.addListener(SplitPunchManager::onLevelTick);
         NeoForge.EVENT_BUS.addListener(StasisSwordManager::onLevelTick);
         NeoForge.EVENT_BUS.addListener(TinyPlanetProtection::onLevelTick);
         NeoForge.EVENT_BUS.addListener(ToiletSinkAnimation::onLevelTick);
@@ -93,6 +95,7 @@ public class ObeseCatMod {
             event.accept(ModItems.OPPENHEIMERS_HAT.get());
             event.accept(ModItems.VIRTS_LEG.get());
             event.accept(ModItems.TP_TOME.get());
+            event.accept(ModItems.HOLY_KNIGHT_TOKEN.get());
             event.accept(ModItems.COW_LEVEL_PORTAL.get());
         }
         if (event.getTabKey() == CreativeModeTabs.COMBAT) {
