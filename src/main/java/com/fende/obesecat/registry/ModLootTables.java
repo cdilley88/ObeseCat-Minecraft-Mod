@@ -25,6 +25,7 @@ public final class ModLootTables {
     private static final String BASTION_NIGHT_VISION_MR_KITTY_POOL = "obesecat:bastion_night_vision_mr_kitty";
     private static final String WARDEN_VIRTS_LEG_POOL = "obesecat:warden_virts_leg";
     private static final String PIGLIN_BARTER_TP_TOME_POOL = "obesecat:piglin_barter_tp_tome";
+    private static final String SHIPWRECK_DOMINO_POOL = "obesecat:shipwreck_domino";
 
     public static void addLoot(LootTableLoadEvent event) {
         if (event.getKey().equals(BuiltInLootTables.SIMPLE_DUNGEON) && event.getTable().getPool(DUNGEON_TOILET_POOL) == null) {
@@ -106,6 +107,19 @@ public final class ModLootTables {
                     .add(LootItem.lootTableItem(ModItems.TP_TOME.get()))
                     .build());
         }
+
+        if (isShipwreckLoot(event) && event.getTable().getPool(SHIPWRECK_DOMINO_POOL) == null) {
+            event.getTable().addPool(LootPool.lootPool()
+                    .name(SHIPWRECK_DOMINO_POOL)
+                    .setRolls(ConstantValue.exactly(1.0F))
+                    .when(LootItemRandomChanceCondition.randomChance(0.18F))
+                    .add(LootItem.lootTableItem(ModItems.DOMINO.get()))
+                    .add(LootItem.lootTableItem(ModItems.DAWN_DOMINO.get()))
+                    .add(LootItem.lootTableItem(ModItems.MIDDAY_DOMINO.get()))
+                    .add(LootItem.lootTableItem(ModItems.DUSK_DOMINO.get()))
+                    .add(LootItem.lootTableItem(ModItems.MIDNIGHT_DOMINO.get()))
+                    .build());
+        }
     }
 
     private static boolean isBastionLoot(LootTableLoadEvent event) {
@@ -113,6 +127,11 @@ public final class ModLootTables {
                 || event.getKey().equals(BuiltInLootTables.BASTION_OTHER)
                 || event.getKey().equals(BuiltInLootTables.BASTION_BRIDGE)
                 || event.getKey().equals(BuiltInLootTables.BASTION_HOGLIN_STABLE);
+    }
+
+    private static boolean isShipwreckLoot(LootTableLoadEvent event) {
+        return event.getKey().equals(BuiltInLootTables.SHIPWRECK_SUPPLY)
+                || event.getKey().equals(BuiltInLootTables.SHIPWRECK_TREASURE);
     }
 
     private ModLootTables() {

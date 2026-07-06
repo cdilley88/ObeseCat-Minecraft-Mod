@@ -3,8 +3,10 @@ package com.fende.obesecat.registry;
 import com.fende.obesecat.client.FissionFirestormOverlay;
 import com.fende.obesecat.client.NuclearFlashOverlay;
 import com.fende.obesecat.client.NightVisionOverlay;
+import com.fende.obesecat.client.SammyCrossActivationOverlay;
 import com.fende.obesecat.network.FissionFirestormPayload;
 import com.fende.obesecat.network.NightVisionOverlayPayload;
+import com.fende.obesecat.network.SammyCrossActivationPayload;
 import com.fende.obesecat.network.SniperPacoFirePayload;
 import com.fende.obesecat.network.NuclearFlashPayload;
 import com.fende.obesecat.world.SniperPacoManager;
@@ -22,6 +24,7 @@ public final class ModNetworking {
                 .playToClient(NuclearFlashPayload.TYPE, NuclearFlashPayload.STREAM_CODEC, ModNetworking::handleNuclearFlash)
                 .playToClient(NightVisionOverlayPayload.TYPE, NightVisionOverlayPayload.STREAM_CODEC, ModNetworking::handleNightVisionOverlay)
                 .playToClient(FissionFirestormPayload.TYPE, FissionFirestormPayload.STREAM_CODEC, ModNetworking::handleFissionFirestorm)
+                .playToClient(SammyCrossActivationPayload.TYPE, SammyCrossActivationPayload.STREAM_CODEC, ModNetworking::handleSammyCrossActivation)
                 .playToServer(SniperPacoFirePayload.TYPE, SniperPacoFirePayload.STREAM_CODEC, ModNetworking::handleSniperPacoFire);
     }
 
@@ -45,6 +48,14 @@ public final class ModNetworking {
         context.enqueueWork(() -> {
             if (FMLEnvironment.dist.isClient()) {
                 FissionFirestormOverlay.trigger(payload.holdTicks());
+            }
+        });
+    }
+
+    private static void handleSammyCrossActivation(SammyCrossActivationPayload payload, IPayloadContext context) {
+        context.enqueueWork(() -> {
+            if (FMLEnvironment.dist.isClient()) {
+                SammyCrossActivationOverlay.trigger();
             }
         });
     }

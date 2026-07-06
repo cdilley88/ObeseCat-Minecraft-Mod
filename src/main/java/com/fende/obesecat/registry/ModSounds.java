@@ -17,6 +17,9 @@ public final class ModSounds {
     public static final DeferredHolder<SoundEvent, SoundEvent> PACO_HELLBARK_1 = register("item.paco.hellbark1");
     public static final DeferredHolder<SoundEvent, SoundEvent> PACO_HELLBARK_2 = register("item.paco.hellbark2");
     public static final DeferredHolder<SoundEvent, SoundEvent> PACO_HELLBARK_3 = register("item.paco.hellbark3");
+    public static final DeferredHolder<SoundEvent, SoundEvent> DOMINO_MEOW_1 = register("item.domino.meow1");
+    public static final DeferredHolder<SoundEvent, SoundEvent> DOMINO_MEOW_2 = register("item.domino.meow2");
+    public static final DeferredHolder<SoundEvent, SoundEvent> DOMINO_MEOW_3 = register("item.domino.meow3");
     public static final DeferredHolder<SoundEvent, SoundEvent> TRANSMUTE = register("item.transmute");
     public static final DeferredHolder<SoundEvent, SoundEvent> STASIS_ICE = register("item.stasisice");
     public static final DeferredHolder<SoundEvent, SoundEvent> SPLIT_PUNCH = register("item.splitpunch");

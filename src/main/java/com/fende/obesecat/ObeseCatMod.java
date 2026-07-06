@@ -21,6 +21,7 @@ import com.fende.obesecat.world.MrKittysPawsManager;
 import com.fende.obesecat.world.NuclearCatExplosion;
 import com.fende.obesecat.world.NightVisionMrKittyManager;
 import com.fende.obesecat.world.PacoBarkBurst;
+import com.fende.obesecat.world.SammyCrossManager;
 import com.fende.obesecat.world.SniperPacoManager;
 import com.fende.obesecat.world.SplitPunchManager;
 import com.fende.obesecat.world.StasisSwordManager;
@@ -77,6 +78,7 @@ public class ObeseCatMod {
         NeoForge.EVENT_BUS.addListener(ManhattanPhysicistSpawner::onEntityJoinLevel);
         NeoForge.EVENT_BUS.addListener(ManhattanBunkerDebug::registerCommands);
         NeoForge.EVENT_BUS.addListener(ManhattanBunkerDebug::onServerStarted);
+        NeoForge.EVENT_BUS.addListener(SammyCrossManager::onLivingDeath);
 
         LOGGER.info("ObeseCat initialized with standalone Manhattan bunker worldgen and custom Manhattan Physicist trades");
     }
@@ -107,6 +109,14 @@ public class ObeseCatMod {
         }
         if (event.getTabKey() == CreativeModeTabs.COMBAT) {
             event.accept(ModItems.PACO.get());
+            event.accept(ModItems.DOMINO.get());
+            event.accept(ModItems.DAWN_DOMINO.get());
+            event.accept(ModItems.MIDDAY_DOMINO.get());
+            event.accept(ModItems.DUSK_DOMINO.get());
+            event.accept(ModItems.MIDNIGHT_DOMINO.get());
+            event.accept(ModItems.CALM_DOMINO.get());
+            event.accept(ModItems.DOWNPOUR_DOMINO.get());
+            event.accept(ModItems.THUNDERSTORM_DOMINO.get());
             event.accept(ModItems.EMBER.get());
             event.accept(ModItems.MR_KITTY.get());
             event.accept(ModItems.NIGHT_VISION_MR_KITTY.get());
@@ -130,6 +140,7 @@ public class ObeseCatMod {
             event.accept(ModItems.FIRE_STICK.get());
             event.accept(ModItems.FIRE_BOOM_STICK.get());
             event.accept(ModItems.BIG_FIRE_BOOM_STICK.get());
+            event.accept(ModItems.SAMMYS_CROSS.get());
         }
         if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES) {
             event.accept(ModItems.TOILET.get());

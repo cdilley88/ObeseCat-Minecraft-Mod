@@ -58,5 +58,20 @@
     "sounds": [
       "obesecat:block/toilet/stink3"
     ]
+  },
+  "item.domino.meow1": {
+    "sounds": [
+      "obesecat:item/domino/domino1"
+    ]
+  },
+  "item.domino.meow2": {
+    "sounds": [
+      "obesecat:item/domino/domino2"
+    ]
+  },
+  "item.domino.meow3": {
+    "sounds": [
+      "obesecat:item/domino/domino3"
+    ]
   }
 }

@@ -9,6 +9,7 @@ import com.fende.obesecat.item.BoomStickItem;
 import com.fende.obesecat.item.CaptionedItem;
 import com.fende.obesecat.item.CowLevelPortalItem;
 import com.fende.obesecat.item.ConcussivePacoItem;
+import com.fende.obesecat.item.DominoItem;
 import com.fende.obesecat.item.EmberSingularityItem;
 import com.fende.obesecat.item.EnigmaEmberItem;
 import com.fende.obesecat.item.FireBoomStickItem;
@@ -23,8 +24,10 @@ import com.fende.obesecat.item.PacoItem;
 import com.fende.obesecat.item.SniperPacoItem;
 import com.fende.obesecat.item.SplitPunchSwordItem;
 import com.fende.obesecat.item.StasisSwordItem;
+import com.fende.obesecat.item.TimeDominoItem;
 import com.fende.obesecat.item.TinyPlanetItem;
 import com.fende.obesecat.item.TransmutationCubeItem;
+import com.fende.obesecat.item.WeatherDominoItem;
 import com.fende.obesecat.item.WormholeEmberItem;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.item.BlockItem;
@@ -70,6 +73,54 @@ public final class ModItems {
             "paco",
             PacoItem::new,
             new Item.Properties().stacksTo(1)
+    );
+
+    public static final DeferredItem<DominoItem> DOMINO = ITEMS.registerItem(
+            "domino",
+            DominoItem::new,
+            new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)
+    );
+
+    public static final DeferredItem<TimeDominoItem> DAWN_DOMINO = ITEMS.registerItem(
+            "dawn_domino",
+            properties -> new TimeDominoItem(properties, 1000L),
+            new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)
+    );
+
+    public static final DeferredItem<TimeDominoItem> MIDDAY_DOMINO = ITEMS.registerItem(
+            "midday_domino",
+            properties -> new TimeDominoItem(properties, 6000L),
+            new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)
+    );
+
+    public static final DeferredItem<TimeDominoItem> DUSK_DOMINO = ITEMS.registerItem(
+            "dusk_domino",
+            properties -> new TimeDominoItem(properties, 13000L),
+            new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)
+    );
+
+    public static final DeferredItem<TimeDominoItem> MIDNIGHT_DOMINO = ITEMS.registerItem(
+            "midnight_domino",
+            properties -> new TimeDominoItem(properties, 18000L),
+            new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)
+    );
+
+    public static final DeferredItem<WeatherDominoItem> CALM_DOMINO = ITEMS.registerItem(
+            "calm_domino",
+            properties -> new WeatherDominoItem(properties, false, false),
+            new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)
+    );
+
+    public static final DeferredItem<WeatherDominoItem> DOWNPOUR_DOMINO = ITEMS.registerItem(
+            "downpour_domino",
+            properties -> new WeatherDominoItem(properties, true, false),
+            new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)
+    );
+
+    public static final DeferredItem<WeatherDominoItem> THUNDERSTORM_DOMINO = ITEMS.registerItem(
+            "thunderstorm_domino",
+            properties -> new WeatherDominoItem(properties, true, true),
+            new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)
     );
 
     public static final DeferredItem<CaptionedItem> EMBER = ITEMS.registerItem(
@@ -142,6 +193,14 @@ public final class ModItems {
             "transmutation_cube",
             TransmutationCubeItem::new,
             new Item.Properties().stacksTo(1).rarity(Rarity.RARE)
+    );
+
+    public static final DeferredItem<CaptionedItem> SAMMYS_CROSS = ITEMS.registerItem(
+            "sammy_cross",
+            properties -> new CaptionedItem(properties, "item.obesecat.sammy_cross.caption"),
+            new Item.Properties()
+                    .stacksTo(1)
+                    .rarity(Rarity.EPIC)
     );
 
     public static final DeferredItem<ConcussivePacoItem> CONCUSSIVE_PACO = ITEMS.registerItem(
