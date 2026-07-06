@@ -23,6 +23,7 @@ public final class ModSounds {
     public static final DeferredHolder<SoundEvent, SoundEvent> TRANSMUTE = register("item.transmute");
     public static final DeferredHolder<SoundEvent, SoundEvent> STASIS_ICE = register("item.stasisice");
     public static final DeferredHolder<SoundEvent, SoundEvent> SPLIT_PUNCH = register("item.splitpunch");
+    public static final DeferredHolder<SoundEvent, SoundEvent> SWORD_SKILL_CAST = register("item.swordskillcast");
     public static final DeferredHolder<SoundEvent, SoundEvent> TOILET_STINK_1 = register("block.toilet.stink1");
     public static final DeferredHolder<SoundEvent, SoundEvent> TOILET_STINK_2 = register("block.toilet.stink2");
     public static final DeferredHolder<SoundEvent, SoundEvent> TOILET_STINK_3 = register("block.toilet.stink3");

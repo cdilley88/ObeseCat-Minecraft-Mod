@@ -44,6 +44,11 @@
       "obesecat:item/splitpunch"
     ]
   },
+  "item.swordskillcast": {
+    "sounds": [
+      "obesecat:item/swordskillcast"
+    ]
+  },
   "block.toilet.stink1": {
     "sounds": [
       "obesecat:block/toilet/stink1"

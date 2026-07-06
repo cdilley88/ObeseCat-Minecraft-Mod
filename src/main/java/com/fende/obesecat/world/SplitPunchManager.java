@@ -26,11 +26,11 @@ import org.joml.Vector3f;
 public final class SplitPunchManager {
     public static final double RANGE = 25.0D;
     public static final float DAMAGE = 8.0F;
-    public static final double RADIUS = 3.0D;
-    public static final int CAST_DELAY_TICKS = 5;
+    public static final double RADIUS = 4.0D;
+    public static final int CAST_DELAY_TICKS = 15;
     public static final int GFX_DURATION_TICKS = 40;
     public static final int PARTICLE_DURATION_TICKS = 10;
-    public static final int COOLDOWN_TICKS = 20;
+    public static final int COOLDOWN_TICKS = 40;
 
     private static final List<PendingCast> PENDING_CASTS = new ArrayList<>();
     private static final List<PendingRemoval> PENDING_REMOVALS = new ArrayList<>();

@@ -27,7 +27,7 @@ import net.neoforged.neoforge.event.tick.LevelTickEvent;
 
 public final class StasisSwordManager {
     public static final double RANGE = 25.0D;
-    public static final int CAST_DELAY_TICKS = 5;
+    public static final int CAST_DELAY_TICKS = 15;
     public static final int SHATTER_DELAY_TICKS = 40;
     public static final int COOLDOWN_TICKS = 40;
 
