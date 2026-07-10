@@ -8,6 +8,7 @@ import com.fende.obesecat.item.BigFireBoomStickItem;
 import com.fende.obesecat.item.BoomStickItem;
 import com.fende.obesecat.item.CaptionedItem;
 import com.fende.obesecat.item.CowLevelPortalItem;
+import com.fende.obesecat.item.CrushPunchSwordItem;
 import com.fende.obesecat.item.ConcussivePacoItem;
 import com.fende.obesecat.item.DominoItem;
 import com.fende.obesecat.item.EmberSingularityItem;
@@ -15,8 +16,10 @@ import com.fende.obesecat.item.EnigmaEmberItem;
 import com.fende.obesecat.item.FireBoomStickItem;
 import com.fende.obesecat.item.FireStickItem;
 import com.fende.obesecat.item.HellhoundPacoItem;
+import com.fende.obesecat.item.HolyExplosionSwordItem;
 import com.fende.obesecat.item.HolySwordItem;
 import com.fende.obesecat.item.JRobertPacoheimerItem;
+import com.fende.obesecat.item.LightningStabSwordItem;
 import com.fende.obesecat.item.MrKittysPawsItem;
 import com.fende.obesecat.item.ManhattanPhysicistSpawnEggItem;
 import com.fende.obesecat.item.NightVisionMrKittyItem;
@@ -263,6 +266,24 @@ public final class ModItems {
             new Item.Properties().stacksTo(1).rarity(Rarity.RARE)
     );
 
+    public static final DeferredItem<CaptionedItem> DARK_KNIGHT_BRACER = ITEMS.registerItem(
+            "dark_knight_bracer",
+            properties -> new CaptionedItem(properties, "item.obesecat.dark_knight_bracer.caption"),
+            new Item.Properties().stacksTo(1).rarity(Rarity.RARE)
+    );
+
+    public static final DeferredItem<CaptionedItem> ARK_KNIGHT_JEWEL = ITEMS.registerItem(
+            "ark_knight_jewel",
+            properties -> new CaptionedItem(properties, "item.obesecat.ark_knight_jewel.caption"),
+            new Item.Properties().stacksTo(1).rarity(Rarity.RARE)
+    );
+
+    public static final DeferredItem<CaptionedItem> SWORD_SAINT_INSIGNIA = ITEMS.registerItem(
+            "sword_saint_insignia",
+            properties -> new CaptionedItem(properties, "item.obesecat.sword_saint_insignia.caption"),
+            new Item.Properties().stacksTo(1).rarity(Rarity.RARE)
+    );
+
     public static final DeferredItem<Item> OPPENHEIMERS_HAT = ITEMS.registerSimpleItem(
             "oppenheimers_hat",
             new Item.Properties().stacksTo(1).rarity(Rarity.RARE)
@@ -304,9 +325,33 @@ public final class ModItems {
             skillSwordProperties(Rarity.RARE)
     );
 
+    public static final DeferredItem<CrushPunchSwordItem> CRUSH_PUNCH = ITEMS.registerItem(
+            "crush_punch",
+            CrushPunchSwordItem::new,
+            skillSwordProperties(Rarity.RARE)
+    );
+
+    public static final DeferredItem<LightningStabSwordItem> LIGHTNING_STAB = ITEMS.registerItem(
+            "lightning_stab",
+            LightningStabSwordItem::new,
+            skillSwordProperties(Rarity.RARE)
+    );
+
+    public static final DeferredItem<HolyExplosionSwordItem> HOLY_EXPLOSION = ITEMS.registerItem(
+            "holy_explosion",
+            HolyExplosionSwordItem::new,
+            skillSwordProperties(Rarity.RARE)
+    );
+
     // Internal display-only item — carries the SplitPunchGFX texture for the cast ItemDisplay entity.
     public static final DeferredItem<Item> SPLIT_PUNCH_GFX = ITEMS.registerSimpleItem(
             "split_punch_gfx",
+            new Item.Properties().stacksTo(1)
+    );
+
+    // Internal display-only item — carries the CrushPunch texture for the cast ItemDisplay entity.
+    public static final DeferredItem<Item> CRUSH_PUNCH_GFX = ITEMS.registerSimpleItem(
+            "crush_punch_gfx",
             new Item.Properties().stacksTo(1)
     );
 

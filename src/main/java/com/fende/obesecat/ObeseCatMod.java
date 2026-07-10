@@ -13,7 +13,10 @@ import com.fende.obesecat.registry.ModVillagers;
 import com.fende.obesecat.world.AtomicFireSphere;
 import com.fende.obesecat.world.CowKingFortSpawner;
 import com.fende.obesecat.world.CowLevelSafetyManager;
+import com.fende.obesecat.world.CrushPunchManager;
 import com.fende.obesecat.world.EmberSingularityMagnet;
+import com.fende.obesecat.world.HolyExplosionManager;
+import com.fende.obesecat.world.LightningStabManager;
 import com.fende.obesecat.world.ManhattanBunkerDebug;
 import com.fende.obesecat.world.ManhattanBunkerResidentSpawner;
 import com.fende.obesecat.world.ManhattanPhysicistSpawner;
@@ -65,6 +68,9 @@ public class ObeseCatMod {
         NeoForge.EVENT_BUS.addListener(PacoBarkBurst::onLevelTick);
         NeoForge.EVENT_BUS.addListener(SniperPacoManager::onAttackEntity);
         NeoForge.EVENT_BUS.addListener(SplitPunchManager::onLevelTick);
+        NeoForge.EVENT_BUS.addListener(CrushPunchManager::onLevelTick);
+        NeoForge.EVENT_BUS.addListener(LightningStabManager::onLevelTick);
+        NeoForge.EVENT_BUS.addListener(HolyExplosionManager::onLevelTick);
         NeoForge.EVENT_BUS.addListener(StasisSwordManager::onLevelTick);
         NeoForge.EVENT_BUS.addListener(TinyPlanetProtection::onLevelTick);
         NeoForge.EVENT_BUS.addListener(ToiletSinkAnimation::onLevelTick);
@@ -105,6 +111,8 @@ public class ObeseCatMod {
             event.accept(ModItems.TP_TOME.get());
             event.accept(ModItems.HOLY_KNIGHT_TOKEN.get());
             event.accept(ModItems.WHITE_KNIGHT_SYMBOL.get());
+            event.accept(ModItems.ARK_KNIGHT_JEWEL.get());
+            event.accept(ModItems.SWORD_SAINT_INSIGNIA.get());
             event.accept(ModItems.COW_LEVEL_PORTAL.get());
         }
         if (event.getTabKey() == CreativeModeTabs.COMBAT) {
@@ -136,6 +144,10 @@ public class ObeseCatMod {
             event.accept(ModItems.HOLY_SWORD.get());
             event.accept(ModItems.STASIS_SWORD.get());
             event.accept(ModItems.SPLIT_PUNCH.get());
+            event.accept(ModItems.CRUSH_PUNCH.get());
+            event.accept(ModItems.LIGHTNING_STAB.get());
+            event.accept(ModItems.HOLY_EXPLOSION.get());
+            event.accept(ModItems.DARK_KNIGHT_BRACER.get());
             event.accept(ModItems.BOOM_STICK.get());
             event.accept(ModItems.FIRE_STICK.get());
             event.accept(ModItems.FIRE_BOOM_STICK.get());

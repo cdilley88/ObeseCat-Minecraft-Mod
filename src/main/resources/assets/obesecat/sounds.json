@@ -49,6 +49,26 @@
       "obesecat:item/swordskillcast"
     ]
   },
+  "item.crushpunchback": {
+    "sounds": [
+      "obesecat:item/crushpunchback"
+    ]
+  },
+  "item.crushpunchblade": {
+    "sounds": [
+      "obesecat:item/crushpunchblade"
+    ]
+  },
+  "item.lightningstabflame": {
+    "sounds": [
+      "obesecat:item/lightningstabflame"
+    ]
+  },
+  "item.holyexplosion": {
+    "sounds": [
+      "obesecat:item/holyexplosion"
+    ]
+  },
   "block.toilet.stink1": {
     "sounds": [
       "obesecat:block/toilet/stink1"

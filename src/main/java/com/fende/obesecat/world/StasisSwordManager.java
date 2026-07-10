@@ -2,6 +2,7 @@ package com.fende.obesecat.world;
 
 import com.fende.obesecat.ObeseCatMod;
 import com.fende.obesecat.registry.ModSounds;
+import com.fende.obesecat.world.LocalSoundHelper;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -116,7 +117,7 @@ public final class StasisSwordManager {
 
             pendingCast.delayTicks--;
             if (pendingCast.delayTicks <= 0) {
-                level.playSound(null, pendingCast.origin.getX() + 0.5D, pendingCast.origin.getY() + 0.5D, pendingCast.origin.getZ() + 0.5D, ModSounds.STASIS_ICE.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
+                LocalSoundHelper.playLocalized(level, new Vec3(pendingCast.origin.getX() + 0.5D, pendingCast.origin.getY() + 0.5D, pendingCast.origin.getZ() + 0.5D), ModSounds.STASIS_ICE.get(), 32.0D, 1.0F, 1.0F);
                 place(level, pendingCast.origin);
                 PENDING_CASTS.remove(pendingCast);
             }

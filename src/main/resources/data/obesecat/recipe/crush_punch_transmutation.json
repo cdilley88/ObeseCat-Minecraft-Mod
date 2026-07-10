@@ -1,0 +1,17 @@
+{
+  "type": "obesecat:transmutation",
+  "ingredients": [
+    {
+      "item": "obesecat:holy_sword",
+      "count": 1
+    },
+    {
+      "item": "obesecat:dark_knight_bracer",
+      "count": 1
+    }
+  ],
+  "result": {
+    "id": "obesecat:crush_punch",
+    "count": 1
+  }
+}

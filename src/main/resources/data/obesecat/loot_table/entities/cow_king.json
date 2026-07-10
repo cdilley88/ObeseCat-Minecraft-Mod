@@ -15,6 +15,21 @@
           "type": "minecraft:item",
           "name": "obesecat:white_knight_symbol",
           "weight": 1
+        },
+        {
+          "type": "minecraft:item",
+          "name": "obesecat:dark_knight_bracer",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:item",
+          "name": "obesecat:ark_knight_jewel",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:item",
+          "name": "obesecat:sword_saint_insignia",
+          "weight": 1
         }
       ]
     }

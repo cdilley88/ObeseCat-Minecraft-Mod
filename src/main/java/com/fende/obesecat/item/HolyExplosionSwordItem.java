@@ -1,6 +1,6 @@
 package com.fende.obesecat.item;
 
-import com.fende.obesecat.world.SplitPunchManager;
+import com.fende.obesecat.world.HolyExplosionManager;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.player.Player;
@@ -8,14 +8,14 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
 
-public class SplitPunchSwordItem extends SkillSwordItem {
-    public SplitPunchSwordItem(Properties properties) {
+public class HolyExplosionSwordItem extends SkillSwordItem {
+    public HolyExplosionSwordItem(Properties properties) {
         super(properties);
     }
 
     @Override
     protected int cooldownTicks() {
-        return SplitPunchManager.COOLDOWN_TICKS;
+        return HolyExplosionManager.COOLDOWN_TICKS;
     }
 
     @Override
@@ -25,7 +25,7 @@ public class SplitPunchSwordItem extends SkillSwordItem {
 
     @Override
     protected String captionKey() {
-        return "item.obesecat.split_punch.caption";
+        return "item.obesecat.holy_explosion.caption";
     }
 
     @Override
@@ -39,12 +39,13 @@ public class SplitPunchSwordItem extends SkillSwordItem {
         if (blockHit == null) {
             return false;
         }
-        SplitPunchManager.schedule(level, blockHit.getBlockPos());
+
+        HolyExplosionManager.schedule(level, blockHit.getBlockPos());
         return true;
     }
 
     private static BlockHitResult findBlockTarget(Player player) {
-        HitResult hitResult = player.pick(SplitPunchManager.RANGE, 1.0F, false);
+        HitResult hitResult = player.pick(HolyExplosionManager.RANGE, 1.0F, false);
         if (hitResult.getType() != HitResult.Type.BLOCK || !(hitResult instanceof BlockHitResult blockHit)) {
             return null;
         }

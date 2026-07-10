@@ -2,6 +2,7 @@ package com.fende.obesecat.world;
 
 import com.fende.obesecat.registry.ModItems;
 import com.fende.obesecat.registry.ModSounds;
+import com.fende.obesecat.world.LocalSoundHelper;
 import com.mojang.math.Transformation;
 import com.mojang.serialization.JsonOps;
 import java.util.ArrayList;
@@ -140,9 +141,9 @@ public final class SplitPunchManager {
         }
 
         // Play sound at target block
-        level.playSound(null,
-                origin.getX() + 0.5D, origin.getY() + 0.5D, origin.getZ() + 0.5D,
-                ModSounds.SPLIT_PUNCH.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
+        LocalSoundHelper.playLocalized(level,
+                new Vec3(origin.getX() + 0.5D, origin.getY() + 0.5D, origin.getZ() + 0.5D),
+                ModSounds.SPLIT_PUNCH.get(), 32.0D, 1.0F, 1.0F);
     }
 
     private static final class PendingCast {

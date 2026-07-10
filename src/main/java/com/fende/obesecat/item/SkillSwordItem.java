@@ -1,6 +1,7 @@
 package com.fende.obesecat.item;
 
 import com.fende.obesecat.registry.ModSounds;
+import com.fende.obesecat.world.LocalSoundHelper;
 import java.util.List;
 import javax.annotation.Nullable;
 import net.minecraft.ChatFormatting;
@@ -44,8 +45,8 @@ public class SkillSwordItem extends Item {
             return InteractionResultHolder.pass(stack);
         }
 
-        if (!level.isClientSide()) {
-            level.playSound(null, player.getX(), player.getY(), player.getZ(), ModSounds.SWORD_SKILL_CAST.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
+        if (!level.isClientSide() && level instanceof ServerLevel serverLevel) {
+            LocalSoundHelper.playLocalized(serverLevel, player.position(), ModSounds.SWORD_SKILL_CAST.get(), 24.0D, 1.0F, 1.0F);
         }
 
         player.swing(usedHand, true);

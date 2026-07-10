@@ -15,7 +15,7 @@ import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.event.entity.player.AttackEntityEvent;
 
 public final class SniperPacoManager {
-    private static final double SNIPER_RANGE = 70.0D;
+    private static final double SNIPER_RANGE = 150.0D;
     private static final float SNIPER_DAMAGE = 8.0F;
 
     private SniperPacoManager() {
