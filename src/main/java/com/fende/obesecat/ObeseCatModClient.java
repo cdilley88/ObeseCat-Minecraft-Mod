@@ -3,6 +3,7 @@ package com.fende.obesecat;
 import com.fende.obesecat.client.FissionFirestormOverlay;
 import com.fende.obesecat.client.CowKingRenderer;
 import com.fende.obesecat.client.NuclearFlashOverlay;
+import com.fende.obesecat.client.IonStormOverlay;
 import com.fende.obesecat.client.NightVisionOverlay;
 import com.fende.obesecat.client.ObeseCatRenderer;
 import com.fende.obesecat.client.ObeseCatTimerOverlay;
@@ -35,6 +36,7 @@ public class ObeseCatModClient {
         modEventBus.addListener(this::registerGuiLayers);
         modEventBus.addListener(this::registerMenuScreens);
         NeoForge.EVENT_BUS.addListener(SniperPacoInputHandler::onMouseButton);
+        NeoForge.EVENT_BUS.addListener(IonStormOverlay::suppressSkyFlash);
     }
 
     private void clientSetup(FMLClientSetupEvent event) {
@@ -61,6 +63,7 @@ public class ObeseCatModClient {
         event.registerAboveAll(ObeseCatTimerOverlay.ID, ObeseCatTimerOverlay::render);
         event.registerAboveAll(NightVisionOverlay.ID, NightVisionOverlay::render);
         event.registerAboveAll(FissionFirestormOverlay.ID, FissionFirestormOverlay::render);
+        event.registerAboveAll(IonStormOverlay.ID, IonStormOverlay::render);
         event.registerAboveAll(NuclearFlashOverlay.ID, NuclearFlashOverlay::render);
     }
 

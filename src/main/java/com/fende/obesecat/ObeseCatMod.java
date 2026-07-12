@@ -17,6 +17,7 @@ import com.fende.obesecat.world.CrushPunchManager;
 import com.fende.obesecat.world.EmberSingularityMagnet;
 import com.fende.obesecat.world.HolyExplosionManager;
 import com.fende.obesecat.world.LightningStabManager;
+import com.fende.obesecat.world.IonStormManager;
 import com.fende.obesecat.world.ManhattanBunkerDebug;
 import com.fende.obesecat.world.ManhattanBunkerResidentSpawner;
 import com.fende.obesecat.world.ManhattanPhysicistSpawner;
@@ -70,6 +71,7 @@ public class ObeseCatMod {
         NeoForge.EVENT_BUS.addListener(SplitPunchManager::onLevelTick);
         NeoForge.EVENT_BUS.addListener(CrushPunchManager::onLevelTick);
         NeoForge.EVENT_BUS.addListener(LightningStabManager::onLevelTick);
+        NeoForge.EVENT_BUS.addListener(IonStormManager::onLevelTick);
         NeoForge.EVENT_BUS.addListener(HolyExplosionManager::onLevelTick);
         NeoForge.EVENT_BUS.addListener(StasisSwordManager::onLevelTick);
         NeoForge.EVENT_BUS.addListener(TinyPlanetProtection::onLevelTick);
@@ -152,6 +154,7 @@ public class ObeseCatMod {
             event.accept(ModItems.FIRE_STICK.get());
             event.accept(ModItems.FIRE_BOOM_STICK.get());
             event.accept(ModItems.BIG_FIRE_BOOM_STICK.get());
+            event.accept(ModItems.ION_STORM_STICK.get());
             event.accept(ModItems.SAMMYS_CROSS.get());
         }
         if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES) {
@@ -169,6 +172,8 @@ public class ObeseCatMod {
             event.accept(ModItems.FIRE_STICK.get());
             event.accept(ModItems.FIRE_BOOM_STICK.get());
             event.accept(ModItems.BIG_FIRE_BOOM_STICK.get());
+            event.accept(ModItems.EMERGENCY_STARTER_HOME.get());
+            event.accept(ModItems.LUXURY_STARTER_HOME.get());
         }
     }
 }

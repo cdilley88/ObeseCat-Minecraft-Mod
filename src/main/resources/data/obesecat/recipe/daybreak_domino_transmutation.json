@@ -1,0 +1,8 @@
+{
+  "type": "obesecat:transmutation",
+  "ingredients": [
+    {"item": "obesecat:domino", "count": 1},
+    {"item": "minecraft:feather", "count": 1}
+  ],
+  "result": {"id": "obesecat:dawn_domino", "count": 1}
+}

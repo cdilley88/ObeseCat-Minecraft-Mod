@@ -22,6 +22,7 @@ public final class ModVillagerTrades {
             LOGGER.info("Registering Manhattan Physicist-specific trades");
             event.getTrades().get(NOVICE).add(hellhoundPacoTrade());
             event.getTrades().get(NOVICE).add(oppenheimersHatTrade());
+            event.getTrades().get(NOVICE).add(deuteriumCatFoodTrade());
             return;
         }
 
@@ -34,6 +35,7 @@ public final class ModVillagerTrades {
         event.getTrades().get(NOVICE).add(trade(new ItemStack(ModItems.PACO.get())));
         event.getTrades().get(NOVICE).add(trade(new ItemStack(ModItems.EMBER.get())));
         event.getTrades().get(NOVICE).add(trade(new ItemStack(ModItems.MR_KITTY.get())));
+        event.getTrades().get(NOVICE).add(trade(new ItemStack(ModItems.EMERGENCY_STARTER_HOME.get())));
     }
 
     private static BasicItemListing trade(ItemStack itemForSale) {
@@ -52,6 +54,7 @@ public final class ModVillagerTrades {
         MerchantOffers offers = new MerchantOffers();
         addOffer(offers, hellhoundPacoTrade().getOffer(trader, trader.getRandom()));
         addOffer(offers, oppenheimersHatTrade().getOffer(trader, trader.getRandom()));
+        addOffer(offers, deuteriumCatFoodTrade().getOffer(trader, trader.getRandom()));
         return offers;
     }
 
@@ -61,6 +64,10 @@ public final class ModVillagerTrades {
 
     private static BasicItemListing oppenheimersHatTrade() {
         return trinititeTrade(new ItemStack(ModItems.OPPENHEIMERS_HAT.get()), 5);
+    }
+
+    private static BasicItemListing deuteriumCatFoodTrade() {
+        return trinititeTrade(new ItemStack(ModItems.LITHIUM_DEUTERIDE_CAT_FOOD.get(), 10));
     }
 
     private static void addOffer(MerchantOffers offers, MerchantOffer offer) {

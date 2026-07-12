@@ -1,0 +1,8 @@
+{
+  "type": "obesecat:transmutation",
+  "ingredients": [
+    {"item": "obesecat:domino", "count": 1},
+    {"item": "minecraft:breeze_rod", "count": 1}
+  ],
+  "result": {"id": "obesecat:thunderstorm_domino", "count": 1}
+}

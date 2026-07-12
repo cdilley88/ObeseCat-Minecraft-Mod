@@ -5,9 +5,22 @@ Project-specific notes
 This repo has active feature work and reference docs beyond the default NeoForge template.
 
 - General developer notes: [docs/developer-notes.md](docs/developer-notes.md)
+- Gradle command cheat sheet: [docs/gradle-command-cheat-sheet.md](docs/gradle-command-cheat-sheet.md)
 - Transmutation Cube reference: [.worktrees/transmutation-cube/docs/transmutation-system-reference.md](.worktrees/transmutation-cube/docs/transmutation-system-reference.md)
 
 If you are continuing work on the Transmutation Cube or adding new transmutation recipes, read the transmutation reference first. It documents the current 12-slot persistent cube inventory, exact unordered recipe matching, data-only recipe format, live recipe examples, and the key code/test touchpoints.
+
+Quick Gradle Commands
+=======
+
+From `G:\ObeseCat Minecraft Mod`:
+
+- Build jar: `./gradlew.bat build`
+- Run client: `./gradlew.bat runClient`
+- Run server: `./gradlew.bat runServer`
+- Run game tests: `./gradlew.bat runGameTestServer`
+
+For full details, see [docs/gradle-command-cheat-sheet.md](docs/gradle-command-cheat-sheet.md).
 
 Installation information
 =======

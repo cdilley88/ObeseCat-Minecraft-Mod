@@ -1,0 +1,8 @@
+{
+  "type": "obesecat:transmutation",
+  "ingredients": [
+    {"item": "obesecat:domino", "count": 1},
+    {"item": "minecraft:sunflower", "count": 1}
+  ],
+  "result": {"id": "obesecat:midday_domino", "count": 1}
+}

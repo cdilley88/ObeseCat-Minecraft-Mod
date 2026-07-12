@@ -26,6 +26,6 @@ public class DominoItem extends PacoItem {
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
         super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
-        tooltipComponents.add(Component.translatable("item.obesecat.domino.caption").withStyle(ChatFormatting.YELLOW));
+        tooltipComponents.add(Component.translatable(getDescriptionId(stack) + ".caption").withStyle(ChatFormatting.YELLOW));
     }
 }

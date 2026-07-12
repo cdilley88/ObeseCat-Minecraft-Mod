@@ -1,5 +1,18 @@
 # Developer Notes
 
+## Gradle Command Cheat Sheet
+
+Use this as the canonical quick reference:
+
+- [docs/gradle-command-cheat-sheet.md](./gradle-command-cheat-sheet.md)
+
+Most-used commands from repo root:
+
+- `./gradlew.bat build`
+- `./gradlew.bat runClient`
+- `./gradlew.bat runServer`
+- `./gradlew.bat runGameTestServer`
+
 ## Transmutation System Reference
 
 For the live Transmutation Cube architecture, recipe format, current invariants, and future-chat handoff template, see:

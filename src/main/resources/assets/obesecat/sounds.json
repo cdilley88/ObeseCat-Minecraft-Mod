@@ -64,6 +64,11 @@
       "obesecat:item/lightningstabflame"
     ]
   },
+  "item.ionstormwarning": {
+    "sounds": [
+      "obesecat:item/ionstormwarning"
+    ]
+  },
   "item.holyexplosion": {
     "sounds": [
       "obesecat:item/holyexplosion"

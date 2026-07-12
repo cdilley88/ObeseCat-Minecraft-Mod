@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {"item":"obesecat:emergency_starter_home"}, {"item":"minecraft:iron_block"},
+    {"item":"minecraft:gold_block"}, {"item":"minecraft:diamond_block"}, {"item":"minecraft:emerald_block"}
+  ],
+  "result": {"id":"obesecat:luxury_starter_home","count":1}
+}

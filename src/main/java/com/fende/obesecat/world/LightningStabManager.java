@@ -30,7 +30,11 @@ public final class LightningStabManager {
     }
 
     public static void schedule(ServerLevel level, BlockPos origin) {
-        PENDING_CASTS.add(new PendingCast(level, origin.immutable(), CAST_DELAY_TICKS));
+        PENDING_CASTS.add(new PendingCast(level, origin.immutable(), CAST_DELAY_TICKS, false));
+    }
+
+    public static void scheduleIonStormStrike(ServerLevel level, BlockPos origin) {
+        PENDING_CASTS.add(new PendingCast(level, origin.immutable(), 0, true));
     }
 
     public static void onLevelTick(LevelTickEvent.Post event) {
@@ -49,7 +53,7 @@ public final class LightningStabManager {
             pending.delayTicks--;
             if (pending.delayTicks <= 0) {
                 PENDING_CASTS.remove(pending);
-                executeCast(level, pending.origin);
+                executeCast(level, pending.origin, pending.damagePlayers);
             }
         }
 
@@ -69,7 +73,7 @@ public final class LightningStabManager {
             }
 
             emitPillar(level, pending.base, pending.ticksRemaining);
-            damageAroundPillar(level, pending.base);
+            damageAroundPillar(level, pending.base, pending.damagePlayers);
 
             pending.ticksRemaining--;
             if (pending.ticksRemaining <= 0) {
@@ -78,7 +82,7 @@ public final class LightningStabManager {
         }
     }
 
-    private static void executeCast(ServerLevel level, BlockPos origin) {
+    private static void executeCast(ServerLevel level, BlockPos origin, boolean damagePlayers) {
         Vec3 center = Vec3.atCenterOf(origin);
 
         LightningBolt bolt = EntityType.LIGHTNING_BOLT.create(level);
@@ -94,7 +98,7 @@ public final class LightningStabManager {
                 center.x + RADIUS, center.y + 3.0D, center.z + RADIUS
         );
         for (LivingEntity entity : level.getEntitiesOfClass(LivingEntity.class, impactBox,
-                e -> e.isAlive() && !(e instanceof Player))) {
+                e -> e.isAlive() && (damagePlayers || !(e instanceof Player)))) {
             entity.hurt(level.damageSources().lightningBolt(), IMPACT_DAMAGE);
             entity.setRemainingFireTicks(Math.max(entity.getRemainingFireTicks(), 80));
         }
@@ -107,7 +111,7 @@ public final class LightningStabManager {
             int z = (int) Math.round(center.z + Math.sin(angle) * distance);
             BlockPos base = level.getHeightmapPos(net.minecraft.world.level.levelgen.Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, new BlockPos(x, origin.getY(), z));
             int startDelay = level.random.nextInt(9);
-            PENDING_PILLARS.add(new PendingPillar(level, base.immutable(), startDelay, PILLAR_DURATION_TICKS));
+            PENDING_PILLARS.add(new PendingPillar(level, base.immutable(), startDelay, PILLAR_DURATION_TICKS, damagePlayers));
         }
     }
 
@@ -127,14 +131,14 @@ public final class LightningStabManager {
         }
     }
 
-    private static void damageAroundPillar(ServerLevel level, BlockPos base) {
+    private static void damageAroundPillar(ServerLevel level, BlockPos base, boolean damagePlayers) {
         Vec3 center = Vec3.atCenterOf(base);
         AABB box = new AABB(
                 center.x - 1.2D, center.y - 0.5D, center.z - 1.2D,
                 center.x + 1.2D, center.y + 3.0D, center.z + 1.2D
         );
         for (LivingEntity entity : level.getEntitiesOfClass(LivingEntity.class, box,
-                e -> e.isAlive() && !(e instanceof Player))) {
+                e -> e.isAlive() && (damagePlayers || !(e instanceof Player)))) {
             entity.hurt(level.damageSources().onFire(), PILLAR_DAMAGE);
             entity.setRemainingFireTicks(Math.max(entity.getRemainingFireTicks(), 60));
         }
@@ -144,11 +148,13 @@ public final class LightningStabManager {
         private final ServerLevel level;
         private final BlockPos origin;
         private int delayTicks;
+        private final boolean damagePlayers;
 
-        private PendingCast(ServerLevel level, BlockPos origin, int delayTicks) {
+        private PendingCast(ServerLevel level, BlockPos origin, int delayTicks, boolean damagePlayers) {
             this.level = level;
             this.origin = origin;
             this.delayTicks = delayTicks;
+            this.damagePlayers = damagePlayers;
         }
     }
 
@@ -158,13 +164,15 @@ public final class LightningStabManager {
         private int startDelayTicks;
         private int ticksRemaining;
         private boolean soundPlayed;
+        private final boolean damagePlayers;
 
-        private PendingPillar(ServerLevel level, BlockPos base, int startDelayTicks, int ticksRemaining) {
+        private PendingPillar(ServerLevel level, BlockPos base, int startDelayTicks, int ticksRemaining, boolean damagePlayers) {
             this.level = level;
             this.base = base;
             this.startDelayTicks = startDelayTicks;
             this.ticksRemaining = ticksRemaining;
             this.soundPlayed = false;
+            this.damagePlayers = damagePlayers;
         }
     }
 }

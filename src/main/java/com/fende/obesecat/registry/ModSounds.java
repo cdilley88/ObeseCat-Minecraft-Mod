@@ -27,6 +27,7 @@ public final class ModSounds {
     public static final DeferredHolder<SoundEvent, SoundEvent> CRUSH_PUNCH_BACK = register("item.crushpunchback");
     public static final DeferredHolder<SoundEvent, SoundEvent> CRUSH_PUNCH_BLADE = register("item.crushpunchblade");
     public static final DeferredHolder<SoundEvent, SoundEvent> LIGHTNING_STAB_FLAME = register("item.lightningstabflame");
+    public static final DeferredHolder<SoundEvent, SoundEvent> ION_STORM_WARNING = register("item.ionstormwarning");
     public static final DeferredHolder<SoundEvent, SoundEvent> HOLY_EXPLOSION = register("item.holyexplosion");
     public static final DeferredHolder<SoundEvent, SoundEvent> TOILET_STINK_1 = register("block.toilet.stink1");
     public static final DeferredHolder<SoundEvent, SoundEvent> TOILET_STINK_2 = register("block.toilet.stink2");

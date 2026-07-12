@@ -19,6 +19,7 @@ import com.fende.obesecat.item.HellhoundPacoItem;
 import com.fende.obesecat.item.HolyExplosionSwordItem;
 import com.fende.obesecat.item.HolySwordItem;
 import com.fende.obesecat.item.JRobertPacoheimerItem;
+import com.fende.obesecat.item.IonStormStickItem;
 import com.fende.obesecat.item.LightningStabSwordItem;
 import com.fende.obesecat.item.MrKittysPawsItem;
 import com.fende.obesecat.item.ManhattanPhysicistSpawnEggItem;
@@ -27,6 +28,7 @@ import com.fende.obesecat.item.PacoItem;
 import com.fende.obesecat.item.SniperPacoItem;
 import com.fende.obesecat.item.SplitPunchSwordItem;
 import com.fende.obesecat.item.StasisSwordItem;
+import com.fende.obesecat.item.StarterHomeItem;
 import com.fende.obesecat.item.TimeDominoItem;
 import com.fende.obesecat.item.TinyPlanetItem;
 import com.fende.obesecat.item.TransmutationCubeItem;
@@ -206,6 +208,18 @@ public final class ModItems {
                     .rarity(Rarity.EPIC)
     );
 
+    public static final DeferredItem<StarterHomeItem> EMERGENCY_STARTER_HOME = ITEMS.registerItem(
+            "emergency_starter_home",
+            properties -> new StarterHomeItem(properties, "emergencystarterhome", "item.obesecat.emergency_starter_home.caption", false, 6),
+            new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)
+    );
+
+    public static final DeferredItem<StarterHomeItem> LUXURY_STARTER_HOME = ITEMS.registerItem(
+            "luxury_starter_home",
+            properties -> new StarterHomeItem(properties, "luxurystarterhome", "item.obesecat.luxury_starter_home.caption", true, 0),
+            new Item.Properties().stacksTo(1).rarity(Rarity.RARE)
+    );
+
     public static final DeferredItem<ConcussivePacoItem> CONCUSSIVE_PACO = ITEMS.registerItem(
             "concussive_paco",
             ConcussivePacoItem::new,
@@ -287,6 +301,11 @@ public final class ModItems {
     public static final DeferredItem<Item> OPPENHEIMERS_HAT = ITEMS.registerSimpleItem(
             "oppenheimers_hat",
             new Item.Properties().stacksTo(1).rarity(Rarity.RARE)
+    );
+
+    public static final DeferredItem<IonStormStickItem> ION_STORM_STICK = ITEMS.registerItem(
+            "ion_storm_stick", IonStormStickItem::new,
+            new Item.Properties().stacksTo(1).rarity(Rarity.EPIC)
     );
 
     public static final DeferredItem<BoomStickItem> BOOM_STICK = ITEMS.registerItem(
