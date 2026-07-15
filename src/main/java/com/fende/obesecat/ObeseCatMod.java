@@ -1,6 +1,7 @@
 package com.fende.obesecat;
 
 import com.fende.obesecat.registry.ModBlocks;
+import com.fende.obesecat.registry.ModBlockEntities;
 import com.fende.obesecat.registry.ModEntities;
 import com.fende.obesecat.registry.ModItems;
 import com.fende.obesecat.registry.ModRecipeTypes;
@@ -25,6 +26,8 @@ import com.fende.obesecat.world.MrKittysPawsManager;
 import com.fende.obesecat.world.NuclearCatExplosion;
 import com.fende.obesecat.world.NightVisionMrKittyManager;
 import com.fende.obesecat.world.PacoBarkBurst;
+import com.fende.obesecat.world.ParadoxSummonManager;
+import com.fende.obesecat.world.VeritasSummonManager;
 import com.fende.obesecat.world.SammyCrossManager;
 import com.fende.obesecat.world.SniperPacoManager;
 import com.fende.obesecat.world.SplitPunchManager;
@@ -49,6 +52,7 @@ public class ObeseCatMod {
 
     public ObeseCatMod(IEventBus modEventBus) {
         ModBlocks.BLOCKS.register(modEventBus);
+        ModBlockEntities.BLOCK_ENTITIES.register(modEventBus);
         ModEntities.ENTITY_TYPES.register(modEventBus);
         ModItems.ITEMS.register(modEventBus);
         ModRecipeTypes.RECIPE_TYPES.register(modEventBus);
@@ -67,6 +71,8 @@ public class ObeseCatMod {
         NeoForge.EVENT_BUS.addListener(EmberSingularityMagnet::onLevelTick);
         NeoForge.EVENT_BUS.addListener(NightVisionMrKittyManager::onLevelTick);
         NeoForge.EVENT_BUS.addListener(PacoBarkBurst::onLevelTick);
+        NeoForge.EVENT_BUS.addListener(ParadoxSummonManager::onLevelTick);
+        NeoForge.EVENT_BUS.addListener(VeritasSummonManager::onLevelTick);
         NeoForge.EVENT_BUS.addListener(SniperPacoManager::onAttackEntity);
         NeoForge.EVENT_BUS.addListener(SplitPunchManager::onLevelTick);
         NeoForge.EVENT_BUS.addListener(CrushPunchManager::onLevelTick);
@@ -108,6 +114,8 @@ public class ObeseCatMod {
         }
         if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
             event.accept(ModItems.TRINITITE.get());
+            event.accept(ModItems.OVERDRIVE_ROD.get());
+            event.accept(ModItems.OVERDRIVE_POWDER.get());
             event.accept(ModItems.OPPENHEIMERS_HAT.get());
             event.accept(ModItems.VIRTS_LEG.get());
             event.accept(ModItems.TP_TOME.get());
@@ -156,10 +164,13 @@ public class ObeseCatMod {
             event.accept(ModItems.BIG_FIRE_BOOM_STICK.get());
             event.accept(ModItems.ION_STORM_STICK.get());
             event.accept(ModItems.SAMMYS_CROSS.get());
+            event.accept(ModItems.PARADOX.get());
+            event.accept(ModItems.VERITAS.get());
         }
         if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES) {
             event.accept(ModItems.TOILET.get());
             event.accept(ModItems.TRINITITE.get());
+            event.accept(ModItems.ECHOING_BLAST_CHAMBER.get());
             event.accept(ModItems.NUCLEAR_LIBRARY.get());
             event.accept(ModItems.EMBER_SINGULARITY.get());
             event.accept(ModItems.WORMHOLE_EMBER.get());

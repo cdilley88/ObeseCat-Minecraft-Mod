@@ -2,6 +2,7 @@ package com.fende.obesecat.registry;
 
 import com.fende.obesecat.ObeseCatMod;
 import com.fende.obesecat.inventory.TransmutationCubeMenu;
+import com.fende.obesecat.inventory.EchoingBlastChamberMenu;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.inventory.MenuType;
 import net.neoforged.neoforge.common.extensions.IMenuTypeExtension;
@@ -16,6 +17,10 @@ public final class ModMenus {
             () -> IMenuTypeExtension.create(TransmutationCubeMenu::fromNetwork)
     );
 
+    public static final DeferredHolder<MenuType<?>, MenuType<EchoingBlastChamberMenu>> ECHOING_BLAST_CHAMBER = MENUS.register(
+            "echoing_blast_chamber",
+            () -> IMenuTypeExtension.create(EchoingBlastChamberMenu::fromNetwork)
+    );
     private ModMenus() {
     }
 }

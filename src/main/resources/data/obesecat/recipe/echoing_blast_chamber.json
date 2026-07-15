@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": ["ETE", "GBG", "ETE"],
+  "key": {
+    "E": { "item": "minecraft:echo_shard" },
+    "T": { "item": "obesecat:trinitite" },
+    "G": { "item": "minecraft:tinted_glass" },
+    "B": { "item": "minecraft:blast_furnace" }
+  },
+  "result": { "id": "obesecat:echoing_blast_chamber", "count": 1 }
+}

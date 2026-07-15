@@ -13,6 +13,7 @@ import com.fende.obesecat.item.ConcussivePacoItem;
 import com.fende.obesecat.item.DominoItem;
 import com.fende.obesecat.item.EmberSingularityItem;
 import com.fende.obesecat.item.EnigmaEmberItem;
+import com.fende.obesecat.item.EchoingBlastChamberItem;
 import com.fende.obesecat.item.FireBoomStickItem;
 import com.fende.obesecat.item.FireStickItem;
 import com.fende.obesecat.item.HellhoundPacoItem;
@@ -25,6 +26,8 @@ import com.fende.obesecat.item.MrKittysPawsItem;
 import com.fende.obesecat.item.ManhattanPhysicistSpawnEggItem;
 import com.fende.obesecat.item.NightVisionMrKittyItem;
 import com.fende.obesecat.item.PacoItem;
+import com.fende.obesecat.item.ParadoxItem;
+import com.fende.obesecat.item.VeritasItem;
 import com.fende.obesecat.item.SniperPacoItem;
 import com.fende.obesecat.item.SplitPunchSwordItem;
 import com.fende.obesecat.item.StasisSwordItem;
@@ -200,6 +203,17 @@ public final class ModItems {
             new Item.Properties().stacksTo(1).rarity(Rarity.RARE)
     );
 
+    public static final DeferredItem<ParadoxItem> PARADOX = ITEMS.registerItem(
+            "paradox",
+            ParadoxItem::new,
+            new Item.Properties().stacksTo(1).rarity(Rarity.RARE)
+    );
+    public static final DeferredItem<VeritasItem> VERITAS = ITEMS.registerItem(
+            "veritas",
+            VeritasItem::new,
+            new Item.Properties().stacksTo(1).rarity(Rarity.RARE)
+    );
+
     public static final DeferredItem<CaptionedItem> SAMMYS_CROSS = ITEMS.registerItem(
             "sammy_cross",
             properties -> new CaptionedItem(properties, "item.obesecat.sammy_cross.caption"),
@@ -362,6 +376,16 @@ public final class ModItems {
             skillSwordProperties(Rarity.RARE)
     );
 
+    // Internal billboard item carrying the full-resolution summon art.
+    public static final DeferredItem<Item> PARADOX_GFX = ITEMS.registerSimpleItem(
+            "paradox_gfx",
+            new Item.Properties().stacksTo(1)
+    );
+    public static final DeferredItem<Item> VERITAS_GFX = ITEMS.registerSimpleItem(
+            "veritas_gfx",
+            new Item.Properties().stacksTo(1)
+    );
+
     // Internal display-only item — carries the SplitPunchGFX texture for the cast ItemDisplay entity.
     public static final DeferredItem<Item> SPLIT_PUNCH_GFX = ITEMS.registerSimpleItem(
             "split_punch_gfx",
@@ -389,6 +413,20 @@ public final class ModItems {
             () -> new BlockItem(ModBlocks.NUCLEAR_LIBRARY.get(), new Item.Properties().rarity(Rarity.UNCOMMON))
     );
 
+    public static final DeferredItem<BlockItem> ECHOING_BLAST_CHAMBER = ITEMS.register(
+            "echoing_blast_chamber",
+            () -> new EchoingBlastChamberItem(ModBlocks.ECHOING_BLAST_CHAMBER.get(), new Item.Properties().rarity(Rarity.EPIC))
+    );
+
+    public static final DeferredItem<Item> OVERDRIVE_ROD = ITEMS.registerSimpleItem(
+            "overdrive_rod",
+            new Item.Properties().rarity(Rarity.EPIC)
+    );
+
+    public static final DeferredItem<Item> OVERDRIVE_POWDER = ITEMS.registerSimpleItem(
+            "overdrive_powder",
+            new Item.Properties().rarity(Rarity.EPIC)
+    );
     private ModItems() {
     }
 

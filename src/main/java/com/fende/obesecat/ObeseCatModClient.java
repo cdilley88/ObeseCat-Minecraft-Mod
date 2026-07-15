@@ -9,6 +9,7 @@ import com.fende.obesecat.client.ObeseCatRenderer;
 import com.fende.obesecat.client.ObeseCatTimerOverlay;
 import com.fende.obesecat.client.SniperPacoInputHandler;
 import com.fende.obesecat.client.TransmutationCubeScreen;
+import com.fende.obesecat.client.EchoingBlastChamberScreen;
 import com.fende.obesecat.client.model.FatManModel;
 import com.fende.obesecat.entity.ObeseCat;
 import com.fende.obesecat.registry.ModBlocks;
@@ -69,5 +70,6 @@ public class ObeseCatModClient {
 
     private void registerMenuScreens(RegisterMenuScreensEvent event) {
         event.register(ModMenus.TRANSMUTATION_CUBE.get(), TransmutationCubeScreen::new);
+        event.register(ModMenus.ECHOING_BLAST_CHAMBER.get(), EchoingBlastChamberScreen::new);
     }
 }

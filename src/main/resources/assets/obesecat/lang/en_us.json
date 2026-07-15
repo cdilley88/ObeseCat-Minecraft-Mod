@@ -106,6 +106,10 @@
   "item.obesecat.transmutation_cube.caption": "You have quite a treasure...",
   "item.obesecat.sammy_cross": "Sammy's Cross",
   "item.obesecat.sammy_cross.caption": "9/29/25",
+  "item.obesecat.paradox": "Paradox",
+  "item.obesecat.paradox.caption": "It's Not RAEL",
+  "item.obesecat.veritas": "Veritas",
+  "item.obesecat.veritas.caption": "Purifier",
   "container.obesecat.transmutation_cube": "Transmutation Cube",
   "container.obesecat.transmutation_cube.transmute": "Transmutation",
   "item.obesecat.emergency_starter_home": "Emergency Starter Home",
@@ -118,5 +122,13 @@
   "message.obesecat.starter_home.bad_height": "There is not enough build height here.",
   "message.obesecat.starter_home.not_loaded": "The destination chunk is not fully loaded.",
   "message.obesecat.starter_home.failed": "The starter home could not be placed.",
-  "message.obesecat.starter_home.placed": "Starter home deployed."
+  "message.obesecat.starter_home.placed": "Starter home deployed.",
+  "block.obesecat.echoing_blast_chamber": "Echoing Blast Chamber",
+  "item.obesecat.overdrive_rod": "Overdrive Rod",
+  "item.obesecat.overdrive_powder": "Overdrive Powder",
+  "container.obesecat.echoing_blast_chamber": "Echoing Blast Chamber",
+  "block.obesecat.echoing_blast_chamber.lore.1": "Recreates the pressure wave of an impossible explosion.",
+  "block.obesecat.echoing_blast_chamber.lore.2": "Trinitite stores the memory. Echo Shards sustain the resonance.",
+  "block.obesecat.echoing_blast_chamber.lore.3": "Heat and turbulence are forced into harmonic compression,",
+  "block.obesecat.echoing_blast_chamber.lore.4": "permanently overdriving the rod."
 }

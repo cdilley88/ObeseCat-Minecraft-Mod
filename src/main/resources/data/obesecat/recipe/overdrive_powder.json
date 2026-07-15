@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    { "item": "obesecat:overdrive_rod" }
+  ],
+  "result": {
+    "id": "obesecat:overdrive_powder",
+    "count": 2
+  }
+}

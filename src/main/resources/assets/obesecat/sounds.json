@@ -49,6 +49,16 @@
       "obesecat:item/swordskillcast"
     ]
   },
+  "item.summoncast": {
+    "sounds": [
+      "obesecat:item/summon"
+    ]
+  },
+  "item.paradoxsummon": {
+    "sounds": [
+      "obesecat:item/paradoxsound"
+    ]
+  },
   "item.crushpunchback": {
     "sounds": [
       "obesecat:item/crushpunchback"

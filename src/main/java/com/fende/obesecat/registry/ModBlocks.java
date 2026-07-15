@@ -5,6 +5,7 @@ import com.fende.obesecat.block.AtomicFireBlock;
 import com.fende.obesecat.block.NuclearLibraryBlock;
 import com.fende.obesecat.block.TrinititeBlock;
 import com.fende.obesecat.block.ToiletBlock;
+import com.fende.obesecat.block.EchoingBlastChamberBlock;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -31,6 +32,10 @@ public final class ModBlocks {
             () -> new NuclearLibraryBlock()
     );
 
+    public static final DeferredBlock<EchoingBlastChamberBlock> ECHOING_BLAST_CHAMBER = BLOCKS.register(
+            "echoing_blast_chamber",
+            () -> new EchoingBlastChamberBlock()
+    );
     private ModBlocks() {
     }
 }

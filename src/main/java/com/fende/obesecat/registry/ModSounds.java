@@ -24,6 +24,8 @@ public final class ModSounds {
     public static final DeferredHolder<SoundEvent, SoundEvent> STASIS_ICE = register("item.stasisice");
     public static final DeferredHolder<SoundEvent, SoundEvent> SPLIT_PUNCH = register("item.splitpunch");
     public static final DeferredHolder<SoundEvent, SoundEvent> SWORD_SKILL_CAST = register("item.swordskillcast");
+    public static final DeferredHolder<SoundEvent, SoundEvent> SUMMON_CAST = register("item.summoncast");
+    public static final DeferredHolder<SoundEvent, SoundEvent> PARADOX_SUMMON = register("item.paradoxsummon");
     public static final DeferredHolder<SoundEvent, SoundEvent> CRUSH_PUNCH_BACK = register("item.crushpunchback");
     public static final DeferredHolder<SoundEvent, SoundEvent> CRUSH_PUNCH_BLADE = register("item.crushpunchblade");
     public static final DeferredHolder<SoundEvent, SoundEvent> LIGHTNING_STAB_FLAME = register("item.lightningstabflame");
