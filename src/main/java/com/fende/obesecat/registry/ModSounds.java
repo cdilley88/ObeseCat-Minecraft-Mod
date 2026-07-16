@@ -31,6 +31,12 @@ public final class ModSounds {
     public static final DeferredHolder<SoundEvent, SoundEvent> LIGHTNING_STAB_FLAME = register("item.lightningstabflame");
     public static final DeferredHolder<SoundEvent, SoundEvent> ION_STORM_WARNING = register("item.ionstormwarning");
     public static final DeferredHolder<SoundEvent, SoundEvent> HOLY_EXPLOSION = register("item.holyexplosion");
+    public static final DeferredHolder<SoundEvent, SoundEvent> SHELLBUST_STAB_CHARGE = register("item.shellbuststabcharge");
+    public static final DeferredHolder<SoundEvent, SoundEvent> SHELLBUST_STAB_IMPACT = register("item.shellbuststabimpact");
+    public static final DeferredHolder<SoundEvent, SoundEvent> BLASTAR_PUNCH_IMPACT = register("item.blastarpunchimpact");
+    public static final DeferredHolder<SoundEvent, SoundEvent> HELLCRY_PUNCH_IMPACT = register("item.hellcrypunchimpact");
+    public static final DeferredHolder<SoundEvent, SoundEvent> VERITAS_SUMMON = register("item.veritassummon");
+    public static final DeferredHolder<SoundEvent, SoundEvent> ICEWOLF_BITE_IMPACT = register("item.icewolfbiteimpact");
     public static final DeferredHolder<SoundEvent, SoundEvent> TOILET_STINK_1 = register("block.toilet.stink1");
     public static final DeferredHolder<SoundEvent, SoundEvent> TOILET_STINK_2 = register("block.toilet.stink2");
     public static final DeferredHolder<SoundEvent, SoundEvent> TOILET_STINK_3 = register("block.toilet.stink3");
@@ -44,3 +50,4 @@ public final class ModSounds {
     private ModSounds() {
     }
 }
+

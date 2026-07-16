@@ -24,6 +24,11 @@ public class StasisSwordItem extends SkillSwordItem {
     }
 
     @Override
+    protected String skillClassKey() {
+        return "item.obesecat.skill_class.holy_sword";
+    }
+
+    @Override
     protected String captionKey() {
         return "item.obesecat.stasis_sword.caption";
     }
@@ -52,3 +57,4 @@ public class StasisSwordItem extends SkillSwordItem {
         return blockHit;
     }
 }
+

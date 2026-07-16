@@ -84,6 +84,28 @@
       "obesecat:item/holyexplosion"
     ]
   },
+  "item.shellbuststabcharge": {
+    "sounds": [
+      "obesecat:item/shellbuststabcharge"
+    ]
+  },
+  "item.shellbuststabimpact": {
+    "sounds": [
+      "obesecat:item/shellbuststabimpact"
+    ]
+  },
+  "item.blastarpunchimpact": {
+    "sounds": ["obesecat:item/blastarpunchimpact"]
+  },
+  "item.hellcrypunchimpact": {
+    "sounds": ["obesecat:item/hellcrypunchimpact"]
+  },
+  "item.veritassummon": {
+    "sounds": ["obesecat:item/veritassummon"]
+  },
+  "item.icewolfbiteimpact": {
+    "sounds": ["obesecat:item/icewolfbiteimpact"]
+  },
   "block.toilet.stink1": {
     "sounds": [
       "obesecat:block/toilet/stink1"
@@ -115,3 +137,4 @@
     ]
   }
 }
+

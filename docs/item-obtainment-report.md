@@ -180,7 +180,7 @@ Combined chance notes, assuming independent pools:
 
 Painting variants use the vanilla Painting item, not a new mod item. Survival cost is the vanilla Painting recipe cost: 8 sticks + 1 wool for 1 Painting item.
 
-Vanilla placement picks from placeable variants that fit the wall, then chooses randomly among the largest surviving variants. If the wall is constrained to a 2x4 valid painting space, the current ObeseCat 2x4 paintings are Domino, Dorito, Ember, and Paco, so each has a 25% chance before any future 2x4 variants are added. On larger valid walls, larger paintings can win the selection pass before these 2x4 variants are considered.
+Vanilla placement picks from placeable variants that fit the wall, then chooses randomly among the largest surviving variants. If the wall is constrained to a 2x4 valid painting space, the current ObeseCat 2x4 paintings are Domino, Dorito, Ember, and Paco, so each has a 50% chance before any future 2x4 variants are added. On larger valid walls, larger paintings can win the selection pass before these 2x4 variants are considered.
 
 | Variant | Item display | Title | Artist | Size | Texture | Survival obtainment |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -218,6 +218,11 @@ Vanilla placement picks from placeable variants that fit the wall, then chooses 
 | Atomic Paco | Crafting | Hellhound Paco + Plutonium Cat Food. Hellhound Paco now comes from Manhattan Physicist trading, making the notable minimum cost 1 Trinitite + 1 emerald. |
 | Hellhound Paco | Manhattan Physicist trade | Spawned Manhattan Physicist in a Manhattan Bunker, 1 Trinitite, 12 max uses, 1 XP, 0.05 price multiplier. |
 | Holy Sword | Loot | Ancient City chest loot, 12%. Uncommon rarity. Serves as the base Transmutation Cube sword ingredient and intentionally passes on right-click for now. |
+| Mighty Sword | Loot | Ancient City chest loot, 12%. Uncommon rarity. Serves as the base item for the Mighty Sword branch of FFT sword skills and intentionally passes on right-click for now. |
+| Shellbust Stab | Transmutation Cube | Exactly one Mighty Sword and one Iron Chestplate, in any order, with no extra items. Rare rarity. Deals area damage and has a 50% chance to make its primary target drop worn chest armor. Caption: Armor won't help the heart stay sharp... |
+| Blastar Punch | Transmutation Cube | Mighty Sword + Iron Helmet. Rare. Deals area damage; nearest target has a 50% chance to drop worn head armor. |
+| Hellcry Punch | Transmutation Cube | Mighty Sword + Iron Sword. Rare. Deals area damage; nearest target has a 50% chance to drop its main-hand weapon. |
+| Icewolf Bite | Transmutation Cube | Mighty Sword + Shield. Rare. Deals area damage; nearest target has a 50% chance to drop its off-hand accessory. |
 | Holy Knight Token | No survival path found yet | Registered as a rare captioned item with caption `A blade remembers its oath.` It is currently only used as the exact catalyst input for the Stasis Sword transmutation. |
 | Stasis Sword | Transmutation Cube | Exactly one Holy Sword and one Holy Knight Token, in any order, in any of the cube's 12 slots; no extra items or counts. Output stays inside the cube. Rare rarity. Caption: Life is short... Bury! |
 | Oppenheimer's Hat | Manhattan Physicist trade | Spawned Manhattan Physicist in a Manhattan Bunker, 5 Trinitite, 12 max uses, 1 XP, 0.05 price multiplier. |

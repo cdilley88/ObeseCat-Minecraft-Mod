@@ -24,6 +24,11 @@ public class LightningStabSwordItem extends SkillSwordItem {
     }
 
     @Override
+    protected String skillClassKey() {
+        return "item.obesecat.skill_class.holy_sword";
+    }
+
+    @Override
     protected String captionKey() {
         return "item.obesecat.lightning_stab.caption";
     }
@@ -52,3 +57,4 @@ public class LightningStabSwordItem extends SkillSwordItem {
         return blockHit;
     }
 }
+

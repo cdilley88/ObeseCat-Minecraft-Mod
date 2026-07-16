@@ -24,6 +24,11 @@ public class CrushPunchSwordItem extends SkillSwordItem {
     }
 
     @Override
+    protected String skillClassKey() {
+        return "item.obesecat.skill_class.holy_sword";
+    }
+
+    @Override
     protected String captionKey() {
         return "item.obesecat.crush_punch.caption";
     }
@@ -52,3 +57,4 @@ public class CrushPunchSwordItem extends SkillSwordItem {
         return blockHit;
     }
 }
+

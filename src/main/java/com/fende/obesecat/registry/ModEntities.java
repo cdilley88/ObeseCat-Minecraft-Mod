@@ -3,6 +3,7 @@ package com.fende.obesecat.registry;
 import com.fende.obesecat.ObeseCatMod;
 import com.fende.obesecat.entity.CowKing;
 import com.fende.obesecat.entity.ObeseCat;
+import com.fende.obesecat.entity.TargetDummy;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
@@ -27,6 +28,11 @@ public final class ModEntities {
                     .clientTrackingRange(8)
                     .build(ObeseCatMod.MOD_ID + ":cow_king")
     );
+
+    public static final DeferredHolder<EntityType<?>, EntityType<TargetDummy>> TARGET_DUMMY = ENTITY_TYPES.register(
+            "target_dummy", () -> EntityType.Builder.of(TargetDummy::new, MobCategory.MISC)
+                    .sized(0.6F, 1.8F).clientTrackingRange(32)
+                    .build(ObeseCatMod.MOD_ID + ":target_dummy"));
 
     private ModEntities() {
     }

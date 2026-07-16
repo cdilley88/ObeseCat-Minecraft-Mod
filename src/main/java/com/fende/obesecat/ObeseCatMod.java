@@ -18,10 +18,12 @@ import com.fende.obesecat.world.CrushPunchManager;
 import com.fende.obesecat.world.EmberSingularityMagnet;
 import com.fende.obesecat.world.HolyExplosionManager;
 import com.fende.obesecat.world.LightningStabManager;
+import com.fende.obesecat.world.ShellbustStabManager;
 import com.fende.obesecat.world.IonStormManager;
 import com.fende.obesecat.world.ManhattanBunkerDebug;
 import com.fende.obesecat.world.ManhattanBunkerResidentSpawner;
 import com.fende.obesecat.world.ManhattanPhysicistSpawner;
+import com.fende.obesecat.world.MightySwordBreakManager;
 import com.fende.obesecat.world.MrKittysPawsManager;
 import com.fende.obesecat.world.NuclearCatExplosion;
 import com.fende.obesecat.world.NightVisionMrKittyManager;
@@ -36,6 +38,7 @@ import com.fende.obesecat.world.TinyPlanetProtection;
 import com.fende.obesecat.world.ToiletSinkAnimation;
 import net.minecraft.world.entity.animal.Cat;
 import net.minecraft.world.entity.monster.Monster;
+import com.fende.obesecat.entity.TargetDummy;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
@@ -79,6 +82,8 @@ public class ObeseCatMod {
         NeoForge.EVENT_BUS.addListener(LightningStabManager::onLevelTick);
         NeoForge.EVENT_BUS.addListener(IonStormManager::onLevelTick);
         NeoForge.EVENT_BUS.addListener(HolyExplosionManager::onLevelTick);
+        NeoForge.EVENT_BUS.addListener(ShellbustStabManager::onLevelTick);
+        NeoForge.EVENT_BUS.addListener(MightySwordBreakManager::onLevelTick);
         NeoForge.EVENT_BUS.addListener(StasisSwordManager::onLevelTick);
         NeoForge.EVENT_BUS.addListener(TinyPlanetProtection::onLevelTick);
         NeoForge.EVENT_BUS.addListener(ToiletSinkAnimation::onLevelTick);
@@ -100,6 +105,7 @@ public class ObeseCatMod {
     private void registerAttributes(EntityAttributeCreationEvent event) {
         event.put(ModEntities.OBESE_CAT.get(), Cat.createAttributes().build());
         event.put(ModEntities.COW_KING.get(), Monster.createMonsterAttributes().build());
+        event.put(ModEntities.TARGET_DUMMY.get(), TargetDummy.createAttributes().build());
     }
 
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
@@ -152,11 +158,16 @@ public class ObeseCatMod {
             event.accept(ModItems.HELLHOUND_PACO.get());
             event.accept(ModItems.OPPENHEIMERS_HAT.get());
             event.accept(ModItems.HOLY_SWORD.get());
+            event.accept(ModItems.MIGHTY_SWORD.get());
             event.accept(ModItems.STASIS_SWORD.get());
             event.accept(ModItems.SPLIT_PUNCH.get());
             event.accept(ModItems.CRUSH_PUNCH.get());
             event.accept(ModItems.LIGHTNING_STAB.get());
             event.accept(ModItems.HOLY_EXPLOSION.get());
+            event.accept(ModItems.SHELLBUST_STAB.get());
+            event.accept(ModItems.BLASTAR_PUNCH.get());
+            event.accept(ModItems.HELLCRY_PUNCH.get());
+            event.accept(ModItems.ICEWOLF_BITE.get());
             event.accept(ModItems.DARK_KNIGHT_BRACER.get());
             event.accept(ModItems.BOOM_STICK.get());
             event.accept(ModItems.FIRE_STICK.get());
@@ -177,6 +188,7 @@ public class ObeseCatMod {
             event.accept(ModItems.ENIGMA_EMBER.get());
             event.accept(ModItems.TINY_PLANET.get());
             event.accept(ModItems.TRANSMUTATION_CUBE.get());
+            event.accept(ModItems.TARGET_DUMMY.get());
             event.accept(ModItems.NIGHT_VISION_MR_KITTY.get());
             event.accept(ModItems.MR_KITTYS_PAWS.get());
             event.accept(ModItems.BOOM_STICK.get());

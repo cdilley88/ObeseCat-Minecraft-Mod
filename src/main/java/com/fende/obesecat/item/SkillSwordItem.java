@@ -99,6 +99,10 @@ public class SkillSwordItem extends Item {
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
         super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
+        String skillClassKey = skillClassKey();
+        if (skillClassKey != null) {
+            tooltipComponents.add(Component.translatable(skillClassKey).withStyle(ChatFormatting.DARK_PURPLE));
+        }
         String captionKey = captionKey();
         if (captionKey != null) {
             tooltipComponents.add(Component.translatable(captionKey).withStyle(ChatFormatting.YELLOW));
@@ -111,6 +115,11 @@ public class SkillSwordItem extends Item {
 
     protected boolean isFoilByDefault() {
         return false;
+    }
+
+    @Nullable
+    protected String skillClassKey() {
+        return null;
     }
 
     @Nullable
@@ -130,3 +139,4 @@ public class SkillSwordItem extends Item {
         return false;
     }
 }
+

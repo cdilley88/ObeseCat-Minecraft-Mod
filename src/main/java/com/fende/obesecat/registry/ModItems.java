@@ -19,6 +19,10 @@ import com.fende.obesecat.item.FireStickItem;
 import com.fende.obesecat.item.HellhoundPacoItem;
 import com.fende.obesecat.item.HolyExplosionSwordItem;
 import com.fende.obesecat.item.HolySwordItem;
+import com.fende.obesecat.item.MightySwordItem;
+import com.fende.obesecat.item.MightySwordBreakItem;
+import com.fende.obesecat.world.MightySwordBreakManager;
+import com.fende.obesecat.item.ShellbustStabSwordItem;
 import com.fende.obesecat.item.JRobertPacoheimerItem;
 import com.fende.obesecat.item.IonStormStickItem;
 import com.fende.obesecat.item.LightningStabSwordItem;
@@ -33,6 +37,7 @@ import com.fende.obesecat.item.SplitPunchSwordItem;
 import com.fende.obesecat.item.StasisSwordItem;
 import com.fende.obesecat.item.StarterHomeItem;
 import com.fende.obesecat.item.TimeDominoItem;
+import com.fende.obesecat.item.TargetDummyItem;
 import com.fende.obesecat.item.TinyPlanetItem;
 import com.fende.obesecat.item.TransmutationCubeItem;
 import com.fende.obesecat.item.WeatherDominoItem;
@@ -66,6 +71,9 @@ public final class ModItems {
             ManhattanPhysicistSpawnEggItem::new,
             new Item.Properties().stacksTo(64)
     );
+
+    public static final DeferredItem<TargetDummyItem> TARGET_DUMMY = ITEMS.registerItem(
+            "target_dummy", TargetDummyItem::new, new Item.Properties().stacksTo(16));
 
     public static final DeferredItem<Item> PLUTONIUM_CAT_FOOD = ITEMS.registerSimpleItem(
             "plutonium_cat_food",
@@ -282,6 +290,12 @@ public final class ModItems {
             skillSwordProperties(Rarity.UNCOMMON)
     );
 
+    public static final DeferredItem<MightySwordItem> MIGHTY_SWORD = ITEMS.registerItem(
+            "mighty_sword",
+            MightySwordItem::new,
+            skillSwordProperties(Rarity.UNCOMMON)
+    );
+
     public static final DeferredItem<CaptionedItem> HOLY_KNIGHT_TOKEN = ITEMS.registerItem(
             "holy_knight_token",
             properties -> new CaptionedItem(properties, "item.obesecat.holy_knight_token.caption"),
@@ -376,6 +390,41 @@ public final class ModItems {
             skillSwordProperties(Rarity.RARE)
     );
 
+    public static final DeferredItem<ShellbustStabSwordItem> SHELLBUST_STAB = ITEMS.registerItem(
+            "shellbust_stab",
+            ShellbustStabSwordItem::new,
+            skillSwordProperties(Rarity.RARE)
+    );
+
+    public static final DeferredItem<MightySwordBreakItem> BLASTAR_PUNCH = ITEMS.registerItem(
+            "blastar_punch",
+            properties -> new MightySwordBreakItem(properties, MightySwordBreakManager.Skill.BLASTAR_PUNCH,
+                    "item.obesecat.blastar_punch.caption"),
+            skillSwordProperties(Rarity.RARE)
+    );
+
+    public static final DeferredItem<MightySwordBreakItem> HELLCRY_PUNCH = ITEMS.registerItem(
+            "hellcry_punch",
+            properties -> new MightySwordBreakItem(properties, MightySwordBreakManager.Skill.HELLCRY_PUNCH,
+                    "item.obesecat.hellcry_punch.caption"),
+            skillSwordProperties(Rarity.RARE)
+    );
+
+    public static final DeferredItem<MightySwordBreakItem> ICEWOLF_BITE = ITEMS.registerItem(
+            "icewolf_bite",
+            properties -> new MightySwordBreakItem(properties, MightySwordBreakManager.Skill.ICEWOLF_BITE,
+                    "item.obesecat.icewolf_bite.caption"),
+            skillSwordProperties(Rarity.RARE)
+    );
+
+    // Internal display-only item for the falling Blastar Punch meteor.
+    public static final DeferredItem<Item> BLASTAR_PUNCH_GFX = ITEMS.registerSimpleItem(
+            "blastar_punch_gfx", new Item.Properties().stacksTo(1));
+
+    // Internal display-only item for the Icewolf Bite snowstorm manifestation.
+    public static final DeferredItem<Item> ICEWOLF_BITE_GFX = ITEMS.registerSimpleItem(
+            "icewolf_bite_gfx", new Item.Properties().stacksTo(1));
+
     // Internal billboard item carrying the full-resolution summon art.
     public static final DeferredItem<Item> PARADOX_GFX = ITEMS.registerSimpleItem(
             "paradox_gfx",
@@ -397,6 +446,27 @@ public final class ModItems {
             "crush_punch_gfx",
             new Item.Properties().stacksTo(1)
     );
+
+    // Internal display-only items for the three-frame Shellbust Stab impact animation.
+    public static final DeferredItem<Item> SHELLBUST_STAB_GFX_1 = ITEMS.registerSimpleItem(
+            "shellbust_stab_gfx_1", new Item.Properties().stacksTo(1));
+    public static final DeferredItem<Item> SHELLBUST_STAB_GFX_2 = ITEMS.registerSimpleItem(
+            "shellbust_stab_gfx_2", new Item.Properties().stacksTo(1));
+    public static final DeferredItem<Item> SHELLBUST_STAB_GFX_3 = ITEMS.registerSimpleItem(
+            "shellbust_stab_gfx_3", new Item.Properties().stacksTo(1));
+    // Internal display-only items for the six-frame Hellcry Punch ground-stab animation.
+    public static final DeferredItem<Item> HELLCRY_PUNCH_GFX_1 = ITEMS.registerSimpleItem(
+            "hellcry_punch_gfx_1", new Item.Properties().stacksTo(1));
+    public static final DeferredItem<Item> HELLCRY_PUNCH_GFX_2 = ITEMS.registerSimpleItem(
+            "hellcry_punch_gfx_2", new Item.Properties().stacksTo(1));
+    public static final DeferredItem<Item> HELLCRY_PUNCH_GFX_3 = ITEMS.registerSimpleItem(
+            "hellcry_punch_gfx_3", new Item.Properties().stacksTo(1));
+    public static final DeferredItem<Item> HELLCRY_PUNCH_GFX_4 = ITEMS.registerSimpleItem(
+            "hellcry_punch_gfx_4", new Item.Properties().stacksTo(1));
+    public static final DeferredItem<Item> HELLCRY_PUNCH_GFX_5 = ITEMS.registerSimpleItem(
+            "hellcry_punch_gfx_5", new Item.Properties().stacksTo(1));
+    public static final DeferredItem<Item> HELLCRY_PUNCH_GFX_6 = ITEMS.registerSimpleItem(
+            "hellcry_punch_gfx_6", new Item.Properties().stacksTo(1));
 
     public static final DeferredItem<BlockItem> TOILET = ITEMS.register(
             "toilet",
@@ -438,3 +508,5 @@ public final class ModItems {
                 .component(DataComponents.TOOL, SwordItem.createToolProperties());
     }
 }
+
+

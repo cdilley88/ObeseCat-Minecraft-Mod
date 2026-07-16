@@ -89,6 +89,7 @@ public final class VeritasSummonManager {
 
     private static void manifest(ServerLevel level, BlockPos target) {
         Vec3 center = Vec3.atCenterOf(target);
+        LocalSoundHelper.playLocalized(level, center, ModSounds.VERITAS_SUMMON.get(), 64.0D, 1.0F, 1.0F);
         Display.ItemDisplay image = spawnImage(level, center.add(0.0D, 5.0D, 0.0D));
         long seed = level.getGameTime() ^ target.asLong() ^ 0x564552495441534CL;
         ATTACKS.add(new Attack(level, center, image, seed, ATTACK_TICKS));
@@ -174,3 +175,4 @@ public final class VeritasSummonManager {
         }
     }
 }
+

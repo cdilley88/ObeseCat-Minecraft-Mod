@@ -1,0 +1,17 @@
+{
+  "type": "obesecat:transmutation",
+  "ingredients": [
+    {
+      "item": "obesecat:mighty_sword",
+      "count": 1
+    },
+    {
+      "item": "minecraft:iron_chestplate",
+      "count": 1
+    }
+  ],
+  "result": {
+    "id": "obesecat:shellbust_stab",
+    "count": 1
+  }
+}
