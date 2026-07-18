@@ -11,6 +11,7 @@ import com.fende.obesecat.registry.ModNetworking;
 import com.fende.obesecat.registry.ModSounds;
 import com.fende.obesecat.registry.ModVillagerTrades;
 import com.fende.obesecat.registry.ModVillagers;
+import com.fende.obesecat.world.AequitasSummonManager;
 import com.fende.obesecat.world.AtomicFireSphere;
 import com.fende.obesecat.world.CowKingFortSpawner;
 import com.fende.obesecat.world.CowLevelSafetyManager;
@@ -26,9 +27,12 @@ import com.fende.obesecat.world.ManhattanPhysicistSpawner;
 import com.fende.obesecat.world.MightySwordBreakManager;
 import com.fende.obesecat.world.MrKittysPawsManager;
 import com.fende.obesecat.world.NuclearCatExplosion;
+import com.fende.obesecat.world.DarkSwordManager;
 import com.fende.obesecat.world.NightVisionMrKittyManager;
+import com.fende.obesecat.world.NightSwordManager;
 import com.fende.obesecat.world.PacoBarkBurst;
 import com.fende.obesecat.world.ParadoxSummonManager;
+import com.fende.obesecat.world.PraxisSummonManager;
 import com.fende.obesecat.world.VeritasSummonManager;
 import com.fende.obesecat.world.SammyCrossManager;
 import com.fende.obesecat.world.SniperPacoManager;
@@ -76,6 +80,8 @@ public class ObeseCatMod {
         NeoForge.EVENT_BUS.addListener(PacoBarkBurst::onLevelTick);
         NeoForge.EVENT_BUS.addListener(ParadoxSummonManager::onLevelTick);
         NeoForge.EVENT_BUS.addListener(VeritasSummonManager::onLevelTick);
+        NeoForge.EVENT_BUS.addListener(PraxisSummonManager::onLevelTick);
+        NeoForge.EVENT_BUS.addListener(AequitasSummonManager::onLevelTick);
         NeoForge.EVENT_BUS.addListener(SniperPacoManager::onAttackEntity);
         NeoForge.EVENT_BUS.addListener(SplitPunchManager::onLevelTick);
         NeoForge.EVENT_BUS.addListener(CrushPunchManager::onLevelTick);
@@ -84,6 +90,8 @@ public class ObeseCatMod {
         NeoForge.EVENT_BUS.addListener(HolyExplosionManager::onLevelTick);
         NeoForge.EVENT_BUS.addListener(ShellbustStabManager::onLevelTick);
         NeoForge.EVENT_BUS.addListener(MightySwordBreakManager::onLevelTick);
+        NeoForge.EVENT_BUS.addListener(DarkSwordManager::onLevelTick);
+        NeoForge.EVENT_BUS.addListener(NightSwordManager::onLevelTick);
         NeoForge.EVENT_BUS.addListener(StasisSwordManager::onLevelTick);
         NeoForge.EVENT_BUS.addListener(TinyPlanetProtection::onLevelTick);
         NeoForge.EVENT_BUS.addListener(ToiletSinkAnimation::onLevelTick);
@@ -159,6 +167,7 @@ public class ObeseCatMod {
             event.accept(ModItems.OPPENHEIMERS_HAT.get());
             event.accept(ModItems.HOLY_SWORD.get());
             event.accept(ModItems.MIGHTY_SWORD.get());
+            event.accept(ModItems.DARK_SWORD.get());
             event.accept(ModItems.STASIS_SWORD.get());
             event.accept(ModItems.SPLIT_PUNCH.get());
             event.accept(ModItems.CRUSH_PUNCH.get());
@@ -168,6 +177,7 @@ public class ObeseCatMod {
             event.accept(ModItems.BLASTAR_PUNCH.get());
             event.accept(ModItems.HELLCRY_PUNCH.get());
             event.accept(ModItems.ICEWOLF_BITE.get());
+            event.accept(ModItems.NIGHT_SWORD.get());
             event.accept(ModItems.DARK_KNIGHT_BRACER.get());
             event.accept(ModItems.BOOM_STICK.get());
             event.accept(ModItems.FIRE_STICK.get());
@@ -177,6 +187,8 @@ public class ObeseCatMod {
             event.accept(ModItems.SAMMYS_CROSS.get());
             event.accept(ModItems.PARADOX.get());
             event.accept(ModItems.VERITAS.get());
+            event.accept(ModItems.PRAXIS.get());
+            event.accept(ModItems.AEQUITAS.get());
         }
         if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES) {
             event.accept(ModItems.TOILET.get());

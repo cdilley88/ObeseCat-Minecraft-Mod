@@ -55,7 +55,7 @@ public final class MightySwordBreakManager {
     public enum Skill {
         BLASTAR_PUNCH(EquipmentSlot.HEAD, new Vector3f(1.0F, 0.7F, 0.1F)),
         HELLCRY_PUNCH(EquipmentSlot.MAINHAND, new Vector3f(0.7F, 0.1F, 0.95F)),
-        ICEWOLF_BITE(EquipmentSlot.OFFHAND, new Vector3f(0.25F, 0.8F, 1.0F));
+        ICEWOLF_BITE(EquipmentSlot.FEET, new Vector3f(0.25F, 0.8F, 1.0F));
 
         private final EquipmentSlot slot;
         private final Vector3f color;
@@ -478,6 +478,7 @@ public final class MightySwordBreakManager {
         }
     }
 }
+
 
 
 

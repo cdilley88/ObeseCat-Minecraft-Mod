@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "obesecat:item/night_sword_skull_gfx"
+  }
+}

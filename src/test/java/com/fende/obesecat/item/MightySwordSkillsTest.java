@@ -14,7 +14,7 @@ class MightySwordSkillsTest {
 
         assertTrue(manager.contains("BLASTAR_PUNCH(EquipmentSlot.HEAD"));
         assertTrue(manager.contains("HELLCRY_PUNCH(EquipmentSlot.MAINHAND"));
-        assertTrue(manager.contains("ICEWOLF_BITE(EquipmentSlot.OFFHAND"));
+        assertTrue(manager.contains("ICEWOLF_BITE(EquipmentSlot.FEET"));
         assertTrue(manager.contains("EQUIPMENT_DROP_CHANCE = 0.50F"));
         assertTrue(manager.contains("PENDING_METEORS"));
         assertTrue(manager.contains("BLASTAR_PUNCH_GFX"));
@@ -23,3 +23,4 @@ class MightySwordSkillsTest {
         assertTrue(lang.contains("\"item.obesecat.icewolf_bite.caption\": \"Disaster cries out to smash all...\""));
     }
 }
+

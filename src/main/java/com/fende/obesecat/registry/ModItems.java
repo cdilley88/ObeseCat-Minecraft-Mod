@@ -1,6 +1,7 @@
 package com.fende.obesecat.registry;
 
 import com.fende.obesecat.ObeseCatMod;
+import com.fende.obesecat.item.AequitasItem;
 import com.fende.obesecat.item.AssaultPacoItem;
 import com.fende.obesecat.item.AtomicPacoItem;
 import com.fende.obesecat.item.AttackPacoItem;
@@ -11,6 +12,7 @@ import com.fende.obesecat.item.CowLevelPortalItem;
 import com.fende.obesecat.item.CrushPunchSwordItem;
 import com.fende.obesecat.item.ConcussivePacoItem;
 import com.fende.obesecat.item.DominoItem;
+import com.fende.obesecat.item.DarkSwordItem;
 import com.fende.obesecat.item.EmberSingularityItem;
 import com.fende.obesecat.item.EnigmaEmberItem;
 import com.fende.obesecat.item.EchoingBlastChamberItem;
@@ -29,8 +31,10 @@ import com.fende.obesecat.item.LightningStabSwordItem;
 import com.fende.obesecat.item.MrKittysPawsItem;
 import com.fende.obesecat.item.ManhattanPhysicistSpawnEggItem;
 import com.fende.obesecat.item.NightVisionMrKittyItem;
+import com.fende.obesecat.item.NightSwordItem;
 import com.fende.obesecat.item.PacoItem;
 import com.fende.obesecat.item.ParadoxItem;
+import com.fende.obesecat.item.PraxisItem;
 import com.fende.obesecat.item.VeritasItem;
 import com.fende.obesecat.item.SniperPacoItem;
 import com.fende.obesecat.item.SplitPunchSwordItem;
@@ -221,6 +225,16 @@ public final class ModItems {
             VeritasItem::new,
             new Item.Properties().stacksTo(1).rarity(Rarity.RARE)
     );
+    public static final DeferredItem<PraxisItem> PRAXIS = ITEMS.registerItem(
+            "praxis",
+            PraxisItem::new,
+            new Item.Properties().stacksTo(1).rarity(Rarity.RARE)
+    );
+    public static final DeferredItem<AequitasItem> AEQUITAS = ITEMS.registerItem(
+            "aequitas",
+            AequitasItem::new,
+            new Item.Properties().stacksTo(1).rarity(Rarity.RARE)
+    );
 
     public static final DeferredItem<CaptionedItem> SAMMYS_CROSS = ITEMS.registerItem(
             "sammy_cross",
@@ -293,6 +307,12 @@ public final class ModItems {
     public static final DeferredItem<MightySwordItem> MIGHTY_SWORD = ITEMS.registerItem(
             "mighty_sword",
             MightySwordItem::new,
+            skillSwordProperties(Rarity.UNCOMMON)
+    );
+
+    public static final DeferredItem<DarkSwordItem> DARK_SWORD = ITEMS.registerItem(
+            "dark_sword",
+            DarkSwordItem::new,
             skillSwordProperties(Rarity.UNCOMMON)
     );
 
@@ -417,6 +437,21 @@ public final class ModItems {
             skillSwordProperties(Rarity.RARE)
     );
 
+    public static final DeferredItem<NightSwordItem> NIGHT_SWORD = ITEMS.registerItem(
+            "night_sword",
+            NightSwordItem::new,
+            skillSwordProperties(Rarity.RARE)
+    );
+
+    public static final DeferredItem<Item> DARK_SWORD_BLADE_GFX = ITEMS.registerSimpleItem(
+            "dark_sword_blade_gfx", new Item.Properties().stacksTo(1));
+
+    // Internal billboard items carrying the Night Sword skull and rising blade art.
+    public static final DeferredItem<Item> NIGHT_SWORD_SKULL_GFX = ITEMS.registerSimpleItem(
+            "night_sword_skull_gfx", new Item.Properties().stacksTo(1));
+    public static final DeferredItem<Item> NIGHT_SWORD_STAB_GFX = ITEMS.registerSimpleItem(
+            "night_sword_stab_gfx", new Item.Properties().stacksTo(1));
+
     // Internal display-only item for the falling Blastar Punch meteor.
     public static final DeferredItem<Item> BLASTAR_PUNCH_GFX = ITEMS.registerSimpleItem(
             "blastar_punch_gfx", new Item.Properties().stacksTo(1));
@@ -432,6 +467,14 @@ public final class ModItems {
     );
     public static final DeferredItem<Item> VERITAS_GFX = ITEMS.registerSimpleItem(
             "veritas_gfx",
+            new Item.Properties().stacksTo(1)
+    );
+    public static final DeferredItem<Item> PRAXIS_GFX = ITEMS.registerSimpleItem(
+            "praxis_gfx",
+            new Item.Properties().stacksTo(1)
+    );
+    public static final DeferredItem<Item> AEQUITAS_GFX = ITEMS.registerSimpleItem(
+            "aequitas_gfx",
             new Item.Properties().stacksTo(1)
     );
 

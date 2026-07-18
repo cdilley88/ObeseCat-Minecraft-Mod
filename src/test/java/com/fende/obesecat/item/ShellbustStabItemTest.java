@@ -21,6 +21,8 @@ class ShellbustStabItemTest {
         assertTrue(langFile.contains("Armor won't help the heart stay sharp..."));
         assertTrue(modelFile.contains("\"obesecat:item/mightysword\""));
         assertTrue(recipeFile.contains("\"item\": \"obesecat:mighty_sword\""));
-        assertTrue(recipeFile.contains("\"item\": \"minecraft:iron_chestplate\""));
+        assertTrue(recipeFile.contains("\"item\": \"minecraft:netherite_chestplate\""));
     }
 }
+
+

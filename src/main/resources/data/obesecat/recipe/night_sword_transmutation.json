@@ -2,17 +2,16 @@
   "type": "obesecat:transmutation",
   "ingredients": [
     {
-      "item": "obesecat:mighty_sword",
+      "item": "obesecat:dark_sword",
       "count": 1
     },
     {
-      "item": "minecraft:netherite_chestplate",
+      "item": "minecraft:dirt",
       "count": 1
     }
   ],
   "result": {
-    "id": "obesecat:shellbust_stab",
+    "id": "obesecat:night_sword",
     "count": 1
   }
 }
-

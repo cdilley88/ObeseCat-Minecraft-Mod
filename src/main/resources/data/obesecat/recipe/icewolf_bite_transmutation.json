@@ -2,7 +2,8 @@
   "type": "obesecat:transmutation",
   "ingredients": [
     { "item": "obesecat:mighty_sword", "count": 1 },
-    { "item": "minecraft:shield", "count": 1 }
+    { "item": "minecraft:netherite_boots", "count": 1 }
   ],
   "result": { "id": "obesecat:icewolf_bite", "count": 1 }
 }
+

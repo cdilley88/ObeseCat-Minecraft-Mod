@@ -107,6 +107,10 @@ public class SkillSwordItem extends Item {
         if (captionKey != null) {
             tooltipComponents.add(Component.translatable(captionKey).withStyle(ChatFormatting.YELLOW));
         }
+        String effectKey = effectKey();
+        if (effectKey != null) {
+            tooltipComponents.add(Component.translatable(effectKey).withStyle(ChatFormatting.GREEN));
+        }
     }
 
     protected int cooldownTicks() {
@@ -124,6 +128,11 @@ public class SkillSwordItem extends Item {
 
     @Nullable
     protected String captionKey() {
+        return null;
+    }
+
+    @Nullable
+    protected String effectKey() {
         return null;
     }
 

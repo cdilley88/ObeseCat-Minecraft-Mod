@@ -103,8 +103,23 @@
   "item.veritassummon": {
     "sounds": ["obesecat:item/veritassummon"]
   },
+  "item.praxissummon": {
+    "sounds": ["obesecat:item/praxissummon"]
+  },
   "item.icewolfbiteimpact": {
     "sounds": ["obesecat:item/icewolfbiteimpact"]
+  },
+  "item.darksworddrone": {
+    "sounds": ["obesecat:item/darksworddrone"]
+  },
+  "item.darkswordstab": {
+    "sounds": ["obesecat:item/darkswordstab"]
+  },
+  "item.nightsworddrone": {
+    "sounds": ["obesecat:item/nightsworddrone"]
+  },
+  "item.nightswordstab": {
+    "sounds": ["obesecat:item/nightswordstab"]
   },
   "block.toilet.stink1": {
     "sounds": [
