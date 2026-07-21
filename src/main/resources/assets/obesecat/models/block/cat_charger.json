@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "minecraft:block/orange_terracotta",
+    "up": "minecraft:block/copper_block",
+    "north": "obesecat:block/cat_charger_front",
+    "south": "minecraft:block/orange_terracotta",
+    "west": "minecraft:block/orange_terracotta",
+    "east": "minecraft:block/orange_terracotta",
+    "particle": "obesecat:block/cat_charger_front"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "type": "obesecat:transmutation",
+  "ingredients": [
+    {
+      "item": "minecraft:nether_star",
+      "count": 1
+    },
+    {
+      "item": "obesecat:overdrive_powder",
+      "count": 1
+    },
+    {
+      "item": "minecraft:glowstone",
+      "count": 1
+    }
+  ],
+  "result": {
+    "id": "obesecat:veritas",
+    "count": 1
+  }
+}

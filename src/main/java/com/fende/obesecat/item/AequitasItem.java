@@ -12,7 +12,7 @@ public final class AequitasItem extends SummonItem {
 
     @Override protected double range() { return AequitasSummonManager.RANGE; }
     @Override protected int cooldownTicks() { return AequitasSummonManager.COOLDOWN_TICKS; }
-    @Override protected String captionKey() { return null; }
+    @Override protected String captionKey() { return "item.obesecat.aequitas.caption"; }
 
     @Override
     protected void beginSummon(ServerLevel level, Player player, BlockHitResult target) {

@@ -14,6 +14,8 @@ class MightySwordSkillsTest {
 
         assertTrue(manager.contains("BLASTAR_PUNCH(EquipmentSlot.HEAD"));
         assertTrue(manager.contains("HELLCRY_PUNCH(EquipmentSlot.MAINHAND"));
+        assertTrue(manager.contains("HELLCRY_FRAME_TICKS = 2"));
+        assertTrue(manager.contains("HELLCRY_HOLD_TICKS = 6"));
         assertTrue(manager.contains("ICEWOLF_BITE(EquipmentSlot.FEET"));
         assertTrue(manager.contains("EQUIPMENT_DROP_CHANCE = 0.50F"));
         assertTrue(manager.contains("PENDING_METEORS"));

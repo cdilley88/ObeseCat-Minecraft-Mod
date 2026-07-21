@@ -1,5 +1,7 @@
 package com.fende.obesecat;
 
+import com.fende.obesecat.energy.CastItemEnergy;
+import com.fende.obesecat.item.SummonItem;
 import com.fende.obesecat.registry.ModBlocks;
 import com.fende.obesecat.registry.ModBlockEntities;
 import com.fende.obesecat.registry.ModEntities;
@@ -32,6 +34,7 @@ import com.fende.obesecat.world.NightVisionMrKittyManager;
 import com.fende.obesecat.world.NightSwordManager;
 import com.fende.obesecat.world.PacoBarkBurst;
 import com.fende.obesecat.world.ParadoxSummonManager;
+import com.fende.obesecat.world.PortableCatChargerManager;
 import com.fende.obesecat.world.PraxisSummonManager;
 import com.fende.obesecat.world.VeritasSummonManager;
 import com.fende.obesecat.world.SammyCrossManager;
@@ -46,6 +49,8 @@ import com.fende.obesecat.entity.TargetDummy;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
+import net.neoforged.neoforge.capabilities.Capabilities;
+import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
 import net.neoforged.neoforge.common.NeoForge;
@@ -71,6 +76,7 @@ public class ObeseCatMod {
 
         modEventBus.addListener(this::registerAttributes);
         modEventBus.addListener(this::addCreative);
+        modEventBus.addListener(this::registerCapabilities);
         modEventBus.addListener(ModNetworking::registerPayloads);
 
         NeoForge.EVENT_BUS.addListener(NuclearCatExplosion::onLevelTick);
@@ -79,6 +85,7 @@ public class ObeseCatMod {
         NeoForge.EVENT_BUS.addListener(NightVisionMrKittyManager::onLevelTick);
         NeoForge.EVENT_BUS.addListener(PacoBarkBurst::onLevelTick);
         NeoForge.EVENT_BUS.addListener(ParadoxSummonManager::onLevelTick);
+        NeoForge.EVENT_BUS.addListener(PortableCatChargerManager::onLevelTick);
         NeoForge.EVENT_BUS.addListener(VeritasSummonManager::onLevelTick);
         NeoForge.EVENT_BUS.addListener(PraxisSummonManager::onLevelTick);
         NeoForge.EVENT_BUS.addListener(AequitasSummonManager::onLevelTick);
@@ -114,6 +121,71 @@ public class ObeseCatMod {
         event.put(ModEntities.OBESE_CAT.get(), Cat.createAttributes().build());
         event.put(ModEntities.COW_KING.get(), Monster.createMonsterAttributes().build());
         event.put(ModEntities.TARGET_DUMMY.get(), TargetDummy.createAttributes().build());
+    }
+
+    private void registerCapabilities(RegisterCapabilitiesEvent event) {
+        event.registerBlockEntity(
+                Capabilities.EnergyStorage.BLOCK,
+                ModBlockEntities.CAN_OPENER.get(),
+                (opener, direction) -> opener.getEnergyStorage(direction)
+        );
+        event.registerBlockEntity(
+                Capabilities.ItemHandler.BLOCK,
+                ModBlockEntities.CAN_OPENER.get(),
+                (opener, direction) -> opener.getItemHandler(direction)
+        );
+        event.registerBlockEntity(
+                Capabilities.EnergyStorage.BLOCK,
+                ModBlockEntities.FOOD_BIN.get(),
+                (bin, direction) -> bin.getEnergyStorage()
+        );
+        event.registerBlockEntity(
+                Capabilities.EnergyStorage.BLOCK,
+                ModBlockEntities.CAT_CHARGER.get(),
+                (charger, direction) -> charger.getEnergyStorage()
+        );
+        event.registerItem(
+                Capabilities.EnergyStorage.ITEM,
+                (stack, context) -> com.fende.obesecat.item.PortableCatChargerItem.createEnergyStorage(stack),
+                ModItems.PORTABLE_CAT_CHARGER.get()
+        );
+        event.registerBlockEntity(
+                Capabilities.EnergyStorage.BLOCK,
+                ModBlockEntities.CREATIVE_FOOD_BIN.get(),
+                (bin, direction) -> bin.getEnergyStorage()
+        );
+        event.registerItem(
+                Capabilities.EnergyStorage.ITEM,
+                (stack, context) -> com.fende.obesecat.item.CreativePortableCatChargerItem.createCreativeEnergyStorage(),
+                ModItems.CREATIVE_PORTABLE_CAT_CHARGER.get()
+        );
+        event.registerItem(
+                Capabilities.EnergyStorage.ITEM,
+                (stack, context) -> CastItemEnergy.createStorage(stack, 25_000),
+                ModItems.STASIS_SWORD.get(), ModItems.SPLIT_PUNCH.get(), ModItems.CRUSH_PUNCH.get(),
+                ModItems.LIGHTNING_STAB.get(), ModItems.HOLY_EXPLOSION.get()
+        );
+        event.registerItem(
+                Capabilities.EnergyStorage.ITEM,
+                (stack, context) -> CastItemEnergy.createStorage(stack, 35_000),
+                ModItems.SHELLBUST_STAB.get(), ModItems.BLASTAR_PUNCH.get(),
+                ModItems.HELLCRY_PUNCH.get(), ModItems.ICEWOLF_BITE.get()
+        );
+        event.registerItem(
+                Capabilities.EnergyStorage.ITEM,
+                (stack, context) -> CastItemEnergy.createStorage(stack, 50_000),
+                ModItems.DARK_SWORD.get(), ModItems.NIGHT_SWORD.get()
+        );
+        event.registerItem(
+                Capabilities.EnergyStorage.ITEM,
+                (stack, context) -> CastItemEnergy.createStorage(stack, SummonItem.ENERGY_CAPACITY),
+                ModItems.PARADOX.get(), ModItems.VERITAS.get(), ModItems.PRAXIS.get(), ModItems.AEQUITAS.get()
+        );
+        event.registerEntity(
+                Capabilities.EnergyStorage.ENTITY,
+                ModEntities.OBESE_CAT.get(),
+                (fatMan, direction) -> fatMan.getEnergyStorage()
+        );
     }
 
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
@@ -194,6 +266,12 @@ public class ObeseCatMod {
             event.accept(ModItems.TOILET.get());
             event.accept(ModItems.TRINITITE.get());
             event.accept(ModItems.ECHOING_BLAST_CHAMBER.get());
+            event.accept(ModItems.CAN_OPENER.get());
+            event.accept(ModItems.FOOD_BIN.get());
+            event.accept(ModItems.CAT_CHARGER.get());
+            event.accept(ModItems.PORTABLE_CAT_CHARGER.get());
+            event.accept(ModItems.CREATIVE_FOOD_BIN.get());
+            event.accept(ModItems.CREATIVE_PORTABLE_CAT_CHARGER.get());
             event.accept(ModItems.NUCLEAR_LIBRARY.get());
             event.accept(ModItems.EMBER_SINGULARITY.get());
             event.accept(ModItems.WORMHOLE_EMBER.get());

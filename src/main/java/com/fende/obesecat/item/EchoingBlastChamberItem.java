@@ -16,7 +16,7 @@ public class EchoingBlastChamberItem extends BlockItem {
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
         super.appendHoverText(stack, context, tooltip, flag);
-        for (int line = 1; line <= 4; line++) {
+        for (int line = 1; line <= 1; line++) {
             tooltip.add(Component.translatable("block.obesecat.echoing_blast_chamber.lore." + line)
                     .withStyle(ChatFormatting.AQUA));
         }

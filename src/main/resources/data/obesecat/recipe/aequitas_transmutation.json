@@ -1,0 +1,21 @@
+{
+  "type": "obesecat:transmutation",
+  "ingredients": [
+    {
+      "item": "minecraft:nether_star",
+      "count": 1
+    },
+    {
+      "item": "obesecat:overdrive_powder",
+      "count": 1
+    },
+    {
+      "item": "minecraft:soul_torch",
+      "count": 1
+    }
+  ],
+  "result": {
+    "id": "obesecat:aequitas",
+    "count": 1
+  }
+}

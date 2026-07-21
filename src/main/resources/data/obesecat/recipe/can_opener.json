@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "IRI",
+    "ISI",
+    "III"
+  ],
+  "key": {
+    "I": { "item": "minecraft:iron_ingot" },
+    "R": { "item": "minecraft:redstone" },
+    "S": { "item": "minecraft:stonecutter" }
+  },
+  "result": {
+    "id": "obesecat:can_opener",
+    "count": 1
+  }
+}

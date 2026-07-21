@@ -64,11 +64,12 @@ public final class AequitasSummonManager {
         for (Attack attack : List.copyOf(ATTACKS)) {
             if (attack.level != level) continue;
             int age = ATTACK_TICKS - attack.ticks;
+            animateStormTriad(attack, age);
             emitStorm(level, attack, age);
             if (age % 20 == 0) damagePulse(level, attack.center);
             if (--attack.ticks <= 0) {
                 ATTACKS.remove(attack);
-                attack.image.discard();
+                attack.images.forEach(Display.ItemDisplay::discard);
                 level.sendParticles(ParticleTypes.SOUL_FIRE_FLAME,
                         attack.center.x, attack.center.y + 2.0D, attack.center.z,
                         100, 6.5D, 3.0D, 6.5D, 0.08D);
@@ -100,9 +101,12 @@ public final class AequitasSummonManager {
                 64.0D, 1.0F, 0.85F);
         LocalSoundHelper.playLocalized(level, center, SoundEvents.LIGHTNING_BOLT_IMPACT,
                 48.0D, 1.0F, 1.0F);
-        Display.ItemDisplay image = spawnImage(level, center.add(0.0D, 5.0D, 0.0D));
+        List<Display.ItemDisplay> images = new ArrayList<>();
+        for (int i = 0; i < 3; i++) {
+            images.add(spawnImage(level, center.add(0.0D, 5.0D, 0.0D)));
+        }
         long seed = level.getGameTime() ^ target.asLong() ^ 0x4145515549544153L;
-        ATTACKS.add(new Attack(level, center, image, seed, ATTACK_TICKS));
+        ATTACKS.add(new Attack(level, center, images, seed, ATTACK_TICKS));
         level.sendParticles(ParticleTypes.FLASH,
                 center.x, center.y + 5.0D, center.z,
                 3, 0.7D, 0.7D, 0.7D, 0.0D);
@@ -129,6 +133,19 @@ public final class AequitasSummonManager {
         display.setPos(pos);
         level.addFreshEntity(display);
         return display;
+    }
+
+    private static void animateStormTriad(Attack attack, int age) {
+        double phase = age * 0.13D;
+        double charge = 0.5D + 0.5D * Math.sin(age * 0.085D);
+        double radius = 0.65D + charge * 3.2D;
+        for (int i = 0; i < attack.images.size(); i++) {
+            double angle = phase + i * Math.PI * 2.0D / attack.images.size();
+            double y = 5.0D + Math.sin(phase * 2.0D + i * Math.PI * 2.0D / 3.0D) * 0.8D;
+            Display.ItemDisplay image = attack.images.get(i);
+            image.setPos(attack.center.add(Math.cos(angle) * radius, y, Math.sin(angle) * radius));
+            image.setYRot((float) Math.toDegrees(-angle));
+        }
     }
 
     private static void emitStorm(ServerLevel level, Attack attack, int age) {
@@ -230,10 +247,10 @@ public final class AequitasSummonManager {
     }
 
     private static final class Attack {
-        final ServerLevel level; final Vec3 center; final Display.ItemDisplay image;
+        final ServerLevel level; final Vec3 center; final List<Display.ItemDisplay> images;
         final long seed; int ticks;
-        Attack(ServerLevel level, Vec3 center, Display.ItemDisplay image, long seed, int ticks) {
-            this.level = level; this.center = center; this.image = image;
+        Attack(ServerLevel level, Vec3 center, List<Display.ItemDisplay> images, long seed, int ticks) {
+            this.level = level; this.center = center; this.images = images;
             this.seed = seed; this.ticks = ticks;
         }
     }

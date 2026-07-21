@@ -38,8 +38,8 @@ public final class MightySwordBreakManager {
     private static final float METEOR_SCALE = 4.5F;
     private static final int STUCK_HOLD_TICKS = 40;
     private static final int FADE_TICKS = 8;
-    private static final int HELLCRY_FRAME_TICKS = 1;
-    private static final int HELLCRY_HOLD_TICKS = 4;
+    private static final int HELLCRY_FRAME_TICKS = 2;
+    private static final int HELLCRY_HOLD_TICKS = 6;
     private static final int[] HELLCRY_SEQUENCE = {1, 2, 3, 4, 5, 6, 5, 4, 3, 2, 1};
     private static final float HELLCRY_SCALE = 8.0F;
     private static final int ICEWOLF_MANIFEST_TICKS = 5;

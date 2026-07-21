@@ -4,11 +4,16 @@ import com.fende.obesecat.ObeseCatMod;
 import com.fende.obesecat.item.AequitasItem;
 import com.fende.obesecat.item.AssaultPacoItem;
 import com.fende.obesecat.item.AtomicPacoItem;
+import com.fende.obesecat.item.AtomicCanOpenerItem;
 import com.fende.obesecat.item.AttackPacoItem;
 import com.fende.obesecat.item.BigFireBoomStickItem;
 import com.fende.obesecat.item.BoomStickItem;
 import com.fende.obesecat.item.CaptionedItem;
+import com.fende.obesecat.item.CatChargerItem;
+import com.fende.obesecat.item.PortableCatChargerItem;
 import com.fende.obesecat.item.CowLevelPortalItem;
+import com.fende.obesecat.item.CreativeFoodBinItem;
+import com.fende.obesecat.item.CreativePortableCatChargerItem;
 import com.fende.obesecat.item.CrushPunchSwordItem;
 import com.fende.obesecat.item.ConcussivePacoItem;
 import com.fende.obesecat.item.DominoItem;
@@ -18,6 +23,7 @@ import com.fende.obesecat.item.EnigmaEmberItem;
 import com.fende.obesecat.item.EchoingBlastChamberItem;
 import com.fende.obesecat.item.FireBoomStickItem;
 import com.fende.obesecat.item.FireStickItem;
+import com.fende.obesecat.item.FoodBinItem;
 import com.fende.obesecat.item.HellhoundPacoItem;
 import com.fende.obesecat.item.HolyExplosionSwordItem;
 import com.fende.obesecat.item.HolySwordItem;
@@ -32,6 +38,7 @@ import com.fende.obesecat.item.MrKittysPawsItem;
 import com.fende.obesecat.item.ManhattanPhysicistSpawnEggItem;
 import com.fende.obesecat.item.NightVisionMrKittyItem;
 import com.fende.obesecat.item.NightSwordItem;
+import com.fende.obesecat.item.NuclearCatFoodItem;
 import com.fende.obesecat.item.PacoItem;
 import com.fende.obesecat.item.ParadoxItem;
 import com.fende.obesecat.item.PraxisItem;
@@ -79,13 +86,15 @@ public final class ModItems {
     public static final DeferredItem<TargetDummyItem> TARGET_DUMMY = ITEMS.registerItem(
             "target_dummy", TargetDummyItem::new, new Item.Properties().stacksTo(16));
 
-    public static final DeferredItem<Item> PLUTONIUM_CAT_FOOD = ITEMS.registerSimpleItem(
+    public static final DeferredItem<NuclearCatFoodItem> PLUTONIUM_CAT_FOOD = ITEMS.registerItem(
             "plutonium_cat_food",
+            properties -> new NuclearCatFoodItem(properties, com.fende.obesecat.energy.CatFoodEnergy.PLUTONIUM_POINTS),
             new Item.Properties().rarity(Rarity.RARE)
     );
 
-    public static final DeferredItem<Item> LITHIUM_DEUTERIDE_CAT_FOOD = ITEMS.registerSimpleItem(
+    public static final DeferredItem<NuclearCatFoodItem> LITHIUM_DEUTERIDE_CAT_FOOD = ITEMS.registerItem(
             "lithium_deuteride_cat_food",
+            properties -> new NuclearCatFoodItem(properties, com.fende.obesecat.energy.CatFoodEnergy.LITHIUM_DEUTERIDE_POINTS),
             new Item.Properties().rarity(Rarity.EPIC)
     );
 
@@ -104,43 +113,43 @@ public final class ModItems {
     public static final DeferredItem<TimeDominoItem> DAWN_DOMINO = ITEMS.registerItem(
             "dawn_domino",
             properties -> new TimeDominoItem(properties, 1000L),
-            new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)
+            new Item.Properties().stacksTo(1).rarity(Rarity.RARE)
     );
 
     public static final DeferredItem<TimeDominoItem> MIDDAY_DOMINO = ITEMS.registerItem(
             "midday_domino",
             properties -> new TimeDominoItem(properties, 6000L),
-            new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)
+            new Item.Properties().stacksTo(1).rarity(Rarity.RARE)
     );
 
     public static final DeferredItem<TimeDominoItem> DUSK_DOMINO = ITEMS.registerItem(
             "dusk_domino",
             properties -> new TimeDominoItem(properties, 13000L),
-            new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)
+            new Item.Properties().stacksTo(1).rarity(Rarity.RARE)
     );
 
     public static final DeferredItem<TimeDominoItem> MIDNIGHT_DOMINO = ITEMS.registerItem(
             "midnight_domino",
             properties -> new TimeDominoItem(properties, 18000L),
-            new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)
+            new Item.Properties().stacksTo(1).rarity(Rarity.RARE)
     );
 
     public static final DeferredItem<WeatherDominoItem> CALM_DOMINO = ITEMS.registerItem(
             "calm_domino",
             properties -> new WeatherDominoItem(properties, false, false),
-            new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)
+            new Item.Properties().stacksTo(1).rarity(Rarity.RARE)
     );
 
     public static final DeferredItem<WeatherDominoItem> DOWNPOUR_DOMINO = ITEMS.registerItem(
             "downpour_domino",
             properties -> new WeatherDominoItem(properties, true, false),
-            new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)
+            new Item.Properties().stacksTo(1).rarity(Rarity.RARE)
     );
 
     public static final DeferredItem<WeatherDominoItem> THUNDERSTORM_DOMINO = ITEMS.registerItem(
             "thunderstorm_domino",
             properties -> new WeatherDominoItem(properties, true, true),
-            new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)
+            new Item.Properties().stacksTo(1).rarity(Rarity.RARE)
     );
 
     public static final DeferredItem<CaptionedItem> EMBER = ITEMS.registerItem(
@@ -529,6 +538,38 @@ public final class ModItems {
     public static final DeferredItem<BlockItem> ECHOING_BLAST_CHAMBER = ITEMS.register(
             "echoing_blast_chamber",
             () -> new EchoingBlastChamberItem(ModBlocks.ECHOING_BLAST_CHAMBER.get(), new Item.Properties().rarity(Rarity.EPIC))
+    );
+
+    public static final DeferredItem<BlockItem> CAN_OPENER = ITEMS.register(
+            "can_opener",
+            () -> new AtomicCanOpenerItem(ModBlocks.CAN_OPENER.get(), new Item.Properties().rarity(Rarity.RARE))
+    );
+
+    public static final DeferredItem<BlockItem> FOOD_BIN = ITEMS.register(
+            "food_bin",
+            () -> new FoodBinItem(ModBlocks.FOOD_BIN.get(), new Item.Properties().rarity(Rarity.RARE))
+    );
+
+    public static final DeferredItem<BlockItem> CAT_CHARGER = ITEMS.register(
+            "cat_charger",
+            () -> new CatChargerItem(ModBlocks.CAT_CHARGER.get(), new Item.Properties().rarity(Rarity.RARE))
+    );
+
+    public static final DeferredItem<PortableCatChargerItem> PORTABLE_CAT_CHARGER = ITEMS.registerItem(
+            "portable_cat_charger",
+            PortableCatChargerItem::new,
+            new Item.Properties().stacksTo(1).rarity(Rarity.RARE)
+    );
+
+    public static final DeferredItem<BlockItem> CREATIVE_FOOD_BIN = ITEMS.register(
+            "creative_food_bin",
+            () -> new CreativeFoodBinItem(ModBlocks.CREATIVE_FOOD_BIN.get(), new Item.Properties().rarity(Rarity.EPIC))
+    );
+
+    public static final DeferredItem<CreativePortableCatChargerItem> CREATIVE_PORTABLE_CAT_CHARGER = ITEMS.registerItem(
+            "creative_portable_cat_charger",
+            CreativePortableCatChargerItem::new,
+            new Item.Properties().stacksTo(1).rarity(Rarity.EPIC)
     );
 
     public static final DeferredItem<Item> OVERDRIVE_ROD = ITEMS.registerSimpleItem(

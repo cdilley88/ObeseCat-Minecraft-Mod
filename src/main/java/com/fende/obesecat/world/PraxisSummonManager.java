@@ -70,6 +70,7 @@ public final class PraxisSummonManager {
             if (attack.level != level) continue;
             int age = ATTACK_TICKS - attack.ticks;
             emitBlizzard(level, attack, age);
+            animateFrozenDescent(attack, age);
             animateIcefall(level, attack, age);
             if (age % 20 == 0) damagePulse(level, attack.center);
             if (--attack.ticks <= 0) {
@@ -162,6 +163,15 @@ public final class PraxisSummonManager {
             LocalSoundHelper.playLocalized(level, attack.center, SoundEvents.POWDER_SNOW_BREAK,
                     36.0D, 0.8F, 0.55F + random.nextFloat() * 0.2F);
         }
+    }
+
+    private static void animateFrozenDescent(Attack attack, int age) {
+        double descent = Math.min(1.0D, age / 35.0D);
+        double settledY = 5.0D + Math.sin(age * 0.045D) * 0.22D;
+        double y = 8.5D + (settledY - 8.5D) * (1.0D - Math.pow(1.0D - descent, 3.0D));
+        double sway = Math.sin(age * 0.032D) * 0.65D;
+        attack.image.setPos(attack.center.add(sway, y, -sway * 0.35D));
+        attack.image.setYRot((float) (Math.sin(age * 0.025D) * 8.0D));
     }
 
     private static void animateIcefall(ServerLevel level, Attack attack, int age) {

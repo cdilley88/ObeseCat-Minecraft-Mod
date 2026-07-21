@@ -2,6 +2,10 @@
   "replace": false,
   "values": [
     "obesecat:trinitite",
-    "obesecat:echoing_blast_chamber"
+    "obesecat:echoing_blast_chamber",
+    "obesecat:can_opener",
+    "obesecat:food_bin",
+    "obesecat:cat_charger",
+    "obesecat:creative_food_bin"
   ]
 }

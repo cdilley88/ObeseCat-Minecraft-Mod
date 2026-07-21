@@ -1,5 +1,6 @@
 package com.fende.obesecat.item;
 
+import com.fende.obesecat.energy.CastItemEnergy;
 import java.util.List;
 import javax.annotation.Nullable;
 import net.minecraft.ChatFormatting;
@@ -17,6 +18,9 @@ import net.minecraft.world.phys.HitResult;
 
 /** Shared targeting, cooldown, foil, and tooltip behavior for all magicite summons. */
 public abstract class SummonItem extends Item {
+    public static final int CAST_ENERGY_COST = 10_000;
+    public static final int ENERGY_CAPACITY = CastItemEnergy.capacityFor(CAST_ENERGY_COST);
+
     protected SummonItem(Properties properties) {
         super(properties);
     }
@@ -28,12 +32,17 @@ public abstract class SummonItem extends Item {
             return InteractionResultHolder.pass(stack);
         }
 
+        if (!CastItemEnergy.hasEnergy(stack, CAST_ENERGY_COST)) {
+            return InteractionResultHolder.pass(stack);
+        }
+
         BlockHitResult target = findTarget(player);
         if (target == null) {
             return InteractionResultHolder.pass(stack);
         }
 
         if (level instanceof ServerLevel serverLevel) {
+            CastItemEnergy.consume(stack, CAST_ENERGY_COST);
             beginSummon(serverLevel, player, target);
         }
 
@@ -54,6 +63,10 @@ public abstract class SummonItem extends Item {
         if (key != null) {
             tooltip.add(Component.translatable(key).withStyle(ChatFormatting.LIGHT_PURPLE));
         }
+        tooltip.add(Component.translatable("item.obesecat.cast_energy.stored",
+                CastItemEnergy.getEnergy(stack, ENERGY_CAPACITY), ENERGY_CAPACITY).withStyle(ChatFormatting.BLUE));
+        tooltip.add(Component.translatable("item.obesecat.cast_energy.cost", CAST_ENERGY_COST)
+                .withStyle(ChatFormatting.AQUA));
     }
 
     @Nullable

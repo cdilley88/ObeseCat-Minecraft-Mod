@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "CRC",
+    " G ",
+    "CRC"
+  ],
+  "key": {
+    "C": { "item": "minecraft:copper_block" },
+    "R": { "item": "minecraft:redstone_block" },
+    "G": { "item": "minecraft:grindstone" }
+  },
+  "result": { "id": "obesecat:cat_charger", "count": 1 }
+}

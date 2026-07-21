@@ -2,6 +2,8 @@ package com.fende.obesecat;
 
 import com.fende.obesecat.client.FissionFirestormOverlay;
 import com.fende.obesecat.client.CowKingRenderer;
+import com.fende.obesecat.client.CanOpenerScreen;
+import com.fende.obesecat.client.CatChargerScreen;
 import com.fende.obesecat.client.NuclearFlashOverlay;
 import com.fende.obesecat.client.IonStormOverlay;
 import com.fende.obesecat.client.NightVisionOverlay;
@@ -74,6 +76,8 @@ public class ObeseCatModClient {
     private void registerMenuScreens(RegisterMenuScreensEvent event) {
         event.register(ModMenus.TRANSMUTATION_CUBE.get(), TransmutationCubeScreen::new);
         event.register(ModMenus.ECHOING_BLAST_CHAMBER.get(), EchoingBlastChamberScreen::new);
+        event.register(ModMenus.CAN_OPENER.get(), CanOpenerScreen::new);
+        event.register(ModMenus.CAT_CHARGER.get(), CatChargerScreen::new);
         event.register(ModMenus.TARGET_DUMMY.get(), TargetDummyScreen::new);
     }
 }

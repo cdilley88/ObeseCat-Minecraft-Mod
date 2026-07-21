@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "I I",
+    "ICI",
+    " R "
+  ],
+  "key": {
+    "I": { "item": "minecraft:iron_block" },
+    "C": { "item": "minecraft:cauldron" },
+    "R": { "item": "minecraft:redstone_block" }
+  },
+  "result": { "id": "obesecat:food_bin", "count": 1 }
+}

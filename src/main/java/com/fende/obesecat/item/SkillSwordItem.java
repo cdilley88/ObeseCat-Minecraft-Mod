@@ -1,5 +1,6 @@
 package com.fende.obesecat.item;
 
+import com.fende.obesecat.energy.CastItemEnergy;
 import com.fende.obesecat.registry.ModSounds;
 import com.fende.obesecat.world.LocalSoundHelper;
 import java.util.List;
@@ -33,6 +34,11 @@ public class SkillSwordItem extends Item {
             return InteractionResultHolder.pass(stack);
         }
 
+        int castEnergyCost = castEnergyCost();
+        if (!CastItemEnergy.hasEnergy(stack, castEnergyCost)) {
+            return InteractionResultHolder.pass(stack);
+        }
+
         if (useClientCastValidation(level, player)) {
             if (!canCastClient(player, usedHand, stack)) {
                 return InteractionResultHolder.pass(stack);
@@ -41,6 +47,7 @@ public class SkillSwordItem extends Item {
             if (!cast(serverLevel, player, usedHand, stack)) {
                 return InteractionResultHolder.pass(stack);
             }
+            CastItemEnergy.consume(stack, castEnergyCost);
         } else {
             return InteractionResultHolder.pass(stack);
         }
@@ -111,9 +118,25 @@ public class SkillSwordItem extends Item {
         if (effectKey != null) {
             tooltipComponents.add(Component.translatable(effectKey).withStyle(ChatFormatting.GREEN));
         }
+        int castEnergyCost = castEnergyCost();
+        if (castEnergyCost > 0) {
+            int capacity = CastItemEnergy.capacityFor(castEnergyCost);
+            tooltipComponents.add(Component.translatable("item.obesecat.cast_energy.stored",
+                    CastItemEnergy.getEnergy(stack, capacity), capacity).withStyle(ChatFormatting.BLUE));
+            tooltipComponents.add(Component.translatable("item.obesecat.cast_energy.cost", castEnergyCost)
+                    .withStyle(ChatFormatting.AQUA));
+        }
     }
 
     protected int cooldownTicks() {
+        return 0;
+    }
+
+    protected int castEnergyCost() {
+        String skillClass = skillClassKey();
+        if ("item.obesecat.skill_class.holy_sword".equals(skillClass)) return 2_500;
+        if ("item.obesecat.skill_class.mighty_sword".equals(skillClass)) return 3_500;
+        if ("item.obesecat.skill_class.dark_sword".equals(skillClass)) return 5_000;
         return 0;
     }
 

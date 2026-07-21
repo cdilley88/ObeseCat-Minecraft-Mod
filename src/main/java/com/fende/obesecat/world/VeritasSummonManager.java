@@ -62,6 +62,7 @@ public final class VeritasSummonManager {
         for (Attack attack : List.copyOf(ATTACKS)) {
             if (attack.level != level) continue;
             int age = ATTACK_TICKS - attack.ticks;
+            animateSanctifiedOrbit(attack, age);
             emitHolyFire(level, attack, age);
             if (age % 20 == 0) damagePulse(level, attack.center);
             if (--attack.ticks <= 0) {
@@ -115,6 +116,15 @@ public final class VeritasSummonManager {
         display.setPos(pos);
         level.addFreshEntity(display);
         return display;
+    }
+
+    private static void animateSanctifiedOrbit(Attack attack, int age) {
+        double phase = age * 0.055D;
+        double x = Math.sin(phase) * 1.35D;
+        double y = 5.0D + Math.sin(phase * 2.0D) * 0.55D;
+        double z = Math.sin(phase) * Math.cos(phase) * 0.9D;
+        attack.image.setPos(attack.center.add(x, y, z));
+        attack.image.setYRot((float) (Math.sin(phase) * 12.0D));
     }
 
     private static void emitHolyFire(ServerLevel level, Attack attack, int age) {
