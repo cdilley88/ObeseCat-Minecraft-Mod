@@ -45,7 +45,6 @@ import com.fende.obesecat.world.TinyPlanetProtection;
 import com.fende.obesecat.world.ToiletSinkAnimation;
 import net.minecraft.world.entity.animal.Cat;
 import net.minecraft.world.entity.monster.Monster;
-import com.fende.obesecat.entity.TargetDummy;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
@@ -120,7 +119,6 @@ public class ObeseCatMod {
     private void registerAttributes(EntityAttributeCreationEvent event) {
         event.put(ModEntities.OBESE_CAT.get(), Cat.createAttributes().build());
         event.put(ModEntities.COW_KING.get(), Monster.createMonsterAttributes().build());
-        event.put(ModEntities.TARGET_DUMMY.get(), TargetDummy.createAttributes().build());
     }
 
     private void registerCapabilities(RegisterCapabilitiesEvent event) {
@@ -278,7 +276,6 @@ public class ObeseCatMod {
             event.accept(ModItems.ENIGMA_EMBER.get());
             event.accept(ModItems.TINY_PLANET.get());
             event.accept(ModItems.TRANSMUTATION_CUBE.get());
-            event.accept(ModItems.TARGET_DUMMY.get());
             event.accept(ModItems.NIGHT_VISION_MR_KITTY.get());
             event.accept(ModItems.MR_KITTYS_PAWS.get());
             event.accept(ModItems.BOOM_STICK.get());

@@ -48,7 +48,6 @@ import com.fende.obesecat.item.SplitPunchSwordItem;
 import com.fende.obesecat.item.StasisSwordItem;
 import com.fende.obesecat.item.StarterHomeItem;
 import com.fende.obesecat.item.TimeDominoItem;
-import com.fende.obesecat.item.TargetDummyItem;
 import com.fende.obesecat.item.TinyPlanetItem;
 import com.fende.obesecat.item.TransmutationCubeItem;
 import com.fende.obesecat.item.WeatherDominoItem;
@@ -82,10 +81,6 @@ public final class ModItems {
             ManhattanPhysicistSpawnEggItem::new,
             new Item.Properties().stacksTo(64)
     );
-
-    public static final DeferredItem<TargetDummyItem> TARGET_DUMMY = ITEMS.registerItem(
-            "target_dummy", TargetDummyItem::new, new Item.Properties().stacksTo(16));
-
     public static final DeferredItem<NuclearCatFoodItem> PLUTONIUM_CAT_FOOD = ITEMS.registerItem(
             "plutonium_cat_food",
             properties -> new NuclearCatFoodItem(properties, com.fende.obesecat.energy.CatFoodEnergy.PLUTONIUM_POINTS),

@@ -5,7 +5,6 @@ import com.fende.obesecat.inventory.TransmutationCubeMenu;
 import com.fende.obesecat.inventory.EchoingBlastChamberMenu;
 import com.fende.obesecat.inventory.CanOpenerMenu;
 import com.fende.obesecat.inventory.CatChargerMenu;
-import com.fende.obesecat.inventory.TargetDummyMenu;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.inventory.MenuType;
 import net.neoforged.neoforge.common.extensions.IMenuTypeExtension;
@@ -33,10 +32,6 @@ public final class ModMenus {
             "cat_charger",
             () -> IMenuTypeExtension.create(CatChargerMenu::fromNetwork)
     );
-
-    public static final DeferredHolder<MenuType<?>, MenuType<TargetDummyMenu>> TARGET_DUMMY = MENUS.register(
-            "target_dummy", () -> IMenuTypeExtension.create(TargetDummyMenu::fromNetwork));
-
     private ModMenus() {
     }
 }

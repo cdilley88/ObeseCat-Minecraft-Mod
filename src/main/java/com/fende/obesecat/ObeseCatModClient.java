@@ -11,8 +11,6 @@ import com.fende.obesecat.client.ObeseCatRenderer;
 import com.fende.obesecat.client.ObeseCatTimerOverlay;
 import com.fende.obesecat.client.SniperPacoInputHandler;
 import com.fende.obesecat.client.TransmutationCubeScreen;
-import com.fende.obesecat.client.TargetDummyRenderer;
-import com.fende.obesecat.client.TargetDummyScreen;
 import com.fende.obesecat.client.EchoingBlastChamberScreen;
 import com.fende.obesecat.client.model.FatManModel;
 import com.fende.obesecat.entity.ObeseCat;
@@ -62,7 +60,6 @@ public class ObeseCatModClient {
                 context -> (EntityRenderer<ObeseCat>) (EntityRenderer<?>) new ObeseCatRenderer(context)
         );
         event.registerEntityRenderer(ModEntities.COW_KING.get(), context -> new CowKingRenderer(context));
-        event.registerEntityRenderer(ModEntities.TARGET_DUMMY.get(), TargetDummyRenderer::new);
     }
 
     private void registerGuiLayers(RegisterGuiLayersEvent event) {
@@ -78,6 +75,5 @@ public class ObeseCatModClient {
         event.register(ModMenus.ECHOING_BLAST_CHAMBER.get(), EchoingBlastChamberScreen::new);
         event.register(ModMenus.CAN_OPENER.get(), CanOpenerScreen::new);
         event.register(ModMenus.CAT_CHARGER.get(), CatChargerScreen::new);
-        event.register(ModMenus.TARGET_DUMMY.get(), TargetDummyScreen::new);
     }
 }
