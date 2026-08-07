@@ -1,32 +1,32 @@
 {
   "item.paco.bark1": {
     "sounds": [
-      "obesecat:item/paco/bark1"
+      { "name": "obesecat:item/paco/bark1", "volume": 1.35 }
     ]
   },
   "item.paco.bark2": {
     "sounds": [
-      "obesecat:item/paco/bark2"
+      { "name": "obesecat:item/paco/bark2", "volume": 1.35 }
     ]
   },
   "item.paco.bark3": {
     "sounds": [
-      "obesecat:item/paco/bark3"
+      { "name": "obesecat:item/paco/bark3", "volume": 1.35 }
     ]
   },
   "item.paco.hellbark1": {
     "sounds": [
-      "obesecat:item/paco/hellbark1"
+      { "name": "obesecat:item/paco/hellbark1", "volume": 1.35 }
     ]
   },
   "item.paco.hellbark2": {
     "sounds": [
-      "obesecat:item/paco/hellbark2"
+      { "name": "obesecat:item/paco/hellbark2", "volume": 1.35 }
     ]
   },
   "item.paco.hellbark3": {
     "sounds": [
-      "obesecat:item/paco/hellbark3"
+      { "name": "obesecat:item/paco/hellbark3", "volume": 1.35 }
     ]
   },
   "item.transmute": {
@@ -150,6 +150,27 @@
     "sounds": [
       "obesecat:item/domino/domino3"
     ]
+  },
+  "block.chocolate_pudding.pudding1": {
+    "sounds": [
+      "obesecat:block/chocolate_pudding/pudding1"
+    ]
+  },
+  "block.chocolate_pudding.pudding2": {
+    "sounds": [
+      "obesecat:block/chocolate_pudding/pudding2"
+    ]
+  },
+  "block.chocolate_pudding.pudding3": {
+    "sounds": [
+      "obesecat:block/chocolate_pudding/pudding3"
+    ]
+  },
+  "block.chocolate_pudding.break": {
+    "sounds": [
+      "obesecat:block/chocolate_pudding/pudding1",
+      "obesecat:block/chocolate_pudding/pudding2",
+      "obesecat:block/chocolate_pudding/pudding3"
+    ]
   }
 }
-

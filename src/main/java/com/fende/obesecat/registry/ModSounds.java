@@ -45,6 +45,10 @@ public final class ModSounds {
     public static final DeferredHolder<SoundEvent, SoundEvent> TOILET_STINK_1 = register("block.toilet.stink1");
     public static final DeferredHolder<SoundEvent, SoundEvent> TOILET_STINK_2 = register("block.toilet.stink2");
     public static final DeferredHolder<SoundEvent, SoundEvent> TOILET_STINK_3 = register("block.toilet.stink3");
+    public static final DeferredHolder<SoundEvent, SoundEvent> CHOCOLATE_PUDDING_1 = register("block.chocolate_pudding.pudding1");
+    public static final DeferredHolder<SoundEvent, SoundEvent> CHOCOLATE_PUDDING_2 = register("block.chocolate_pudding.pudding2");
+    public static final DeferredHolder<SoundEvent, SoundEvent> CHOCOLATE_PUDDING_3 = register("block.chocolate_pudding.pudding3");
+    public static final DeferredHolder<SoundEvent, SoundEvent> CHOCOLATE_PUDDING_BREAK = register("block.chocolate_pudding.break");
 
     private static DeferredHolder<SoundEvent, SoundEvent> register(String name) {
         return SOUND_EVENTS.register(name, () -> SoundEvent.createVariableRangeEvent(

@@ -10,6 +10,9 @@ import com.fende.obesecat.block.NuclearLibraryBlock;
 import com.fende.obesecat.block.TrinititeBlock;
 import com.fende.obesecat.block.ToiletBlock;
 import com.fende.obesecat.block.EchoingBlastChamberBlock;
+import com.fende.obesecat.block.ChocolatePuddingBlock;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -24,6 +27,11 @@ public final class ModBlocks {
     public static final DeferredBlock<ToiletBlock> TOILET = BLOCKS.register(
             "toilet",
             () -> new ToiletBlock()
+    );
+
+    public static final DeferredBlock<ChocolatePuddingBlock> CHOCOLATE_PUDDING = BLOCKS.register(
+            "chocolate_pudding",
+            () -> new ChocolatePuddingBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CAKE))
     );
 
     public static final DeferredBlock<TrinititeBlock> TRINITITE = BLOCKS.register(

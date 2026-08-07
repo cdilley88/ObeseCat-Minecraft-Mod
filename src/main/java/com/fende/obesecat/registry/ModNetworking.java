@@ -73,6 +73,6 @@ public final class ModNetworking {
                 SniperPacoManager.queueShot(serverPlayer);
             }
         });
-    }`r`n}
+    }}
 
 

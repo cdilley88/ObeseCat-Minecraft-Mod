@@ -7,10 +7,10 @@ import org.junit.jupiter.api.Test;
 
 class SniperPacoManagerTest {
     @Test
-    void sniperPacoDealsEightDamagePerShot() throws ReflectiveOperationException {
+    void sniperPacoDealsTenDamagePerShot() throws ReflectiveOperationException {
         Field damageField = SniperPacoManager.class.getDeclaredField("SNIPER_DAMAGE");
         damageField.setAccessible(true);
 
-        assertEquals(8.0F, damageField.getFloat(null));
+        assertEquals(10.0F, damageField.getFloat(null));
     }
 }

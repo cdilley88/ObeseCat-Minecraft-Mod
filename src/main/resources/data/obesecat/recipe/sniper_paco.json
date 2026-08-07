@@ -1,12 +1,13 @@
 {
-  "type": "minecraft:crafting_shapeless",
-  "category": "equipment",
+  "type": "obesecat:transmutation",
   "ingredients": [
     {
-      "item": "obesecat:assault_paco"
+      "item": "obesecat:assault_paco",
+      "count": 1
     },
     {
-      "item": "minecraft:spyglass"
+      "item": "minecraft:spyglass",
+      "count": 1
     }
   ],
   "result": {

@@ -104,6 +104,8 @@ These are the currently confirmed transmutation recipe JSONs:
   - Tome of Town Portal + Virt's Leg -> Cow Level Portal
 - `stasis_sword_transmutation.json`
   - Holy Sword + Holy Knight Token -> Stasis Sword
+- `sniper_paco.json`
+  - Assault Paco + Spyglass -> Sniper Paco
 
 ## Code touchpoints
 

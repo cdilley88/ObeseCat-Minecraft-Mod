@@ -139,12 +139,14 @@
   "item.obesecat.emergency_starter_home.caption": "21st Street",
   "item.obesecat.luxury_starter_home": "Luxury Starter Home",
   "item.obesecat.luxury_starter_home.caption": "NOT 21st Street",
-  "item.obesecat.starter_home.instructions": "Right-click the ground to deploy in this chunk",
+  "item.obesecat.starter_home.instructions": "Right-click 3 times: preview, confirm, deploy",
   "message.obesecat.starter_home.missing": "Starter home structure is missing.",
   "message.obesecat.starter_home.too_large": "This starter home no longer fits inside one chunk.",
   "message.obesecat.starter_home.bad_height": "There is not enough build height here.",
   "message.obesecat.starter_home.not_loaded": "The destination chunk is not fully loaded.",
   "message.obesecat.starter_home.failed": "The starter home could not be placed.",
+  "message.obesecat.starter_home.preview": "Previewing chunk %s, %s (Y %s to %s). Right-click again to confirm.",
+  "message.obesecat.starter_home.confirm": "Deployment armed. Right-click once more to deploy and alter terrain.",
   "message.obesecat.starter_home.placed": "Starter home deployed.",
   "message.obesecat.fat_man.charge": "Fat Man: %1$s / %2$s Cat Food",
   "message.obesecat.fat_man.full": "Fat Man cannot hold any more Cat Food.",
@@ -186,5 +188,6 @@
   "block.obesecat.echoing_blast_chamber.lore.1": "Echoes of an incredible noise",
   "block.obesecat.echoing_blast_chamber.lore.2": "Trinitite stores the memory. Echo Shards sustain the resonance.",
   "block.obesecat.echoing_blast_chamber.lore.3": "Heat and turbulence are forced into harmonic compression,",
-  "block.obesecat.echoing_blast_chamber.lore.4": "permanently overdriving the rod."
+  "block.obesecat.echoing_blast_chamber.lore.4": "permanently overdriving the rod.",
+  "block.obesecat.chocolate_pudding": "Chocolate Pudding"
 }

@@ -26,7 +26,7 @@ import org.joml.Vector3f;
 
 public final class SplitPunchManager {
     public static final double RANGE = 25.0D;
-    public static final float DAMAGE = 8.0F;
+    public static final float DAMAGE = 10.0F;
     public static final double RADIUS = 4.0D;
     public static final int CAST_DELAY_TICKS = 15;
     public static final int GFX_DURATION_TICKS = 40;
@@ -129,7 +129,7 @@ public final class SplitPunchManager {
         level.addFreshEntity(gfx);
         PENDING_REMOVALS.add(new PendingRemoval(level, gfx, gfxX, gfxY, gfxZ, GFX_DURATION_TICKS));
 
-        // Deal 8 damage to all living entities (non-player) within 2-block radius of target block center
+        // Deal 10 damage to all living entities (non-player) within 2-block radius of target block center
         Vec3 center = Vec3.atCenterOf(origin);
         AABB damageBox = new AABB(
                 center.x - RADIUS, center.y - RADIUS, center.z - RADIUS,

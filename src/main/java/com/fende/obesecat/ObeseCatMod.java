@@ -195,6 +195,7 @@ public class ObeseCatMod {
         if (event.getTabKey() == CreativeModeTabs.FOOD_AND_DRINKS) {
             event.accept(ModItems.PLUTONIUM_CAT_FOOD.get());
             event.accept(ModItems.LITHIUM_DEUTERIDE_CAT_FOOD.get());
+            event.accept(ModItems.CHOCOLATE_PUDDING.get());
         }
         if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
             event.accept(ModItems.TRINITITE.get());

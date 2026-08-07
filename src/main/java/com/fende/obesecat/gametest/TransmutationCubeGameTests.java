@@ -213,11 +213,21 @@ public final class TransmutationCubeGameTests {
                 helper.getLevel().getRecipeManager().byKey(recipeId).isPresent(),
                 "The transmutation recipe must be loaded"
         );
+        TransmutationRecipe sniperRecipe = helper.getLevel().getRecipeManager()
+                .byKey(ResourceLocation.fromNamespaceAndPath(ObeseCatMod.MOD_ID, "sniper_paco"))
+                .map(recipeHolder -> (TransmutationRecipe) recipeHolder.value())
+                .orElseThrow();
+        SimpleContainer sniperInputs = new SimpleContainer(TransmutationCubeInventory.SLOT_COUNT);
+        sniperInputs.setItem(1, new ItemStack(Items.SPYGLASS));
+        sniperInputs.setItem(10, new ItemStack(ModItems.ASSAULT_PACO.get()));
         helper.assertTrue(
-                helper.getLevel().getRecipeManager()
-                        .byKey(ResourceLocation.fromNamespaceAndPath(ObeseCatMod.MOD_ID, "sniper_paco"))
-                        .isPresent(),
-                "The sniper crafting recipe must be loaded"
+                sniperRecipe.matches(TransmutationInput.copyOf(sniperInputs), helper.getLevel()),
+                "Assault Paco plus a spyglass must load as the Sniper Paco transmutation recipe"
+        );
+        helper.assertTrue(
+                sniperRecipe.assemble(TransmutationInput.copyOf(sniperInputs), helper.getLevel().registryAccess())
+                        .is(ModItems.SNIPER_PACO.get()),
+                "The Sniper Paco transmutation recipe must output Sniper Paco"
         );
         helper.assertTrue(
                 helper.getLevel().getRecipeManager()

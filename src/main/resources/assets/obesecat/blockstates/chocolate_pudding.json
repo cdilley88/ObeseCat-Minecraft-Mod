@@ -1,0 +1,11 @@
+{
+  "variants": {
+    "bites=0": { "model": "obesecat:block/chocolate_pudding" },
+    "bites=1": { "model": "obesecat:block/chocolate_pudding_slice1" },
+    "bites=2": { "model": "obesecat:block/chocolate_pudding_slice2" },
+    "bites=3": { "model": "obesecat:block/chocolate_pudding_slice3" },
+    "bites=4": { "model": "obesecat:block/chocolate_pudding_slice4" },
+    "bites=5": { "model": "obesecat:block/chocolate_pudding_slice5" },
+    "bites=6": { "model": "obesecat:block/chocolate_pudding_slice6" }
+  }
+}

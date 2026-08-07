@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "food",
+  "pattern": [
+    "CMC",
+    "SES",
+    "WWW"
+  ],
+  "key": {
+    "C": { "item": "minecraft:cocoa_beans" },
+    "M": { "item": "minecraft:milk_bucket" },
+    "S": { "item": "minecraft:sugar" },
+    "E": { "item": "minecraft:egg" },
+    "W": { "item": "minecraft:wheat" }
+  },
+  "result": { "id": "obesecat:chocolate_pudding", "count": 1 }
+}

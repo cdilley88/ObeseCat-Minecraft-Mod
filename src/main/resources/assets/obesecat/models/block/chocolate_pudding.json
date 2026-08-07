@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/cake",
+  "textures": {
+    "bottom": "obesecat:block/chocolate_pudding_bottom",
+    "side": "obesecat:block/chocolate_pudding_side",
+    "top": "obesecat:block/chocolate_pudding_top",
+    "particle": "obesecat:block/chocolate_pudding_side"
+  }
+}

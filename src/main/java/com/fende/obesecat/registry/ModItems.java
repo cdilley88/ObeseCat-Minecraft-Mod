@@ -10,6 +10,7 @@ import com.fende.obesecat.item.BigFireBoomStickItem;
 import com.fende.obesecat.item.BoomStickItem;
 import com.fende.obesecat.item.CaptionedItem;
 import com.fende.obesecat.item.CatChargerItem;
+import com.fende.obesecat.item.ChocolatePuddingItem;
 import com.fende.obesecat.item.PortableCatChargerItem;
 import com.fende.obesecat.item.CowLevelPortalItem;
 import com.fende.obesecat.item.CreativeFoodBinItem;
@@ -518,6 +519,11 @@ public final class ModItems {
     public static final DeferredItem<BlockItem> TOILET = ITEMS.register(
             "toilet",
             () -> new BlockItem(ModBlocks.TOILET.get(), new Item.Properties())
+    );
+
+    public static final DeferredItem<BlockItem> CHOCOLATE_PUDDING = ITEMS.register(
+            "chocolate_pudding",
+            () -> new ChocolatePuddingItem(ModBlocks.CHOCOLATE_PUDDING.get(), new Item.Properties().stacksTo(1))
     );
 
     public static final DeferredItem<BlockItem> TRINITITE = ITEMS.register(
