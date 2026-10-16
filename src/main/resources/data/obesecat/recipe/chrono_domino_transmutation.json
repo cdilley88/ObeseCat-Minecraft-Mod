@@ -1,0 +1,10 @@
+{
+  "type": "obesecat:transmutation",
+  "ingredients": [
+    {"item": "minecraft:dragon_breath", "count": 1},
+    {"item": "minecraft:clock", "count": 1},
+    {"item": "obesecat:trinitite", "count": 1},
+    {"item": "obesecat:domino", "count": 1}
+  ],
+  "result": {"id": "obesecat:chrono_domino", "count": 1}
+}

@@ -1,0 +1,36 @@
+{
+  "parent": "obesecat:find_manhattan_bunker",
+  "display": {
+    "icon": {
+      "id": "obesecat:plutonium_cat_food",
+      "count": 1
+    },
+    "title": {
+      "translate": "advancements.obesecat.acquire_plutonium_cat_food.title"
+    },
+    "description": {
+      "translate": "advancements.obesecat.acquire_plutonium_cat_food.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "criteria": {
+    "has_food": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "obesecat:plutonium_cat_food"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_food"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,17 @@
+{
+  "type": "obesecat:transmutation",
+  "ingredients": [
+    {
+      "item": "obesecat:doritos_paws",
+      "count": 1
+    },
+    {
+      "item": "minecraft:sculk_catalyst",
+      "count": 1
+    }
+  ],
+  "result": {
+    "id": "obesecat:sculk_doritos_paws",
+    "count": 1
+  }
+}

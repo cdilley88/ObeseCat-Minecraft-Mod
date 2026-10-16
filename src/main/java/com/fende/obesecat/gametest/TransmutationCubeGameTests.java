@@ -92,9 +92,10 @@ public final class TransmutationCubeGameTests {
         SimpleContainer contents = new SimpleContainer(TransmutationCubeInventory.SLOT_COUNT);
         contents.setItem(4, new ItemStack(ModItems.PACO.get()));
         contents.setItem(9, new ItemStack(Items.BLAZE_POWDER));
+        contents.setItem(14, new ItemStack(Items.DRAGON_BREATH));
         helper.assertTrue(
                 recipe.matches(TransmutationInput.copyOf(contents), helper.getLevel()),
-                "Paco plus blaze powder must match the Hellhound recipe in any cube slots"
+                "Paco plus blaze powder plus dragon's breath must match the Hellhound recipe in any cube slots"
         );
         helper.assertTrue(
                 recipe.assemble(TransmutationInput.copyOf(contents), helper.getLevel().registryAccess())
@@ -131,6 +132,167 @@ public final class TransmutationCubeGameTests {
                 recipe.assemble(TransmutationInput.copyOf(contents), helper.getLevel().registryAccess())
                         .is(ModItems.COW_LEVEL_PORTAL.get()),
                 "The Cow Level Portal recipe must transmute into Cow Level Portal"
+        );
+        helper.succeed();
+    }
+
+    @GameTest(template = TEMPLATE)
+    public static void enigmaEmberTransmutationRecipeIsLoaded(GameTestHelper helper) {
+        ResourceLocation recipeId = ResourceLocation.fromNamespaceAndPath(
+                ObeseCatMod.MOD_ID,
+                "enigma_ember_transmutation"
+        );
+        helper.assertTrue(
+                helper.getLevel().getRecipeManager().byKey(recipeId).isPresent(),
+                "The Enigma Ember transmutation recipe must be loaded"
+        );
+
+        TransmutationRecipe recipe = helper.getLevel().getRecipeManager()
+                .byKey(recipeId)
+                .map(recipeHolder -> (TransmutationRecipe) recipeHolder.value())
+                .orElseThrow();
+
+        SimpleContainer contents = new SimpleContainer(TransmutationCubeInventory.SLOT_COUNT);
+        contents.setItem(2, new ItemStack(ModItems.EMBER.get()));
+        contents.setItem(6, new ItemStack(ModItems.QUANTUM_SEMICONDUCTOR.get(), 1));
+        helper.assertTrue(
+                recipe.matches(TransmutationInput.copyOf(contents), helper.getLevel()),
+                "Ember plus one Quantum Semiconductor must match the Enigma Ember recipe in any cube slots"
+        );
+        helper.assertTrue(
+                recipe.assemble(TransmutationInput.copyOf(contents), helper.getLevel().registryAccess())
+                        .is(ModItems.ENIGMA_EMBER.get()),
+                "The Enigma Ember recipe must transmute into Enigma Ember"
+        );
+        helper.succeed();
+    }
+
+    @GameTest(template = TEMPLATE)
+    public static void doritosPawsTransmutationRecipeIsLoaded(GameTestHelper helper) {
+        ResourceLocation recipeId = ResourceLocation.fromNamespaceAndPath(
+                ObeseCatMod.MOD_ID,
+                "doritos_paws_transmutation"
+        );
+        helper.assertTrue(
+                helper.getLevel().getRecipeManager().byKey(recipeId).isPresent(),
+                "The Dorito's Paws transmutation recipe must be loaded"
+        );
+
+        TransmutationRecipe recipe = helper.getLevel().getRecipeManager()
+                .byKey(recipeId)
+                .map(recipeHolder -> (TransmutationRecipe) recipeHolder.value())
+                .orElseThrow();
+
+        SimpleContainer contents = new SimpleContainer(TransmutationCubeInventory.SLOT_COUNT);
+        contents.setItem(1, new ItemStack(ModItems.DORITO.get()));
+        contents.setItem(4, new ItemStack(Items.RABBIT_FOOT));
+        contents.setItem(8, new ItemStack(Items.FEATHER));
+        helper.assertTrue(
+                recipe.matches(TransmutationInput.copyOf(contents), helper.getLevel()),
+                "Dorito plus rabbit foot plus feather must match the Dorito's Paws recipe in any cube slots"
+        );
+        helper.assertTrue(
+                recipe.assemble(TransmutationInput.copyOf(contents), helper.getLevel().registryAccess())
+                        .is(ModItems.DORITOS_PAWS.get()),
+                "The Dorito's Paws recipe must transmute into Dorito's Paws"
+        );
+        helper.succeed();
+    }
+
+    @GameTest(template = TEMPLATE)
+    public static void sculkDoritosPawsTransmutationRecipeIsLoaded(GameTestHelper helper) {
+        ResourceLocation recipeId = ResourceLocation.fromNamespaceAndPath(
+                ObeseCatMod.MOD_ID,
+                "sculk_doritos_paws_transmutation"
+        );
+        helper.assertTrue(
+                helper.getLevel().getRecipeManager().byKey(recipeId).isPresent(),
+                "The Sculk Dorito's Paws transmutation recipe must be loaded"
+        );
+
+        TransmutationRecipe recipe = helper.getLevel().getRecipeManager()
+                .byKey(recipeId)
+                .map(recipeHolder -> (TransmutationRecipe) recipeHolder.value())
+                .orElseThrow();
+
+        SimpleContainer contents = new SimpleContainer(TransmutationCubeInventory.SLOT_COUNT);
+        contents.setItem(0, new ItemStack(ModItems.DORITOS_PAWS.get()));
+        contents.setItem(5, new ItemStack(Items.SCULK_CATALYST));
+        helper.assertTrue(
+                recipe.matches(TransmutationInput.copyOf(contents), helper.getLevel()),
+                "Dorito's Paws plus sculk catalyst must match the Sculk Dorito's Paws recipe in any cube slots"
+        );
+        helper.assertTrue(
+                recipe.assemble(TransmutationInput.copyOf(contents), helper.getLevel().registryAccess())
+                        .is(ModItems.SCULK_DORITOS_PAWS.get()),
+                "The Sculk Dorito's Paws recipe must transmute into Sculk Dorito's Paws"
+        );
+        helper.succeed();
+    }
+
+    @GameTest(template = TEMPLATE)
+    public static void nightVisionDoritoTransmutationRecipeIsLoaded(GameTestHelper helper) {
+        ResourceLocation recipeId = ResourceLocation.fromNamespaceAndPath(
+                ObeseCatMod.MOD_ID,
+                "night_vision_dorito_transmutation"
+        );
+        helper.assertTrue(
+                helper.getLevel().getRecipeManager().byKey(recipeId).isPresent(),
+                "The Night Vision Dorito transmutation recipe must be loaded"
+        );
+
+        TransmutationRecipe recipe = helper.getLevel().getRecipeManager()
+                .byKey(recipeId)
+                .map(recipeHolder -> (TransmutationRecipe) recipeHolder.value())
+                .orElseThrow();
+
+        SimpleContainer contents = new SimpleContainer(TransmutationCubeInventory.SLOT_COUNT);
+        contents.setItem(0, new ItemStack(ModItems.DORITO.get()));
+        contents.setItem(3, new ItemStack(Items.GILDED_BLACKSTONE));
+        contents.setItem(7, new ItemStack(Items.TINTED_GLASS));
+        contents.setItem(11, new ItemStack(Items.AMETHYST_SHARD));
+        helper.assertTrue(
+                recipe.matches(TransmutationInput.copyOf(contents), helper.getLevel()),
+                "Dorito plus gilded blackstone plus tinted glass plus amethyst shard must match the Night Vision Dorito recipe in any cube slots"
+        );
+        helper.assertTrue(
+                recipe.assemble(TransmutationInput.copyOf(contents), helper.getLevel().registryAccess())
+                        .is(ModItems.NIGHT_VISION_DORITO.get()),
+                "The Night Vision Dorito recipe must transmute into Night Vision Dorito"
+        );
+        helper.succeed();
+    }
+
+    @GameTest(template = TEMPLATE)
+    public static void tinyPlanetTransmutationRecipeIsLoaded(GameTestHelper helper) {
+        ResourceLocation recipeId = ResourceLocation.fromNamespaceAndPath(
+                ObeseCatMod.MOD_ID,
+                "tiny_planet_transmutation"
+        );
+        helper.assertTrue(
+                helper.getLevel().getRecipeManager().byKey(recipeId).isPresent(),
+                "The Tiny Planet transmutation recipe must be loaded"
+        );
+
+        TransmutationRecipe recipe = helper.getLevel().getRecipeManager()
+                .byKey(recipeId)
+                .map(recipeHolder -> (TransmutationRecipe) recipeHolder.value())
+                .orElseThrow();
+
+        SimpleContainer contents = new SimpleContainer(TransmutationCubeInventory.SLOT_COUNT);
+        contents.setItem(0, new ItemStack(ModItems.DORITO.get()));
+        contents.setItem(2, new ItemStack(Items.ARROW));
+        contents.setItem(5, new ItemStack(Items.FIRE_CHARGE));
+        contents.setItem(8, new ItemStack(Items.LODESTONE));
+        contents.setItem(11, new ItemStack(Items.GOLD_BLOCK));
+        helper.assertTrue(
+                recipe.matches(TransmutationInput.copyOf(contents), helper.getLevel()),
+                "Dorito plus arrow plus fire charge plus lodestone plus gold block must match the Tiny Planet recipe in any cube slots"
+        );
+        helper.assertTrue(
+                recipe.assemble(TransmutationInput.copyOf(contents), helper.getLevel().registryAccess())
+                        .is(ModItems.TINY_PLANET.get()),
+                "The Tiny Planet recipe must transmute into Tiny Planet"
         );
         helper.succeed();
     }

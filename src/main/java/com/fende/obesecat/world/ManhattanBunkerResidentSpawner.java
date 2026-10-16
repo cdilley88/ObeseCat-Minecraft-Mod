@@ -1,6 +1,8 @@
 package com.fende.obesecat.world;
 
 import com.fende.obesecat.ObeseCatMod;
+import com.fende.obesecat.entity.ObeseCat;
+import com.fende.obesecat.registry.ModEntities;
 import java.util.List;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
@@ -23,6 +25,8 @@ import org.slf4j.LoggerFactory;
 
 public final class ManhattanBunkerResidentSpawner {
     private static final Logger LOGGER = LoggerFactory.getLogger(ManhattanBunkerResidentSpawner.class);
+    public static final String BUNKER_FAT_MAN_TAG = "obesecat_bunker_fat_man";
+    public static final String BUNKER_FAT_MAN_SPAWNED_TAG = "obesecat_bunker_fat_man_spawned";
     private static final ResourceKey<Structure> BUNKER_STRUCTURE = ResourceKey.create(
             Registries.STRUCTURE,
             ResourceLocation.fromNamespaceAndPath(ObeseCatMod.MOD_ID, "manhattan_bunker")
@@ -52,7 +56,7 @@ public final class ManhattanBunkerResidentSpawner {
         }
     }
 
-    private static void ensureResident(ServerLevel level, BoundingBox box) {
+    public static void ensureResident(ServerLevel level, BoundingBox box) {
         int replaced = ManhattanBunkerWorkstation.replaceLecterns(level, box);
         if (replaced > 0) {
             LOGGER.info("Replaced {} vanilla lectern(s) with Nuclear Library blocks in Manhattan bunker at {}", replaced, box.getCenter());
@@ -69,27 +73,57 @@ public final class ManhattanBunkerResidentSpawner {
 
         List<Villager> existing = level.getEntitiesOfClass(Villager.class, searchBox, villager ->
                 villager.getTags().contains(ManhattanPhysicistSpawner.STRUCTURE_ENTITY_TAG));
-        if (!existing.isEmpty()) {
+        Villager physicist;
+        if (existing.isEmpty()) {
+            BlockPos workstationPos = ManhattanBunkerWorkstation.findWorkstationPos(level, box);
+            BlockPos spawnPos = ManhattanBunkerWorkstation.findSpawnPos(level, box);
+            if (spawnPos == null) {
+                spawnPos = new BlockPos((box.minX() + box.maxX()) / 2, box.minY() + 1, (box.minZ() + box.maxZ()) / 2);
+                LOGGER.warn("No Nuclear Library spawn position found in Manhattan bunker at {}; using center fallback {}", box.getCenter(), spawnPos);
+            }
+
+            physicist = EntityType.VILLAGER.create(level);
+            if (physicist == null) {
+                LOGGER.warn("Failed to create Manhattan Physicist villager for bunker at {}", box.getCenter());
+                return;
+            }
+
+            physicist.moveTo(spawnPos.getX() + 0.5D, spawnPos.getY(), spawnPos.getZ() + 0.5D, 0.0F, 0.0F);
+            ManhattanPhysicistSpawner.configureVillager(physicist, workstationPos);
+            level.addFreshEntity(physicist);
+            LOGGER.info("Spawned Manhattan Physicist inside Manhattan bunker at {}", spawnPos);
+        } else {
+            physicist = existing.get(0);
+        }
+
+        ensureFatManResident(level, box, physicist);
+    }
+
+    private static void ensureFatManResident(ServerLevel level, BoundingBox box, Villager physicist) {
+        if (physicist.getTags().contains(BUNKER_FAT_MAN_SPAWNED_TAG)) {
             return;
         }
 
-        BlockPos workstationPos = ManhattanBunkerWorkstation.findWorkstationPos(level, box);
-        BlockPos spawnPos = ManhattanBunkerWorkstation.findSpawnPos(level, box);
-        if (spawnPos == null) {
-            spawnPos = new BlockPos((box.minX() + box.maxX()) / 2, box.minY() + 1, (box.minZ() + box.maxZ()) / 2);
-            LOGGER.warn("No Nuclear Library spawn position found in Manhattan bunker at {}; using center fallback {}", box.getCenter(), spawnPos);
+        AABB searchBox = new AABB(
+                box.minX(), box.minY(), box.minZ(),
+                box.maxX() + 1, box.maxY() + 1, box.maxZ() + 1
+        );
+        List<ObeseCat> existingCats = level.getEntitiesOfClass(ObeseCat.class, searchBox, cat ->
+                cat.getTags().contains(BUNKER_FAT_MAN_TAG));
+
+        if (existingCats.isEmpty()) {
+            BlockPos catSpawnPos = ManhattanBunkerWorkstation.findCatSpawnPos(level, box, physicist.blockPosition());
+            ObeseCat fatMan = ModEntities.OBESE_CAT.get().create(level);
+            if (fatMan != null) {
+                fatMan.moveTo(catSpawnPos.getX() + 0.5D, catSpawnPos.getY(), catSpawnPos.getZ() + 0.5D, 0.0F, 0.0F);
+                fatMan.setPersistenceRequired();
+                fatMan.addTag(BUNKER_FAT_MAN_TAG);
+                level.addFreshEntity(fatMan);
+                LOGGER.info("Spawned Fat Man inside Manhattan bunker at {}", catSpawnPos);
+            }
         }
 
-        Villager villager = EntityType.VILLAGER.create(level);
-        if (villager == null) {
-            LOGGER.warn("Failed to create Manhattan Physicist villager for bunker at {}", box.getCenter());
-            return;
-        }
-
-        villager.moveTo(spawnPos.getX() + 0.5D, spawnPos.getY(), spawnPos.getZ() + 0.5D, 0.0F, 0.0F);
-        ManhattanPhysicistSpawner.configureVillager(villager, workstationPos);
-        level.addFreshEntity(villager);
-        LOGGER.info("Spawned Manhattan Physicist inside Manhattan bunker at {}", spawnPos);
+        physicist.addTag(BUNKER_FAT_MAN_SPAWNED_TAG);
     }
 
     private ManhattanBunkerResidentSpawner() {

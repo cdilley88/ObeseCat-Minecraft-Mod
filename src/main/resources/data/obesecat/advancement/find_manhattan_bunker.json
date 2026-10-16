@@ -1,0 +1,42 @@
+{
+  "parent": "obesecat:root",
+  "display": {
+    "icon": {
+      "id": "obesecat:nuclear_library",
+      "count": 1
+    },
+    "title": {
+      "translate": "advancements.obesecat.find_manhattan_bunker.title"
+    },
+    "description": {
+      "translate": "advancements.obesecat.find_manhattan_bunker.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "criteria": {
+    "in_bunker": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "structures": "obesecat:manhattan_bunker"
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "in_bunker"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

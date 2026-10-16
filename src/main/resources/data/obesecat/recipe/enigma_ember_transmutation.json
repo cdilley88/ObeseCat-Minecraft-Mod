@@ -1,0 +1,17 @@
+{
+  "type": "obesecat:transmutation",
+  "ingredients": [
+    {
+      "item": "obesecat:ember",
+      "count": 1
+    },
+    {
+      "item": "obesecat:quantum_semiconductor",
+      "count": 1
+    }
+  ],
+  "result": {
+    "id": "obesecat:enigma_ember",
+    "count": 1
+  }
+}

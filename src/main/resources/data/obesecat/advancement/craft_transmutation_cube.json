@@ -1,0 +1,36 @@
+{
+  "parent": "obesecat:detonation",
+  "display": {
+    "icon": {
+      "id": "obesecat:transmutation_cube",
+      "count": 1
+    },
+    "title": {
+      "translate": "advancements.obesecat.craft_transmutation_cube.title"
+    },
+    "description": {
+      "translate": "advancements.obesecat.craft_transmutation_cube.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "criteria": {
+    "has_cube": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "obesecat:transmutation_cube"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_cube"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

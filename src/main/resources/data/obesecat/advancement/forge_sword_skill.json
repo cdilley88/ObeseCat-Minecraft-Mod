@@ -1,0 +1,80 @@
+{
+  "parent": "obesecat:slay_cow_king",
+  "display": {
+    "icon": {
+      "id": "obesecat:stasis_sword",
+      "count": 1
+    },
+    "title": {
+      "translate": "advancements.obesecat.forge_sword_skill.title"
+    },
+    "description": {
+      "translate": "advancements.obesecat.forge_sword_skill.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "criteria": {
+    "stasis": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "obesecat:stasis_sword"
+          }
+        ]
+      }
+    },
+    "split": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "obesecat:split_punch"
+          }
+        ]
+      }
+    },
+    "crush": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "obesecat:crush_punch"
+          }
+        ]
+      }
+    },
+    "lightning": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "obesecat:lightning_stab"
+          }
+        ]
+      }
+    },
+    "holy": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "obesecat:holy_explosion"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "stasis",
+      "split",
+      "crush",
+      "lightning",
+      "holy"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

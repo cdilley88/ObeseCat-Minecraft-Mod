@@ -32,7 +32,7 @@ public final class EmberSingularityMagnet {
         }
 
         for (ServerPlayer player : level.players()) {
-            if (hasActiveSingularity(player)) {
+            if (hasActiveSingularity(player) && (player.getAbilities().instabuild || player.getFoodData().getFoodLevel() > 0)) {
                 attractItems(level, player);
             }
         }
@@ -56,6 +56,7 @@ public final class EmberSingularityMagnet {
     private static void attractItems(ServerLevel level, ServerPlayer player) {
         Vec3 target = player.position().add(0.0D, 0.9D, 0.0D);
         AABB box = player.getBoundingBox().inflate(RADIUS);
+        boolean pulledAny = false;
 
         for (ItemEntity item : level.getEntitiesOfClass(ItemEntity.class, box, ItemEntity::isAlive)) {
             Vec3 offset = target.subtract(item.position());
@@ -66,17 +67,25 @@ public final class EmberSingularityMagnet {
 
             if (distance <= PICKUP_DISTANCE) {
                 item.playerTouch(player);
+                if (!player.getAbilities().instabuild) {
+                    player.causeFoodExhaustion(0.05F);
+                }
                 continue;
             }
 
             double pullStrength = MIN_PULL + ((RADIUS - distance) / RADIUS) * (MAX_PULL - MIN_PULL);
             Vec3 pull = offset.normalize().scale(pullStrength);
             item.setDeltaMovement(item.getDeltaMovement().scale(0.55D).add(pull));
+            pulledAny = true;
 
             if (level.getGameTime() % PARTICLE_INTERVAL == 0L) {
                 level.sendParticles(ParticleTypes.FLAME, item.getX(), item.getY() + 0.15D, item.getZ(), 2, 0.12D, 0.12D, 0.12D, 0.01D);
                 level.sendParticles(ParticleTypes.SMOKE, item.getX(), item.getY() + 0.15D, item.getZ(), 1, 0.10D, 0.10D, 0.10D, 0.005D);
             }
+        }
+
+        if (pulledAny && !player.getAbilities().instabuild) {
+            player.causeFoodExhaustion(0.015F);
         }
     }
 

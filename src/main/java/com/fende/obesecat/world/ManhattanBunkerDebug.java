@@ -84,7 +84,7 @@ public final class ManhattanBunkerDebug {
         LOGGER.info("Manhattan bunker structure registered: {}", structureRegistered);
         LOGGER.info("Manhattan bunker structure set registered: {}", structureSetRegistered);
         LOGGER.info("Manhattan bunker biome tag loaded: {} (biomes={})", taggedBiomeCount >= 0, taggedBiomeCount);
-        LOGGER.info("Manhattan bunker generation settings loaded: spacing=24, separation=8, step=surface_structures, beacon=disabled");
+        LOGGER.info("Manhattan bunker generation settings loaded: spacing=64, separation=20, step=surface_structures, beacon=disabled");
     }
 
     private static int placeBunker(CommandSourceStack source, BlockPos pos) throws CommandSyntaxException {
@@ -109,9 +109,10 @@ public final class ManhattanBunkerDebug {
         );
         int replaced = ManhattanBunkerWorkstation.replaceLecterns(level, box);
         int cleaned = ManhattanBunkerWorkstation.cleanInteriorFloor(level, box);
+        ManhattanBunkerResidentSpawner.ensureResident(level, box);
 
-        source.sendSuccess(() -> Component.literal("Placed Manhattan bunker template at " + pos.getX() + " " + pos.getY() + " " + pos.getZ() + ", converted " + replaced + " lectern(s), and cleaned " + cleaned + " floor block(s)"), true);
-        LOGGER.info("Placed Manhattan bunker template at {}, converted {} lectern(s), and cleaned {} floor block(s)", pos, replaced, cleaned);
+        source.sendSuccess(() -> Component.literal("Placed Manhattan bunker template at " + pos.getX() + " " + pos.getY() + " " + pos.getZ() + ", converted " + replaced + " lectern(s), cleaned " + cleaned + " floor block(s), and ensured bunker residents (Physicist & Fat Man)"), true);
+        LOGGER.info("Placed Manhattan bunker template at {}, converted {} lectern(s), cleaned {} floor block(s), and ensured residents (Physicist & Fat Man)", pos, replaced, cleaned);
         return 1;
     }
 

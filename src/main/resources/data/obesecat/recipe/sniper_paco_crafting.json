@@ -3,14 +3,14 @@
   "category": "equipment",
   "ingredients": [
     {
-      "item": "obesecat:mr_kitty"
+      "item": "obesecat:assault_paco"
     },
     {
-      "item": "minecraft:nether_star"
+      "item": "minecraft:spyglass"
     }
   ],
   "result": {
-    "id": "obesecat:tiny_planet",
+    "id": "obesecat:sniper_paco",
     "count": 1
   }
 }

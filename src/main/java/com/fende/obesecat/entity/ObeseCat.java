@@ -1,10 +1,8 @@
 package com.fende.obesecat.entity;
 
 import com.fende.obesecat.energy.CatFoodEnergy;
-import com.fende.obesecat.network.NuclearFlashPayload;
 import com.fende.obesecat.registry.ModBlocks;
-import com.fende.obesecat.registry.ModItems;
-import com.fende.obesecat.world.AtomicFireSphere;
+import com.fende.obesecat.world.FatManPlutoniumExplosion;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -12,6 +10,7 @@ import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -73,14 +72,6 @@ public class ObeseCat extends Cat {
     @Override
     public void tick() {
         super.tick();
-        if (!this.level().isClientSide() && this.detonationDelayTicks > 0) {
-            this.detonationDelayTicks--;
-            if (this.detonationDelayTicks <= 0) {
-                explodeFatMan();
-                this.discard();
-            }
-            return;
-        }
 
         int countdown = this.getExplosionCountdownTicks();
         if (countdown <= 0) {
@@ -88,10 +79,22 @@ public class ObeseCat extends Cat {
         }
 
         if (!this.level().isClientSide()) {
+            if (countdown % 20 == 0) {
+                this.playSound(SoundEvents.UI_BUTTON_CLICK.value(), 0.8F, 1.2F + ((EXPLOSION_COUNTDOWN_TICKS - countdown) / (float) EXPLOSION_COUNTDOWN_TICKS) * 0.8F);
+            }
+            if (this.level() instanceof ServerLevel serverLevel) {
+                serverLevel.sendParticles(ParticleTypes.SMOKE, this.getX(), this.getY() + 0.5D, this.getZ(), 2, 0.15D, 0.15D, 0.15D, 0.01D);
+                if (countdown <= 60) {
+                    serverLevel.sendParticles(ParticleTypes.FLAME, this.getX(), this.getY() + 0.5D, this.getZ(), 3, 0.15D, 0.15D, 0.15D, 0.02D);
+                }
+            }
+
             if (countdown == 1) {
                 this.entityData.set(EXPLOSION_COUNTDOWN, 0);
-                triggerNuclearFlash(this.blockPosition(), this.armedCraterRadius);
-                this.detonationDelayTicks = FLASH_TO_CRATER_DELAY_TICKS;
+                if (this.level() instanceof ServerLevel serverLevel) {
+                    FatManPlutoniumExplosion.detonate(serverLevel, this.blockPosition());
+                }
+                this.discard();
             } else {
                 this.entityData.set(EXPLOSION_COUNTDOWN, countdown - 1);
             }
@@ -185,11 +188,20 @@ public class ObeseCat extends Cat {
         if (!player.getAbilities().instabuild) {
             stack.shrink(1);
         }
-        player.displayClientMessage(Component.translatable(
-                "message.obesecat.fat_man.charge",
-                getCatFoodPoints(),
-                CatFoodEnergy.FAT_MAN_DETONATION_POINTS
-        ), true);
+        this.playSound(SoundEvents.CAT_EAT, 1.0F, 0.9F);
+        if (this.level() instanceof ServerLevel serverLevel) {
+            serverLevel.sendParticles(ParticleTypes.HAPPY_VILLAGER, this.getX(), this.getY() + 0.5D, this.getZ(), 5, 0.2D, 0.2D, 0.2D, 0.05D);
+        }
+
+        if (getExplosionCountdownTicks() > 0) {
+            player.displayClientMessage(Component.translatable("message.obesecat.fat_man.armed"), true);
+        } else {
+            player.displayClientMessage(Component.translatable(
+                    "message.obesecat.fat_man.charge",
+                    getCatFoodPoints(),
+                    CatFoodEnergy.FAT_MAN_DETONATION_POINTS
+            ), true);
+        }
     }
 
     private void armFromCatFood() {
@@ -201,6 +213,7 @@ public class ObeseCat extends Cat {
         this.armedCraterMaxDepth = LITHIUM_CRATER_MAX_DEPTH;
         this.armedAtomicFireSphere = true;
         this.entityData.set(EXPLOSION_COUNTDOWN, EXPLOSION_COUNTDOWN_TICKS);
+        this.playSound(SoundEvents.TNT_PRIMED, 1.0F, 1.0F);
     }
 
     private final class FatManEnergyStorage implements IEnergyStorage {
@@ -224,157 +237,5 @@ public class ObeseCat extends Cat {
         @Override public int getMaxEnergyStored() { return CatFoodEnergy.toFe(CatFoodEnergy.FAT_MAN_CAPACITY_POINTS); }
         @Override public boolean canExtract() { return false; }
         @Override public boolean canReceive() { return getExplosionCountdownTicks() <= 0; }
-    }
-
-    private void explodeFatMan() {
-        BlockPos origin = this.blockPosition();
-        BlockPos craterCenter = carveCustomCrater(this.armedCraterRadius, this.armedCraterMaxDepth);
-        if (this.armedAtomicFireSphere && this.level() instanceof ServerLevel serverLevel) {
-            placeTrinititeAtCraterCenter(serverLevel, craterCenter);
-            AtomicFireSphere.createDelayed(serverLevel, origin, 2);
-        }
-    }
-
-    private BlockPos carveCustomCrater(int craterRadius, int craterMaxDepth) {
-        Level level = this.level();
-        BlockPos origin = this.blockPosition();
-        playCustomBlastEffects(level, origin, craterRadius);
-        deleteMobsAtGroundZero(level, origin, craterRadius, craterMaxDepth);
-
-        int centerX = origin.getX();
-        int centerZ = origin.getZ();
-        int minY = level.getMinBuildHeight() + 1;
-        int rimPadding = Math.max(3, craterRadius / 7);
-        BlockPos craterCenter = origin;
-
-        for (int dx = -craterRadius - rimPadding; dx <= craterRadius + rimPadding; dx++) {
-            for (int dz = -craterRadius - rimPadding; dz <= craterRadius + rimPadding; dz++) {
-                int x = centerX + dx;
-                int z = centerZ + dz;
-                double distance = Math.sqrt((double) dx * dx + (double) dz * dz);
-                double rimNoise = (noise(x, z, 17L) * 2.0D) - 1.0D;
-                double pocketNoise = noise(x, z, 41L);
-                double effectiveRadius = craterRadius + (rimNoise * craterRadius * 0.13D) + (pocketNoise * craterRadius * 0.06D);
-                if (distance > effectiveRadius) {
-                    continue;
-                }
-
-                double normalized = distance / effectiveRadius;
-                if (normalized > 0.92D && noise(x, z, 73L) > 0.55D) {
-                    continue;
-                }
-
-                int surfaceY = level.getHeightmapPos(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, new BlockPos(x, origin.getY(), z)).getY();
-                int maxDepth = (int) (craterMaxDepth * (1.0D - Math.pow(normalized, 1.8D)));
-                maxDepth += (int) ((noise(x, z, 113L) - 0.5D) * Math.max(2.0D, craterMaxDepth * 0.24D));
-                if (normalized > 0.72D) {
-                    maxDepth = (int) (maxDepth * (0.5D + noise(x, z, 151L) * 0.45D));
-                }
-                if (maxDepth <= 0) {
-                    continue;
-                }
-
-                int topY = surfaceY + (normalized < 0.28D ? 3 : 1);
-                int bottomY = Math.max(minY, surfaceY - maxDepth);
-                if (dx == 0 && dz == 0) {
-                    craterCenter = new BlockPos(x, bottomY, z);
-                }
-
-                for (int y = topY; y >= bottomY; y--) {
-                    BlockPos pos = new BlockPos(x, y, z);
-                    BlockState state = level.getBlockState(pos);
-                    if (!state.isAir() && state.getDestroySpeed(level, pos) >= 0.0F) {
-                        level.setBlock(pos, Blocks.AIR.defaultBlockState(), 3);
-                    }
-                }
-
-                maybePlaceBlastFire(level, x, bottomY, z, normalized);
-            }
-        }
-
-        return craterCenter;
-    }
-
-    private void placeTrinititeAtCraterCenter(ServerLevel level, BlockPos craterCenter) {
-        BlockState trinitite = ModBlocks.TRINITITE.get().defaultBlockState();
-        BlockPos.MutableBlockPos mutablePos = craterCenter.mutable();
-
-        for (int offset = 0; offset <= 8; offset++) {
-            mutablePos.set(craterCenter.getX(), craterCenter.getY() + offset, craterCenter.getZ());
-            BlockState state = level.getBlockState(mutablePos);
-            if (state.isAir() || state.canBeReplaced()) {
-                level.setBlock(mutablePos, trinitite, 3);
-                return;
-            }
-        }
-
-        level.setBlock(craterCenter.above(), trinitite, 3);
-    }
-
-    private void deleteMobsAtGroundZero(Level level, BlockPos origin, int craterRadius, int craterMaxDepth) {
-        AABB blastBox = new AABB(
-                origin.getX() - craterRadius - 2.0D,
-                origin.getY() - craterMaxDepth - 4.0D,
-                origin.getZ() - craterRadius - 2.0D,
-                origin.getX() + craterRadius + 2.0D,
-                origin.getY() + Math.max(12.0D, craterRadius * 0.4D),
-                origin.getZ() + craterRadius + 2.0D
-        );
-
-        for (LivingEntity entity : level.getEntitiesOfClass(LivingEntity.class, blastBox, entity -> entity != this && !(entity instanceof Player))) {
-            double dx = entity.getX() - origin.getX();
-            double dz = entity.getZ() - origin.getZ();
-            double distance = Math.sqrt(dx * dx + dz * dz);
-            double effectiveRadius = craterRadius + ((noise(entity.blockPosition().getX(), entity.blockPosition().getZ(), 307L) * 2.0D) - 1.0D) * craterRadius * 0.16D;
-            if (distance <= effectiveRadius) {
-                entity.discard();
-            }
-        }
-    }
-
-    private void playCustomBlastEffects(Level level, BlockPos origin, int craterRadius) {
-        if (level instanceof ServerLevel serverLevel) {
-            int emitterCount = Math.max(1, craterRadius / 25);
-            int smokeCount = Math.max(35, craterRadius * 2);
-            double smokeSpread = craterRadius * 0.8D;
-            serverLevel.sendParticles(ParticleTypes.EXPLOSION_EMITTER, origin.getX() + 0.5D, origin.getY() + 1.0D, origin.getZ() + 0.5D, emitterCount, 5.0D, 1.5D, 5.0D, 0.0D);
-            serverLevel.sendParticles(ParticleTypes.LARGE_SMOKE, origin.getX() + 0.5D, origin.getY() + 2.0D, origin.getZ() + 0.5D, smokeCount, smokeSpread, Math.max(6.0D, craterRadius * 0.18D), smokeSpread, 0.08D);
-        }
-    }
-
-    private void triggerNuclearFlash(BlockPos origin, int craterRadius) {
-        if (this.level() instanceof ServerLevel serverLevel) {
-            double flashRadius = craterRadius >= LITHIUM_CRATER_RADIUS ? 384.0D : 128.0D;
-            float flashIntensity = craterRadius >= LITHIUM_CRATER_RADIUS ? 1.0F : 0.65F;
-            PacketDistributor.sendToPlayersNear(
-                    serverLevel,
-                    null,
-                    origin.getX() + 0.5D,
-                    origin.getY() + 0.5D,
-                    origin.getZ() + 0.5D,
-                    flashRadius,
-                    new NuclearFlashPayload(origin, flashIntensity)
-            );
-        }
-    }
-
-    private void maybePlaceBlastFire(Level level, int x, int y, int z, double normalized) {
-        if (normalized < 0.22D || normalized > 0.95D || noise(x, z, 211L) < 0.93D) {
-            return;
-        }
-
-        BlockPos firePos = new BlockPos(x, y, z);
-        BlockState fire = Blocks.FIRE.defaultBlockState();
-        if (level.getBlockState(firePos).isAir() && fire.canSurvive(level, firePos)) {
-            level.setBlock(firePos, fire, 3);
-        }
-    }
-
-    private static double noise(int x, int z, long salt) {
-        long value = (x * 341873128712L) ^ (z * 132897987541L) ^ salt;
-        value = (value ^ (value >>> 33)) * 0xff51afd7ed558ccdL;
-        value = (value ^ (value >>> 33)) * 0xc4ceb9fe1a85ec53L;
-        value = value ^ (value >>> 33);
-        return (double) (value & 0xFFFFFFL) / (double) 0x1000000L;
     }
 }

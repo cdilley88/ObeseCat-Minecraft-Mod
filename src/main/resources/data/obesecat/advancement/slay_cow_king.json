@@ -1,0 +1,40 @@
+{
+  "parent": "obesecat:cow_level_portal",
+  "display": {
+    "icon": {
+      "id": "obesecat:holy_knight_token",
+      "count": 1
+    },
+    "title": {
+      "translate": "advancements.obesecat.slay_cow_king.title"
+    },
+    "description": {
+      "translate": "advancements.obesecat.slay_cow_king.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "criteria": {
+    "killed_cow_king": {
+      "trigger": "minecraft:player_killed_entity",
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "obesecat:cow_king"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "killed_cow_king"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

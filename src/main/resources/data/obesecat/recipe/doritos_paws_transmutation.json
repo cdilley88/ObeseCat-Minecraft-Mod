@@ -1,0 +1,21 @@
+{
+  "type": "obesecat:transmutation",
+  "ingredients": [
+    {
+      "item": "obesecat:dorito",
+      "count": 1
+    },
+    {
+      "item": "minecraft:rabbit_foot",
+      "count": 1
+    },
+    {
+      "item": "minecraft:feather",
+      "count": 1
+    }
+  ],
+  "result": {
+    "id": "obesecat:doritos_paws",
+    "count": 1
+  }
+}

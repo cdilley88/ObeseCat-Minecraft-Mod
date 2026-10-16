@@ -4,6 +4,10 @@ import com.fende.obesecat.client.FissionFirestormOverlay;
 import com.fende.obesecat.client.CowKingRenderer;
 import com.fende.obesecat.client.CanOpenerScreen;
 import com.fende.obesecat.client.CatChargerScreen;
+import com.fende.obesecat.client.GeminiExplosionOverlay;
+import com.fende.obesecat.client.BigGeminiExplosionOverlay;
+import com.fende.obesecat.client.GeminiFireballRenderer;
+import com.fende.obesecat.client.BigGeminiFireballRenderer;
 import com.fende.obesecat.client.NuclearFlashOverlay;
 import com.fende.obesecat.client.IonStormOverlay;
 import com.fende.obesecat.client.NightVisionOverlay;
@@ -40,6 +44,10 @@ public class ObeseCatModClient {
         modEventBus.addListener(this::registerMenuScreens);
         NeoForge.EVENT_BUS.addListener(SniperPacoInputHandler::onMouseButton);
         NeoForge.EVENT_BUS.addListener(IonStormOverlay::suppressSkyFlash);
+        NeoForge.EVENT_BUS.addListener(GeminiExplosionOverlay::onClientTick);
+        NeoForge.EVENT_BUS.addListener(BigGeminiExplosionOverlay::onClientTick);
+        NeoForge.EVENT_BUS.addListener(GeminiFireballRenderer::onRenderLevelStage);
+        NeoForge.EVENT_BUS.addListener(BigGeminiFireballRenderer::onRenderLevelStage);
     }
 
     private void clientSetup(FMLClientSetupEvent event) {
@@ -68,6 +76,8 @@ public class ObeseCatModClient {
         event.registerAboveAll(FissionFirestormOverlay.ID, FissionFirestormOverlay::render);
         event.registerAboveAll(IonStormOverlay.ID, IonStormOverlay::render);
         event.registerAboveAll(NuclearFlashOverlay.ID, NuclearFlashOverlay::render);
+        event.registerAboveAll(GeminiExplosionOverlay.ID, GeminiExplosionOverlay::render);
+        event.registerAboveAll(BigGeminiExplosionOverlay.ID, BigGeminiExplosionOverlay::render);
     }
 
     private void registerMenuScreens(RegisterMenuScreensEvent event) {

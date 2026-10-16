@@ -1,5 +1,6 @@
 package com.fende.obesecat.world;
 
+import com.fende.obesecat.registry.ModItems;
 import com.fende.obesecat.registry.ModVillagerTrades;
 import com.fende.obesecat.registry.ModVillagers;
 import net.minecraft.core.BlockPos;
@@ -9,6 +10,9 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.ai.memory.MemoryModuleType;
 import net.minecraft.world.entity.npc.Villager;
 import net.minecraft.world.entity.npc.VillagerType;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.trading.MerchantOffer;
+import net.minecraft.world.item.trading.MerchantOffers;
 import net.neoforged.neoforge.event.entity.EntityJoinLevelEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -72,11 +76,31 @@ public final class ManhattanPhysicistSpawner {
         villager.setCustomName(DISPLAY_NAME);
         villager.setPersistenceRequired();
         villager.addTag(PHYSICIST_ENTITY_TAG);
-        if (villager.getOffers().isEmpty()) {
-            villager.overrideOffers(ModVillagerTrades.createManhattanPhysicistOffers(villager));
-        }
+        ensurePhysicistTrades(villager);
         if (professionChanged || workstationPos != null) {
             refreshBrain(villager);
+        }
+    }
+
+    public static void ensurePhysicistTrades(Villager villager) {
+        MerchantOffers current = villager.getOffers();
+        boolean needsUpdate = current.isEmpty();
+        if (!needsUpdate) {
+            if (current.size() != 1) {
+                needsUpdate = true;
+            } else {
+                MerchantOffer first = current.get(0);
+                boolean firstIsStarterTrade = first.getResult().is(ModItems.PLUTONIUM_CAT_FOOD.get())
+                        && first.getBaseCostA().getItem() == Items.EMERALD
+                        && first.getBaseCostA().getCount() == 5;
+                if (!firstIsStarterTrade) {
+                    needsUpdate = true;
+                }
+            }
+        }
+        if (needsUpdate) {
+            villager.overrideOffers(ModVillagerTrades.createManhattanPhysicistOffers(villager));
+            LOGGER.info("Reset Manhattan Physicist trade to single Plutonium Cat Food trade at {}", villager.blockPosition());
         }
     }
 

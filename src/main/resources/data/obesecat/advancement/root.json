@@ -1,0 +1,39 @@
+{
+  "display": {
+    "icon": {
+      "id": "obesecat:guide_book",
+      "count": 1
+    },
+    "title": {
+      "translate": "advancements.obesecat.root.title"
+    },
+    "description": {
+      "translate": "advancements.obesecat.root.description"
+    },
+    "background": "minecraft:textures/gui/advancements/backgrounds/stone.png",
+    "show_toast": true,
+    "announce_to_chat": false
+  },
+  "criteria": {
+    "guide_book": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "obesecat:guide_book"
+          }
+        ]
+      }
+    },
+    "tick": {
+      "trigger": "minecraft:tick"
+    }
+  },
+  "requirements": [
+    [
+      "guide_book",
+      "tick"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

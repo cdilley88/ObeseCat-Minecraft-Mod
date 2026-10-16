@@ -12,6 +12,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.phys.AABB;
 import net.neoforged.neoforge.event.tick.LevelTickEvent;
@@ -96,6 +97,7 @@ public final class NuclearCatExplosion {
                 }
 
                 int surfaceY = level.getHeightmapPos(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, new BlockPos(x, origin.getY(), z)).getY();
+                int canopyY = level.getHeightmapPos(Heightmap.Types.MOTION_BLOCKING, new BlockPos(x, origin.getY(), z)).getY();
                 int maxDepth = (int) (craterMaxDepth * (1.0D - Math.pow(normalized, 1.8D)));
                 maxDepth += (int) ((noise(x, z, 113L) - 0.5D) * Math.max(2.0D, craterMaxDepth * 0.24D));
                 if (normalized > 0.72D) {
@@ -105,13 +107,21 @@ public final class NuclearCatExplosion {
                     continue;
                 }
 
-                int topY = surfaceY + (normalized < 0.28D ? 3 : 1);
+                int topY = Math.max(surfaceY + (normalized < 0.28D ? 4 : 2), canopyY + 1);
                 int bottomY = Math.max(minY, surfaceY - maxDepth);
                 for (int y = topY; y >= bottomY; y--) {
                     BlockPos pos = new BlockPos(x, y, z);
                     BlockState state = level.getBlockState(pos);
                     if (!state.isAir() && state.getDestroySpeed(level, pos) >= 0.0F) {
-                        level.setBlock(pos, Blocks.AIR.defaultBlockState(), 3);
+                        level.setBlock(pos, Blocks.AIR.defaultBlockState(), 2);
+                    }
+                }
+
+                for (int y = topY + 1; y <= topY + 16; y++) {
+                    BlockPos pos = new BlockPos(x, y, z);
+                    BlockState state = level.getBlockState(pos);
+                    if (state.is(BlockTags.LEAVES) || state.is(BlockTags.LOGS) || state.is(BlockTags.FLOWERS) || state.is(Blocks.VINE)) {
+                        level.setBlock(pos, Blocks.AIR.defaultBlockState(), 2);
                     }
                 }
 

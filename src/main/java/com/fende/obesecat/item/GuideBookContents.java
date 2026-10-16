@@ -1,0 +1,154 @@
+package com.fende.obesecat.item;
+
+import java.util.ArrayList;
+import java.util.List;
+import net.minecraft.network.chat.Component;
+import net.minecraft.server.network.Filterable;
+import net.minecraft.world.item.component.WrittenBookContent;
+
+public final class GuideBookContents {
+    private GuideBookContents() {
+    }
+
+    public static WrittenBookContent createContent() {
+        List<Filterable<Component>> pages = new ArrayList<>();
+
+        // Page 1: Title & Overview
+        pages.add(Filterable.passThrough(Component.literal(
+                "§1§lPROJECT OBESECAT§r\n" +
+                "§8§oClassified Field Manual§r\n" +
+                "§8-------------------§r\n\n" +
+                "§0Underground research into anomalous feline mass and atomic containment has yielded revolutionary discoveries.\n\n" +
+                "This guide details the §4critical steps§0 required to survive and harness the energy."
+        )));
+
+        // Page 2: Chapter 1 - The Manhattan Bunker
+        pages.add(Filterable.passThrough(Component.literal(
+                "§1§lCH. 1: THE BUNKER§r\n" +
+                "§8-------------------§r\n" +
+                "§0Deep underground across the Overworld lie fortified §4Manhattan Bunkers§0.\n\n" +
+                "Inside, you will find the solitary §1Manhattan Physicist§0 and a dormant §2Fat Man§0.\n\n" +
+                "Bring §a5 Emeralds§0 to purchase §2Plutonium Cat Food§0."
+        )));
+
+        // Page 3: Chapter 2 - Detonation Protocol
+        pages.add(Filterable.passThrough(Component.literal(
+                "§1§lCH. 2: DETONATION§r\n" +
+                "§8-------------------§r\n" +
+                "§0Fat Man requires §23 cans§0 of Plutonium Cat Food to reach critical mass.\n\n" +
+                "§4WARNING:§0 Lure him far from your base!\n\n" +
+                "The 3rd meal triggers a §c10s fuse§0. Drink a §9Potion of Swiftness§0 and sprint §460m+§0 away!"
+        )));
+
+        // Page 4: Chapter 3 - Trinitite & The Cube
+        pages.add(Filterable.passThrough(Component.literal(
+                "§1§lCH. 3: TRINITITE§r\n" +
+                "§8-------------------§r\n" +
+                "§0The blast excavates a colossal 100m crater, crystallizing §2Trinitite§0 at the epicenter.\n\n" +
+                "Mine it with a §8Netherite Pickaxe§0.\n\n" +
+                "Craft the §5Transmutation Cube§0:\n" +
+                "§8• Chest\n" +
+                "§8• Crafting Table\n" +
+                "§8• Trinitite§r"
+        )));
+
+        // Page 5: Chapter 4 - The Secret Cow Level
+        pages.add(Filterable.passThrough(Component.literal(
+                "§1§lCH. 4: COW LEVEL§r\n" +
+                "§8-------------------§r\n" +
+                "§0The Cube unlocks dimensional pathways:\n\n" +
+                "§81.§0 Slay the §1Warden§0 for §6Wirt's Leg§0.\n" +
+                "§82.§0 Barter with Nether §6Piglins§0 for the §5Tome of Town Portal§0.\n\n" +
+                "Transmute both in the Cube to summon the §cCow King§0!"
+        )));
+
+        // Page 6: Chapter 5 - Mythic Sword Skills
+        pages.add(Filterable.passThrough(Component.literal(
+                "§1§lCH. 5: SWORD SKILLS§r\n" +
+                "§8-------------------§r\n" +
+                "§0The Cow King drops legendary tokens.\n\n" +
+                "Combine them in the Cube with Ancient City blades:\n" +
+                "§b• Stasis Sword\n" +
+                "§e• Split Punch\n" +
+                "§6• Crush Punch\n" +
+                "§d• Lightning Stab\n" +
+                "§4• Holy Explosion§r"
+        )));
+
+        // Page 7: Chapter 6 - Temporal Felines
+        pages.add(Filterable.passThrough(Component.literal(
+                "§1§lCH. 6: TEMPORAL FELINES§r\n" +
+                "§8-------------------§r\n" +
+                "§0Adopt §2Domino§0 from any village for §a1 Emerald§0.\n\n" +
+                "Channel Dragon's Breath & Trinitite in the Cube:\n\n" +
+                "§6• Chrono Domino:§0\n" +
+                "  Breath + Clock + Trinitite + Domino\n\n" +
+                "§b• Atmospheric Domino:§0\n" +
+                "  Breath + Heart of Sea + Trinitite + Domino\n\n" +
+                "§c• Chronospheric:§0\n" +
+                "  Chrono + Atmospheric\n" +
+                "§4Warning: Chronosphere activated!§r"
+        )));
+
+        // Page 8: Chapter 7 - Tactical Canines
+        pages.add(Filterable.passThrough(Component.literal(
+                "§1§lCH. 7: TACTICAL CANINES§r\n" +
+                "§8-------------------§r\n" +
+                "§0Adopt §2Paco§0 from any village for §a1 Emerald§0.\n\n" +
+                "§6Tactical Field Upgrades:§0\n" +
+                "§8• Concussive:§0 Paco + Piston\n" +
+                "§8• Attack:§0 Concussive + Diamond\n" +
+                "§8• Assault:§0 Attack + Nether Star\n" +
+                "§8• Sniper:§0 Assault + Spyglass\n\n" +
+                "§5Cube Transmutations:§0\n" +
+                "§c• Hellhound:§0\n" +
+                "  Paco + Blaze Powder + Dragon's Breath\n" +
+                "§4• J. Paco Barkkenheimer:§0\n" +
+                "  Paco + Oppenheimer's Hat§r"
+        )));
+
+        // Page 9: Chapter 8 - Mobility Felines & Runes
+        pages.add(Filterable.passThrough(Component.literal(
+                "§1§lCH. 8: MOBILITY FELINES§r\n" +
+                "§8-------------------§r\n" +
+                "§0Adopt §2Ember§0 from any village for §a1 Emerald§0.\n\n" +
+                "§6Field & Arcane Tools:§0\n" +
+                "§b• Ember Singularity:§0\n" +
+                "  Ember + 8 Eyes of Ender (Vacuum)\n\n" +
+                "§d• Wormhole Ember:§0\n" +
+                "  Ember + Tome of Town Portal (Return Home)\n\n" +
+                "§5Cube Transmutation:§0\n" +
+                "§c• Enigma Ember:§0\n" +
+                "  Ember + Quantum Semiconductor\n" +
+                "§8(Semiconductors drop from Cow King)§r"
+        )));
+
+        // Page 10: Chapter 9 - Sensory & Crater Navigation
+        pages.add(Filterable.passThrough(Component.literal(
+                "§1§lCH. 9: SENSORY & CRATERS§r\n" +
+                "§8-------------------§r\n" +
+                "§0Adopt §6Dorito§0 from any village for §a1 Emerald§0.\n\n" +
+                "§5Crater Navigation (Cube):§0\n" +
+                "§6• Dorito's Paws:§0\n" +
+                "  Dorito + Rabbit Foot + Feather\n" +
+                "  §8Absorbs fall damage into hunger. Saves life from any height!§0\n\n" +
+                "§3• Sculk Dorito's Paws:§0\n" +
+                "  Paws + Sculk Catalyst\n" +
+                "  §8Total vibration silence to Wardens while fed!§0\n\n" +
+                "§a• Night Vision Dorito:§0\n" +
+                "  Dorito + Gilded Blackstone + Tinted Glass + Amethyst\n" +
+                "  §8Curios Head slot. Full NVG optics HUD with low-light alert!§0\n\n" +
+                "§6• Tiny Planet:§0\n" +
+                "  Dorito + Arrow + Fire Charge + Lodestone + Gold Block\n" +
+                "  §85s orbital moon shield: deflects projectiles into hunger at 1/4 rate! (15s cd)§r"
+        )));
+
+        return new WrittenBookContent(
+                Filterable.passThrough("Manhattan Project Field Guide"),
+                "J. Robert Oppenheimer",
+                0,
+                pages,
+                true
+        );
+    }
+}

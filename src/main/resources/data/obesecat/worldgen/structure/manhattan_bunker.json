@@ -3,7 +3,7 @@
   "biomes": "#obesecat:manhattan_bunker_spawnable",
   "spawn_overrides": {},
   "step": "surface_structures",
-  "terrain_adaptation": "none",
+  "terrain_adaptation": "beard_thin",
   "start_pool": "obesecat:manhattan_bunker/start_pool",
   "size": 1,
   "start_height": {

@@ -32,6 +32,17 @@
           "weight": 1
         }
       ]
+    },
+    {
+      "name": "obesecat:cow_king_semiconductor",
+      "rolls": 1.0,
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "obesecat:quantum_semiconductor"
+        }
+      ]
     }
   ]
 }

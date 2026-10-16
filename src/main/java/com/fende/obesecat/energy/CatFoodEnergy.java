@@ -5,8 +5,8 @@ import net.minecraft.world.item.ItemStack;
 
 public final class CatFoodEnergy {
     public static final int FE_PER_POINT = 100;
-    public static final int PLUTONIUM_POINTS = 25;
-    public static final int LITHIUM_DEUTERIDE_POINTS = 100;
+    public static final int PLUTONIUM_POINTS = 100;
+    public static final int LITHIUM_DEUTERIDE_POINTS = 300;
     public static final int FAT_MAN_DETONATION_POINTS = 300;
     public static final int FAT_MAN_CAPACITY_POINTS = 500;
     public static final int CAN_OPENER_CAPACITY_POINTS = 1_000;

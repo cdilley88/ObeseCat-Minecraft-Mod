@@ -1,8 +1,13 @@
 package com.fende.obesecat.world;
 
+import com.fende.obesecat.item.DoritosPawsItem;
 import com.fende.obesecat.item.MrKittysPawsItem;
+import com.fende.obesecat.item.SculkDoritosPawsItem;
 import java.lang.reflect.Method;
 import java.util.Optional;
+import java.util.function.Predicate;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.LivingEntity;
@@ -12,10 +17,26 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.neoforged.fml.ModList;
+import net.neoforged.neoforge.event.VanillaGameEvent;
 import net.neoforged.neoforge.event.entity.living.LivingFallEvent;
+import net.neoforged.neoforge.event.tick.LevelTickEvent;
 
 public final class MrKittysPawsManager {
+    private static final float ACTIVE_EXHAUSTION_PER_TICK = 0.005F;
+
     private MrKittysPawsManager() {
+    }
+
+    public static void onLevelTick(LevelTickEvent.Post event) {
+        if (!(event.getLevel() instanceof ServerLevel level)) {
+            return;
+        }
+
+        for (ServerPlayer player : level.players()) {
+            if (hasActivePaws(player) && !player.getAbilities().instabuild) {
+                player.causeFoodExhaustion(ACTIVE_EXHAUSTION_PER_TICK);
+            }
+        }
     }
 
     public static void onLivingFall(LivingFallEvent event) {
@@ -40,6 +61,16 @@ public final class MrKittysPawsManager {
         event.setCanceled(true);
     }
 
+    public static void onVanillaGameEvent(VanillaGameEvent event) {
+        if (!(event.getCause() instanceof Player player) || player.level().isClientSide()) {
+            return;
+        }
+
+        if (hasActiveSculkPaws(player) && (player.getAbilities().instabuild || player.getFoodData().getFoodLevel() > 0)) {
+            event.setCanceled(true);
+        }
+    }
+
     private static int calculateHungerCost(Player player, float fallDistance, float damageMultiplier) {
         double safeFallDistance = player.getAttributeValue(Attributes.SAFE_FALL_DISTANCE);
         double fallDamageMultiplier = player.getAttributeValue(Attributes.FALL_DAMAGE_MULTIPLIER);
@@ -49,21 +80,34 @@ public final class MrKittysPawsManager {
     }
 
     private static boolean hasActivePaws(Player player) {
+        return hasActivePawsMatching(player, MrKittysPawsManager::isActivePaws);
+    }
+
+    private static boolean hasActiveSculkPaws(Player player) {
+        return hasActivePawsMatching(player, MrKittysPawsManager::isActiveSculkPaws);
+    }
+
+    private static boolean hasActivePawsMatching(Player player, Predicate<ItemStack> matcher) {
         Inventory inventory = player.getInventory();
         for (int slot = 0; slot < inventory.getContainerSize(); slot++) {
-            if (isActivePaws(inventory.getItem(slot))) {
+            if (matcher.test(inventory.getItem(slot))) {
                 return true;
             }
         }
 
-        return hasActiveCurioPaws(player);
+        return hasActiveCurioMatching(player, matcher);
     }
 
     private static boolean isActivePaws(ItemStack stack) {
-        return stack.getItem() instanceof MrKittysPawsItem && MrKittysPawsItem.isActive(stack);
+        return (stack.getItem() instanceof DoritosPawsItem && DoritosPawsItem.isActive(stack))
+                || (stack.getItem() instanceof MrKittysPawsItem && MrKittysPawsItem.isActive(stack));
     }
 
-    private static boolean hasActiveCurioPaws(Player player) {
+    private static boolean isActiveSculkPaws(ItemStack stack) {
+        return stack.getItem() instanceof SculkDoritosPawsItem && DoritosPawsItem.isActive(stack);
+    }
+
+    private static boolean hasActiveCurioMatching(Player player, Predicate<ItemStack> matcher) {
         if (!ModList.get().isLoaded("curios")) {
             return false;
         }
@@ -79,7 +123,7 @@ public final class MrKittysPawsManager {
 
             Method getEquippedCurios = curiosHandler.getClass().getMethod("getEquippedCurios");
             Object equippedCurios = getEquippedCurios.invoke(curiosHandler);
-            return hasActiveStackInItemHandler(equippedCurios);
+            return hasActiveStackInItemHandler(equippedCurios, matcher);
         } catch (ReflectiveOperationException | LinkageError ignored) {
             return false;
         }
@@ -102,7 +146,7 @@ public final class MrKittysPawsManager {
         return null;
     }
 
-    private static boolean hasActiveStackInItemHandler(Object itemHandler) throws ReflectiveOperationException {
+    private static boolean hasActiveStackInItemHandler(Object itemHandler, Predicate<ItemStack> matcher) throws ReflectiveOperationException {
         if (itemHandler == null) {
             return false;
         }
@@ -112,7 +156,7 @@ public final class MrKittysPawsManager {
         int slots = (Integer) getSlots.invoke(itemHandler);
         for (int slot = 0; slot < slots; slot++) {
             Object stack = getStackInSlot.invoke(itemHandler, slot);
-            if (stack instanceof ItemStack itemStack && isActivePaws(itemStack)) {
+            if (stack instanceof ItemStack itemStack && matcher.test(itemStack)) {
                 return true;
             }
         }

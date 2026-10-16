@@ -1,0 +1,36 @@
+{
+  "parent": "obesecat:craft_transmutation_cube",
+  "display": {
+    "icon": {
+      "id": "obesecat:chronospheric_domino",
+      "count": 1
+    },
+    "title": {
+      "translate": "advancements.obesecat.chronosphere_activated.title"
+    },
+    "description": {
+      "translate": "advancements.obesecat.chronosphere_activated.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "criteria": {
+    "has_chronospheric_domino": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "obesecat:chronospheric_domino"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_chronospheric_domino"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -15,10 +15,11 @@ class ManhattanPhysicistSpawnerTest {
                 spawnerFile.indexOf("private static void setProfession")
         );
 
-        assertTrue(normalization.contains("villager.getOffers().isEmpty()"));
+        assertTrue(normalization.contains("ensurePhysicistTrades(villager)"));
         assertTrue(!normalization.contains("setVillagerXp(0)"));
         assertTrue(normalization.contains("PHYSICIST_ENTITY_TAG"));
         assertTrue(normalization.contains("setVillagerXp(Math.max(1, villager.getVillagerXp()))"));
         assertTrue(spawnerFile.contains("setProfession(ModVillagers.MANHATTAN_PHYSICIST.get())"));
+        assertTrue(spawnerFile.contains("ensurePhysicistTrades"));
     }
 }

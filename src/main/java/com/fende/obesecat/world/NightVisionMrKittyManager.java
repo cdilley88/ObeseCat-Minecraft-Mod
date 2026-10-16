@@ -1,5 +1,6 @@
 package com.fende.obesecat.world;
 
+import com.fende.obesecat.item.NightVisionDoritoItem;
 import com.fende.obesecat.item.NightVisionMrKittyItem;
 import com.fende.obesecat.network.NightVisionOverlayPayload;
 import java.lang.reflect.Method;
@@ -20,7 +21,7 @@ import net.neoforged.neoforge.network.PacketDistributor;
 
 public final class NightVisionMrKittyManager {
     private static final int EFFECT_TICKS = 260;
-    private static final float EXTRA_EXHAUSTION_PER_TICK = 0.005F;
+    private static final float EXTRA_EXHAUSTION_PER_TICK = 0.01F;
     private static final Map<UUID, Boolean> LAST_ACTIVE_STATE = new HashMap<>();
 
     private NightVisionMrKittyManager() {
@@ -32,11 +33,25 @@ public final class NightVisionMrKittyManager {
         }
 
         for (ServerPlayer player : level.players()) {
-            boolean active = hasActiveNightVisionKitty(player);
-            if (active) {
-                player.addEffect(new MobEffectInstance(MobEffects.NIGHT_VISION, EFFECT_TICKS, 0, true, false, false));
-                if (!player.getAbilities().instabuild) {
-                    player.causeFoodExhaustion(EXTRA_EXHAUSTION_PER_TICK);
+            boolean wantsActive = hasActiveNightVisionKitty(player);
+            boolean active = false;
+            if (wantsActive) {
+                if (player.getFoodData().getFoodLevel() > 0 || player.getAbilities().instabuild) {
+                    active = true;
+                    player.addEffect(new MobEffectInstance(MobEffects.NIGHT_VISION, EFFECT_TICKS, 0, true, false, false));
+                    if (!player.getAbilities().instabuild) {
+                        player.causeFoodExhaustion(EXTRA_EXHAUSTION_PER_TICK);
+                    }
+                } else {
+                    Boolean wasActive = LAST_ACTIVE_STATE.get(player.getUUID());
+                    if (wasActive != null && wasActive) {
+                        player.displayClientMessage(
+                                net.minecraft.network.chat.Component.translatable("item.obesecat.night_vision_dorito.depleted"),
+                                true
+                        );
+                        level.playSound(null, player.getX(), player.getY(), player.getZ(),
+                                net.minecraft.sounds.SoundEvents.ITEM_BREAK, net.minecraft.sounds.SoundSource.PLAYERS, 0.8F, 1.6F);
+                    }
                 }
             }
 
@@ -56,7 +71,8 @@ public final class NightVisionMrKittyManager {
     }
 
     private static boolean isActiveNightVisionKitty(ItemStack stack) {
-        return stack.getItem() instanceof NightVisionMrKittyItem && NightVisionMrKittyItem.isActive(stack);
+        return (stack.getItem() instanceof NightVisionDoritoItem && NightVisionDoritoItem.isActive(stack))
+                || (stack.getItem() instanceof NightVisionMrKittyItem && NightVisionMrKittyItem.isActive(stack));
     }
 
     private static void syncOverlayState(ServerPlayer player, boolean active) {

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    {
+      "item": "obesecat:ember"
+    },
+    {
+      "item": "obesecat:tp_tome"
+    }
+  ],
+  "result": {
+    "id": "obesecat:wormhole_ember",
+    "count": 1
+  }
+}

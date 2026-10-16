@@ -78,6 +78,20 @@ public final class ManhattanBunkerWorkstation {
         return null;
     }
 
+    public static BlockPos findCatSpawnPos(LevelAccessor level, BoundingBox box, BlockPos avoidPos) {
+        for (int y = box.minY() + 1; y <= box.minY() + 3; y++) {
+            for (int z = box.minZ() + 1; z <= box.maxZ() - 1; z++) {
+                for (int x = box.minX() + 1; x <= box.maxX() - 1; x++) {
+                    BlockPos pos = new BlockPos(x, y, z);
+                    if (!pos.equals(avoidPos) && isSpawnable(level, pos)) {
+                        return pos;
+                    }
+                }
+            }
+        }
+        return avoidPos != null ? avoidPos : new BlockPos(box.getCenter());
+    }
+
     private static boolean isSpawnable(LevelAccessor level, BlockPos pos) {
         return level.getBlockState(pos).isAir()
                 && level.getBlockState(pos.above()).isAir()

@@ -21,20 +21,8 @@ class CosmeticPolishTest {
         assertTrue(lang.contains("\"item.obesecat.aequitas.caption\": \"Full Measure\""));
         assertTrue(lang.contains("Echoes of an incredible noise"));
         assertTrue(chamber.contains("line <= 1"));
-        assertTrue(lang.contains("\"item.obesecat.downpour_domino.caption\": \"Warm Home\""));
-        assertTrue(lang.contains("\"item.obesecat.thunderstorm_domino.caption\": \"Safe Home\""));
-        assertFalse(lang.contains("Thankful for Warm Home"));
-        assertFalse(lang.contains("Thankful for Safe Home"));
         assertTrue(eggModel.contains("minecraft:item/template_spawn_egg"));
-
-        assertTrue(itemBlock(items, "DAWN_DOMINO", "MIDDAY_DOMINO").contains("Rarity.RARE"));
-        assertTrue(itemBlock(items, "MIDDAY_DOMINO", "DUSK_DOMINO").contains("Rarity.RARE"));
-        assertTrue(itemBlock(items, "DUSK_DOMINO", "MIDNIGHT_DOMINO").contains("Rarity.RARE"));
-        assertTrue(itemBlock(items, "MIDNIGHT_DOMINO", "CALM_DOMINO").contains("Rarity.RARE"));
-        assertTrue(itemBlock(items, "CALM_DOMINO", "DOWNPOUR_DOMINO").contains("Rarity.RARE"));
-        assertTrue(itemBlock(items, "DOWNPOUR_DOMINO", "THUNDERSTORM_DOMINO").contains("Rarity.RARE"));
-        assertTrue(itemBlock(items, "THUNDERSTORM_DOMINO", "EMBER").contains("Rarity.RARE"));
-        assertTrue(itemBlock(items, "DOMINO", "DAWN_DOMINO").contains("Rarity.UNCOMMON"));
+        assertTrue(itemBlock(items, "DOMINO", "EMBER").contains("Rarity.UNCOMMON"));
     }
 
     private static String itemBlock(String source, String start, String end) {

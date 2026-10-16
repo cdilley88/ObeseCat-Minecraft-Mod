@@ -24,12 +24,20 @@ public class WormholeEmberItem extends CaptionedItem {
             return InteractionResultHolder.sidedSuccess(stack, level.isClientSide());
         }
 
+        if (!player.getAbilities().instabuild && serverPlayer.getFoodData().getFoodLevel() < 6) {
+            return InteractionResultHolder.fail(stack);
+        }
+
         sendDepartureEffects(serverPlayer);
         DimensionTransition transition = serverPlayer.findRespawnPositionAndUseSpawnBlock(true, DimensionTransition.DO_NOTHING);
         Vec3 destination = transition.pos();
         serverPlayer.teleportTo(transition.newLevel(), destination.x, destination.y, destination.z, transition.yRot(), transition.xRot());
-        serverPlayer.getFoodData().setFoodLevel(0);
-        serverPlayer.getFoodData().setSaturation(0.0F);
+        if (!serverPlayer.getAbilities().instabuild) {
+            int newFood = Math.max(0, serverPlayer.getFoodData().getFoodLevel() - 6);
+            serverPlayer.getFoodData().setFoodLevel(newFood);
+            serverPlayer.getFoodData().setSaturation(Math.min(serverPlayer.getFoodData().getSaturationLevel(), (float) newFood));
+        }
+        player.getCooldowns().addCooldown(this, 100);
         sendArrivalEffects(serverPlayer);
 
         return InteractionResultHolder.success(stack);

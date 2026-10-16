@@ -8,6 +8,10 @@
     {
       "item": "minecraft:blaze_powder",
       "count": 1
+    },
+    {
+      "item": "minecraft:dragon_breath",
+      "count": 1
     }
   ],
   "result": {

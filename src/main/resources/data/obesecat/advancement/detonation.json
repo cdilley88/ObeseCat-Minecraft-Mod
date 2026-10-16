@@ -1,0 +1,36 @@
+{
+  "parent": "obesecat:acquire_plutonium_cat_food",
+  "display": {
+    "icon": {
+      "id": "obesecat:trinitite",
+      "count": 1
+    },
+    "title": {
+      "translate": "advancements.obesecat.detonation.title"
+    },
+    "description": {
+      "translate": "advancements.obesecat.detonation.description"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "criteria": {
+    "has_trinitite": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "obesecat:trinitite"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_trinitite"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

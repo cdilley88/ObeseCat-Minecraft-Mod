@@ -1,0 +1,36 @@
+{
+  "parent": "obesecat:craft_transmutation_cube",
+  "display": {
+    "icon": {
+      "id": "obesecat:cow_level_portal",
+      "count": 1
+    },
+    "title": {
+      "translate": "advancements.obesecat.cow_level_portal.title"
+    },
+    "description": {
+      "translate": "advancements.obesecat.cow_level_portal.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "criteria": {
+    "has_portal": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "obesecat:cow_level_portal"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_portal"
+    ]
+  ],
+  "sends_telemetry_event": true
+}
