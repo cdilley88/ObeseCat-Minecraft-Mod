@@ -1,0 +1,20 @@
+{
+  "name": "Trinitite Harvesting",
+  "category": "obesecat:manhattan_project",
+  "icon": "obesecat:trinitite",
+  "sortnum": 2,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "obesecat:trinitite",
+      "title": "Ground Zero Glass",
+      "link_recipe": false,
+      "text": "The extreme thermonuclear heat fused the desert sands into brilliant green $(2)Trinitite$(0) glass at the crater epicenter.$(br2)Due to crystalline atomic density, it can $(4)only be mined using a Netherite Pickaxe$(0)."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Alchemical Catalyst",
+      "text": "Trinitite retains exotic radioactive properties that bend the fabric of ordinary crafting. It serves as the irreplaceable structural heart of the $(5)Transmutation Cube$(0) and fuels advanced temporal catalysts."
+    }
+  ]
+}

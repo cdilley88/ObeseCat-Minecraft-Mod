@@ -2,11 +2,11 @@
   "type": "obesecat:transmutation",
   "ingredients": [
     {
-      "item": "obesecat:dark_sword",
+      "item": "obesecat:dark_sword_base",
       "count": 1
     },
     {
-      "item": "minecraft:dirt",
+      "item": "obesecat:flayed_demon_heart",
       "count": 1
     }
   ],

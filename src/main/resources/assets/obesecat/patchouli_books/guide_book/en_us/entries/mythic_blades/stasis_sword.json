@@ -1,0 +1,20 @@
+{
+  "name": "Stasis Sword",
+  "category": "obesecat:mythic_blades",
+  "icon": "obesecat:stasis_sword",
+  "sortnum": 1,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "obesecat:stasis_sword",
+      "title": "Temporal Freeze",
+      "link_recipe": false,
+      "text": "The $(b)Stasis Sword$(0) manipulates local chrono-particles.$(br2)Right-clicking manifests a shimmering stasis bubble around the target area, freezing all hostile entities and incoming projectiles dead in their tracks for several seconds."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Tactical Mastery",
+      "text": "Entities suspended in stasis cannot retaliate or dodge. Use this window to reposition, recover health, or line up devastating multi-target combos before time resumes."
+    }
+  ]
+}

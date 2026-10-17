@@ -1,0 +1,18 @@
+{
+  "name": "The Cow King",
+  "category": "obesecat:bovine_dimension",
+  "icon": "minecraft:hay_block",
+  "sortnum": 1,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "title": "Lord of the Herd",
+      "text": "Ruling over the secret pastures is the formidable $(6)Cow King$(0).$(br2)Wielding a giant executioner's halberd, the King commands lightning storms and executes devastating 360-degree whirlwind cleaves that shatter unarmored trespassers."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Tactics & Spoils",
+      "text": "Keep your distance when the King charges electrical energy, and utilize ranged kiting or shields during whirlwind spins.$(br2)Upon defeat, the King yields massive experience, ancient sword relics, and the coveted $(b)Quantum Semiconductor$(0)."
+    }
+  ]
+}

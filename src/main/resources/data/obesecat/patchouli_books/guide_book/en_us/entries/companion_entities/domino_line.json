@@ -1,0 +1,36 @@
+{
+  "name": "Domino & Temporal Manipulation",
+  "category": "obesecat:companion_entities",
+  "icon": "obesecat:chronospheric_domino",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "obesecat:domino",
+      "title": "Adopting Domino",
+      "link_recipe": false,
+      "text": "Domino is a beloved companion feline available for adoption at any village for $(a)1 Emerald$(0).$(br2)Right-clicking triggers her signature meow. Her temporal affinity makes her the ideal alchemical vessel for time manipulation."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "obesecat:chrono_domino",
+      "title": "Chrono Domino",
+      "link_recipe": false,
+      "text": "Transmute in the Cube:$(br)$(bullet) Domino$(br)$(bullet) Dragon's Breath$(br)$(bullet) Clock$(br)$(bullet) Trinitite$(br2)Right-click opens an interactive time dial allowing precise control over sunrise, midday, dusk, and midnight."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "obesecat:atmospheric_domino",
+      "title": "Atmospheric Domino",
+      "link_recipe": false,
+      "text": "Transmute in the Cube:$(br)$(bullet) Domino$(br)$(bullet) Dragon's Breath$(br)$(bullet) Heart of the Sea$(br)$(bullet) Trinitite$(br2)Allows instantaneous control of world meteorological conditions: Clear skies, Downpour rain, and Thunderstorms."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "obesecat:chronospheric_domino",
+      "title": "Chronospheric Domino",
+      "link_recipe": false,
+      "text": "Transmute in the Cube:$(br)$(bullet) Chrono Domino$(br)$(bullet) Atmospheric Domino$(br2)Fuses complete mastery over time and atmosphere. Features a godlike meow reverb, chronoshift freeze, and summons the devastating $(c)Ion Storm$(0) apocalyptic weather!"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "Boss Semiconductors",
+  "category": "obesecat:bovine_dimension",
+  "icon": "obesecat:quantum_semiconductor",
+  "sortnum": 2,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "obesecat:quantum_semiconductor",
+      "title": "Runeword Microchips",
+      "link_recipe": false,
+      "text": "Three exotic subatomic semiconductors drop from the triad of Diablo-inspired bosses:$(br2)• $(b)Quantum (JAH)$(0): The Skeleton King$(br)• $(5)Dimensional (ITH)$(0): The Cow King$(br)• $(c)Atomic (BER)$(0): The Carver"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "The Enigma Protocol",
+      "text": "When all three semiconductors are transmuted together with $(6)Ember$(0) in the $(b)Transmutation Cube$(0), they awaken $(6)Enigma Ember$(0) (JAH-ITH-BER)—granting near-instantaneous 2-tick teleportation!"
+    }
+  ]
+}

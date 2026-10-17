@@ -25,6 +25,8 @@ import com.fende.obesecat.item.DominoItem;
 import com.fende.obesecat.item.ChronoDominoItem;
 import com.fende.obesecat.item.AtmosphericDominoItem;
 import com.fende.obesecat.item.ChronosphericDominoItem;
+import com.fende.obesecat.item.CursedCleaverItem;
+import com.fende.obesecat.item.DarkSwordBaseItem;
 import com.fende.obesecat.item.DarkSwordItem;
 import com.fende.obesecat.item.DoritoItem;
 import com.fende.obesecat.item.DoritosPawsItem;
@@ -32,6 +34,8 @@ import com.fende.obesecat.item.EmberItem;
 import com.fende.obesecat.item.EmberSingularityItem;
 import com.fende.obesecat.item.EnigmaEmberItem;
 import com.fende.obesecat.item.EchoingBlastChamberItem;
+import com.fende.obesecat.item.FoilCaptionedItem;
+import com.fende.obesecat.item.SkeletonCrownItem;
 import com.fende.obesecat.item.FireBoomStickItem;
 import com.fende.obesecat.item.FireStickItem;
 import com.fende.obesecat.item.FoodBinItem;
@@ -85,6 +89,11 @@ public final class ModItems {
     public static final DeferredItem<SpawnEggItem> COW_KING_SPAWN_EGG = ITEMS.registerItem(
             "cow_king_spawn_egg",
             properties -> new SpawnEggItem(ModEntities.COW_KING.get(), 0x8B6914, 0xFFD700, properties)
+    );
+
+    public static final DeferredItem<SpawnEggItem> SKELETON_KING_SPAWN_EGG = ITEMS.registerItem(
+            "skeleton_king_spawn_egg",
+            properties -> new SpawnEggItem(ModEntities.SKELETON_KING.get(), 0xC1C1C1, 0x48D1CC, properties)
     );
 
     public static final DeferredItem<ManhattanPhysicistSpawnEggItem> MANHATTAN_PHYSICIST_SPAWN_EGG = ITEMS.registerItem(
@@ -292,10 +301,64 @@ public final class ModItems {
             skillSwordProperties(Rarity.UNCOMMON)
     );
 
+    public static final DeferredItem<DarkSwordBaseItem> DARK_SWORD_BASE = ITEMS.registerItem(
+            "dark_sword_base",
+            DarkSwordBaseItem::new,
+            skillSwordProperties(Rarity.UNCOMMON)
+    );
+
     public static final DeferredItem<DarkSwordItem> DARK_SWORD = ITEMS.registerItem(
             "dark_sword",
             DarkSwordItem::new,
             skillSwordProperties(Rarity.UNCOMMON)
+    );
+
+    public static final DeferredItem<CursedCleaverItem> CURSED_CLEAVER = ITEMS.registerItem(
+            "cursed_cleaver",
+            CursedCleaverItem::new,
+            new Item.Properties().stacksTo(1).rarity(Rarity.RARE)
+    );
+
+    public static final DeferredItem<CaptionedItem> FLAYED_DEMON_HEART = ITEMS.registerItem(
+            "flayed_demon_heart",
+            properties -> new CaptionedItem(properties, "item.obesecat.flayed_demon_heart.caption"),
+            new Item.Properties().stacksTo(1).rarity(Rarity.RARE)
+    );
+
+    public static final DeferredItem<CaptionedItem> BLOODIED_IRON_HOOK = ITEMS.registerItem(
+            "bloodied_iron_hook",
+            properties -> new CaptionedItem(properties, "item.obesecat.bloodied_iron_hook.caption"),
+            new Item.Properties().stacksTo(1).rarity(Rarity.RARE)
+    );
+
+    public static final DeferredItem<SkeletonCrownItem> SKELETON_CROWN = ITEMS.registerItem(
+            "skeleton_crown",
+            SkeletonCrownItem::new,
+            new Item.Properties().stacksTo(1).rarity(Rarity.RARE)
+    );
+
+    public static final DeferredItem<FoilCaptionedItem> CHERCHE = ITEMS.registerItem(
+            "cherche",
+            properties -> new FoilCaptionedItem(properties, "item.obesecat.cherche.caption"),
+            new Item.Properties().stacksTo(1).rarity(Rarity.RARE)
+    );
+
+    public static final DeferredItem<FoilCaptionedItem> SALTY_RAGE = ITEMS.registerItem(
+            "salty_rage",
+            properties -> new FoilCaptionedItem(properties, "item.obesecat.salty_rage.caption"),
+            new Item.Properties().stacksTo(1).rarity(Rarity.RARE)
+    );
+
+    public static final DeferredItem<FoilCaptionedItem> CHANTAGE = ITEMS.registerItem(
+            "chantage",
+            properties -> new FoilCaptionedItem(properties, "item.obesecat.chantage.caption"),
+            new Item.Properties().stacksTo(1).rarity(Rarity.RARE)
+    );
+
+    public static final DeferredItem<FoilCaptionedItem> SETIEMSON = ITEMS.registerItem(
+            "setiemson",
+            properties -> new FoilCaptionedItem(properties, "item.obesecat.setiemson.caption"),
+            new Item.Properties().stacksTo(1).rarity(Rarity.RARE)
     );
 
     public static final DeferredItem<CaptionedItem> HOLY_KNIGHT_TOKEN = ITEMS.registerItem(
@@ -331,6 +394,18 @@ public final class ModItems {
     public static final DeferredItem<CaptionedItem> QUANTUM_SEMICONDUCTOR = ITEMS.registerItem(
             "quantum_semiconductor",
             properties -> new CaptionedItem(properties, "item.obesecat.quantum_semiconductor.caption"),
+            new Item.Properties().rarity(Rarity.EPIC)
+    );
+
+    public static final DeferredItem<CaptionedItem> DIMENSIONAL_SEMICONDUCTOR = ITEMS.registerItem(
+            "dimensional_semiconductor",
+            properties -> new CaptionedItem(properties, "item.obesecat.dimensional_semiconductor.caption"),
+            new Item.Properties().rarity(Rarity.EPIC)
+    );
+
+    public static final DeferredItem<CaptionedItem> ATOMIC_SEMICONDUCTOR = ITEMS.registerItem(
+            "atomic_semiconductor",
+            properties -> new CaptionedItem(properties, "item.obesecat.atomic_semiconductor.caption"),
             new Item.Properties().rarity(Rarity.EPIC)
     );
 

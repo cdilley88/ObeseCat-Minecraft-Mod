@@ -2,6 +2,9 @@ package com.fende.obesecat;
 
 import com.fende.obesecat.client.FissionFirestormOverlay;
 import com.fende.obesecat.client.CowKingRenderer;
+import com.fende.obesecat.client.TheCarverRenderer;
+import com.fende.obesecat.client.SkeletonKingRenderer;
+import com.fende.obesecat.client.model.TheCarverModel;
 import com.fende.obesecat.client.CanOpenerScreen;
 import com.fende.obesecat.client.CatChargerScreen;
 import com.fende.obesecat.client.GeminiExplosionOverlay;
@@ -16,6 +19,8 @@ import com.fende.obesecat.client.ObeseCatTimerOverlay;
 import com.fende.obesecat.client.SniperPacoInputHandler;
 import com.fende.obesecat.client.TransmutationCubeScreen;
 import com.fende.obesecat.client.EchoingBlastChamberScreen;
+import com.fende.obesecat.client.CowKingCrownLayer;
+import com.fende.obesecat.client.SkeletonKingCrownLayer;
 import com.fende.obesecat.client.model.FatManModel;
 import com.fende.obesecat.entity.ObeseCat;
 import com.fende.obesecat.registry.ModBlocks;
@@ -59,6 +64,9 @@ public class ObeseCatModClient {
 
     private void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
         event.registerLayerDefinition(FatManModel.LAYER_LOCATION, FatManModel::createBodyLayer);
+        event.registerLayerDefinition(CowKingCrownLayer.LAYER_LOCATION, CowKingCrownLayer::createCrownLayer);
+        event.registerLayerDefinition(SkeletonKingCrownLayer.LAYER_LOCATION, SkeletonKingCrownLayer::createCrownLayer);
+        event.registerLayerDefinition(TheCarverModel.LAYER_LOCATION, TheCarverModel::createBodyLayer);
     }
 
     @SuppressWarnings("unchecked")
@@ -68,6 +76,8 @@ public class ObeseCatModClient {
                 context -> (EntityRenderer<ObeseCat>) (EntityRenderer<?>) new ObeseCatRenderer(context)
         );
         event.registerEntityRenderer(ModEntities.COW_KING.get(), context -> new CowKingRenderer(context));
+        event.registerEntityRenderer(ModEntities.THE_CARVER.get(), context -> new TheCarverRenderer(context));
+        event.registerEntityRenderer(ModEntities.SKELETON_KING.get(), context -> new SkeletonKingRenderer(context));
     }
 
     private void registerGuiLayers(RegisterGuiLayersEvent event) {

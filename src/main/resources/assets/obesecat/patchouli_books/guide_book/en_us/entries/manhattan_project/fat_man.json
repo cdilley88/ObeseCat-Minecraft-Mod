@@ -1,0 +1,18 @@
+{
+  "name": "Fat Man & Critical Mass",
+  "category": "obesecat:manhattan_project",
+  "icon": "obesecat:obese_cat_spawn_egg",
+  "sortnum": 1,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "title": "Critical Feeding",
+      "text": "$(2)Fat Man$(0) requires exactly $(4)3 cans$(0) of Plutonium Cat Food to reach critical mass.$(br2)$(c)DANGER ZONE:$(0)$(br)Lure him far away from your base or beloved structures before administering the final meal! The blast will completely excavate an enormous crater."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Detonation Sequence",
+      "text": "Upon consuming the third can, an emergency klaxon sounds and a $(c)10-second fuse$(0) begins.$(br2)Drink a $(9)Potion of Swiftness$(0) and sprint $(4)60+ blocks$(0) away immediately. Surviving in the immediate blast zone without divine protection is virtually impossible."
+    }
+  ]
+}

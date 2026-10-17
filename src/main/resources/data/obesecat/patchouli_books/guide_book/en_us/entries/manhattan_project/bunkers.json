@@ -1,0 +1,20 @@
+{
+  "name": "Manhattan Bunkers",
+  "category": "obesecat:manhattan_project",
+  "icon": "obesecat:plutonium_cat_food",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "title": "Subterranean Outposts",
+      "text": "Deep underground across the Overworld lie fortified $(4)Manhattan Bunkers$(0). Constructed with reinforced deepslate and blast-resistant chambers, these relics house classified nuclear research.$(br2)Within each bunker, you will discover the solitary $(1)Manhattan Physicist$(0) tending to a dormant $(2)Fat Man$(0)."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "obesecat:plutonium_cat_food",
+      "title": "Plutonium Cat Food",
+      "link_recipe": false,
+      "text": "The Physicist trades cans of $(2)Plutonium Cat Food$(0) for $(a)5 Emeralds$(0).$(br2)$(c)WARNING:$(0) Not for human consumption. Feeding this isotope to Fat Man triggers atomic mass accumulation."
+    }
+  ]
+}

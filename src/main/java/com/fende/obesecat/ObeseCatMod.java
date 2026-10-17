@@ -127,7 +127,9 @@ public class ObeseCatMod {
 
     private void registerAttributes(EntityAttributeCreationEvent event) {
         event.put(ModEntities.OBESE_CAT.get(), Cat.createAttributes().build());
-        event.put(ModEntities.COW_KING.get(), Monster.createMonsterAttributes().build());
+        event.put(ModEntities.COW_KING.get(), com.fende.obesecat.entity.CowKing.createAttributes().build());
+        event.put(ModEntities.THE_CARVER.get(), com.fende.obesecat.entity.TheCarver.createAttributes().build());
+        event.put(ModEntities.SKELETON_KING.get(), com.fende.obesecat.entity.SkeletonKing.createAttributes().build());
     }
 
     private void registerCapabilities(RegisterCapabilitiesEvent event) {
@@ -199,6 +201,7 @@ public class ObeseCatMod {
         if (event.getTabKey() == CreativeModeTabs.SPAWN_EGGS) {
             event.accept(ModItems.OBESE_CAT_SPAWN_EGG.get());
             event.accept(ModItems.COW_KING_SPAWN_EGG.get());
+            event.accept(ModItems.SKELETON_KING_SPAWN_EGG.get());
             event.accept(ModItems.MANHATTAN_PHYSICIST_SPAWN_EGG.get());
         }
         if (event.getTabKey() == CreativeModeTabs.FOOD_AND_DRINKS) {
@@ -218,6 +221,14 @@ public class ObeseCatMod {
             event.accept(ModItems.ARK_KNIGHT_JEWEL.get());
             event.accept(ModItems.SWORD_SAINT_INSIGNIA.get());
             event.accept(ModItems.COW_LEVEL_PORTAL.get());
+            event.accept(ModItems.SKELETON_CROWN.get());
+            event.accept(ModItems.CHERCHE.get());
+            event.accept(ModItems.SALTY_RAGE.get());
+            event.accept(ModItems.CHANTAGE.get());
+            event.accept(ModItems.SETIEMSON.get());
+            event.accept(ModItems.QUANTUM_SEMICONDUCTOR.get());
+            event.accept(ModItems.DIMENSIONAL_SEMICONDUCTOR.get());
+            event.accept(ModItems.ATOMIC_SEMICONDUCTOR.get());
         }
         if (event.getTabKey() == CreativeModeTabs.COMBAT) {
             event.accept(ModItems.PACO.get());
@@ -244,7 +255,16 @@ public class ObeseCatMod {
             event.accept(ModItems.OPPENHEIMERS_HAT.get());
             event.accept(ModItems.HOLY_SWORD.get());
             event.accept(ModItems.MIGHTY_SWORD.get());
+            event.accept(ModItems.DARK_SWORD_BASE.get());
             event.accept(ModItems.DARK_SWORD.get());
+            event.accept(ModItems.CURSED_CLEAVER.get());
+            event.accept(ModItems.FLAYED_DEMON_HEART.get());
+            event.accept(ModItems.BLOODIED_IRON_HOOK.get());
+            event.accept(ModItems.SKELETON_CROWN.get());
+            event.accept(ModItems.CHERCHE.get());
+            event.accept(ModItems.SALTY_RAGE.get());
+            event.accept(ModItems.CHANTAGE.get());
+            event.accept(ModItems.SETIEMSON.get());
             event.accept(ModItems.STASIS_SWORD.get());
             event.accept(ModItems.SPLIT_PUNCH.get());
             event.accept(ModItems.CRUSH_PUNCH.get());
@@ -257,6 +277,8 @@ public class ObeseCatMod {
             event.accept(ModItems.NIGHT_SWORD.get());
             event.accept(ModItems.DARK_KNIGHT_BRACER.get());
             event.accept(ModItems.QUANTUM_SEMICONDUCTOR.get());
+            event.accept(ModItems.DIMENSIONAL_SEMICONDUCTOR.get());
+            event.accept(ModItems.ATOMIC_SEMICONDUCTOR.get());
             event.accept(ModItems.BOOM_STICK.get());
             event.accept(ModItems.FIRE_STICK.get());
             event.accept(ModItems.FIRE_BOOM_STICK.get());
@@ -286,6 +308,8 @@ public class ObeseCatMod {
             event.accept(ModItems.WORMHOLE_EMBER.get());
             event.accept(ModItems.ENIGMA_EMBER.get());
             event.accept(ModItems.QUANTUM_SEMICONDUCTOR.get());
+            event.accept(ModItems.DIMENSIONAL_SEMICONDUCTOR.get());
+            event.accept(ModItems.ATOMIC_SEMICONDUCTOR.get());
             event.accept(ModItems.TINY_PLANET.get());
             event.accept(ModItems.TRANSMUTATION_CUBE.get());
             event.accept(ModItems.GUIDE_BOOK.get());

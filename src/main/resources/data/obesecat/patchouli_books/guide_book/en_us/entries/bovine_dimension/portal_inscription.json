@@ -1,0 +1,27 @@
+{
+  "name": "Portal Inscription",
+  "category": "obesecat:bovine_dimension",
+  "icon": "obesecat:cow_level_portal",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "obesecat:virts_leg",
+      "title": "Wirt's Peg Leg",
+      "link_recipe": false,
+      "text": "The ancient peg leg of a doomed adventurer, preserved in the deepest shadows.$(br2)Slay the $(1)Warden$(0) in the Deep Dark to retrieve this foundational key."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "obesecat:tp_tome",
+      "title": "Tome of Town Portal",
+      "link_recipe": false,
+      "text": "An ancient tome inscribed with dimensional return coordinates.$(br2)Barter gold ingots with Nether $(6)Piglins$(0) until this rare grimoire is relinquished."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Transmuting The Key",
+      "text": "Place $(6)Wirt's Leg$(0) and the $(5)Tome of Town Portal$(0) into the $(5)Transmutation Cube$(0).$(br2)Transmuting will manifest the $(c)Cow Level Portal Key$(0). Right-click on solid ground to tear open the dimensional gateway to the Moo Moo Farm!"
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "name": "Ember: Spatial Physics",
+  "category": "obesecat:companion_entities",
+  "icon": "obesecat:enigma_ember",
+  "sortnum": 2,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "obesecat:ember",
+      "title": "Adopting Ember",
+      "link_recipe": false,
+      "text": "Ember is a sleek feline adopting from any village for $(a)1 Emerald$(0).$(br2)Ember's latent space-folding traits power mobility and utility gadgets that consume hunger as fuel instead of mana."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "obesecat:ember_singularity",
+      "title": "Ember Singularity",
+      "link_recipe": false,
+      "text": "Craft with:$(br)$(bullet) Ember + 8 Eyes of Ender$(br2)Right-click activates a powerful gravitational vacuum that pulls all dropped ground items into your inventory within a large radius. Drains hunger while active."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "obesecat:wormhole_ember",
+      "title": "Wormhole Ember",
+      "link_recipe": false,
+      "text": "Craft with:$(br)$(bullet) Ember + Tome of Town Portal$(br2)A dimensional recall device inspired by town portals. Channeling teleports the player directly back to their spawn point or bed."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "obesecat:enigma_ember",
+      "title": "Enigma Ember",
+      "link_recipe": false,
+      "text": "Transmute in the Cube:$(br)$(bullet) Ember + Quantum (Jah) + Dimensional (Ith) + Atomic (Ber) Semiconductors$(br2)The ultimate mobility runeword. Boasts a blistering $(c)2-tick cooldown$(0), blinking the user short distances forward instantly."
+    }
+  ]
+}

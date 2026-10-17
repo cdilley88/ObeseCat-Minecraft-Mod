@@ -8,6 +8,14 @@
     {
       "item": "obesecat:quantum_semiconductor",
       "count": 1
+    },
+    {
+      "item": "obesecat:dimensional_semiconductor",
+      "count": 1
+    },
+    {
+      "item": "obesecat:atomic_semiconductor",
+      "count": 1
     }
   ],
   "result": {

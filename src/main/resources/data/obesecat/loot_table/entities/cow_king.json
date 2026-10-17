@@ -2,45 +2,71 @@
   "type": "minecraft:entity",
   "pools": [
     {
-      "name": "obesecat:cow_king_catalyst",
+      "name": "obesecat:cow_king_drops",
       "rolls": 1.0,
-      "bonus_rolls": 0.0,
+      "bonus_rolls": 0.5,
       "entries": [
         {
           "type": "minecraft:item",
           "name": "obesecat:holy_knight_token",
-          "weight": 1
+          "weight": 2
         },
         {
           "type": "minecraft:item",
           "name": "obesecat:white_knight_symbol",
-          "weight": 1
+          "weight": 2
         },
         {
           "type": "minecraft:item",
           "name": "obesecat:dark_knight_bracer",
-          "weight": 1
+          "weight": 2
         },
         {
           "type": "minecraft:item",
           "name": "obesecat:ark_knight_jewel",
-          "weight": 1
+          "weight": 2
         },
         {
           "type": "minecraft:item",
           "name": "obesecat:sword_saint_insignia",
-          "weight": 1
+          "weight": 2
+        },
+        {
+          "type": "minecraft:item",
+          "name": "obesecat:dimensional_semiconductor",
+          "weight": 2
         }
       ]
     },
     {
-      "name": "obesecat:cow_king_semiconductor",
+      "name": "obesecat:cow_king_leather_beef",
       "rolls": 1.0,
-      "bonus_rolls": 0.0,
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "obesecat:quantum_semiconductor"
+          "name": "minecraft:cooked_beef",
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 4.0,
+                "max": 8.0
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:leather",
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 3.0,
+                "max": 6.0
+              }
+            }
+          ]
         }
       ]
     }

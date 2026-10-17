@@ -1,0 +1,22 @@
+{
+  "name": "Lightning Stab & Holy Explosion",
+  "category": "obesecat:mythic_blades",
+  "icon": "obesecat:lightning_stab",
+  "sortnum": 3,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "obesecat:lightning_stab",
+      "title": "Lightning Stab",
+      "link_recipe": false,
+      "text": "Channels atmospheric ionic potential directly into your target.$(br2)On impact, summons pinpoint celestial thunderbolts that shock the target, pierce armor, and arc secondary sparks to adjacent foes."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "obesecat:holy_explosion",
+      "title": "Holy Explosion",
+      "link_recipe": false,
+      "text": "Ignites a magnificent dome of radiant sacred light centered on the wielder.$(br2)Deals amplified cleansing damage against undead monsters (Zombies, Skeletons, Withers) while pushing enemies back."
+    }
+  ]
+}

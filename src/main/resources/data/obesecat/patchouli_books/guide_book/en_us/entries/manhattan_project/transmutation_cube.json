@@ -1,0 +1,21 @@
+{
+  "name": "The Transmutation Cube",
+  "category": "obesecat:manhattan_project",
+  "icon": "obesecat:transmutation_cube",
+  "sortnum": 3,
+  "pages": [
+    {
+      "type": "patchouli:crafting",
+      "recipe": "obesecat:transmutation_cube",
+      "title": "Assembly Matrix",
+      "text": "Combine a standard Chest, Crafting Table, and a block of Trinitite to assemble the portable $(5)Transmutation Cube$(0)."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "obesecat:transmutation_cube",
+      "title": "Operation & Interface",
+      "link_recipe": false,
+      "text": "Right-click to open its 5-slot catalytic matrix. Insert specific alchemical ingredients and press $(5)Transmute$(0).$(br2)The Cube rearranges atomic bonds instantaneously, emitting an alchemical hum when a recipe succeeds."
+    }
+  ]
+}

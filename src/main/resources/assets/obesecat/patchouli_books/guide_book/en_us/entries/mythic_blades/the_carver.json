@@ -1,0 +1,23 @@
+{
+  "name": "The Carver's Rites",
+  "category": "obesecat:mythic_blades",
+  "icon": "obesecat:cursed_cleaver",
+  "sortnum": 4,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "title": "The Cursed Cleaver",
+      "text": "Deep within Nether Bastion treasure vaults lies the $(4)Cursed Cleaver$(0)—a jagged, bloodstained tool left by ancient butcher demons.$(br2)Awakening the demon bound within requires a sacrificial rite of sculk and extreme spiritual energy."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Summoning Ritual",
+      "text": "1. Place an $(8)Anvil$(0) directly atop a $(3)Sculk Catalyst$(0).$(br)2. Accumulate at least $(2)30 XP Levels$(0).$(br)3. Right-click the anvil with the $(4)Cursed Cleaver$(0).$(br2)The anvil shatters in a violent sculk detonation, draining all levels and summoning $(4)The Carver$(0)."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Battle & Dark Relics",
+      "text": "Beware $(4)The Carver$(0)'s relentless pursuit and barbed $(4)Meat Hook$(0) which drags prey from afar.$(br2)Slaying him yields the $(c)Flayed Demon Heart$(0) and $(8)Bloodied Iron Hook$(0).$(br2)Transmute with $(8)Dark Sword (Base)$(0) to forge $(4)Night Sword$(0) and $(5)Dark Sword$(0)!"
+    }
+  ]
+}

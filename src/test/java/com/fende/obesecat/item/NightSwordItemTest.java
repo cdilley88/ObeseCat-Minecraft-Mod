@@ -30,8 +30,8 @@ class NightSwordItemTest {
         assertTrue(lang.contains("Master of all swords, cut energy! Night Sword!"));
         assertTrue(sounds.contains("obesecat:item/nightsworddrone"));
         assertTrue(sounds.contains("obesecat:item/nightswordstab"));
-        assertTrue(recipe.contains("\"item\": \"obesecat:dark_sword\""));
-        assertTrue(recipe.contains("\"item\": \"minecraft:dirt\""));
+        assertTrue(recipe.contains("\"item\": \"obesecat:dark_sword_base\""));
+        assertTrue(recipe.contains("\"item\": \"obesecat:flayed_demon_heart\""));
         assertTrue(recipe.contains("\"id\": \"obesecat:night_sword\""));
         assertTrue(Files.exists(Path.of("src/main/resources/assets/obesecat/textures/item/dark_sword.png")));
         assertTrue(Files.exists(Path.of("src/main/resources/assets/obesecat/textures/item/night_sword.png")));

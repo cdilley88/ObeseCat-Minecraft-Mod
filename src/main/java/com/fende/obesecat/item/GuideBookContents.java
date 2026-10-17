@@ -66,13 +66,14 @@ public final class GuideBookContents {
         pages.add(Filterable.passThrough(Component.literal(
                 "§1§lCH. 5: SWORD SKILLS§r\n" +
                 "§8-------------------§r\n" +
-                "§0The Cow King drops legendary tokens.\n\n" +
-                "Combine them in the Cube with Ancient City blades:\n" +
-                "§b• Stasis Sword\n" +
-                "§e• Split Punch\n" +
-                "§6• Crush Punch\n" +
-                "§d• Lightning Stab\n" +
-                "§4• Holy Explosion§r"
+                "§0Bases found in Ancient Cities.\n\n" +
+                "§5Holy (Cow King):§0\n" +
+                "§8Stasis, Split, Crush, Lightning, Holy Explosion.\n\n" +
+                "§6Mighty (Skeleton King):§0\n" +
+                "§8T-altar: 4 Bone Blocks + End City Skeleton Crown.\n" +
+                "§8Drops Perfumes: Cherche, Salty Rage, Chantage, Setiemson.\n\n" +
+                "§4Dark (The Carver):§0\n" +
+                "§8Strike Anvil on Sculk Catalyst with Bastion Cleaver + 30 Lvls!§r"
         )));
 
         // Page 7: Chapter 6 - Temporal Felines
@@ -119,8 +120,10 @@ public final class GuideBookContents {
                 "  Ember + Tome of Town Portal (Return Home)\n\n" +
                 "§5Cube Transmutation:§0\n" +
                 "§c• Enigma Ember:§0\n" +
-                "  Ember + Quantum Semiconductor\n" +
-                "§8(Semiconductors drop from Cow King)§r"
+                "  Ember + 3 Semiconductors\n" +
+                "§8• Quantum (Jah): Skeleton King\n" +
+                "§8• Dimensional (Ith): Cow King\n" +
+                "§8• Atomic (Ber): The Carver§r"
         )));
 
         // Page 10: Chapter 9 - Sensory & Crater Navigation

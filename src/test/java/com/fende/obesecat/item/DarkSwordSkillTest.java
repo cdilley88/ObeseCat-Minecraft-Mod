@@ -31,5 +31,22 @@ class DarkSwordSkillTest {
         assertTrue(Files.exists(Path.of("src/main/resources/assets/obesecat/textures/item/dark_sword_blade_gfx.png")));
         assertTrue(Files.exists(Path.of("src/main/resources/assets/obesecat/sounds/item/darksworddrone.ogg")));
         assertTrue(Files.exists(Path.of("src/main/resources/assets/obesecat/sounds/item/darkswordstab.ogg")));
+
+        // Dark Sword Base & The Carver Questline Assertions
+        String registry = Files.readString(Path.of("src/main/java/com/fende/obesecat/registry/ModItems.java"));
+        String entities = Files.readString(Path.of("src/main/java/com/fende/obesecat/registry/ModEntities.java"));
+        String loot = Files.readString(Path.of("src/main/java/com/fende/obesecat/registry/ModLootTables.java"));
+        String darkRecipe = Files.readString(Path.of("src/main/resources/data/obesecat/recipe/dark_sword_transmutation.json"));
+
+        assertTrue(registry.contains("DeferredItem<DarkSwordBaseItem> DARK_SWORD_BASE"));
+        assertTrue(registry.contains("DeferredItem<CursedCleaverItem> CURSED_CLEAVER"));
+        assertTrue(registry.contains("DeferredItem<CaptionedItem> FLAYED_DEMON_HEART"));
+        assertTrue(registry.contains("DeferredItem<CaptionedItem> BLOODIED_IRON_HOOK"));
+        assertTrue(entities.contains("THE_CARVER"));
+        assertTrue(loot.contains("ANCIENT_CITY_DARK_SWORD_POOL"));
+        assertTrue(loot.contains("BASTION_CURSED_CLEAVER_POOL"));
+        assertTrue(darkRecipe.contains("\"item\": \"obesecat:dark_sword_base\""));
+        assertTrue(darkRecipe.contains("\"item\": \"obesecat:bloodied_iron_hook\""));
+        assertTrue(darkRecipe.contains("\"id\": \"obesecat:dark_sword\""));
     }
 }

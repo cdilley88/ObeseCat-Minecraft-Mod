@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "obesecat:item/flayed_demon_heart"
+  }
+}

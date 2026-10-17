@@ -1,0 +1,43 @@
+{
+  "name": "Dorito: Sensory & Hazards",
+  "category": "obesecat:companion_entities",
+  "icon": "obesecat:night_vision_dorito",
+  "sortnum": 3,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "obesecat:dorito",
+      "title": "Adopting Dorito",
+      "link_recipe": false,
+      "text": "Dorito is an energetic ginger tabby adopting from any village for $(a)1 Emerald$(0).$(br2)Dorito specializes in surviving extreme environmental hazards, crater exploration, and sensory enhancement."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "obesecat:doritos_paws",
+      "title": "Dorito's Paws",
+      "link_recipe": false,
+      "text": "Transmute in the Cube:$(br)$(bullet) Dorito + Rabbit Foot + Feather$(br2)Equip in Curios Feet slot. Converts lethal fall impact directly into hunger at half rate, guaranteeing survival from any height so long as you are fed!"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "obesecat:sculk_doritos_paws",
+      "title": "Sculk Dorito's Paws",
+      "link_recipe": false,
+      "text": "Transmute in the Cube:$(br)$(bullet) Dorito's Paws + Sculk Catalyst$(br2)Upgrades the paws with deep sculk dampening. Completely silences all footsteps and movement vibrations from Wardens and Sculk Shriekers while nourished."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "obesecat:night_vision_dorito",
+      "title": "Night Vision Dorito",
+      "link_recipe": false,
+      "text": "Transmute in the Cube:$(br)$(bullet) Dorito + Gilded Blackstone + Tinted Glass + Amethyst$(br2)Curios Head slot NVG optics. Features a tactical HUD visor, real-time ambient LUX meter, and flashing low-light warning banner. Consumes 0.01 exhaustion/tick."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "obesecat:tiny_planet",
+      "title": "Tiny Planet",
+      "link_recipe": false,
+      "text": "Transmute in the Cube:$(br)$(bullet) Dorito + Arrow + Fire Charge + Lodestone + Block of Gold$(br2)Right-click projects 3 orbiting celestial bodies for $(b)5 seconds$(0) (15s cooldown). Deflects all hostile projectiles, converting damage to hunger at a 1/4 rate!"
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "name": "Paco: Tactical K9",
+  "category": "obesecat:companion_entities",
+  "icon": "obesecat:sniper_paco",
+  "sortnum": 1,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "obesecat:paco",
+      "title": "Adopting Paco",
+      "link_recipe": false,
+      "text": "Paco is a loyal canine companion adopting from village kennels for $(a)1 Emerald$(0).$(br2)Paco can be field-retrofitted with standard workbench upgrades into progressively lethal tactical configurations."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Tactical Field Upgrades",
+      "text": "Upgrade tiers via crafting:$(br)$(bullet) $(6)Concussive Paco:$(0) Paco + Piston (kinetic blast bark)$(br)$(bullet) $(b)Attack Paco:$(0) Concussive + Diamond (armor-shredding bite)$(br)$(bullet) $(d)Assault Paco:$(0) Attack + Nether Star (rapid-fire barrage)$(br)$(bullet) $(a)Sniper Paco:$(0) Assault + Spyglass (extreme range targeting)"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "obesecat:hellhound_paco",
+      "title": "Hellhound Paco",
+      "link_recipe": false,
+      "text": "Transmute in the Cube:$(br)$(bullet) Paco$(br)$(bullet) Blaze Powder$(br)$(bullet) Dragon's Breath$(br2)Unleashes a demonic nether hound emitting searing incendiary flame bursts that ignite whole mobs."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "obesecat:j_robert_pacoheimer",
+      "title": "J. Paco Barkkenheimer",
+      "link_recipe": false,
+      "text": "Transmute in the Cube:$(br)$(bullet) Paco$(br)$(bullet) Oppenheimer's Hat$(br2)$(o)\"Now I am become Bark, the destroyer of mailmen.\"$(reset)$(br2)High-yield classified post-game canine ordinance."
+    }
+  ]
+}

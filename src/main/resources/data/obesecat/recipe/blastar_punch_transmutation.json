@@ -2,7 +2,7 @@
   "type": "obesecat:transmutation",
   "ingredients": [
     { "item": "obesecat:mighty_sword", "count": 1 },
-    { "item": "minecraft:netherite_helmet", "count": 1 }
+    { "item": "obesecat:salty_rage", "count": 1 }
   ],
   "result": { "id": "obesecat:blastar_punch", "count": 1 }
 }

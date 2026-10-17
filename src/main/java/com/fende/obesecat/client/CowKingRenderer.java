@@ -1,18 +1,19 @@
 package com.fende.obesecat.client;
 
+import com.fende.obesecat.client.model.CowKingModel;
 import com.fende.obesecat.entity.CowKing;
 import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.model.CowModel;
+import net.minecraft.client.model.geom.ModelLayers;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.client.model.geom.ModelLayers;
 
-public class CowKingRenderer extends MobRenderer<CowKing, CowModel<CowKing>> {
+public class CowKingRenderer extends MobRenderer<CowKing, CowKingModel> {
     private static final ResourceLocation TEXTURE = ResourceLocation.withDefaultNamespace("textures/entity/cow/cow.png");
 
     public CowKingRenderer(EntityRendererProvider.Context context) {
-        super(context, new CowModel<>(context.bakeLayer(ModelLayers.COW)), 3.5F);
+        super(context, new CowKingModel(context.bakeLayer(ModelLayers.COW)), 3.5F);
+        this.addLayer(new CowKingCrownLayer(this, context.bakeLayer(CowKingCrownLayer.LAYER_LOCATION)));
     }
 
     @Override

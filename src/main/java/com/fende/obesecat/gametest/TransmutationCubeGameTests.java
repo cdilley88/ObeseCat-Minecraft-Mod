@@ -154,10 +154,12 @@ public final class TransmutationCubeGameTests {
 
         SimpleContainer contents = new SimpleContainer(TransmutationCubeInventory.SLOT_COUNT);
         contents.setItem(2, new ItemStack(ModItems.EMBER.get()));
-        contents.setItem(6, new ItemStack(ModItems.QUANTUM_SEMICONDUCTOR.get(), 1));
+        contents.setItem(4, new ItemStack(ModItems.QUANTUM_SEMICONDUCTOR.get(), 1));
+        contents.setItem(6, new ItemStack(ModItems.DIMENSIONAL_SEMICONDUCTOR.get(), 1));
+        contents.setItem(8, new ItemStack(ModItems.ATOMIC_SEMICONDUCTOR.get(), 1));
         helper.assertTrue(
                 recipe.matches(TransmutationInput.copyOf(contents), helper.getLevel()),
-                "Ember plus one Quantum Semiconductor must match the Enigma Ember recipe in any cube slots"
+                "Ember plus the three semiconductors (Quantum, Dimensional, Atomic) must match the Enigma Ember recipe in any cube slots"
         );
         helper.assertTrue(
                 recipe.assemble(TransmutationInput.copyOf(contents), helper.getLevel().registryAccess())
