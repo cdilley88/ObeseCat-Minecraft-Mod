@@ -57,7 +57,11 @@ public class PacoItem extends Item {
                     setStink(stack, stink);
                     player.getCooldowns().addCooldown(this, getBarkCooldownTicks());
                 }
+            } else if (getBarkCooldownTicks() > 0) {
+                player.getCooldowns().addCooldown(this, getBarkCooldownTicks());
             }
+        } else if (!usesStinkMeter() && getBarkCooldownTicks() > 0) {
+            player.getCooldowns().addCooldown(this, getBarkCooldownTicks());
         }
 
         return InteractionResultHolder.sidedSuccess(stack, level.isClientSide());

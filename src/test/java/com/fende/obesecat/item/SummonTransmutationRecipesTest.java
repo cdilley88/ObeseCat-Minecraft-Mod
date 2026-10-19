@@ -9,10 +9,10 @@ import org.junit.jupiter.api.Test;
 class SummonTransmutationRecipesTest {
     @Test
     void summonRecipesUseSharedExpensiveIngredientsAndTheirOwnCatalysts() throws Exception {
-        assertRecipe("aequitas", "minecraft:soul_torch");
-        assertRecipe("praxis", "minecraft:snow_block");
-        assertRecipe("paradox", "minecraft:ender_pearl");
-        assertRecipe("veritas", "minecraft:glowstone");
+        assertRecipe("aequitas", "minecraft:soul_campfire");
+        assertRecipe("praxis", "minecraft:blue_ice");
+        assertRecipe("paradox", "minecraft:eye_of_ender");
+        assertRecipe("veritas", "minecraft:amethyst_cluster");
     }
 
     private static void assertRecipe(String summon, String catalyst) throws Exception {

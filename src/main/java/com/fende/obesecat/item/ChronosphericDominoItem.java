@@ -134,30 +134,18 @@ public class ChronosphericDominoItem extends DominoItem {
                 serverLevel.setWeatherParameters(0, 7200, preset.isRaining(), preset.isThundering());
             }
 
-            // 1. Primary Domino meow + deep vocal harmonic shadow
+            // 1. Primary Domino meow
             SoundEvent meow = getBarkSound(level);
-            LocalSoundHelper.playLocalized(serverLevel, player.position(), meow, 48.0D, 1.4F, 1.0F);
-            LocalSoundHelper.playLocalized(serverLevel, player.position(), meow, 48.0D, 0.75F, 0.62F);
+            LocalSoundHelper.playLocalized(serverLevel, player.position(), meow, 48.0D, 1.3F, 1.0F);
 
-            // 2. Heavy godlike reverb tail (massive low-frequency cathedral resonance + celestial beacon)
-            LocalSoundHelper.playLocalized(serverLevel, player.position(), SoundEvents.BELL_RESONATE, 48.0D, 1.4F, 0.50F);
-            LocalSoundHelper.playLocalized(serverLevel, player.position(), SoundEvents.BEACON_ACTIVATE, 48.0D, 1.2F, 0.85F);
-            LocalSoundHelper.playLocalized(serverLevel, player.position(), SoundEvents.PORTAL_TRIGGER, 48.0D, 0.55F, 0.65F);
+            // 2. Colossal sub-bass punch & kinetic shockwave
+            LocalSoundHelper.playLocalized(serverLevel, player.position(), SoundEvents.WARDEN_SONIC_BOOM, 48.0D, 1.2F, 0.85F);
+            LocalSoundHelper.playLocalized(serverLevel, player.position(), SoundEvents.GENERIC_EXPLODE.value(), 48.0D, 1.0F, 0.60F);
 
-            // 3. Deep bass pulse
-            LocalSoundHelper.playLocalized(serverLevel, player.position(), SoundEvents.CONDUIT_ACTIVATE, 48.0D, 1.3F, 0.55F);
-            LocalSoundHelper.playLocalized(serverLevel, player.position(), SoundEvents.RESPAWN_ANCHOR_SET_SPAWN, 48.0D, 1.1F, 0.60F);
-            LocalSoundHelper.playLocalized(serverLevel, player.position(), SoundEvents.WARDEN_HEARTBEAT, 48.0D, 1.2F, 0.65F);
-
-            // 4. Astral shimmer
-            LocalSoundHelper.playLocalized(serverLevel, player.position(), SoundEvents.AMETHYST_BLOCK_CHIME, 48.0D, 1.3F, 1.4F);
-            LocalSoundHelper.playLocalized(serverLevel, player.position(), SoundEvents.AMETHYST_CLUSTER_STEP, 48.0D, 0.85F, 1.75F);
-            LocalSoundHelper.playLocalized(serverLevel, player.position(), SoundEvents.ENCHANTMENT_TABLE_USE, 48.0D, 1.0F, 1.45F);
-
-            // 5. Electric crackle layering
-            LocalSoundHelper.playLocalized(serverLevel, player.position(), SoundEvents.CAMPFIRE_CRACKLE, 48.0D, 1.6F, 1.35F);
-            LocalSoundHelper.playLocalized(serverLevel, player.position(), SoundEvents.LIGHTNING_BOLT_IMPACT, 48.0D, 0.75F, 1.7F);
-            LocalSoundHelper.playLocalized(serverLevel, player.position(), SoundEvents.FIRE_AMBIENT, 48.0D, 0.8F, 1.5F);
+            // 3. Heavy dimensional cathedral reverb tail & spatial echo
+            LocalSoundHelper.playLocalized(serverLevel, player.position(), SoundEvents.BELL_RESONATE, 48.0D, 1.8F, 0.42F);
+            LocalSoundHelper.playLocalized(serverLevel, player.position(), SoundEvents.RESPAWN_ANCHOR_DEPLETE.value(), 48.0D, 1.2F, 0.55F);
+            LocalSoundHelper.playLocalized(serverLevel, player.position(), SoundEvents.BEACON_ACTIVATE, 48.0D, 1.0F, 1.25F);
 
             // Particle vortex: Electric sparks, portal rifts, and flash
             serverLevel.sendParticles(ParticleTypes.ELECTRIC_SPARK, player.getX(), player.getY() + 1.0, player.getZ(), 60, 0.8, 0.8, 0.8, 0.25);

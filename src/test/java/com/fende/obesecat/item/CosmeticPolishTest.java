@@ -20,7 +20,7 @@ class CosmeticPolishTest {
         assertTrue(aequitas.contains("item.obesecat.aequitas.caption"));
         assertTrue(lang.contains("\"item.obesecat.aequitas.caption\": \"Full Measure\""));
         assertTrue(lang.contains("Echoes of an incredible noise"));
-        assertTrue(chamber.contains("line <= 1"));
+        assertTrue(chamber.contains("line <= 4"));
         assertTrue(eggModel.contains("minecraft:item/template_spawn_egg"));
         assertTrue(itemBlock(items, "DOMINO", "EMBER").contains("Rarity.UNCOMMON"));
     }

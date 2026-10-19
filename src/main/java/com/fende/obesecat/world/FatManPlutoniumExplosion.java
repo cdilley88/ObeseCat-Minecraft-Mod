@@ -30,22 +30,58 @@ public final class FatManPlutoniumExplosion {
     public static final int SHOCKWAVE_DELAY_TICKS = 4;
 
     private static final List<DetonationSimulation> ACTIVE_DETONATIONS = new ArrayList<>();
+    private static final List<PendingDelayedDetonation> PENDING_DETONATIONS = new ArrayList<>();
 
     private FatManPlutoniumExplosion() {
     }
 
     public static void detonate(ServerLevel level, BlockPos origin) {
+        detonate(level, origin, true);
+    }
+
+    public static void detonate(ServerLevel level, BlockPos origin, boolean placeTrinitite) {
         BlockPos blastOrigin = origin.immutable();
 
         // 1. Trigger the Big Gemini visual and acoustic spectacle (fireball, mushroom cloud, flash, roar, fallout)
         BigGeminiThermonuclearExplosion.detonateSpectacle(level, blastOrigin);
 
         // 2. Queue the delayed crater excavation timed to shockwave arrival at tick 4
-        ACTIVE_DETONATIONS.add(new DetonationSimulation(level, blastOrigin));
+        ACTIVE_DETONATIONS.add(new DetonationSimulation(level, blastOrigin, placeTrinitite));
+    }
+
+    public static void detonateDelayed(ServerLevel level, BlockPos origin, int delayTicks) {
+        detonateDelayed(level, origin, delayTicks, true);
+    }
+
+    public static void detonateDelayed(ServerLevel level, BlockPos origin, int delayTicks, boolean placeTrinitite) {
+        if (delayTicks <= 0) {
+            detonate(level, origin, placeTrinitite);
+            return;
+        }
+        PENDING_DETONATIONS.add(new PendingDelayedDetonation(level, origin.immutable(), delayTicks, placeTrinitite));
     }
 
     public static void onLevelTick(LevelTickEvent.Post event) {
-        if (!(event.getLevel() instanceof ServerLevel level) || ACTIVE_DETONATIONS.isEmpty()) {
+        if (!(event.getLevel() instanceof ServerLevel level)) {
+            return;
+        }
+
+        if (!PENDING_DETONATIONS.isEmpty()) {
+            Iterator<PendingDelayedDetonation> pIt = PENDING_DETONATIONS.iterator();
+            while (pIt.hasNext()) {
+                PendingDelayedDetonation pending = pIt.next();
+                if (pending.level != level) {
+                    continue;
+                }
+                pending.delayTicks--;
+                if (pending.delayTicks <= 0) {
+                    detonate(pending.level, pending.origin, pending.placeTrinitite);
+                    pIt.remove();
+                }
+            }
+        }
+
+        if (ACTIVE_DETONATIONS.isEmpty()) {
             return;
         }
 
@@ -58,16 +94,18 @@ public final class FatManPlutoniumExplosion {
 
             sim.tick++;
             if (sim.tick >= SHOCKWAVE_DELAY_TICKS) {
-                executeCraterDetonation(sim.level, sim.origin);
+                executeCraterDetonation(sim.level, sim.origin, sim.placeTrinitite);
                 iterator.remove();
             }
         }
     }
 
-    private static void executeCraterDetonation(ServerLevel level, BlockPos origin) {
+    private static void executeCraterDetonation(ServerLevel level, BlockPos origin, boolean placeTrinitite) {
         BlockPos craterCenter = carveCustomCrater(level, origin, CRATER_RADIUS, CRATER_MAX_DEPTH);
         scorchPerimeter(level, origin, CRATER_RADIUS, PERIMETER_SCORCH_RADIUS);
-        placeTrinititeAtCraterCenter(level, craterCenter);
+        if (placeTrinitite) {
+            placeTrinititeAtCraterCenter(level, craterCenter);
+        }
     }
 
     private static BlockPos carveCustomCrater(ServerLevel level, BlockPos origin, int craterRadius, int craterMaxDepth) {
@@ -299,11 +337,27 @@ public final class FatManPlutoniumExplosion {
     private static final class DetonationSimulation {
         final ServerLevel level;
         final BlockPos origin;
+        final boolean placeTrinitite;
         int tick = 0;
 
-        DetonationSimulation(ServerLevel level, BlockPos origin) {
+        DetonationSimulation(ServerLevel level, BlockPos origin, boolean placeTrinitite) {
             this.level = level;
             this.origin = origin;
+            this.placeTrinitite = placeTrinitite;
+        }
+    }
+
+    private static final class PendingDelayedDetonation {
+        final ServerLevel level;
+        final BlockPos origin;
+        final boolean placeTrinitite;
+        int delayTicks;
+
+        PendingDelayedDetonation(ServerLevel level, BlockPos origin, int delayTicks, boolean placeTrinitite) {
+            this.level = level;
+            this.origin = origin;
+            this.delayTicks = delayTicks;
+            this.placeTrinitite = placeTrinitite;
         }
     }
 }

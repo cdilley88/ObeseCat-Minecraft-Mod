@@ -1,0 +1,29 @@
+{
+  "name": "Echoing Blast Chamber",
+  "category": "obesecat:manhattan_project",
+  "icon": "obesecat:echoing_blast_chamber",
+  "sortnum": 5,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "obesecat:echoing_blast_chamber",
+      "title": "Acoustic Singularity",
+      "link_recipe": true,
+      "text": "By binding $(2)Trinitite$(0) atomic glass with $(3)Echo Shards$(0) and a Blast Furnace, you construct the $(2)Echoing Blast Chamber$(0).$(br2)This chamber harnesses acoustic resonance so intense that soundwaves act as physical hydraulic vices, forcing opposing elemental matter into harmonic collapse."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "obesecat:overdrive_rod",
+      "title": "Harmonic Overdrive",
+      "link_recipe": false,
+      "text": "Insert a $(6)Blaze Rod$(0) (superheated Nether fire) and a $(b)Breeze Rod$(0) (turbulent Trial wind) into the chamber.$(br2)Over 10 seconds of deafening acoustic pressure, the rods fuse in a contained sonic detonation into an $(5)Overdrive Rod$(0)—a double-helix core of pure kinetic and thermal power."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "obesecat:overdrive_powder",
+      "title": "Catalytic Reagent",
+      "link_recipe": true,
+      "text": "Pulverizing an Overdrive Rod yields $(5)Overdrive Powder$(0).$(br2)This volatile particulate reagent is indispensable across the Manhattan Project: it binds exotic $(d)Magicite Summons$(0) in the Transmutation Cube and activates the $(2)Tabbyrium Blossom Sapling$(0)."
+    }
+  ]
+}

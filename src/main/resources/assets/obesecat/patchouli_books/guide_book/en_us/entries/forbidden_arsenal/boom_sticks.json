@@ -13,6 +13,13 @@
     },
     {
       "type": "patchouli:spotlight",
+      "item": "obesecat:big_fat_man_boom_stick",
+      "title": "BIG Fat Man",
+      "link_recipe": false,
+      "text": "Super-heavy plutonium implosion ordnance.$(br2)Excavates a gargantuan 140m caldera cutting deep into deepslate without puncturing bedrock, vitrifying the crater floor in $(2)Trinitite$(0)."
+    },
+    {
+      "type": "patchouli:spotlight",
       "item": "obesecat:gemini_boom_stick",
       "title": "Gemini Boom Stick",
       "link_recipe": false,

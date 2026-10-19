@@ -33,12 +33,14 @@ public class OmniVisorDoritoItem extends CaptionedItem {
             );
             if (nextState) {
                 level.playSound(null, player.getX(), player.getY(), player.getZ(),
-                        SoundEvents.UI_TOAST_CHALLENGE_COMPLETE, SoundSource.PLAYERS, 0.8F, 1.4F);
+                        SoundEvents.BEACON_POWER_SELECT, SoundSource.PLAYERS, 0.8F, 1.6F);
                 level.playSound(null, player.getX(), player.getY(), player.getZ(),
-                        SoundEvents.BEACON_ACTIVATE, SoundSource.PLAYERS, 0.4F, 1.8F);
+                        SoundEvents.NOTE_BLOCK_BIT.value(), SoundSource.PLAYERS, 0.7F, 1.8F);
             } else {
                 level.playSound(null, player.getX(), player.getY(), player.getZ(),
-                        SoundEvents.BEACON_DEACTIVATE, SoundSource.PLAYERS, 0.4F, 1.4F);
+                        SoundEvents.UI_BUTTON_CLICK.value(), SoundSource.PLAYERS, 0.8F, 0.6F);
+                level.playSound(null, player.getX(), player.getY(), player.getZ(),
+                        SoundEvents.BEACON_DEACTIVATE, SoundSource.PLAYERS, 0.4F, 1.8F);
             }
         }
 

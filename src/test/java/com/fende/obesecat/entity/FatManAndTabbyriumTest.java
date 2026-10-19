@@ -76,13 +76,18 @@ class FatManAndTabbyriumTest {
         assertTrue(crustFile.contains("TABBYRIUM_CLUSTER"));
         assertTrue(crustFile.contains("setValue(TabbyriumClusterBlock.AGE, 0)"));
 
-        // Sapling grows trunk from Tabbyrium Stalk
+        // Sapling grows trunk from Tabbyrium Stalk (3, 4, or 5 blocks tall at random)
         assertTrue(saplingFile.contains("ModBlocks.TABBYRIUM_STALK.get().defaultBlockState()"));
+        assertTrue(saplingFile.contains("3 + random.nextInt(3)"));
+
+        // Max 18 crust cap prevents carpet proliferation
+        assertTrue(stalkFile.contains("MAX_CRUST_PER_BLOSSOM = 18"));
     }
 
     @Test
     void verifiesSporePodPulsingAndLight() throws Exception {
         String podFile = Files.readString(Path.of("src/main/java/com/fende/obesecat/block/TabbyriumSporePodBlock.java"));
+        assertTrue(podFile.contains("MAX_CRUST_PER_BLOSSOM"));
         Path mcmetaFile = Path.of("src/main/resources/assets/obesecat/textures/block/tabbyrium_spore_pod.png.mcmeta");
 
         // Light level is maximum (15) like Sea Lantern

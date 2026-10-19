@@ -56,6 +56,18 @@ public class EchoingBlastChamberBlockEntity extends BlockEntity implements Conta
                 if (output.isEmpty()) chamber.items.set(OUTPUT_SLOT, new ItemStack(ModItems.OVERDRIVE_ROD.get()));
                 else output.grow(1);
                 chamber.progress = 0;
+
+                // Contained harmonic detonation sound & particles
+                level.playSound(null, pos, net.minecraft.sounds.SoundEvents.WARDEN_SONIC_BOOM, net.minecraft.sounds.SoundSource.BLOCKS, 0.7F, 1.4F);
+                level.playSound(null, pos, net.minecraft.sounds.SoundEvents.ANVIL_LAND, net.minecraft.sounds.SoundSource.BLOCKS, 0.5F, 1.6F);
+                if (level instanceof net.minecraft.server.level.ServerLevel serverLevel) {
+                    net.minecraft.core.Direction facing = state.getValue(EchoingBlastChamberBlock.FACING);
+                    double fx = pos.getX() + 0.5D + facing.getStepX() * 0.55D;
+                    double fy = pos.getY() + 0.5D;
+                    double fz = pos.getZ() + 0.5D + facing.getStepZ() * 0.55D;
+                    serverLevel.sendParticles(net.minecraft.core.particles.ParticleTypes.SONIC_BOOM, fx, fy, fz, 1, 0, 0, 0, 0);
+                    serverLevel.sendParticles(net.minecraft.core.particles.ParticleTypes.SCULK_SOUL, fx, fy, fz, 8, 0.15D, 0.15D, 0.15D, 0.05D);
+                }
             }
         } else if (chamber.progress != 0) {
             chamber.progress = 0;

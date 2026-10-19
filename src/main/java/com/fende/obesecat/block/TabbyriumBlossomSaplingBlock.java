@@ -15,11 +15,16 @@ import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.BonemealableBlock;
+import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class TabbyriumBlossomSaplingBlock extends Block implements BonemealableBlock {
     private static final VoxelShape SHAPE = Block.box(3.0, 0.0, 3.0, 13.0, 12.0, 13.0);
@@ -72,30 +77,76 @@ public class TabbyriumBlossomSaplingBlock extends Block implements BonemealableB
     }
 
     public void growTree(ServerLevel level, BlockPos pos, RandomSource random) {
-        int height = 4 + random.nextInt(3);
-        // Build trunk using Tabbyrium Stalk
+        // Random 3, 4, or 5 block high stalk trunk
+        int height = 3 + random.nextInt(3);
+
+        // Build vertical stalk trunk
         for (int y = 0; y < height; y++) {
             level.setBlock(pos.above(y), ModBlocks.TABBYRIUM_STALK.get().defaultBlockState(), 3);
         }
-        // Place Spore Pod at the crown
+
+        // Place Spore Pod crown at the top
         BlockPos podPos = pos.above(height);
         level.setBlock(podPos, ModBlocks.TABBYRIUM_SPORE_POD.get().defaultBlockState(), 3);
 
-        // Place initial crust and crystal clusters around the base (radius 2)
-        for (int dx = -2; dx <= 2; dx++) {
-            for (int dz = -2; dz <= 2; dz++) {
-                if (dx == 0 && dz == 0) continue;
-                BlockPos targetPos = pos.offset(dx, 0, dz);
-                BlockPos belowPos = targetPos.below();
-                BlockState belowState = level.getBlockState(belowPos);
-                if (belowState.is(BlockTags.DIRT) || belowState.is(Blocks.STONE) || belowState.is(Blocks.SAND) || belowState.is(Blocks.GRAVEL)) {
-                    level.setBlock(belowPos, ModBlocks.TABBYRIUM_CRUST.get().defaultBlockState(), 3);
+        int crustPlaced = 0;
+        BlockPos baseGround = pos.below();
+        if (TabbyriumStalkBlock.isConvertibleGround(level.getBlockState(baseGround))) {
+            level.setBlock(baseGround, ModBlocks.TABBYRIUM_CRUST.get().defaultBlockState(), 3);
+            crustPlaced++;
+        }
+
+        // Generate 3 to 4 organic tendrils stretching from the stalk (max 18 crust blocks total)
+        List<Direction> dirs = new ArrayList<>(List.of(
+                Direction.NORTH, Direction.SOUTH, Direction.EAST, Direction.WEST
+        ));
+        Collections.shuffle(dirs, new java.util.Random(random.nextLong()));
+        int tendrilCount = 3 + random.nextInt(2); // 3 or 4 tendrils
+
+        for (int i = 0; i < tendrilCount && i < dirs.size(); i++) {
+            if (crustPlaced >= TabbyriumStalkBlock.MAX_CRUST_PER_BLOSSOM) break;
+
+            Direction dir = dirs.get(i);
+
+            // Horizontal root knuckle extending from the stalk
+            BlockPos knucklePos = pos.relative(dir);
+            BlockState knuckleState = level.getBlockState(knucklePos);
+            if (knuckleState.isAir() || knuckleState.canBeReplaced()) {
+                level.setBlock(knucklePos, ModBlocks.TABBYRIUM_STALK.get().defaultBlockState()
+                        .setValue(RotatedPillarBlock.AXIS, dir.getAxis()), 3);
+                BlockPos knuckleGround = knucklePos.below();
+                if (TabbyriumStalkBlock.isConvertibleGround(level.getBlockState(knuckleGround))) {
+                    level.setBlock(knuckleGround, ModBlocks.TABBYRIUM_CRUST.get().defaultBlockState(), 3);
+                    crustPlaced++;
                 }
-                if (level.getBlockState(targetPos).isAir() && (Math.abs(dx) <= 1 && Math.abs(dz) <= 1)) {
-                    if (random.nextInt(3) != 0) {
-                        int age = random.nextInt(2);
-                        level.setBlock(targetPos, ModBlocks.TABBYRIUM_CLUSTER.get().defaultBlockState()
-                                .setValue(TabbyriumClusterBlock.AGE, age), 3);
+            }
+
+            // Trace tendril path snaking outward along the ground
+            int tendrilLength = 3 + random.nextInt(3); // 3 to 5 blocks
+            BlockPos current = knucklePos;
+
+            for (int step = 1; step <= tendrilLength; step++) {
+                if (crustPlaced >= TabbyriumStalkBlock.MAX_CRUST_PER_BLOSSOM) break;
+
+                current = current.relative(dir);
+                // 30% chance to meander 1 block perpendicular
+                if (random.nextInt(3) == 0) {
+                    current = current.relative(random.nextBoolean() ? dir.getClockWise() : dir.getCounterClockWise());
+                }
+
+                BlockPos surface = TabbyriumStalkBlock.findGroundSurface(level, current);
+                if (surface != null) {
+                    BlockState surfaceState = level.getBlockState(surface);
+                    if (TabbyriumStalkBlock.isConvertibleGround(surfaceState) && !surfaceState.is(ModBlocks.TABBYRIUM_CRUST.get())) {
+                        level.setBlock(surface, ModBlocks.TABBYRIUM_CRUST.get().defaultBlockState(), 3);
+                        crustPlaced++;
+
+                        // Sprout clusters along the tendril and at the tip
+                        BlockPos above = surface.above();
+                        if (level.getBlockState(above).isAir() && (step == tendrilLength || random.nextInt(3) == 0)) {
+                            level.setBlock(above, ModBlocks.TABBYRIUM_CLUSTER.get().defaultBlockState()
+                                    .setValue(TabbyriumClusterBlock.AGE, random.nextInt(2)), 3);
+                        }
                     }
                 }
             }

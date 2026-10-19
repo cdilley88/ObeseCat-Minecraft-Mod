@@ -9,7 +9,7 @@
       "item": "obesecat:tabbyrium_blossom_sapling",
       "title": "Tabbyrium Blossom",
       "link_recipe": true,
-      "text": "By surrounding an Oak Sapling with $(2)Trinitite$(0) and rotten flesh, you create a $(2)Tabbyrium Blossom Sapling$(0).$(br2)When grown, its $(a)Spore Pod$(0) actively mutates surrounding soil into $(8)Tabbyrium Crust$(0) and spawns pulsing crystal clusters."
+      "text": "By surrounding an Oak Sapling with $(2)Trinitite$(0) and rotten flesh, you create a $(2)Tabbyrium Blossom Sapling$(0).$(br2)When grown, it sprouts a 3–5 block tall stalk that extends root tendrils across the terrain (capped at ~18 crust blocks). Its crown $(a)Spore Pod$(0) actively nurtures pulsing crystal clusters along these veins."
     },
     {
       "type": "patchouli:text",

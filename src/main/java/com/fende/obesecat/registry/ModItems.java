@@ -13,6 +13,7 @@ import com.fende.obesecat.item.BoomStickItem;
 import com.fende.obesecat.item.GeminiBoomStickItem;
 import com.fende.obesecat.item.BigGeminiBoomStickItem;
 import com.fende.obesecat.item.FatManBoomStickItem;
+import com.fende.obesecat.item.BigFatManBoomStickItem;
 import com.fende.obesecat.item.MirvBoomStickItem;
 import com.fende.obesecat.item.GuideBookItem;
 import com.fende.obesecat.item.CaptionedItem;
@@ -57,6 +58,8 @@ import com.fende.obesecat.item.NightVisionMrKittyItem;
 import com.fende.obesecat.item.TelemetryDoritoItem;
 import com.fende.obesecat.item.NightSwordItem;
 import com.fende.obesecat.item.NuclearCatFoodItem;
+import com.fende.obesecat.item.OverdrivePowderItem;
+import com.fende.obesecat.item.OverdriveRodItem;
 import com.fende.obesecat.item.PacoItem;
 import com.fende.obesecat.item.ParadoxItem;
 import com.fende.obesecat.item.PraxisItem;
@@ -483,6 +486,12 @@ public final class ModItems {
             new Item.Properties().stacksTo(1).rarity(Rarity.EPIC)
     );
 
+    public static final DeferredItem<BigFatManBoomStickItem> BIG_FAT_MAN_BOOM_STICK = ITEMS.registerItem(
+            "big_fat_man_boom_stick",
+            BigFatManBoomStickItem::new,
+            new Item.Properties().stacksTo(1).rarity(Rarity.EPIC)
+    );
+
     public static final DeferredItem<MirvBoomStickItem> MIRV_BOOM_STICK = ITEMS.registerItem(
             "mirv_boom_stick",
             MirvBoomStickItem::new,
@@ -760,13 +769,15 @@ public final class ModItems {
             new Item.Properties().stacksTo(1).rarity(Rarity.EPIC)
     );
 
-    public static final DeferredItem<Item> OVERDRIVE_ROD = ITEMS.registerSimpleItem(
+    public static final DeferredItem<OverdriveRodItem> OVERDRIVE_ROD = ITEMS.registerItem(
             "overdrive_rod",
+            OverdriveRodItem::new,
             new Item.Properties().rarity(Rarity.EPIC)
     );
 
-    public static final DeferredItem<Item> OVERDRIVE_POWDER = ITEMS.registerSimpleItem(
+    public static final DeferredItem<OverdrivePowderItem> OVERDRIVE_POWDER = ITEMS.registerItem(
             "overdrive_powder",
+            OverdrivePowderItem::new,
             new Item.Properties().rarity(Rarity.EPIC)
     );
     private ModItems() {

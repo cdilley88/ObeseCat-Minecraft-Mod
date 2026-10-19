@@ -105,6 +105,32 @@ public class EchoingBlastChamberBlock extends BaseEntityBlock {
         return new EchoingBlastChamberBlockEntity(pos, state);
     }
 
+    @Override
+    public void animateTick(BlockState state, Level level, BlockPos pos, net.minecraft.util.RandomSource random) {
+        if (!state.getValue(LIT)) return;
+
+        Direction direction = state.getValue(FACING);
+        Direction.Axis axis = direction.getAxis();
+        double d0 = pos.getX() + 0.5D;
+        double d1 = pos.getY() + 0.5D;
+        double d2 = pos.getZ() + 0.5D;
+        double d3 = 0.52D;
+        double d4 = random.nextDouble() * 0.4D - 0.2D;
+        double x = axis == Direction.Axis.X ? d0 + direction.getStepX() * d3 : d0 + d4;
+        double y = d1 + random.nextDouble() * 0.4D - 0.2D;
+        double z = axis == Direction.Axis.Z ? d2 + direction.getStepZ() * d3 : d2 + d4;
+
+        if (random.nextInt(3) == 0) {
+            level.addParticle(net.minecraft.core.particles.ParticleTypes.SCULK_SOUL, x, y, z, 0.0D, 0.02D, 0.0D);
+        }
+        if (random.nextInt(4) == 0) {
+            level.addParticle(net.minecraft.core.particles.ParticleTypes.SMALL_FLAME, x, y, z, 0.0D, 0.01D, 0.0D);
+        }
+        if (random.nextInt(16) == 0) {
+            level.playLocalSound(d0, d1, d2, net.minecraft.sounds.SoundEvents.BEACON_AMBIENT, net.minecraft.sounds.SoundSource.BLOCKS, 0.3F, 0.6F, false);
+        }
+    }
+
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> type) {

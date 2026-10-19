@@ -32,6 +32,7 @@ import com.fende.obesecat.world.NuclearCatExplosion;
 import com.fende.obesecat.world.GeminiThermonuclearExplosion;
 import com.fende.obesecat.world.BigGeminiThermonuclearExplosion;
 import com.fende.obesecat.world.FatManPlutoniumExplosion;
+import com.fende.obesecat.world.BigFatManPlutoniumExplosion;
 import com.fende.obesecat.world.TacticalNuclearExplosion;
 import com.fende.obesecat.world.DarkSwordManager;
 import com.fende.obesecat.world.NightVisionMrKittyManager;
@@ -88,6 +89,7 @@ public class ObeseCatMod {
         NeoForge.EVENT_BUS.addListener(GeminiThermonuclearExplosion::onLevelTick);
         NeoForge.EVENT_BUS.addListener(BigGeminiThermonuclearExplosion::onLevelTick);
         NeoForge.EVENT_BUS.addListener(FatManPlutoniumExplosion::onLevelTick);
+        NeoForge.EVENT_BUS.addListener(BigFatManPlutoniumExplosion::onLevelTick);
         NeoForge.EVENT_BUS.addListener(TacticalNuclearExplosion::onLevelTick);
         NeoForge.EVENT_BUS.addListener(AtomicFireSphere::onLevelTick);
         NeoForge.EVENT_BUS.addListener(EmberSingularityMagnet::onLevelTick);
@@ -292,6 +294,7 @@ public class ObeseCatMod {
             event.accept(ModItems.GEMINI_BOOM_STICK.get());
             event.accept(ModItems.BIG_GEMINI_BOOM_STICK.get());
             event.accept(ModItems.FAT_MAN_BOOM_STICK.get());
+            event.accept(ModItems.BIG_FAT_MAN_BOOM_STICK.get());
             event.accept(ModItems.MIRV_BOOM_STICK.get());
             event.accept(ModItems.ION_STORM_STICK.get());
             event.accept(ModItems.SAMMYS_CROSS.get());
@@ -339,6 +342,7 @@ public class ObeseCatMod {
             event.accept(ModItems.GEMINI_BOOM_STICK.get());
             event.accept(ModItems.BIG_GEMINI_BOOM_STICK.get());
             event.accept(ModItems.FAT_MAN_BOOM_STICK.get());
+            event.accept(ModItems.BIG_FAT_MAN_BOOM_STICK.get());
             event.accept(ModItems.MIRV_BOOM_STICK.get());
             event.accept(ModItems.EMERGENCY_STARTER_HOME.get());
             event.accept(ModItems.LUXURY_STARTER_HOME.get());
