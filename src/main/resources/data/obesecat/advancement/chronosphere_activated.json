@@ -32,5 +32,11 @@
       "has_chronospheric_domino"
     ]
   ],
+  "rewards": {
+    "loot": [
+      "obesecat:rewards/domino_painting"
+    ],
+    "experience": 100
+  },
   "sends_telemetry_event": true
 }

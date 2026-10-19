@@ -1,0 +1,29 @@
+{
+  "type": "obesecat:transmutation",
+  "ingredients": [
+    {
+      "item": "obesecat:dorito",
+      "count": 1
+    },
+    {
+      "item": "minecraft:spyglass",
+      "count": 1
+    },
+    {
+      "item": "minecraft:echo_shard",
+      "count": 1
+    },
+    {
+      "item": "minecraft:diamond",
+      "count": 1
+    },
+    {
+      "item": "minecraft:redstone",
+      "count": 1
+    }
+  ],
+  "result": {
+    "id": "obesecat:scanner_dorito",
+    "count": 1
+  }
+}

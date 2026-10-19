@@ -1,0 +1,42 @@
+{
+  "parent": "obesecat:craft_transmutation_cube",
+  "display": {
+    "icon": {
+      "id": "obesecat:enigma_ember",
+      "count": 1
+    },
+    "title": {
+      "translate": "advancements.obesecat.enigma_ember.title"
+    },
+    "description": {
+      "translate": "advancements.obesecat.enigma_ember.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "criteria": {
+    "has_enigma_ember": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "obesecat:enigma_ember"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_enigma_ember"
+    ]
+  ],
+  "rewards": {
+    "loot": [
+      "obesecat:rewards/ember_painting"
+    ],
+    "experience": 100
+  },
+  "sends_telemetry_event": true
+}

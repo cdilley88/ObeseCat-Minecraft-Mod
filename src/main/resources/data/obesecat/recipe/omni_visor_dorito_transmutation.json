@@ -1,0 +1,25 @@
+{
+  "type": "obesecat:transmutation",
+  "ingredients": [
+    {
+      "item": "obesecat:night_vision_dorito",
+      "count": 1
+    },
+    {
+      "item": "obesecat:telemetry_dorito",
+      "count": 1
+    },
+    {
+      "item": "obesecat:scanner_dorito",
+      "count": 1
+    },
+    {
+      "item": "minecraft:netherite_ingot",
+      "count": 1
+    }
+  ],
+  "result": {
+    "id": "obesecat:omni_visor_dorito",
+    "count": 1
+  }
+}

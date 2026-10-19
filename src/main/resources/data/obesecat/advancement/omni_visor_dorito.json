@@ -1,0 +1,42 @@
+{
+  "parent": "obesecat:craft_transmutation_cube",
+  "display": {
+    "icon": {
+      "id": "obesecat:omni_visor_dorito",
+      "count": 1
+    },
+    "title": {
+      "translate": "advancements.obesecat.omni_visor_dorito.title"
+    },
+    "description": {
+      "translate": "advancements.obesecat.omni_visor_dorito.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "criteria": {
+    "has_omni_visor_dorito": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "obesecat:omni_visor_dorito"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_omni_visor_dorito"
+    ]
+  ],
+  "rewards": {
+    "loot": [
+      "obesecat:rewards/dorito_painting"
+    ],
+    "experience": 100
+  },
+  "sends_telemetry_event": true
+}

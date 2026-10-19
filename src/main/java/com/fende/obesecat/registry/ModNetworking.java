@@ -12,6 +12,7 @@ import com.fende.obesecat.network.FissionFirestormPayload;
 import com.fende.obesecat.network.IonStormPayload;
 import com.fende.obesecat.client.IonStormOverlay;
 import com.fende.obesecat.network.NightVisionOverlayPayload;
+import com.fende.obesecat.network.TelemetryOverlayPayload;
 import com.fende.obesecat.network.SammyCrossActivationPayload;
 import com.fende.obesecat.network.SniperPacoFirePayload;
 import com.fende.obesecat.network.NuclearFlashPayload;
@@ -30,7 +31,10 @@ public final class ModNetworking {
                 .playToClient(NuclearFlashPayload.TYPE, NuclearFlashPayload.STREAM_CODEC, ModNetworking::handleNuclearFlash)
                 .playToClient(GeminiNuclearPayload.TYPE, GeminiNuclearPayload.STREAM_CODEC, ModNetworking::handleGeminiNuclear)
                 .playToClient(BigGeminiNuclearPayload.TYPE, BigGeminiNuclearPayload.STREAM_CODEC, ModNetworking::handleBigGeminiNuclear)
+                .playToClient(com.fende.obesecat.network.TacticalNuclearPayload.TYPE, com.fende.obesecat.network.TacticalNuclearPayload.STREAM_CODEC, ModNetworking::handleTacticalNuclear)
                 .playToClient(NightVisionOverlayPayload.TYPE, NightVisionOverlayPayload.STREAM_CODEC, ModNetworking::handleNightVisionOverlay)
+                .playToClient(TelemetryOverlayPayload.TYPE, TelemetryOverlayPayload.STREAM_CODEC, ModNetworking::handleTelemetryOverlay)
+                .playToClient(com.fende.obesecat.network.ScannerOverlayPayload.TYPE, com.fende.obesecat.network.ScannerOverlayPayload.STREAM_CODEC, ModNetworking::handleScannerOverlay)
                 .playToClient(FissionFirestormPayload.TYPE, FissionFirestormPayload.STREAM_CODEC, ModNetworking::handleFissionFirestorm)
                 .playToClient(IonStormPayload.TYPE, IonStormPayload.STREAM_CODEC, ModNetworking::handleIonStorm)
                 .playToClient(SammyCrossActivationPayload.TYPE, SammyCrossActivationPayload.STREAM_CODEC, ModNetworking::handleSammyCrossActivation)
@@ -55,6 +59,15 @@ public final class ModNetworking {
         });
     }
 
+    private static void handleTacticalNuclear(com.fende.obesecat.network.TacticalNuclearPayload payload, IPayloadContext context) {
+        context.enqueueWork(() -> {
+            if (FMLEnvironment.dist.isClient()) {
+                com.fende.obesecat.client.TacticalExplosionOverlay.trigger(payload.origin(), payload.durationTicks(), payload.intensity());
+                com.fende.obesecat.client.TacticalFireballRenderer.spawn(payload.origin(), payload.durationTicks(), 14.0F);
+            }
+        });
+    }
+
     private static void handleNuclearFlash(NuclearFlashPayload payload, IPayloadContext context) {
         context.enqueueWork(() -> {
             if (FMLEnvironment.dist.isClient()) {
@@ -67,6 +80,22 @@ public final class ModNetworking {
         context.enqueueWork(() -> {
             if (FMLEnvironment.dist.isClient()) {
                 NightVisionOverlay.setActive(payload.active());
+            }
+        });
+    }
+
+    private static void handleTelemetryOverlay(TelemetryOverlayPayload payload, IPayloadContext context) {
+        context.enqueueWork(() -> {
+            if (FMLEnvironment.dist.isClient()) {
+                com.fende.obesecat.client.TelemetryOverlay.setActive(payload.active());
+            }
+        });
+    }
+
+    private static void handleScannerOverlay(com.fende.obesecat.network.ScannerOverlayPayload payload, IPayloadContext context) {
+        context.enqueueWork(() -> {
+            if (FMLEnvironment.dist.isClient()) {
+                com.fende.obesecat.client.ScannerOverlay.setActive(payload.active());
             }
         });
     }

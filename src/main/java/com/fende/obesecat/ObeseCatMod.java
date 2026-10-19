@@ -32,8 +32,11 @@ import com.fende.obesecat.world.NuclearCatExplosion;
 import com.fende.obesecat.world.GeminiThermonuclearExplosion;
 import com.fende.obesecat.world.BigGeminiThermonuclearExplosion;
 import com.fende.obesecat.world.FatManPlutoniumExplosion;
+import com.fende.obesecat.world.TacticalNuclearExplosion;
 import com.fende.obesecat.world.DarkSwordManager;
 import com.fende.obesecat.world.NightVisionMrKittyManager;
+import com.fende.obesecat.world.TelemetryDoritoManager;
+import com.fende.obesecat.world.ScannerDoritoManager;
 import com.fende.obesecat.world.NightSwordManager;
 import com.fende.obesecat.world.PacoBarkBurst;
 import com.fende.obesecat.world.ParadoxSummonManager;
@@ -85,9 +88,12 @@ public class ObeseCatMod {
         NeoForge.EVENT_BUS.addListener(GeminiThermonuclearExplosion::onLevelTick);
         NeoForge.EVENT_BUS.addListener(BigGeminiThermonuclearExplosion::onLevelTick);
         NeoForge.EVENT_BUS.addListener(FatManPlutoniumExplosion::onLevelTick);
+        NeoForge.EVENT_BUS.addListener(TacticalNuclearExplosion::onLevelTick);
         NeoForge.EVENT_BUS.addListener(AtomicFireSphere::onLevelTick);
         NeoForge.EVENT_BUS.addListener(EmberSingularityMagnet::onLevelTick);
         NeoForge.EVENT_BUS.addListener(NightVisionMrKittyManager::onLevelTick);
+        NeoForge.EVENT_BUS.addListener(TelemetryDoritoManager::onLevelTick);
+        NeoForge.EVENT_BUS.addListener(ScannerDoritoManager::onLevelTick);
         NeoForge.EVENT_BUS.addListener(PacoBarkBurst::onLevelTick);
         NeoForge.EVENT_BUS.addListener(ParadoxSummonManager::onLevelTick);
         NeoForge.EVENT_BUS.addListener(PortableCatChargerManager::onLevelTick);
@@ -190,11 +196,6 @@ public class ObeseCatMod {
                 (stack, context) -> CastItemEnergy.createStorage(stack, SummonItem.ENERGY_CAPACITY),
                 ModItems.PARADOX.get(), ModItems.VERITAS.get(), ModItems.PRAXIS.get(), ModItems.AEQUITAS.get()
         );
-        event.registerEntity(
-                Capabilities.EnergyStorage.ENTITY,
-                ModEntities.OBESE_CAT.get(),
-                (fatMan, direction) -> fatMan.getEnergyStorage()
-        );
     }
 
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
@@ -229,6 +230,8 @@ public class ObeseCatMod {
             event.accept(ModItems.QUANTUM_SEMICONDUCTOR.get());
             event.accept(ModItems.DIMENSIONAL_SEMICONDUCTOR.get());
             event.accept(ModItems.ATOMIC_SEMICONDUCTOR.get());
+            event.accept(ModItems.TABBYRIUM_SHARD.get());
+            event.accept(ModItems.TABBYRIUM_CRYSTAL.get());
         }
         if (event.getTabKey() == CreativeModeTabs.COMBAT) {
             event.accept(ModItems.PACO.get());
@@ -239,6 +242,9 @@ public class ObeseCatMod {
             event.accept(ModItems.EMBER.get());
             event.accept(ModItems.DORITO.get());
             event.accept(ModItems.NIGHT_VISION_DORITO.get());
+            event.accept(ModItems.TELEMETRY_DORITO.get());
+            event.accept(ModItems.SCANNER_DORITO.get());
+            event.accept(ModItems.OMNI_VISOR_DORITO.get());
             event.accept(ModItems.DORITOS_PAWS.get());
             event.accept(ModItems.SCULK_DORITOS_PAWS.get());
             event.accept(ModItems.EMBER_SINGULARITY.get());
@@ -286,6 +292,7 @@ public class ObeseCatMod {
             event.accept(ModItems.GEMINI_BOOM_STICK.get());
             event.accept(ModItems.BIG_GEMINI_BOOM_STICK.get());
             event.accept(ModItems.FAT_MAN_BOOM_STICK.get());
+            event.accept(ModItems.MIRV_BOOM_STICK.get());
             event.accept(ModItems.ION_STORM_STICK.get());
             event.accept(ModItems.SAMMYS_CROSS.get());
             event.accept(ModItems.PARADOX.get());
@@ -297,11 +304,17 @@ public class ObeseCatMod {
             event.accept(ModItems.TOILET.get());
             event.accept(ModItems.TRINITITE.get());
             event.accept(ModItems.ECHOING_BLAST_CHAMBER.get());
-            event.accept(ModItems.CAN_OPENER.get());
-            event.accept(ModItems.FOOD_BIN.get());
+            event.accept(ModItems.TABBYRIUM_BLOSSOM_SAPLING.get());
+            event.accept(ModItems.TABBYRIUM_SPORE_POD.get());
+            event.accept(ModItems.TABBYRIUM_CRUST.get());
+            event.accept(ModItems.TABBYRIUM_STALK.get());
+            event.accept(ModItems.TABBYRIUM_PLANKS.get());
+            event.accept(ModItems.TABBYRIUM_CLUSTER.get());
+            event.accept(ModItems.TABBYRIUM_REFINERY.get());
+            event.accept(ModItems.TABBYRIUM_SILO.get());
+            event.accept(ModItems.CREATIVE_TABBYRIUM_SILO.get());
             event.accept(ModItems.CAT_CHARGER.get());
             event.accept(ModItems.PORTABLE_CAT_CHARGER.get());
-            event.accept(ModItems.CREATIVE_FOOD_BIN.get());
             event.accept(ModItems.CREATIVE_PORTABLE_CAT_CHARGER.get());
             event.accept(ModItems.NUCLEAR_LIBRARY.get());
             event.accept(ModItems.EMBER_SINGULARITY.get());
@@ -314,6 +327,9 @@ public class ObeseCatMod {
             event.accept(ModItems.TRANSMUTATION_CUBE.get());
             event.accept(ModItems.GUIDE_BOOK.get());
             event.accept(ModItems.NIGHT_VISION_DORITO.get());
+            event.accept(ModItems.TELEMETRY_DORITO.get());
+            event.accept(ModItems.SCANNER_DORITO.get());
+            event.accept(ModItems.OMNI_VISOR_DORITO.get());
             event.accept(ModItems.DORITOS_PAWS.get());
             event.accept(ModItems.SCULK_DORITOS_PAWS.get());
             event.accept(ModItems.BOOM_STICK.get());
@@ -323,6 +339,7 @@ public class ObeseCatMod {
             event.accept(ModItems.GEMINI_BOOM_STICK.get());
             event.accept(ModItems.BIG_GEMINI_BOOM_STICK.get());
             event.accept(ModItems.FAT_MAN_BOOM_STICK.get());
+            event.accept(ModItems.MIRV_BOOM_STICK.get());
             event.accept(ModItems.EMERGENCY_STARTER_HOME.get());
             event.accept(ModItems.LUXURY_STARTER_HOME.get());
         }

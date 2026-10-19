@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "obesecat:block/tabbyrium_stalk_top",
+    "side": "obesecat:block/tabbyrium_stalk_side"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:advancement_reward",
+  "pools": [
+    {
+      "rolls": 1.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:painting",
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "minecraft:painting_variant": "obesecat:dorito"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

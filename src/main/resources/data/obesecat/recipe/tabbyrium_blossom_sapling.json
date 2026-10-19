@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "T T",
+    "PSP",
+    "TRT"
+  ],
+  "key": {
+    "T": { "item": "obesecat:trinitite" },
+    "P": { "item": "obesecat:overdrive_powder" },
+    "S": { "tag": "minecraft:saplings" },
+    "R": { "item": "minecraft:redstone" }
+  },
+  "result": {
+    "id": "obesecat:tabbyrium_blossom_sapling",
+    "count": 1
+  }
+}

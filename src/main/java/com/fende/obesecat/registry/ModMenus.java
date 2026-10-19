@@ -1,10 +1,10 @@
 package com.fende.obesecat.registry;
 
 import com.fende.obesecat.ObeseCatMod;
-import com.fende.obesecat.inventory.TransmutationCubeMenu;
-import com.fende.obesecat.inventory.EchoingBlastChamberMenu;
-import com.fende.obesecat.inventory.CanOpenerMenu;
 import com.fende.obesecat.inventory.CatChargerMenu;
+import com.fende.obesecat.inventory.EchoingBlastChamberMenu;
+import com.fende.obesecat.inventory.TabbyriumRefineryMenu;
+import com.fende.obesecat.inventory.TransmutationCubeMenu;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.inventory.MenuType;
 import net.neoforged.neoforge.common.extensions.IMenuTypeExtension;
@@ -23,15 +23,19 @@ public final class ModMenus {
             "echoing_blast_chamber",
             () -> IMenuTypeExtension.create(EchoingBlastChamberMenu::fromNetwork)
     );
-    public static final DeferredHolder<MenuType<?>, MenuType<CanOpenerMenu>> CAN_OPENER = MENUS.register(
-            "can_opener",
-            () -> IMenuTypeExtension.create(CanOpenerMenu::fromNetwork)
+
+    public static final DeferredHolder<MenuType<?>, MenuType<TabbyriumRefineryMenu>> TABBYRIUM_REFINERY = MENUS.register(
+            "tabbyrium_refinery",
+            () -> IMenuTypeExtension.create(TabbyriumRefineryMenu::fromNetwork)
     );
+
+    public static final DeferredHolder<MenuType<?>, MenuType<TabbyriumRefineryMenu>> CAN_OPENER = TABBYRIUM_REFINERY;
 
     public static final DeferredHolder<MenuType<?>, MenuType<CatChargerMenu>> CAT_CHARGER = MENUS.register(
             "cat_charger",
             () -> IMenuTypeExtension.create(CatChargerMenu::fromNetwork)
     );
+
     private ModMenus() {
     }
 }

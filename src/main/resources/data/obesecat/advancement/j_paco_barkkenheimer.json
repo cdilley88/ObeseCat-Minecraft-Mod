@@ -1,0 +1,42 @@
+{
+  "parent": "obesecat:craft_transmutation_cube",
+  "display": {
+    "icon": {
+      "id": "obesecat:j_robert_pacoheimer",
+      "count": 1
+    },
+    "title": {
+      "translate": "advancements.obesecat.j_paco_barkkenheimer.title"
+    },
+    "description": {
+      "translate": "advancements.obesecat.j_paco_barkkenheimer.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "criteria": {
+    "has_j_paco_barkkenheimer": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "obesecat:j_robert_pacoheimer"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_j_paco_barkkenheimer"
+    ]
+  ],
+  "rewards": {
+    "loot": [
+      "obesecat:rewards/paco_painting"
+    ],
+    "experience": 100
+  },
+  "sends_telemetry_event": true
+}

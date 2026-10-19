@@ -1,7 +1,9 @@
 package com.fende.obesecat.item;
 
-import com.fende.obesecat.world.NuclearCatExplosion;
+import com.fende.obesecat.world.TacticalNuclearExplosion;
+import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
@@ -22,17 +24,28 @@ public class AtomicPacoItem extends PacoItem {
         }
 
         HitResult hitResult = player.pick(EXPLOSION_RANGE, 1.0F, false);
-        if (hitResult.getType() != HitResult.Type.BLOCK || !(hitResult instanceof BlockHitResult blockHit)) {
+        BlockPos targetPos = null;
+        if (hitResult.getType() == HitResult.Type.BLOCK && hitResult instanceof BlockHitResult blockHit) {
+            targetPos = blockHit.getBlockPos();
+        } else {
+            LivingEntity target = findTarget(player);
+            if (target != null) {
+                targetPos = target.blockPosition();
+            } else if (hitResult.getType() != HitResult.Type.MISS) {
+                targetPos = BlockPos.containing(hitResult.getLocation());
+            }
+        }
+
+        if (targetPos == null) {
             return;
         }
 
-        NuclearCatExplosion.flashThenDetonateDelayed(
-                serverLevel,
-                blockHit.getBlockPos(),
-                NuclearCatExplosion.PLUTONIUM_CRATER_RADIUS,
-                NuclearCatExplosion.PLUTONIUM_CRATER_MAX_DEPTH,
-                BARK_TO_EXPLOSION_DELAY_TICKS
-        );
+        TacticalNuclearExplosion.detonateDelayed(serverLevel, targetPos, BARK_TO_EXPLOSION_DELAY_TICKS);
+    }
+
+    @Override
+    protected double getRange() {
+        return EXPLOSION_RANGE;
     }
 
     @Override

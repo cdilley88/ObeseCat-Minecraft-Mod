@@ -24,6 +24,13 @@
       "title": "Big Gemini Boom Stick",
       "link_recipe": false,
       "text": "The apex of nuclear artillery. Unleashes apocalyptic multi-megaton thermal yield.$(br2)$(c)DO NOT FIRE AT POINT-BLANK RANGE.$(0)$(br)The fireball expanding radius reaches hundreds of blocks."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "obesecat:mirv_boom_stick",
+      "title": "MIRV Boom Stick",
+      "link_recipe": false,
+      "text": "Multi-warhead tactical bombardment device.$(br2)Disperses 7 sub-kiloton tactical nuclear warheads across designated target coordinates in a staggered carpet strike."
     }
   ]
 }

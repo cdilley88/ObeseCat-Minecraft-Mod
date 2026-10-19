@@ -34,6 +34,27 @@
     },
     {
       "type": "patchouli:spotlight",
+      "item": "obesecat:telemetry_dorito",
+      "title": "Telemetry Visor Dorito",
+      "link_recipe": false,
+      "text": "Transmute in the Cube:$(br)$(bullet) Dorito + Compass + Clock + Echo Shard + Amethyst Shard$(br2)Curios Head slot (or right-click to toggle). Full tactical environmental HUD: coordinates, compass tape ribbon, light lux & spawn risk, chunk borders & 16x16 chunk radar, in-game clock & day, and altitude."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "obesecat:scanner_dorito",
+      "title": "Scanner Visor Dorito",
+      "link_recipe": false,
+      "text": "Transmute in the Cube:$(br)$(bullet) Dorito + Spyglass + Echo Shard + Diamond + Redstone$(br2)Curios Head slot (or right-click to toggle). Projects 3D cyan targeting tags directly over living entities displaying their Name, Current Life/HP bar, and Armor rating!"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "obesecat:omni_visor_dorito",
+      "title": "Omni-Visor Dorito",
+      "link_recipe": false,
+      "text": "Transmute in the Cube:$(br)$(bullet) Night Vision Dorito$(br)$(bullet) Telemetry Visor Dorito$(br)$(bullet) Scanner Visor Dorito$(br)$(bullet) Netherite Ingot$(br2)The ultimate feline sensory core! Combines all 3 visors (Green NVG, Yellow Telemetry, Cyan Scanner) into one unified HUD without hunger drain. Awards the $(6)Dorito Painting$(0)!"
+    },
+    {
+      "type": "patchouli:spotlight",
       "item": "obesecat:tiny_planet",
       "title": "Tiny Planet",
       "link_recipe": false,

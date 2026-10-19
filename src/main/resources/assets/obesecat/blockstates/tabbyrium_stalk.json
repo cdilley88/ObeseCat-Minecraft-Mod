@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=y": {
+      "model": "obesecat:block/tabbyrium_stalk"
+    },
+    "axis=z": {
+      "model": "obesecat:block/tabbyrium_stalk_horizontal",
+      "x": 90
+    },
+    "axis=x": {
+      "model": "obesecat:block/tabbyrium_stalk_horizontal",
+      "x": 90,
+      "y": 90
+    }
+  }
+}

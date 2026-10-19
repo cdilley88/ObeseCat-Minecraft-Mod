@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "minecraft:block/gold_block",
+    "up": "minecraft:block/gold_block",
+    "north": "obesecat:block/tabbyrium_silo",
+    "south": "obesecat:block/tabbyrium_silo",
+    "west": "obesecat:block/tabbyrium_silo",
+    "east": "obesecat:block/tabbyrium_silo",
+    "particle": "minecraft:block/gold_block"
+  }
+}

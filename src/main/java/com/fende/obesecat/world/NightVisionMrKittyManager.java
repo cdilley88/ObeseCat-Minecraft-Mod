@@ -72,7 +72,8 @@ public final class NightVisionMrKittyManager {
 
     private static boolean isActiveNightVisionKitty(ItemStack stack) {
         return (stack.getItem() instanceof NightVisionDoritoItem && NightVisionDoritoItem.isActive(stack))
-                || (stack.getItem() instanceof NightVisionMrKittyItem && NightVisionMrKittyItem.isActive(stack));
+                || (stack.getItem() instanceof NightVisionMrKittyItem && NightVisionMrKittyItem.isActive(stack))
+                || (stack.getItem() instanceof com.fende.obesecat.item.OmniVisorDoritoItem && com.fende.obesecat.item.OmniVisorDoritoItem.isActive(stack));
     }
 
     private static void syncOverlayState(ServerPlayer player, boolean active) {

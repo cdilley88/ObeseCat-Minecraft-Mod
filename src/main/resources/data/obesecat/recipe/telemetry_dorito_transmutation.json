@@ -1,0 +1,29 @@
+{
+  "type": "obesecat:transmutation",
+  "ingredients": [
+    {
+      "item": "obesecat:dorito",
+      "count": 1
+    },
+    {
+      "item": "minecraft:compass",
+      "count": 1
+    },
+    {
+      "item": "minecraft:clock",
+      "count": 1
+    },
+    {
+      "item": "minecraft:echo_shard",
+      "count": 1
+    },
+    {
+      "item": "minecraft:amethyst_shard",
+      "count": 1
+    }
+  ],
+  "result": {
+    "id": "obesecat:telemetry_dorito",
+    "count": 1
+  }
+}

@@ -4,20 +4,22 @@ import com.fende.obesecat.ObeseCatMod;
 import com.fende.obesecat.item.AequitasItem;
 import com.fende.obesecat.item.AssaultPacoItem;
 import com.fende.obesecat.item.AtomicPacoItem;
-import com.fende.obesecat.item.AtomicCanOpenerItem;
+import com.fende.obesecat.item.TabbyriumRefineryItem;
+import com.fende.obesecat.item.TabbyriumSiloItem;
+import com.fende.obesecat.item.CreativeTabbyriumSiloItem;
 import com.fende.obesecat.item.AttackPacoItem;
 import com.fende.obesecat.item.BigFireBoomStickItem;
 import com.fende.obesecat.item.BoomStickItem;
 import com.fende.obesecat.item.GeminiBoomStickItem;
 import com.fende.obesecat.item.BigGeminiBoomStickItem;
 import com.fende.obesecat.item.FatManBoomStickItem;
+import com.fende.obesecat.item.MirvBoomStickItem;
 import com.fende.obesecat.item.GuideBookItem;
 import com.fende.obesecat.item.CaptionedItem;
 import com.fende.obesecat.item.CatChargerItem;
 import com.fende.obesecat.item.ChocolatePuddingItem;
 import com.fende.obesecat.item.PortableCatChargerItem;
 import com.fende.obesecat.item.CowLevelPortalItem;
-import com.fende.obesecat.item.CreativeFoodBinItem;
 import com.fende.obesecat.item.CreativePortableCatChargerItem;
 import com.fende.obesecat.item.CrushPunchSwordItem;
 import com.fende.obesecat.item.ConcussivePacoItem;
@@ -38,7 +40,6 @@ import com.fende.obesecat.item.FoilCaptionedItem;
 import com.fende.obesecat.item.SkeletonCrownItem;
 import com.fende.obesecat.item.FireBoomStickItem;
 import com.fende.obesecat.item.FireStickItem;
-import com.fende.obesecat.item.FoodBinItem;
 import com.fende.obesecat.item.HellhoundPacoItem;
 import com.fende.obesecat.item.HolyExplosionSwordItem;
 import com.fende.obesecat.item.HolySwordItem;
@@ -53,12 +54,15 @@ import com.fende.obesecat.item.MrKittysPawsItem;
 import com.fende.obesecat.item.ManhattanPhysicistSpawnEggItem;
 import com.fende.obesecat.item.NightVisionDoritoItem;
 import com.fende.obesecat.item.NightVisionMrKittyItem;
+import com.fende.obesecat.item.TelemetryDoritoItem;
 import com.fende.obesecat.item.NightSwordItem;
 import com.fende.obesecat.item.NuclearCatFoodItem;
 import com.fende.obesecat.item.PacoItem;
 import com.fende.obesecat.item.ParadoxItem;
 import com.fende.obesecat.item.PraxisItem;
 import com.fende.obesecat.item.VeritasItem;
+import com.fende.obesecat.item.ScannerDoritoItem;
+import com.fende.obesecat.item.OmniVisorDoritoItem;
 import com.fende.obesecat.item.SculkDoritosPawsItem;
 import com.fende.obesecat.item.SniperPacoItem;
 import com.fende.obesecat.item.SplitPunchSwordItem;
@@ -103,13 +107,13 @@ public final class ModItems {
     );
     public static final DeferredItem<NuclearCatFoodItem> PLUTONIUM_CAT_FOOD = ITEMS.registerItem(
             "plutonium_cat_food",
-            properties -> new NuclearCatFoodItem(properties, com.fende.obesecat.energy.CatFoodEnergy.PLUTONIUM_POINTS),
+            properties -> new NuclearCatFoodItem(properties, 1),
             new Item.Properties().rarity(Rarity.RARE)
     );
 
     public static final DeferredItem<NuclearCatFoodItem> LITHIUM_DEUTERIDE_CAT_FOOD = ITEMS.registerItem(
             "lithium_deuteride_cat_food",
-            properties -> new NuclearCatFoodItem(properties, com.fende.obesecat.energy.CatFoodEnergy.LITHIUM_DEUTERIDE_POINTS),
+            properties -> new NuclearCatFoodItem(properties, 3),
             new Item.Properties().rarity(Rarity.EPIC)
     );
 
@@ -162,6 +166,24 @@ public final class ModItems {
             new Item.Properties().stacksTo(1).rarity(Rarity.RARE)
     );
     public static final DeferredItem<NightVisionDoritoItem> NIGHT_VISION_MR_KITTY = NIGHT_VISION_DORITO;
+
+    public static final DeferredItem<TelemetryDoritoItem> TELEMETRY_DORITO = ITEMS.registerItem(
+            "telemetry_dorito",
+            TelemetryDoritoItem::new,
+            new Item.Properties().stacksTo(1).rarity(Rarity.EPIC)
+    );
+
+    public static final DeferredItem<ScannerDoritoItem> SCANNER_DORITO = ITEMS.registerItem(
+            "scanner_dorito",
+            ScannerDoritoItem::new,
+            new Item.Properties().stacksTo(1).rarity(Rarity.EPIC)
+    );
+
+    public static final DeferredItem<OmniVisorDoritoItem> OMNI_VISOR_DORITO = ITEMS.registerItem(
+            "omni_visor_dorito",
+            OmniVisorDoritoItem::new,
+            new Item.Properties().stacksTo(1).rarity(Rarity.EPIC)
+    );
 
     public static final DeferredItem<DoritosPawsItem> DORITOS_PAWS = ITEMS.registerItem(
             "doritos_paws",
@@ -461,6 +483,12 @@ public final class ModItems {
             new Item.Properties().stacksTo(1).rarity(Rarity.EPIC)
     );
 
+    public static final DeferredItem<MirvBoomStickItem> MIRV_BOOM_STICK = ITEMS.registerItem(
+            "mirv_boom_stick",
+            MirvBoomStickItem::new,
+            new Item.Properties().stacksTo(1).rarity(Rarity.EPIC)
+    );
+
     public static final DeferredItem<GuideBookItem> GUIDE_BOOK = ITEMS.registerItem(
             "guide_book",
             GuideBookItem::new,
@@ -641,14 +669,73 @@ public final class ModItems {
             () -> new EchoingBlastChamberItem(ModBlocks.ECHOING_BLAST_CHAMBER.get(), new Item.Properties().rarity(Rarity.EPIC))
     );
 
+    // Tabbyrium Items & Blocks
+    public static final DeferredItem<Item> TABBYRIUM_SHARD = ITEMS.registerItem(
+            "tabbyrium_shard",
+            Item::new,
+            new Item.Properties().rarity(Rarity.UNCOMMON)
+    );
+
+    public static final DeferredItem<Item> TABBYRIUM_CRYSTAL = ITEMS.registerItem(
+            "tabbyrium_crystal",
+            Item::new,
+            new Item.Properties().rarity(Rarity.RARE)
+    );
+
+    public static final DeferredItem<BlockItem> TABBYRIUM_BLOSSOM_SAPLING = ITEMS.registerSimpleBlockItem(
+            "tabbyrium_blossom_sapling",
+            ModBlocks.TABBYRIUM_BLOSSOM_SAPLING
+    );
+
+    public static final DeferredItem<BlockItem> TABBYRIUM_SPORE_POD = ITEMS.registerSimpleBlockItem(
+            "tabbyrium_spore_pod",
+            ModBlocks.TABBYRIUM_SPORE_POD
+    );
+
+    public static final DeferredItem<BlockItem> TABBYRIUM_CRUST = ITEMS.registerSimpleBlockItem(
+            "tabbyrium_crust",
+            ModBlocks.TABBYRIUM_CRUST
+    );
+
+    public static final DeferredItem<BlockItem> TABBYRIUM_STALK = ITEMS.registerSimpleBlockItem(
+            "tabbyrium_stalk",
+            ModBlocks.TABBYRIUM_STALK
+    );
+
+    public static final DeferredItem<BlockItem> TABBYRIUM_PLANKS = ITEMS.registerSimpleBlockItem(
+            "tabbyrium_planks",
+            ModBlocks.TABBYRIUM_PLANKS
+    );
+
+    public static final DeferredItem<BlockItem> TABBYRIUM_CLUSTER = ITEMS.registerSimpleBlockItem(
+            "tabbyrium_cluster",
+            ModBlocks.TABBYRIUM_CLUSTER
+    );
+
+    public static final DeferredItem<BlockItem> TABBYRIUM_REFINERY = ITEMS.register(
+            "tabbyrium_refinery",
+            () -> new TabbyriumRefineryItem(ModBlocks.TABBYRIUM_REFINERY.get(), new Item.Properties().rarity(Rarity.RARE))
+    );
+
+    public static final DeferredItem<BlockItem> TABBYRIUM_SILO = ITEMS.register(
+            "tabbyrium_silo",
+            () -> new TabbyriumSiloItem(ModBlocks.TABBYRIUM_SILO.get(), new Item.Properties().rarity(Rarity.RARE))
+    );
+
+    public static final DeferredItem<BlockItem> CREATIVE_TABBYRIUM_SILO = ITEMS.register(
+            "creative_tabbyrium_silo",
+            () -> new CreativeTabbyriumSiloItem(ModBlocks.CREATIVE_TABBYRIUM_SILO.get(), new Item.Properties().rarity(Rarity.EPIC))
+    );
+
+    // Compatibility items
     public static final DeferredItem<BlockItem> CAN_OPENER = ITEMS.register(
             "can_opener",
-            () -> new AtomicCanOpenerItem(ModBlocks.CAN_OPENER.get(), new Item.Properties().rarity(Rarity.RARE))
+            () -> new TabbyriumRefineryItem(ModBlocks.CAN_OPENER.get(), new Item.Properties().rarity(Rarity.RARE))
     );
 
     public static final DeferredItem<BlockItem> FOOD_BIN = ITEMS.register(
             "food_bin",
-            () -> new FoodBinItem(ModBlocks.FOOD_BIN.get(), new Item.Properties().rarity(Rarity.RARE))
+            () -> new TabbyriumSiloItem(ModBlocks.FOOD_BIN.get(), new Item.Properties().rarity(Rarity.RARE))
     );
 
     public static final DeferredItem<BlockItem> CAT_CHARGER = ITEMS.register(
@@ -664,7 +751,7 @@ public final class ModItems {
 
     public static final DeferredItem<BlockItem> CREATIVE_FOOD_BIN = ITEMS.register(
             "creative_food_bin",
-            () -> new CreativeFoodBinItem(ModBlocks.CREATIVE_FOOD_BIN.get(), new Item.Properties().rarity(Rarity.EPIC))
+            () -> new CreativeTabbyriumSiloItem(ModBlocks.CREATIVE_FOOD_BIN.get(), new Item.Properties().rarity(Rarity.EPIC))
     );
 
     public static final DeferredItem<CreativePortableCatChargerItem> CREATIVE_PORTABLE_CAT_CHARGER = ITEMS.registerItem(

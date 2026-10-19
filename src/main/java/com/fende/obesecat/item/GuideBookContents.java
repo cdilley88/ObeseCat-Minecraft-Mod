@@ -88,7 +88,7 @@ public final class GuideBookContents {
                 "  Breath + Heart of Sea + Trinitite + Domino\n\n" +
                 "§c• Chronospheric:§0\n" +
                 "  Chrono + Atmospheric\n" +
-                "§4Warning: Chronosphere activated!§r"
+                "§4Warning: Chronosphere activated! Unlocks Domino Painting!§r"
         )));
 
         // Page 8: Chapter 7 - Tactical Canines
@@ -105,7 +105,7 @@ public final class GuideBookContents {
                 "§c• Hellhound:§0\n" +
                 "  Paco + Blaze Powder + Dragon's Breath\n" +
                 "§4• J. Paco Barkkenheimer:§0\n" +
-                "  Paco + Oppenheimer's Hat§r"
+                "  Paco + Oppenheimer's Hat (Awards Paco Painting!)§r"
         )));
 
         // Page 9: Chapter 8 - Mobility Felines & Runes
@@ -123,27 +123,54 @@ public final class GuideBookContents {
                 "  Ember + 3 Semiconductors\n" +
                 "§8• Quantum (Jah): Skeleton King\n" +
                 "§8• Dimensional (Ith): Cow King\n" +
-                "§8• Atomic (Ber): The Carver§r"
+                "§8• Atomic (Ber): The Carver\n" +
+                "§6Awards Ember Painting!§r"
         )));
 
-        // Page 10: Chapter 9 - Sensory & Crater Navigation
+        // Page 10: Chapter 9 - Sensory & Hazard Mitigation
         pages.add(Filterable.passThrough(Component.literal(
-                "§1§lCH. 9: SENSORY & CRATERS§r\n" +
+                "§1§lCH. 9: HAZARD MITIGATION§r\n" +
                 "§8-------------------§r\n" +
                 "§0Adopt §6Dorito§0 from any village for §a1 Emerald§0.\n\n" +
-                "§5Crater Navigation (Cube):§0\n" +
+                "§5Defensive Gadgets (Cube):§0\n" +
                 "§6• Dorito's Paws:§0\n" +
                 "  Dorito + Rabbit Foot + Feather\n" +
-                "  §8Absorbs fall damage into hunger. Saves life from any height!§0\n\n" +
+                "  §8Curios Feet. Converts lethal fall impact to hunger!§0\n\n" +
                 "§3• Sculk Dorito's Paws:§0\n" +
                 "  Paws + Sculk Catalyst\n" +
                 "  §8Total vibration silence to Wardens while fed!§0\n\n" +
-                "§a• Night Vision Dorito:§0\n" +
-                "  Dorito + Gilded Blackstone + Tinted Glass + Amethyst\n" +
-                "  §8Curios Head slot. Full NVG optics HUD with low-light alert!§0\n\n" +
                 "§6• Tiny Planet:§0\n" +
                 "  Dorito + Arrow + Fire Charge + Lodestone + Gold Block\n" +
-                "  §85s orbital moon shield: deflects projectiles into hunger at 1/4 rate! (15s cd)§r"
+                "  §85s orbital shields: deflects projectiles into hunger!§r"
+        )));
+
+        // Page 11: Chapter 10 - Tactical Telemetry & Optics
+        pages.add(Filterable.passThrough(Component.literal(
+                "§1§lCH. 10: TACTICAL VISORS§r\n" +
+                "§8-------------------§r\n" +
+                "§a• Night Vision Dorito (Green):§0\n" +
+                "  Dorito + Blackstone + Glass + Amethyst\n" +
+                "  §8Curios Head. NVG optics & LUX meter!§0\n\n" +
+                "§6• Telemetry Visor (Yellow):§0\n" +
+                "  Dorito + Compass + Clock + Echo + Amethyst\n" +
+                "  §8Coordinates, heading, chunk radar, & clock!§0\n\n" +
+                "§b• Scanner Visor (Cyan):§0\n" +
+                "  Dorito + Spyglass + Echo + Diamond + Redstone\n" +
+                "  §83D floating cyan tags for mobs: Name, HP, Armor!§r"
+        )));
+
+        // Page 12: Chapter 11 - The Omni-Visor Ultimate Form
+        pages.add(Filterable.passThrough(Component.literal(
+                "§1§lCH. 11: THE OMNI-VISOR§r\n" +
+                "§8-------------------§r\n" +
+                "§5Cube Transmutation:§0\n" +
+                "§0Combine all 3 visors:\n" +
+                "§a• Night Vision Dorito (Green)\n" +
+                "§6• Telemetry Visor Dorito (Yellow)\n" +
+                "§b• Scanner Visor Dorito (Cyan)\n" +
+                "§8• Netherite Ingot§0\n\n" +
+                "§6The Omni-Visor fuses all 3 sensory feeds with zero overlap or hunger drain!§r\n\n" +
+                "§d★ Unlocks the Dorito Painting!§r"
         )));
 
         return new WrittenBookContent(

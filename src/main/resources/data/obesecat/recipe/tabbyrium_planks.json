@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "obesecat:tabbyrium_stalk"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "id": "obesecat:tabbyrium_planks"
+  }
+}

@@ -5,15 +5,20 @@ import com.fende.obesecat.client.CowKingRenderer;
 import com.fende.obesecat.client.TheCarverRenderer;
 import com.fende.obesecat.client.SkeletonKingRenderer;
 import com.fende.obesecat.client.model.TheCarverModel;
-import com.fende.obesecat.client.CanOpenerScreen;
+import com.fende.obesecat.client.TabbyriumRefineryScreen;
 import com.fende.obesecat.client.CatChargerScreen;
 import com.fende.obesecat.client.GeminiExplosionOverlay;
 import com.fende.obesecat.client.BigGeminiExplosionOverlay;
+import com.fende.obesecat.client.TacticalExplosionOverlay;
 import com.fende.obesecat.client.GeminiFireballRenderer;
 import com.fende.obesecat.client.BigGeminiFireballRenderer;
+import com.fende.obesecat.client.TacticalFireballRenderer;
 import com.fende.obesecat.client.NuclearFlashOverlay;
 import com.fende.obesecat.client.IonStormOverlay;
 import com.fende.obesecat.client.NightVisionOverlay;
+import com.fende.obesecat.client.ScannerOverlay;
+import com.fende.obesecat.client.ScannerMobTagRenderer;
+import com.fende.obesecat.client.TelemetryOverlay;
 import com.fende.obesecat.client.ObeseCatRenderer;
 import com.fende.obesecat.client.ObeseCatTimerOverlay;
 import com.fende.obesecat.client.SniperPacoInputHandler;
@@ -51,14 +56,19 @@ public class ObeseCatModClient {
         NeoForge.EVENT_BUS.addListener(IonStormOverlay::suppressSkyFlash);
         NeoForge.EVENT_BUS.addListener(GeminiExplosionOverlay::onClientTick);
         NeoForge.EVENT_BUS.addListener(BigGeminiExplosionOverlay::onClientTick);
+        NeoForge.EVENT_BUS.addListener(TacticalExplosionOverlay::onClientTick);
         NeoForge.EVENT_BUS.addListener(GeminiFireballRenderer::onRenderLevelStage);
         NeoForge.EVENT_BUS.addListener(BigGeminiFireballRenderer::onRenderLevelStage);
+        NeoForge.EVENT_BUS.addListener(TacticalFireballRenderer::onRenderLevelStage);
+        NeoForge.EVENT_BUS.register(ScannerMobTagRenderer.class);
     }
 
     private void clientSetup(FMLClientSetupEvent event) {
         event.enqueueWork(() -> {
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.ATOMIC_FIRE.get(), RenderType.cutout());
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.TRINITITE.get(), RenderType.translucent());
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.TABBYRIUM_BLOSSOM_SAPLING.get(), RenderType.cutout());
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.TABBYRIUM_CLUSTER.get(), RenderType.cutout());
         });
     }
 
@@ -83,17 +93,20 @@ public class ObeseCatModClient {
     private void registerGuiLayers(RegisterGuiLayersEvent event) {
         event.registerAboveAll(ObeseCatTimerOverlay.ID, ObeseCatTimerOverlay::render);
         event.registerAboveAll(NightVisionOverlay.ID, NightVisionOverlay::render);
+        event.registerAboveAll(TelemetryOverlay.ID, TelemetryOverlay::render);
+        event.registerAboveAll(ScannerOverlay.ID, ScannerOverlay::render);
         event.registerAboveAll(FissionFirestormOverlay.ID, FissionFirestormOverlay::render);
         event.registerAboveAll(IonStormOverlay.ID, IonStormOverlay::render);
         event.registerAboveAll(NuclearFlashOverlay.ID, NuclearFlashOverlay::render);
         event.registerAboveAll(GeminiExplosionOverlay.ID, GeminiExplosionOverlay::render);
         event.registerAboveAll(BigGeminiExplosionOverlay.ID, BigGeminiExplosionOverlay::render);
+        event.registerAboveAll(TacticalExplosionOverlay.ID, TacticalExplosionOverlay::render);
     }
 
     private void registerMenuScreens(RegisterMenuScreensEvent event) {
         event.register(ModMenus.TRANSMUTATION_CUBE.get(), TransmutationCubeScreen::new);
         event.register(ModMenus.ECHOING_BLAST_CHAMBER.get(), EchoingBlastChamberScreen::new);
-        event.register(ModMenus.CAN_OPENER.get(), CanOpenerScreen::new);
+        event.register(ModMenus.TABBYRIUM_REFINERY.get(), TabbyriumRefineryScreen::new);
         event.register(ModMenus.CAT_CHARGER.get(), CatChargerScreen::new);
     }
 }

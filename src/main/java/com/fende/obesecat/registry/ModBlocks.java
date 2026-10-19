@@ -2,16 +2,23 @@ package com.fende.obesecat.registry;
 
 import com.fende.obesecat.ObeseCatMod;
 import com.fende.obesecat.block.AtomicFireBlock;
-import com.fende.obesecat.block.AtomicCanOpenerBlock;
-import com.fende.obesecat.block.FoodBinBlock;
 import com.fende.obesecat.block.CatChargerBlock;
-import com.fende.obesecat.block.CreativeFoodBinBlock;
-import com.fende.obesecat.block.NuclearLibraryBlock;
-import com.fende.obesecat.block.TrinititeBlock;
-import com.fende.obesecat.block.ToiletBlock;
-import com.fende.obesecat.block.EchoingBlastChamberBlock;
 import com.fende.obesecat.block.ChocolatePuddingBlock;
+import com.fende.obesecat.block.CreativeTabbyriumSiloBlock;
+import com.fende.obesecat.block.EchoingBlastChamberBlock;
+import com.fende.obesecat.block.NuclearLibraryBlock;
+import com.fende.obesecat.block.TabbyriumBlossomSaplingBlock;
+import com.fende.obesecat.block.TabbyriumClusterBlock;
+import com.fende.obesecat.block.TabbyriumCrustBlock;
+import com.fende.obesecat.block.TabbyriumRefineryBlock;
+import com.fende.obesecat.block.TabbyriumSiloBlock;
+import com.fende.obesecat.block.TabbyriumSporePodBlock;
+import com.fende.obesecat.block.TabbyriumStalkBlock;
+import com.fende.obesecat.block.ToiletBlock;
+import com.fende.obesecat.block.TrinititeBlock;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -49,23 +56,77 @@ public final class ModBlocks {
             () -> new EchoingBlastChamberBlock()
     );
 
-    public static final DeferredBlock<AtomicCanOpenerBlock> CAN_OPENER = BLOCKS.register(
-            "can_opener",
-            () -> new AtomicCanOpenerBlock()
+    // Tabbyrium System
+    public static final DeferredBlock<TabbyriumBlossomSaplingBlock> TABBYRIUM_BLOSSOM_SAPLING = BLOCKS.register(
+            "tabbyrium_blossom_sapling",
+            () -> new TabbyriumBlossomSaplingBlock()
     );
-    public static final DeferredBlock<FoodBinBlock> FOOD_BIN = BLOCKS.register(
+
+    public static final DeferredBlock<TabbyriumSporePodBlock> TABBYRIUM_SPORE_POD = BLOCKS.register(
+            "tabbyrium_spore_pod",
+            () -> new TabbyriumSporePodBlock()
+    );
+
+    public static final DeferredBlock<TabbyriumCrustBlock> TABBYRIUM_CRUST = BLOCKS.register(
+            "tabbyrium_crust",
+            () -> new TabbyriumCrustBlock()
+    );
+
+    public static final DeferredBlock<TabbyriumStalkBlock> TABBYRIUM_STALK = BLOCKS.register(
+            "tabbyrium_stalk",
+            () -> new TabbyriumStalkBlock()
+    );
+
+    public static final DeferredBlock<Block> TABBYRIUM_PLANKS = BLOCKS.register(
+            "tabbyrium_planks",
+            () -> new Block(BlockBehaviour.Properties.of()
+                    .strength(2.0F, 3.0F)
+                    .sound(SoundType.WOOD))
+    );
+
+    public static final DeferredBlock<TabbyriumClusterBlock> TABBYRIUM_CLUSTER = BLOCKS.register(
+            "tabbyrium_cluster",
+            () -> new TabbyriumClusterBlock(BlockBehaviour.Properties.of()
+                    .strength(1.5F)
+                    .sound(SoundType.AMETHYST_CLUSTER)
+                    .lightLevel(state -> state.getValue(TabbyriumClusterBlock.AGE) * 3 + 2)
+                    .noOcclusion())
+    );
+
+    public static final DeferredBlock<TabbyriumRefineryBlock> TABBYRIUM_REFINERY = BLOCKS.register(
+            "tabbyrium_refinery",
+            () -> new TabbyriumRefineryBlock()
+    );
+
+    public static final DeferredBlock<TabbyriumSiloBlock> TABBYRIUM_SILO = BLOCKS.register(
+            "tabbyrium_silo",
+            () -> new TabbyriumSiloBlock()
+    );
+
+    public static final DeferredBlock<CreativeTabbyriumSiloBlock> CREATIVE_TABBYRIUM_SILO = BLOCKS.register(
+            "creative_tabbyrium_silo",
+            () -> new CreativeTabbyriumSiloBlock()
+    );
+
+    // Compatibility Registrations
+    public static final DeferredBlock<TabbyriumRefineryBlock> CAN_OPENER = BLOCKS.register(
+            "can_opener",
+            () -> new TabbyriumRefineryBlock()
+    );
+
+    public static final DeferredBlock<TabbyriumSiloBlock> FOOD_BIN = BLOCKS.register(
             "food_bin",
-            () -> new FoodBinBlock()
+            () -> new TabbyriumSiloBlock()
+    );
+
+    public static final DeferredBlock<CreativeTabbyriumSiloBlock> CREATIVE_FOOD_BIN = BLOCKS.register(
+            "creative_food_bin",
+            () -> new CreativeTabbyriumSiloBlock()
     );
 
     public static final DeferredBlock<CatChargerBlock> CAT_CHARGER = BLOCKS.register(
             "cat_charger",
             () -> new CatChargerBlock()
-    );
-
-    public static final DeferredBlock<CreativeFoodBinBlock> CREATIVE_FOOD_BIN = BLOCKS.register(
-            "creative_food_bin",
-            () -> new CreativeFoodBinBlock()
     );
 
     private ModBlocks() {

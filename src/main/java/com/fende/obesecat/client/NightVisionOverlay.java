@@ -20,6 +20,10 @@ public final class NightVisionOverlay {
         active = enabled;
     }
 
+    public static boolean isActive() {
+        return active;
+    }
+
     public static void render(GuiGraphics guiGraphics, DeltaTracker deltaTracker) {
         if (!active) {
             return;
@@ -34,32 +38,30 @@ public final class NightVisionOverlay {
         int height = guiGraphics.guiHeight();
 
         // 1. High-resolution panoramic visor mask (wide viewing port, hotbar open at bottom)
+        com.mojang.blaze3d.systems.RenderSystem.enableBlend();
+        com.mojang.blaze3d.systems.RenderSystem.defaultBlendFunc();
         guiGraphics.blit(VISOR_OVERLAY, 0, 0, 0.0F, 0.0F, width, height, width, height);
 
         // 2. Subtle CRT / Phosphor screen tint & fine horizontal scanlines
-        guiGraphics.fill(0, 0, width, height, 0x0E00FF40);
+        guiGraphics.fill(0, 0, width, height, 0x0A00FF40);
         for (int y = 0; y < height; y += 4) {
-            guiGraphics.fill(0, y, width, y + 1, 0x0700FF33);
+            guiGraphics.fill(0, y, width, y + 1, 0x0500FF33);
         }
 
         // 3. Center Aiming Reticle (Subtle corner brackets around crosshair)
         renderCenterReticle(guiGraphics, width / 2, height / 2);
 
-        // 4. Top-Left HUD Telemetry & Power Gauge (Stacked to keep top-right minimap clear!)
-        int startX = 24;
-        int startY = 16;
-        guiGraphics.drawString(minecraft.font, "§a[✦] DORITO-NVG // GEN-3 VISOR", startX, startY, 0xFF00FF55, false);
-        guiGraphics.drawString(minecraft.font, "§2IR FILTER: 850nm AUTO-GATE", startX, startY + 10, 0xFF00AA44, false);
-
+        // 4. Top-Left HUD Telemetry & Power Gauge (Compact single/dual line)
+        int startX = 16;
+        int startY = 12;
         int foodLevel = minecraft.player.getFoodData().getFoodLevel();
         int pwrPercent = (foodLevel * 100) / 20;
         int pwrColor = foodLevel > 6 ? 0xFF00FF55 : (foodLevel > 2 ? 0xFFFFB000 : 0xFFFF3333);
         String bar = buildPwrBar(foodLevel);
-        String pwrText = "PWR: " + pwrPercent + "% [" + bar + "]";
+        guiGraphics.drawString(minecraft.font, "§a[✦] DORITO-NVG §7// §2IR: 850nm §8| §aPWR: " + pwrPercent + "% [" + bar + "]", startX, startY, pwrColor, false);
         if (foodLevel <= 4) {
-            pwrText += " §c⚠ LOW BATTERY";
+            guiGraphics.drawString(minecraft.font, "§c⚠ LOW BATTERY - DRAIN IMMINENT", startX, startY + 10, 0xFFFF4444, false);
         }
-        guiGraphics.drawString(minecraft.font, pwrText, startX, startY + 20, pwrColor, false);
 
         // 5. Bottom-Left LUX Sensor
         renderLightTelemetry(guiGraphics, minecraft, width, height);
@@ -93,9 +95,11 @@ public final class NightVisionOverlay {
         int blockLight = minecraft.level.getBrightness(LightLayer.BLOCK, pos);
         int skyLight = minecraft.level.getBrightness(LightLayer.SKY, pos);
 
-        // Bottom left LUX reading (sits neatly beside hotbar)
-        String luxText = "LUX: " + rawLight + "/15 (BLK: " + blockLight + " | SKY: " + skyLight + ")";
-        guiGraphics.drawString(minecraft.font, luxText, 24, height - 18, 0xFF00CC55, false);
+        // Bottom left LUX reading (only rendered when Telemetry HUD is not active to prevent collision)
+        if (!TelemetryOverlay.isActive()) {
+            String luxText = "§a[✦] LUX: §f" + rawLight + "/15 §7(BLK: " + blockLight + " | SKY: " + skyLight + ")";
+            guiGraphics.drawString(minecraft.font, luxText, 16, height - 16, 0xFF00CC55, false);
+        }
 
         // Low Light Warning Banner (centered above hearts/food bar)
         if (rawLight <= 4) {
