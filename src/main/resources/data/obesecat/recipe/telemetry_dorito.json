@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    { "item": "obesecat:dorito" },
+    { "item": "minecraft:tinted_glass" },
+    { "item": "minecraft:amethyst_shard" },
+    { "item": "obesecat:dimensional_semiconductor" }
+  ],
+  "result": {
+    "id": "obesecat:telemetry_dorito",
+    "count": 1
+  }
+}

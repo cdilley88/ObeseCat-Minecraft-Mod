@@ -32,11 +32,12 @@ public final class ModVillagerTrades {
             return;
         }
 
-        // Base Domino, Base Paco, Base Ember, & Base Dorito: 1 Emerald trade available across all vanilla professions
+        // Base Domino, Base Paco, Base Ember, Base Dorito, & Emergency Starter Home: 1 Emerald trade available across all vanilla professions
         event.getTrades().get(NOVICE).add(farmerTrade(new ItemStack(ModItems.DOMINO.get())));
         event.getTrades().get(NOVICE).add(farmerTrade(new ItemStack(ModItems.PACO.get())));
         event.getTrades().get(NOVICE).add(farmerTrade(new ItemStack(ModItems.EMBER.get())));
         event.getTrades().get(NOVICE).add(farmerTrade(new ItemStack(ModItems.DORITO.get())));
+        event.getTrades().get(NOVICE).add(farmerTrade(new ItemStack(ModItems.EMERGENCY_STARTER_HOME.get())));
 
         if (event.getType() != VillagerProfession.FARMER) {
             return;
@@ -44,7 +45,6 @@ public final class ModVillagerTrades {
 
         event.getTrades().get(NOVICE).add(farmerTrade(new ItemStack(ModItems.OBESE_CAT_SPAWN_EGG.get())));
         event.getTrades().get(NOVICE).add(farmerTrade(new ItemStack(ModItems.PLUTONIUM_CAT_FOOD.get())));
-        event.getTrades().get(NOVICE).add(farmerTrade(new ItemStack(ModItems.EMERGENCY_STARTER_HOME.get())));
     }
 
     // =========================================================================
@@ -54,8 +54,11 @@ public final class ModVillagerTrades {
     public static List<BasicItemListing> getManhattanPhysicistTradeList() {
         List<BasicItemListing> trades = new ArrayList<>();
 
-        // Sole Manhattan Physicist Trade: 5 Emeralds -> 1 Plutonium Cat Food
+        // Manhattan Physicist Trade 1: 5 Emeralds -> 1 Plutonium Cat Food
         trades.add(emeraldTrade(new ItemStack(ModItems.PLUTONIUM_CAT_FOOD.get()), 5));
+
+        // Manhattan Physicist Relic Trade: 8 Trinitite -> 1 Oppenheimer's Hat
+        trades.add(trinititeTrade(new ItemStack(ModItems.OPPENHEIMERS_HAT.get()), 8));
 
         return trades;
     }

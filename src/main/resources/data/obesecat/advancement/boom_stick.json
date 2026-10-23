@@ -1,0 +1,43 @@
+{
+  "parent": "obesecat:detonation",
+  "display": {
+    "icon": {
+      "id": "obesecat:boom_stick",
+      "count": 1
+    },
+    "title": {
+      "translate": "advancements.obesecat.boom_stick.title"
+    },
+    "description": {
+      "translate": "advancements.obesecat.boom_stick.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "criteria": {
+    "has_boom_stick": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          { "items": "obesecat:boom_stick" }
+        ]
+      }
+    },
+    "has_fat_man_stick": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          { "items": "obesecat:fat_man_boom_stick" }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_boom_stick",
+      "has_fat_man_stick"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

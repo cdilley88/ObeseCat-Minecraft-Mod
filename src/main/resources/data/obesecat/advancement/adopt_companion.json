@@ -1,0 +1,61 @@
+{
+  "parent": "obesecat:root",
+  "display": {
+    "icon": {
+      "id": "obesecat:dorito",
+      "count": 1
+    },
+    "title": {
+      "translate": "advancements.obesecat.adopt_companion.title"
+    },
+    "description": {
+      "translate": "advancements.obesecat.adopt_companion.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "criteria": {
+    "has_domino": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          { "items": "obesecat:domino" }
+        ]
+      }
+    },
+    "has_paco": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          { "items": "obesecat:paco" }
+        ]
+      }
+    },
+    "has_ember": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          { "items": "obesecat:ember" }
+        ]
+      }
+    },
+    "has_dorito": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          { "items": "obesecat:dorito" }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_domino",
+      "has_paco",
+      "has_ember",
+      "has_dorito"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

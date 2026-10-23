@@ -26,7 +26,7 @@ public final class GuideBookContents {
         pages.add(Filterable.passThrough(Component.literal(
                 "§1§lCH. 1: THE BUNKER§r\n" +
                 "§8-------------------§r\n" +
-                "§0Deep underground across the Overworld lie fortified §4Manhattan Bunkers§0.\n\n" +
+                "§0Scattered across the Overworld surface lie fortified §4Manhattan Bunkers§0.\n\n" +
                 "Inside, you will find the solitary §1Manhattan Physicist§0 and a dormant §2Fat Man§0.\n\n" +
                 "Bring §a5 Emeralds§0 to purchase §2Plutonium Cat Food§0."
         )));
@@ -62,23 +62,54 @@ public final class GuideBookContents {
                 "Transmute both in the Cube to summon the §cCow King§0!"
         )));
 
-        // Page 6: Chapter 5 - Mythic Sword Skills
+        // Page 6: Chapter 5 - Holy Sword Skills
         pages.add(Filterable.passThrough(Component.literal(
-                "§1§lCH. 5: SWORD SKILLS§r\n" +
+                "§1§lCH. 5: HOLY SWORD§r\n" +
                 "§8-------------------§r\n" +
-                "§0Bases found in Ancient Cities.\n\n" +
-                "§5Holy (Cow King):§0\n" +
-                "§8Stasis, Split, Crush, Lightning, Holy Explosion.\n\n" +
-                "§6Mighty (Skeleton King):§0\n" +
-                "§8T-altar: 4 Bone Blocks + End City Skeleton Crown.\n" +
-                "§8Drops Perfumes: Cherche, Salty Rage, Chantage, Setiemson.\n\n" +
-                "§4Dark (The Carver):§0\n" +
-                "§8Strike Anvil on Sculk Catalyst with Bastion Cleaver + 30 Lvls!§r"
+                "§0Found dormant in §3Ancient Cities§0.\n" +
+                "Awaken in the Cube with Bovine tokens:\n\n" +
+                "§b• Stasis Sword:§0 Freeze mobs & projectiles in a temporal dome.\n" +
+                "§6• Split Punch:§0 Supersonic kinetic shockwave launches enemies.\n" +
+                "§e• Crush Punch:§0 Ground slam earthquake stuns mobs.\n" +
+                "§c• Lightning Stab:§0 Piercing celestial lightning arc.\n" +
+                "§d• Holy Explosion:§0 Sacred radiant dome vaporizes undead mobs!§r"
         )));
 
-        // Page 7: Chapter 6 - Temporal Felines
+        // Page 7: Chapter 6 - Mighty Sword & Skeleton King
         pages.add(Filterable.passThrough(Component.literal(
-                "§1§lCH. 6: TEMPORAL FELINES§r\n" +
+                "§1§lCH. 6: MIGHTY SWORD§r\n" +
+                "§8-------------------§r\n" +
+                "§0Base found in Ancient Cities.\n\n" +
+                "§4Summon Skeleton King:§0\n" +
+                "§81. Find Skeleton Crown in End Cities.\n" +
+                "§82. Build vertical T-altar: 4 Bone Blocks.\n" +
+                "§83. Use Crown on center block!§0\n\n" +
+                "§5King Drops & Mighty Skills:§0\n" +
+                "§8• Cherche -> Shellbust Stab (Armor Pierce)\n" +
+                "§8• Salty Rage -> Blastar Punch (Explosion)\n" +
+                "§8• Chantage -> Hellcry Punch (Sonic Debuff)\n" +
+                "§8• Setiemson -> Icewolf Bite (Frost Freeze)\n" +
+                "§6+ Drops Quantum Jah Semiconductor!§r"
+        )));
+
+        // Page 8: Chapter 7 - Dark Sword & The Carver
+        pages.add(Filterable.passThrough(Component.literal(
+                "§1§lCH. 7: DARK SWORD§r\n" +
+                "§8-------------------§r\n" +
+                "§0Base found in Ancient Cities.\n\n" +
+                "§4Summon The Carver:§0\n" +
+                "§81. Find Cursed Cleaver in Bastions.\n" +
+                "§82. Place Anvil atop Sculk Catalyst.\n" +
+                "§83. Strike Anvil with Cleaver + 30 XP Lvls!§0\n\n" +
+                "§5Carver Drops & Dark Arts:§0\n" +
+                "§8• Bloodied Hook -> Night Sword (Vampiric)\n" +
+                "§8• Demon Heart -> Dark Sword (Abyssal Void)\n" +
+                "§6+ Drops Atomic Ber Semiconductor!§r"
+        )));
+
+        // Page 9: Chapter 8 - Temporal Felines
+        pages.add(Filterable.passThrough(Component.literal(
+                "§1§lCH. 8: TEMPORAL FELINES§r\n" +
                 "§8-------------------§r\n" +
                 "§0Adopt §2Domino§0 from any village for §a1 Emerald§0.\n\n" +
                 "Channel Dragon's Breath & Trinitite in the Cube:\n\n" +
@@ -91,9 +122,9 @@ public final class GuideBookContents {
                 "§4Warning: Chronosphere activated! Unlocks Domino Painting!§r"
         )));
 
-        // Page 8: Chapter 7 - Tactical Canines
+        // Page 10: Chapter 9 - Tactical Canines
         pages.add(Filterable.passThrough(Component.literal(
-                "§1§lCH. 7: TACTICAL CANINES§r\n" +
+                "§1§lCH. 9: TACTICAL CANINES§r\n" +
                 "§8-------------------§r\n" +
                 "§0Adopt §2Paco§0 from any village for §a1 Emerald§0.\n\n" +
                 "§6Tactical Field Upgrades:§0\n" +
@@ -108,9 +139,9 @@ public final class GuideBookContents {
                 "  Paco + Oppenheimer's Hat (Awards Paco Painting!)§r"
         )));
 
-        // Page 9: Chapter 8 - Mobility Felines & Runes
+        // Page 11: Chapter 10 - Mobility Felines & Runes
         pages.add(Filterable.passThrough(Component.literal(
-                "§1§lCH. 8: MOBILITY FELINES§r\n" +
+                "§1§lCH. 10: MOBILITY FELINES§r\n" +
                 "§8-------------------§r\n" +
                 "§0Adopt §2Ember§0 from any village for §a1 Emerald§0.\n\n" +
                 "§6Field & Arcane Tools:§0\n" +
@@ -127,9 +158,9 @@ public final class GuideBookContents {
                 "§6Awards Ember Painting!§r"
         )));
 
-        // Page 10: Chapter 9 - Sensory & Hazard Mitigation
+        // Page 12: Chapter 11 - Sensory & Hazard Mitigation
         pages.add(Filterable.passThrough(Component.literal(
-                "§1§lCH. 9: HAZARD MITIGATION§r\n" +
+                "§1§lCH. 11: HAZARD MITIGATION§r\n" +
                 "§8-------------------§r\n" +
                 "§0Adopt §6Dorito§0 from any village for §a1 Emerald§0.\n\n" +
                 "§5Defensive Gadgets (Cube):§0\n" +
@@ -144,24 +175,25 @@ public final class GuideBookContents {
                 "  §85s orbital shields: deflects projectiles into hunger!§r"
         )));
 
-        // Page 11: Chapter 10 - Tactical Telemetry & Optics
+        // Page 13: Chapter 12 - Tactical Telemetry & Optics
         pages.add(Filterable.passThrough(Component.literal(
-                "§1§lCH. 10: TACTICAL VISORS§r\n" +
+                "§1§lCH. 12: TACTICAL VISORS§r\n" +
                 "§8-------------------§r\n" +
+                "§0Craft or Transmute in the Cube:\n\n" +
                 "§a• Night Vision Dorito (Green):§0\n" +
-                "  Dorito + Blackstone + Glass + Amethyst\n" +
+                "  Dorito + Glass + Amethyst + Quantum (Jah)\n" +
                 "  §8Curios Head. NVG optics & LUX meter!§0\n\n" +
                 "§6• Telemetry Visor (Yellow):§0\n" +
-                "  Dorito + Compass + Clock + Echo + Amethyst\n" +
+                "  Dorito + Glass + Amethyst + Dimensional (Ith)\n" +
                 "  §8Coordinates, heading, chunk radar, & clock!§0\n\n" +
                 "§b• Scanner Visor (Cyan):§0\n" +
-                "  Dorito + Spyglass + Echo + Diamond + Redstone\n" +
-                "  §83D floating cyan tags for mobs: Name, HP, Armor!§r"
+                "  Dorito + Glass + Amethyst + Atomic (Ber)\n" +
+                "  §83D floating cyan tags: Name, HP, Armor!§r"
         )));
 
-        // Page 12: Chapter 11 - The Omni-Visor Ultimate Form
+        // Page 14: Chapter 13 - The Omni-Visor Ultimate Form
         pages.add(Filterable.passThrough(Component.literal(
-                "§1§lCH. 11: THE OMNI-VISOR§r\n" +
+                "§1§lCH. 13: THE OMNI-VISOR§r\n" +
                 "§8-------------------§r\n" +
                 "§5Cube Transmutation:§0\n" +
                 "§0Combine all 3 visors:\n" +
@@ -171,6 +203,34 @@ public final class GuideBookContents {
                 "§8• Netherite Ingot§0\n\n" +
                 "§6The Omni-Visor fuses all 3 sensory feeds with zero overlap or hunger drain!§r\n\n" +
                 "§d★ Unlocks the Dorito Painting!§r"
+        )));
+
+        // Page 15: Chapter 14 - Tabbyrium Grid & Silos
+        pages.add(Filterable.passThrough(Component.literal(
+                "§1§lCH. 14: TABBYRIUM GRID§r\n" +
+                "§8-------------------§r\n" +
+                "§0Craft Sapling: 4 Trinitite, 2 Overdrive Powder, Redstone Dust, & Sapling.\n\n" +
+                "§6• Refinery:§0 Refines Shards & Crystals to FE.\n\n" +
+                "§a• Tabbyrium Silo:§0\n" +
+                "  Iron + Copper + Trinitite\n" +
+                "  §8Stores 1,000,000 FE with live fill gauge.\n" +
+                "  Right-click opens the Charging Console to charge held gear & Portable Chargers!\n" +
+                "  §cEVA Warning: SILOS NEEDED when full!§r"
+        )));
+
+        // Page 16: Chapter 15 - Magicite Summons & Relics
+        pages.add(Filterable.passThrough(Component.literal(
+                "§1§lCH. 15: MAGICITE & RELICS§r\n" +
+                "§8-------------------§r\n" +
+                "§5Magicite Summons (10k FE):§0\n" +
+                "§8• Praxis: Blue Ice (Frost pulses)\n" +
+                "§8• Veritas: Amethyst (Purifier)\n" +
+                "§8• Paradox: Eye of Ender (Reality shear)\n" +
+                "§8• Aequitas: Soul Campfire (Soul storm)\n\n" +
+                "§2Shelters & Dungeon Jokes:§0\n" +
+                "§8• Emergency Home: 1 Emerald novice trade.\n" +
+                "§8• Luxury Home: Emergency + Iron/Gold/Diamond/Emerald Blocks!\n" +
+                "§8• Dungeon Toilet & Chocolate Pudding: Rare joke loot in dungeons!§r"
         )));
 
         return new WrittenBookContent(

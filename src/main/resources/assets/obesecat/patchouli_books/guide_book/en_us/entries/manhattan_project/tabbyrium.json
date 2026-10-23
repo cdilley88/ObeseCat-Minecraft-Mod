@@ -9,7 +9,7 @@
       "item": "obesecat:tabbyrium_blossom_sapling",
       "title": "Tabbyrium Blossom",
       "link_recipe": true,
-      "text": "By surrounding an Oak Sapling with $(2)Trinitite$(0) and rotten flesh, you create a $(2)Tabbyrium Blossom Sapling$(0).$(br2)When grown, it sprouts a 3–5 block tall stalk that extends root tendrils across the terrain (capped at ~18 crust blocks). Its crown $(a)Spore Pod$(0) actively nurtures pulsing crystal clusters along these veins."
+      "text": "Crafted on a Crafting Table using $(2)4 Trinitite$(0), $(6)2 Overdrive Powder$(0), $(c)Redstone Dust$(0), and any $(a)Sapling$(0).$(br2)When grown, it sprouts a 3–5 block tall stalk that extends root tendrils across the terrain (capped at ~18 crust blocks). Its crown $(a)Spore Pod$(0) actively nurtures pulsing crystal clusters along these veins."
     },
     {
       "type": "patchouli:text",
@@ -19,9 +19,16 @@
     {
       "type": "patchouli:spotlight",
       "item": "obesecat:tabbyrium_refinery",
-      "title": "Refinery & Silos",
+      "title": "Tabbyrium Refinery",
       "link_recipe": true,
-      "text": "Process $(a)Tabbyrium Shards$(0) (10,000 FE) or dense $(a)Crystals$(0) (45,000 FE) inside the $(2)Tabbyrium Refinery$(0).$(br2)Store excess power in $(6)Tabbyrium Silos$(0) (1,000,000 FE capacity). Beware: if your silos run full, tactical EVA alerts may sound!"
+      "text": "Process $(a)Tabbyrium Shards$(0) (10,000 FE) or dense $(a)Crystals$(0) (45,000 FE) inside the $(2)Tabbyrium Refinery$(0).$(br2)Features automated I/O configuration sides and an internal power buffer to pump energy directly into neighboring conduits or Silos."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "obesecat:tabbyrium_silo",
+      "title": "Tabbyrium Silos",
+      "link_recipe": true,
+      "text": "Crafted from Iron Blocks, Copper Blocks, and a core block of $(2)Trinitite$(0).$(br2)Stores $(6)1,000,000 FE$(0) with live exterior fluid gauges. Right-click opens the Command Console with an integrated $(a)Induction Charging Slot$(0) to charge held gear and Portable Cat Chargers at 10,000 FE/t! If capacity maxes out, tactical $(c)EVA 'SILOS NEEDED'$(0) alarms sound."
     }
   ]
 }

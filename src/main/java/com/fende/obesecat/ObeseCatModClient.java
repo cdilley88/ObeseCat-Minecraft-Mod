@@ -6,7 +6,12 @@ import com.fende.obesecat.client.TheCarverRenderer;
 import com.fende.obesecat.client.SkeletonKingRenderer;
 import com.fende.obesecat.client.model.TheCarverModel;
 import com.fende.obesecat.client.TabbyriumRefineryScreen;
-import com.fende.obesecat.client.CatChargerScreen;
+import com.fende.obesecat.client.TabbyriumSiloScreen;
+import com.fende.obesecat.item.TabbyriumSiloItem;
+import com.fende.obesecat.block.entity.TabbyriumSiloBlockEntity;
+import com.fende.obesecat.registry.ModItems;
+import net.minecraft.client.renderer.item.ItemProperties;
+import net.minecraft.resources.ResourceLocation;
 import com.fende.obesecat.client.GeminiExplosionOverlay;
 import com.fende.obesecat.client.BigGeminiExplosionOverlay;
 import com.fende.obesecat.client.TacticalExplosionOverlay;
@@ -69,6 +74,14 @@ public class ObeseCatModClient {
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.TRINITITE.get(), RenderType.translucent());
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.TABBYRIUM_BLOSSOM_SAPLING.get(), RenderType.cutout());
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.TABBYRIUM_CLUSTER.get(), RenderType.cutout());
+            ItemProperties.register(
+                    ModItems.TABBYRIUM_SILO.get(),
+                    ResourceLocation.fromNamespaceAndPath(ObeseCatMod.MOD_ID, "fill"),
+                    (stack, clientLevel, livingEntity, seed) -> {
+                        int energy = TabbyriumSiloItem.getStoredEnergy(stack);
+                        return (float) energy / TabbyriumSiloBlockEntity.CAPACITY;
+                    }
+            );
         });
     }
 
@@ -107,6 +120,6 @@ public class ObeseCatModClient {
         event.register(ModMenus.TRANSMUTATION_CUBE.get(), TransmutationCubeScreen::new);
         event.register(ModMenus.ECHOING_BLAST_CHAMBER.get(), EchoingBlastChamberScreen::new);
         event.register(ModMenus.TABBYRIUM_REFINERY.get(), TabbyriumRefineryScreen::new);
-        event.register(ModMenus.CAT_CHARGER.get(), CatChargerScreen::new);
+        event.register(ModMenus.TABBYRIUM_SILO.get(), TabbyriumSiloScreen::new);
     }
 }

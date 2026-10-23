@@ -9,7 +9,7 @@
   "key": {
     "I": { "item": "minecraft:iron_block" },
     "C": { "item": "minecraft:copper_block" },
-    "R": { "item": "minecraft:redstone_block" }
+    "R": { "item": "obesecat:trinitite" }
   },
   "result": {
     "id": "obesecat:tabbyrium_silo",

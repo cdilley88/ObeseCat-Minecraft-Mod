@@ -1,0 +1,34 @@
+{
+  "parent": "obesecat:telemetry_dorito",
+  "display": {
+    "icon": {
+      "id": "obesecat:scanner_dorito",
+      "count": 1
+    },
+    "title": {
+      "translate": "advancements.obesecat.scanner_dorito.title"
+    },
+    "description": {
+      "translate": "advancements.obesecat.scanner_dorito.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "criteria": {
+    "has_scanner_dorito": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          { "items": "obesecat:scanner_dorito" }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_scanner_dorito"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

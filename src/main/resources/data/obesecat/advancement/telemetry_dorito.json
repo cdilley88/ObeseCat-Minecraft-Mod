@@ -1,0 +1,34 @@
+{
+  "parent": "obesecat:night_vision_dorito",
+  "display": {
+    "icon": {
+      "id": "obesecat:telemetry_dorito",
+      "count": 1
+    },
+    "title": {
+      "translate": "advancements.obesecat.telemetry_dorito.title"
+    },
+    "description": {
+      "translate": "advancements.obesecat.telemetry_dorito.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "criteria": {
+    "has_telemetry_dorito": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          { "items": "obesecat:telemetry_dorito" }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_telemetry_dorito"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

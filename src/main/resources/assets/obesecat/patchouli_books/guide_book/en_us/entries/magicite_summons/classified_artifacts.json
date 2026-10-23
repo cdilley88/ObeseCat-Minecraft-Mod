@@ -1,0 +1,34 @@
+{
+  "name": "Classified Relics",
+  "category": "obesecat:magicite_summons",
+  "icon": "obesecat:oppenheimers_hat",
+  "sortnum": 1,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "obesecat:oppenheimers_hat",
+      "title": "Oppenheimer's Hat",
+      "link_recipe": false,
+      "text": "The signature wide-brimmed porkpie hat worn by Dr. J. Robert Oppenheimer during the Trinity test.$(br2)Can be acquired from a Manhattan Physicist in exchange for 8 Trinitite gathered from atomic blast craters."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Post-Game Research",
+      "text": "When fused with companion entities in the Transmutation Cube, the hat catalyzes strange temporal echoes of the Manhattan Project team, producing curious results such as J. Paco Barkkenheimer."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "obesecat:toilet",
+      "title": "Dungeon Toilet",
+      "link_recipe": false,
+      "text": "Occasionally discovered deep in subterranean monster dungeons. Serves literally zero survival or tactical purpose, but can now be oriented facing in all 4 directions.$(br2)Right-clicking triggers a pungent malodorous sound effect and sends the porcelain fixture sinking through the floor!"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "obesecat:chocolate_pudding",
+      "title": "Chocolate Pudding",
+      "link_recipe": false,
+      "text": "Found as rare joke loot in subterranean dungeon chests alongside the toilet.$(br2)A completely ridiculous confection that can be placed down to eat in 7 slices, or eaten directly from the hand with comical squishing sound effects!"
+    }
+  ]
+}

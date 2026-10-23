@@ -17,7 +17,6 @@ import com.fende.obesecat.item.BigFatManBoomStickItem;
 import com.fende.obesecat.item.MirvBoomStickItem;
 import com.fende.obesecat.item.GuideBookItem;
 import com.fende.obesecat.item.CaptionedItem;
-import com.fende.obesecat.item.CatChargerItem;
 import com.fende.obesecat.item.ChocolatePuddingItem;
 import com.fende.obesecat.item.PortableCatChargerItem;
 import com.fende.obesecat.item.CowLevelPortalItem;
@@ -745,11 +744,6 @@ public final class ModItems {
     public static final DeferredItem<BlockItem> FOOD_BIN = ITEMS.register(
             "food_bin",
             () -> new TabbyriumSiloItem(ModBlocks.FOOD_BIN.get(), new Item.Properties().rarity(Rarity.RARE))
-    );
-
-    public static final DeferredItem<BlockItem> CAT_CHARGER = ITEMS.register(
-            "cat_charger",
-            () -> new CatChargerItem(ModBlocks.CAT_CHARGER.get(), new Item.Properties().rarity(Rarity.RARE))
     );
 
     public static final DeferredItem<PortableCatChargerItem> PORTABLE_CAT_CHARGER = ITEMS.registerItem(

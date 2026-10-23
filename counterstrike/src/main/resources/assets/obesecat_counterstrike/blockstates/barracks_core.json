@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "obesecat_counterstrike:block/barracks_core"
+    },
+    "facing=east": {
+      "model": "obesecat_counterstrike:block/barracks_core",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "obesecat_counterstrike:block/barracks_core",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "obesecat_counterstrike:block/barracks_core",
+      "y": 270
+    }
+  }
+}

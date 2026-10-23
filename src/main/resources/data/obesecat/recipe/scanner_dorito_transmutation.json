@@ -6,19 +6,15 @@
       "count": 1
     },
     {
-      "item": "minecraft:spyglass",
+      "item": "minecraft:tinted_glass",
       "count": 1
     },
     {
-      "item": "minecraft:echo_shard",
+      "item": "minecraft:amethyst_shard",
       "count": 1
     },
     {
-      "item": "minecraft:diamond",
-      "count": 1
-    },
-    {
-      "item": "minecraft:redstone",
+      "item": "obesecat:atomic_semiconductor",
       "count": 1
     }
   ],

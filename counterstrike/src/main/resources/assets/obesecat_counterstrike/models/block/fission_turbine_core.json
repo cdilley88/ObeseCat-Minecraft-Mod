@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/orientable",
+  "textures": {
+    "top": "obesecat_counterstrike:block/construction_yard_hull",
+    "bottom": "obesecat_counterstrike:block/construction_yard_hull",
+    "front": "obesecat_counterstrike:block/fission_turbine_core",
+    "side": "obesecat_counterstrike:block/construction_yard_hull"
+  }
+}

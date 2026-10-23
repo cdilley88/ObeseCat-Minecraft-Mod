@@ -1,0 +1,37 @@
+{
+  "parent": "obesecat:craft_transmutation_cube",
+  "display": {
+    "icon": {
+      "id": "obesecat:quantum_semiconductor",
+      "count": 1
+    },
+    "title": {
+      "translate": "advancements.obesecat.skeleton_king.title"
+    },
+    "description": {
+      "translate": "advancements.obesecat.skeleton_king.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "criteria": {
+    "has_quantum_semiconductor": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          { "items": "obesecat:quantum_semiconductor" }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_quantum_semiconductor"
+    ]
+  ],
+  "rewards": {
+    "experience": 100
+  },
+  "sends_telemetry_event": true
+}

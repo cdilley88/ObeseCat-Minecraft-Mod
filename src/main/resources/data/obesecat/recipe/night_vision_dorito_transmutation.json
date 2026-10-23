@@ -6,15 +6,15 @@
       "count": 1
     },
     {
-      "item": "minecraft:gilded_blackstone",
-      "count": 1
-    },
-    {
       "item": "minecraft:tinted_glass",
       "count": 1
     },
     {
       "item": "minecraft:amethyst_shard",
+      "count": 1
+    },
+    {
+      "item": "obesecat:quantum_semiconductor",
       "count": 1
     }
   ],

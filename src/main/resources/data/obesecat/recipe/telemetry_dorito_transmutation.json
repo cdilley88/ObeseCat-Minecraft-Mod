@@ -6,19 +6,15 @@
       "count": 1
     },
     {
-      "item": "minecraft:compass",
-      "count": 1
-    },
-    {
-      "item": "minecraft:clock",
-      "count": 1
-    },
-    {
-      "item": "minecraft:echo_shard",
+      "item": "minecraft:tinted_glass",
       "count": 1
     },
     {
       "item": "minecraft:amethyst_shard",
+      "count": 1
+    },
+    {
+      "item": "obesecat:dimensional_semiconductor",
       "count": 1
     }
   ],

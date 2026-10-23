@@ -156,11 +156,6 @@ public class ObeseCatMod {
                 ModBlockEntities.FOOD_BIN.get(),
                 (bin, direction) -> bin.getEnergyStorage()
         );
-        event.registerBlockEntity(
-                Capabilities.EnergyStorage.BLOCK,
-                ModBlockEntities.CAT_CHARGER.get(),
-                (charger, direction) -> charger.getEnergyStorage()
-        );
         event.registerItem(
                 Capabilities.EnergyStorage.ITEM,
                 (stack, context) -> com.fende.obesecat.item.PortableCatChargerItem.createEnergyStorage(stack),
@@ -316,7 +311,6 @@ public class ObeseCatMod {
             event.accept(ModItems.TABBYRIUM_REFINERY.get());
             event.accept(ModItems.TABBYRIUM_SILO.get());
             event.accept(ModItems.CREATIVE_TABBYRIUM_SILO.get());
-            event.accept(ModItems.CAT_CHARGER.get());
             event.accept(ModItems.PORTABLE_CAT_CHARGER.get());
             event.accept(ModItems.CREATIVE_PORTABLE_CAT_CHARGER.get());
             event.accept(ModItems.NUCLEAR_LIBRARY.get());

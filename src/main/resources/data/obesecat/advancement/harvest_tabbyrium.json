@@ -1,0 +1,43 @@
+{
+  "parent": "obesecat:grow_tabbyrium",
+  "display": {
+    "icon": {
+      "id": "obesecat:tabbyrium_crystal",
+      "count": 1
+    },
+    "title": {
+      "translate": "advancements.obesecat.harvest_tabbyrium.title"
+    },
+    "description": {
+      "translate": "advancements.obesecat.harvest_tabbyrium.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "criteria": {
+    "has_shard": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          { "items": "obesecat:tabbyrium_shard" }
+        ]
+      }
+    },
+    "has_crystal": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          { "items": "obesecat:tabbyrium_crystal" }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_shard",
+      "has_crystal"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

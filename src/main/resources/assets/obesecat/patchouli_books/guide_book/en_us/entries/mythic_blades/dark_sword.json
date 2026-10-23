@@ -1,0 +1,39 @@
+{
+  "name": "Dark Sword",
+  "category": "obesecat:mythic_blades",
+  "icon": "obesecat:dark_sword",
+  "sortnum": 2,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "title": "The Dark Sword",
+      "text": "The $(8)Dark Sword (Base)$(0) is a jagged, ominous blade discovered within $(3)Ancient City$(0) loot chests.$(br2)Its cursed potential cannot be unsealed without the demonic visceral relics of an ancient underworld butcher: $(4)The Carver$(0)."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "obesecat:cursed_cleaver",
+      "title": "Summoning The Carver",
+      "link_recipe": false,
+      "text": "1. Loot a $(4)Cursed Cleaver$(0) from $(6)Nether Bastion$(0) vaults.$(br)2. Place an $(8)Anvil$(0) directly atop a $(3)Sculk Catalyst$(0).$(br)3. Accumulate at least $(2)30 XP Levels$(0).$(br)4. Right-click the anvil with the $(4)Cursed Cleaver$(0).$(br2)The anvil shatters in a violent sculk blast, consuming 30 levels and summoning $(4)The Carver$(0)!"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Carver Battle & Drops",
+      "text": "Beware $(4)The Carver$(0)'s relentless pursuit and barbed $(4)Meat Hook$(0) which drags prey into melee range.$(br2)Slaying him yields the $(c)Flayed Demon Heart$(0), $(8)Bloodied Iron Hook$(0), and $(b)Atomic Ber Semiconductor$(0).$(br2)Transmute with $(8)Dark Sword (Base)$(0) in the Cube to forge $(4)Night Sword$(0) and $(5)Dark Sword$(0)!"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "obesecat:night_sword",
+      "title": "Night Sword",
+      "link_recipe": false,
+      "text": "Transmuted in the Cube: $(8)Dark Sword (Base)$(0) + $(8)Bloodied Iron Hook$(0).$(br2)Rips into enemies with shadowy void tendrils, lacerating target flesh and siphoning vital essence back into the wielder."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "obesecat:dark_sword",
+      "title": "Dark Sword",
+      "link_recipe": false,
+      "text": "Transmuted in the Cube: $(8)Dark Sword (Base)$(0) + $(c)Flayed Demon Heart$(0).$(br2)$(o)\"Dead or alive... slash magic power! Dark Sword!\"$(r)$(br2)Emits eerie localized audio drones and manifests abyssal blade strikes that pierce through enemy defenses and devour NULL energy."
+    }
+  ]
+}

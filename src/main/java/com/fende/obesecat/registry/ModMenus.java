@@ -1,9 +1,9 @@
 package com.fende.obesecat.registry;
 
 import com.fende.obesecat.ObeseCatMod;
-import com.fende.obesecat.inventory.CatChargerMenu;
 import com.fende.obesecat.inventory.EchoingBlastChamberMenu;
 import com.fende.obesecat.inventory.TabbyriumRefineryMenu;
+import com.fende.obesecat.inventory.TabbyriumSiloMenu;
 import com.fende.obesecat.inventory.TransmutationCubeMenu;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.inventory.MenuType;
@@ -31,10 +31,12 @@ public final class ModMenus {
 
     public static final DeferredHolder<MenuType<?>, MenuType<TabbyriumRefineryMenu>> CAN_OPENER = TABBYRIUM_REFINERY;
 
-    public static final DeferredHolder<MenuType<?>, MenuType<CatChargerMenu>> CAT_CHARGER = MENUS.register(
-            "cat_charger",
-            () -> IMenuTypeExtension.create(CatChargerMenu::fromNetwork)
+    public static final DeferredHolder<MenuType<?>, MenuType<TabbyriumSiloMenu>> TABBYRIUM_SILO = MENUS.register(
+            "tabbyrium_silo",
+            () -> IMenuTypeExtension.create(TabbyriumSiloMenu::fromNetwork)
     );
+
+    public static final DeferredHolder<MenuType<?>, MenuType<TabbyriumSiloMenu>> CAT_CHARGER = TABBYRIUM_SILO;
 
     private ModMenus() {
     }

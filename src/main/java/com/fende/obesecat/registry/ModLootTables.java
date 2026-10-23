@@ -17,6 +17,7 @@ public final class ModLootTables {
             ResourceLocation.withDefaultNamespace("entities/warden")
     );
     private static final String DUNGEON_TOILET_POOL = "obesecat:dungeon_toilet";
+    private static final String DUNGEON_CHOCOLATE_PUDDING_POOL = "obesecat:dungeon_chocolate_pudding";
     private static final String END_CITY_LITHIUM_POOL = "obesecat:end_city_lithium_deuteride";
     private static final String END_CITY_SKELETON_CROWN_POOL = "obesecat:end_city_skeleton_crown";
     private static final String ANCIENT_CITY_HOLY_SWORD_POOL = "obesecat:ancient_city_holy_sword";
@@ -34,6 +35,15 @@ public final class ModLootTables {
                     .setRolls(ConstantValue.exactly(1.0F))
                     .when(LootItemRandomChanceCondition.randomChance(0.22F))
                     .add(LootItem.lootTableItem(ModItems.TOILET.get()))
+                    .build());
+        }
+
+        if (event.getKey().equals(BuiltInLootTables.SIMPLE_DUNGEON) && event.getTable().getPool(DUNGEON_CHOCOLATE_PUDDING_POOL) == null) {
+            event.getTable().addPool(LootPool.lootPool()
+                    .name(DUNGEON_CHOCOLATE_PUDDING_POOL)
+                    .setRolls(ConstantValue.exactly(1.0F))
+                    .when(LootItemRandomChanceCondition.randomChance(0.25F))
+                    .add(LootItem.lootTableItem(ModItems.CHOCOLATE_PUDDING.get()))
                     .build());
         }
 

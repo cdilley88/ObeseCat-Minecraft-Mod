@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "obesecat:block/tabbyrium_refinery_side",
+    "up": "obesecat:block/tabbyrium_refinery_top",
+    "north": "obesecat:block/tabbyrium_silo_2",
+    "south": "obesecat:block/tabbyrium_silo_2",
+    "west": "obesecat:block/tabbyrium_silo_2",
+    "east": "obesecat:block/tabbyrium_silo_2",
+    "particle": "obesecat:block/tabbyrium_silo_2"
+  }
+}

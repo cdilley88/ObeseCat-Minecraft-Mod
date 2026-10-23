@@ -1,5 +1,5 @@
 {
-  "parent": "obesecat:craft_transmutation_cube",
+  "parent": "obesecat:scanner_dorito",
   "display": {
     "icon": {
       "id": "obesecat:omni_visor_dorito",

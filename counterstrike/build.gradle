@@ -1,0 +1,24 @@
+plugins {
+    id 'java-library'
+    id 'net.neoforged.gradle.userdev'
+}
+
+version = '1.0.0'
+group = 'com.fende.obesecat'
+
+base {
+    archivesName = 'obesecat_counterstrike'
+}
+
+java.toolchain.languageVersion = JavaLanguageVersion.of(21)
+
+dependencies {
+    implementation "net.neoforged:neoforge:${neo_version}"
+    implementation project(':')
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.10.2'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher:1.10.2'
+}
+
+tasks.test {
+    useJUnitPlatform()
+}

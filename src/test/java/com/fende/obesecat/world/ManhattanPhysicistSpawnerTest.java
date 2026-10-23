@@ -22,4 +22,12 @@ class ManhattanPhysicistSpawnerTest {
         assertTrue(spawnerFile.contains("setProfession(ModVillagers.MANHATTAN_PHYSICIST.get())"));
         assertTrue(spawnerFile.contains("ensurePhysicistTrades"));
     }
+
+    @Test
+    void tradesIncludePlutoniumCatFoodAndOppenheimersHat() throws Exception {
+        String tradesFile = Files.readString(Path.of("src/main/java/com/fende/obesecat/registry/ModVillagerTrades.java"));
+        assertTrue(tradesFile.contains("ModItems.PLUTONIUM_CAT_FOOD.get()"));
+        assertTrue(tradesFile.contains("ModItems.OPPENHEIMERS_HAT.get()"));
+        assertTrue(tradesFile.contains("trinititeTrade(new ItemStack(ModItems.OPPENHEIMERS_HAT.get()), 8)"));
+    }
 }

@@ -1,0 +1,32 @@
+modLoader="javafml"
+loaderVersion="[1,)"
+license="All Rights Reserved"
+issueTrackerURL="https://github.com/cdilley88/ObeseCat-Minecraft-Mod/issues"
+
+[[mods]]
+modId="obesecat_counterstrike"
+version="1.0.0"
+displayName="ObeseCat: Counterstrike"
+description="Command & Conquer and Red Alert inspired industrial tech and base-defense expansion for ObeseCat."
+authors="Fender88"
+
+[[dependencies.obesecat_counterstrike]]
+    modId="neoforge"
+    type="required"
+    versionRange="[21.1.228,)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.obesecat_counterstrike]]
+    modId="minecraft"
+    type="required"
+    versionRange="[1.21.1]"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.obesecat_counterstrike]]
+    modId="obesecat"
+    type="required"
+    versionRange="[1.0.0,)"
+    ordering="AFTER"
+    side="BOTH"

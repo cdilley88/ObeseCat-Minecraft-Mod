@@ -1,0 +1,22 @@
+{
+  "name": "Starter Shelters",
+  "category": "obesecat:companion_entities",
+  "icon": "obesecat:emergency_starter_home",
+  "sortnum": 4,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "obesecat:emergency_starter_home",
+      "title": "Emergency Starter Home",
+      "link_recipe": false,
+      "text": "Purchased from any village novice across all professions for $(a)1 Emerald$(0) (just like base companions).$(br2)Right-click 3 times to deploy:$(br)1. Preview chunk bounds$(br)2. Confirm destination$(br)3. Deploy fortified chunk base!"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "obesecat:luxury_starter_home",
+      "title": "Luxury Starter Home",
+      "link_recipe": true,
+      "text": "Crafted by upgrading an Emergency Starter Home with a Block of Iron, Block of Gold, Block of Diamond, and Block of Emerald in a crafting table.$(br2)Constructs an expansive, fully furnished multi-story compound featuring complete interior amenities, lighting, and storage."
+    }
+  ]
+}

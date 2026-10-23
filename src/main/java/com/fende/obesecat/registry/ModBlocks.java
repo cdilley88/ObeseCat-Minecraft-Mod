@@ -2,7 +2,6 @@ package com.fende.obesecat.registry;
 
 import com.fende.obesecat.ObeseCatMod;
 import com.fende.obesecat.block.AtomicFireBlock;
-import com.fende.obesecat.block.CatChargerBlock;
 import com.fende.obesecat.block.ChocolatePuddingBlock;
 import com.fende.obesecat.block.CreativeTabbyriumSiloBlock;
 import com.fende.obesecat.block.EchoingBlastChamberBlock;
@@ -122,11 +121,6 @@ public final class ModBlocks {
     public static final DeferredBlock<CreativeTabbyriumSiloBlock> CREATIVE_FOOD_BIN = BLOCKS.register(
             "creative_food_bin",
             () -> new CreativeTabbyriumSiloBlock()
-    );
-
-    public static final DeferredBlock<CatChargerBlock> CAT_CHARGER = BLOCKS.register(
-            "cat_charger",
-            () -> new CatChargerBlock()
     );
 
     private ModBlocks() {

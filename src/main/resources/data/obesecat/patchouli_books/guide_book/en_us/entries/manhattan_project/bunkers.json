@@ -6,8 +6,8 @@
   "pages": [
     {
       "type": "patchouli:text",
-      "title": "Subterranean Outposts",
-      "text": "Deep underground across the Overworld lie fortified $(4)Manhattan Bunkers$(0). Constructed with reinforced deepslate and blast-resistant chambers, these relics house classified nuclear research.$(br2)Within each bunker, you will discover the solitary $(1)Manhattan Physicist$(0) tending to a dormant $(2)Fat Man$(0)."
+      "title": "Surface Outposts",
+      "text": "Scattered across the Overworld surface lie fortified $(4)Manhattan Bunkers$(0). These surface structures house classified nuclear research and are tightly reinforced against blast damage.$(br2)Within each bunker, you will discover the solitary $(1)Manhattan Physicist$(0) tending to a dormant $(2)Fat Man$(0)."
     },
     {
       "type": "patchouli:spotlight",

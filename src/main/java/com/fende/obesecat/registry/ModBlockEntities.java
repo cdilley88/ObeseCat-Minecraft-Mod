@@ -1,7 +1,6 @@
 package com.fende.obesecat.registry;
 
 import com.fende.obesecat.ObeseCatMod;
-import com.fende.obesecat.block.entity.CatChargerBlockEntity;
 import com.fende.obesecat.block.entity.CreativeTabbyriumSiloBlockEntity;
 import com.fende.obesecat.block.entity.EchoingBlastChamberBlockEntity;
 import com.fende.obesecat.block.entity.TabbyriumRefineryBlockEntity;
@@ -33,12 +32,6 @@ public final class ModBlockEntities {
                     TabbyriumSiloBlockEntity::new,
                     ModBlocks.TABBYRIUM_SILO.get(),
                     ModBlocks.FOOD_BIN.get()
-            ).build(null));
-
-    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<CatChargerBlockEntity>> CAT_CHARGER =
-            BLOCK_ENTITIES.register("cat_charger", () -> BlockEntityType.Builder.of(
-                    CatChargerBlockEntity::new,
-                    ModBlocks.CAT_CHARGER.get()
             ).build(null));
 
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<CreativeTabbyriumSiloBlockEntity>> CREATIVE_TABBYRIUM_SILO =

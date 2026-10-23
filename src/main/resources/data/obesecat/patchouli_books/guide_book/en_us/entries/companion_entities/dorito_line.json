@@ -30,21 +30,21 @@
       "item": "obesecat:night_vision_dorito",
       "title": "Night Vision Dorito",
       "link_recipe": false,
-      "text": "Transmute in the Cube:$(br)$(bullet) Dorito + Gilded Blackstone + Tinted Glass + Amethyst$(br2)Curios Head slot NVG optics. Features a tactical HUD visor, real-time ambient LUX meter, and flashing low-light warning banner. Consumes 0.01 exhaustion/tick."
+      "text": "Transmute in Cube or Craft:$(br)$(bullet) Dorito + Tinted Glass + Amethyst + Quantum Semiconductor (Jah)$(br2)Curios Head slot NVG optics. Features a tactical HUD visor, real-time ambient LUX meter, and flashing low-light warning banner. Consumes 0.01 exhaustion/tick."
     },
     {
       "type": "patchouli:spotlight",
       "item": "obesecat:telemetry_dorito",
       "title": "Telemetry Visor Dorito",
       "link_recipe": false,
-      "text": "Transmute in the Cube:$(br)$(bullet) Dorito + Compass + Clock + Echo Shard + Amethyst Shard$(br2)Curios Head slot (or right-click to toggle). Full tactical environmental HUD: coordinates, compass tape ribbon, light lux & spawn risk, chunk borders & 16x16 chunk radar, in-game clock & day, and altitude."
+      "text": "Transmute in Cube or Craft:$(br)$(bullet) Dorito + Tinted Glass + Amethyst + Dimensional Semiconductor (Ith)$(br2)Curios Head slot (or right-click to toggle). Full tactical environmental HUD: coordinates, compass tape ribbon, light lux & spawn risk, chunk borders & 16x16 chunk radar, in-game clock & day, and altitude."
     },
     {
       "type": "patchouli:spotlight",
       "item": "obesecat:scanner_dorito",
       "title": "Scanner Visor Dorito",
       "link_recipe": false,
-      "text": "Transmute in the Cube:$(br)$(bullet) Dorito + Spyglass + Echo Shard + Diamond + Redstone$(br2)Curios Head slot (or right-click to toggle). Projects 3D cyan targeting tags directly over living entities displaying their Name, Current Life/HP bar, and Armor rating!"
+      "text": "Transmute in Cube or Craft:$(br)$(bullet) Dorito + Tinted Glass + Amethyst + Atomic Semiconductor (Ber)$(br2)Curios Head slot (or right-click to toggle). Projects 3D cyan targeting tags directly over living entities displaying their Name, Current Life/HP bar, and Armor rating!"
     },
     {
       "type": "patchouli:spotlight",

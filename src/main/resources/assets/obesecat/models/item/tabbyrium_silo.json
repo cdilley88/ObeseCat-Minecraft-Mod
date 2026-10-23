@@ -1,3 +1,9 @@
 {
-  "parent": "obesecat:block/tabbyrium_silo"
+  "parent": "obesecat:block/tabbyrium_silo_0",
+  "overrides": [
+    { "predicate": { "obesecat:fill": 0.01 }, "model": "obesecat:block/tabbyrium_silo_1" },
+    { "predicate": { "obesecat:fill": 0.33 }, "model": "obesecat:block/tabbyrium_silo_2" },
+    { "predicate": { "obesecat:fill": 0.66 }, "model": "obesecat:block/tabbyrium_silo_3" },
+    { "predicate": { "obesecat:fill": 0.95 }, "model": "obesecat:block/tabbyrium_silo_4" }
+  ]
 }

@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "obesecat_counterstrike:block/armory_locker"
+    },
+    "facing=east": {
+      "model": "obesecat_counterstrike:block/armory_locker",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "obesecat_counterstrike:block/armory_locker",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "obesecat_counterstrike:block/armory_locker",
+      "y": 270
+    }
+  }
+}

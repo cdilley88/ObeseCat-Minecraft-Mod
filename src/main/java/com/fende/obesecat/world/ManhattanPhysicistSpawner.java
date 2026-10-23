@@ -86,21 +86,25 @@ public final class ManhattanPhysicistSpawner {
         MerchantOffers current = villager.getOffers();
         boolean needsUpdate = current.isEmpty();
         if (!needsUpdate) {
-            if (current.size() != 1) {
+            if (current.size() != 2) {
                 needsUpdate = true;
             } else {
                 MerchantOffer first = current.get(0);
                 boolean firstIsStarterTrade = first.getResult().is(ModItems.PLUTONIUM_CAT_FOOD.get())
                         && first.getBaseCostA().getItem() == Items.EMERALD
                         && first.getBaseCostA().getCount() == 5;
-                if (!firstIsStarterTrade) {
+                MerchantOffer second = current.get(1);
+                boolean secondIsRelicTrade = second.getResult().is(ModItems.OPPENHEIMERS_HAT.get())
+                        && second.getBaseCostA().getItem() == ModItems.TRINITITE.get()
+                        && second.getBaseCostA().getCount() == 8;
+                if (!firstIsStarterTrade || !secondIsRelicTrade) {
                     needsUpdate = true;
                 }
             }
         }
         if (needsUpdate) {
             villager.overrideOffers(ModVillagerTrades.createManhattanPhysicistOffers(villager));
-            LOGGER.info("Reset Manhattan Physicist trade to single Plutonium Cat Food trade at {}", villager.blockPosition());
+            LOGGER.info("Reset Manhattan Physicist trade list at {}", villager.blockPosition());
         }
     }
 

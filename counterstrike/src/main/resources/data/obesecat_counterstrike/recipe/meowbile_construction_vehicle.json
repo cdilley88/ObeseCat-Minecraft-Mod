@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "I": {
+      "item": "minecraft:iron_block"
+    },
+    "T": {
+      "item": "obesecat:tabbyrium_crystal"
+    },
+    "X": {
+      "item": "obesecat:trinitite"
+    },
+    "R": {
+      "item": "minecraft:redstone_block"
+    }
+  },
+  "pattern": [
+    "ITI",
+    "TXT",
+    "IRI"
+  ],
+  "result": {
+    "count": 1,
+    "id": "obesecat_counterstrike:meowbile_construction_vehicle"
+  }
+}

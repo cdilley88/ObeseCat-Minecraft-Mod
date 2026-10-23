@@ -37,7 +37,7 @@ public class PatchouliBookTest {
                 "bovine_dimension.json",
                 "mythic_blades.json",
                 "companion_entities.json",
-                "forbidden_arsenal.json"
+                "magicite_summons.json"
         );
 
         for (String catFile : expectedCategories) {

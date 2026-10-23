@@ -1,0 +1,53 @@
+{
+  "name": "Mighty Sword",
+  "category": "obesecat:mythic_blades",
+  "icon": "obesecat:mighty_sword",
+  "sortnum": 1,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "title": "The Mighty Sword",
+      "text": "The $(6)Mighty Sword$(0) is an ancient broadsword discovered within $(3)Ancient City$(0) treasure chests.$(br2)Its immense cutting weight remains dormant until exposed to royal perfume essences carried by the monarch of the catacombs: $(4)The Skeleton King$(0)."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "obesecat:skeleton_crown",
+      "title": "Summoning the King",
+      "link_recipe": false,
+      "text": "1. Retrieve the $(6)Skeleton Crown$(0) from $(5)End City$(0) treasure vaults.$(br)2. Build a vertical T-altar using $(8)4 Bone Blocks$(0) (1 base, 1 center, 2 lateral arms), matching a Wither altar.$(br)3. Right-click the center bone block with the $(6)Skeleton Crown$(0).$(br2)Soul fire detonates the structure, consuming the crown and summoning the $(4)Skeleton King$(0)!"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Monarch Drops & Skills",
+      "text": "Slaying the $(4)Skeleton King$(0) yields $(5)Quantum Jah Semiconductors$(0) and 4 $(d)Royal Perfumes$(0) that awaken the Mighty Sword in the $(b)Transmutation Cube$(0):$(br2)• $(d)Cherche$(0) -> $(6)Shellbust Stab$(0)$(br)• $(e)Salty Rage$(0) -> $(6)Blastar Punch$(0)$(br)• $(5)Chantage$(0) -> $(6)Hellcry Punch$(0)$(br)• $(b)Setiemson$(0) -> $(6)Icewolf Bite$(0)"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "obesecat:shellbust_stab",
+      "title": "Shellbust Stab",
+      "link_recipe": false,
+      "text": "Transmuted with $(d)Cherche Perfume$(0) + Mighty Sword in the Cube.$(br2)Unleashes a devastating armor-piercing thrust that fractures tough chitin, enemy shields, and boss armor plates."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "obesecat:blastar_punch",
+      "title": "Blastar Punch",
+      "link_recipe": false,
+      "text": "Transmuted with $(e)Salty Rage Perfume$(0) + Mighty Sword in the Cube.$(br2)Ignites an explosive fiery kinetic blast, erupting into a violent conflagration that incinerates surrounding targets."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "obesecat:hellcry_punch",
+      "title": "Hellcry Punch",
+      "link_recipe": false,
+      "text": "Transmuted with $(5)Chantage Perfume$(0) + Mighty Sword in the Cube.$(br2)Releases an unholy sonic death-wail that disorients, weakens, and heavily debuffs surrounding enemies."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "obesecat:icewolf_bite",
+      "title": "Icewolf Bite",
+      "link_recipe": false,
+      "text": "Transmuted with $(b)Setiemson Perfume$(0) + Mighty Sword in the Cube.$(br2)Summons ethereal frost wolf fangs to bite foes, freezing them solid in crystalline permafrost."
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "parent": "obesecat:root",
+  "display": {
+    "icon": {
+      "id": "obesecat:emergency_starter_home",
+      "count": 1
+    },
+    "title": {
+      "translate": "advancements.obesecat.deploy_starter_home.title"
+    },
+    "description": {
+      "translate": "advancements.obesecat.deploy_starter_home.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "criteria": {
+    "has_emergency_home": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          { "items": "obesecat:emergency_starter_home" }
+        ]
+      }
+    },
+    "has_luxury_home": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          { "items": "obesecat:luxury_starter_home" }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_emergency_home",
+      "has_luxury_home"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

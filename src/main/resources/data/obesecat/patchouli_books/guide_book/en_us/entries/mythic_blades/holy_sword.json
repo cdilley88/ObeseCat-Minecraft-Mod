@@ -1,0 +1,48 @@
+{
+  "name": "Holy Sword Skills",
+  "category": "obesecat:mythic_blades",
+  "icon": "obesecat:holy_sword",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "title": "The Holy Sword",
+      "text": "Dormant $(6)Holy Swords$(0) are found inside ancient loot chests in $(3)Ancient Cities$(0).$(br2)By bringing a Holy Sword to the $(5)Transmutation Cube$(0) along with relics from the Bovine Dimension, its latent sacred blade arts can be awakened into specialized weapons.$(br2)Each Holy Sword skill features active $(6)Right-Click$(0) techniques with specialized combat utility."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "obesecat:stasis_sword",
+      "title": "Stasis Sword",
+      "link_recipe": false,
+      "text": "Manipulates local chrono-particles.$(br2)Right-clicking manifests a shimmering stasis bubble around the target area, freezing all hostile entities and incoming projectiles dead in their tracks for several seconds."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "obesecat:split_punch",
+      "title": "Split Punch",
+      "link_recipe": false,
+      "text": "Unleashes a supersonic kinetic shockwave forward in a straight line.$(br2)Enemies caught in the shockwave are launched airborne, while brittle obstacle blocks are cleanly shattered by the kinetic impulse."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "obesecat:crush_punch",
+      "title": "Crush Punch",
+      "link_recipe": false,
+      "text": "Strikes the earth with colossal downward gravitational force.$(br2)Creates a localized radial earthquake that stuns all nearby mobs and deals heavy blunt damage scaled against high armor values."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "obesecat:lightning_stab",
+      "title": "Lightning Stab",
+      "link_recipe": false,
+      "text": "Channels atmospheric ionic potential directly into your target.$(br2)On impact, summons pinpoint celestial thunderbolts that shock the target, pierce armor, and arc secondary sparks to adjacent foes."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "obesecat:holy_explosion",
+      "title": "Holy Explosion",
+      "link_recipe": false,
+      "text": "Ignites a magnificent dome of radiant sacred light centered on the wielder.$(br2)Deals amplified cleansing damage against undead monsters (Zombies, Skeletons, Withers) while pushing enemies back in an explosive holy wave."
+    }
+  ]
+}

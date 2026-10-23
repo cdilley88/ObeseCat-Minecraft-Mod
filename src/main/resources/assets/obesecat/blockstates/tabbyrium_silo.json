@@ -1,5 +1,9 @@
 {
   "variants": {
-    "": { "model": "obesecat:block/tabbyrium_silo" }
+    "level=0": { "model": "obesecat:block/tabbyrium_silo_0" },
+    "level=1": { "model": "obesecat:block/tabbyrium_silo_1" },
+    "level=2": { "model": "obesecat:block/tabbyrium_silo_2" },
+    "level=3": { "model": "obesecat:block/tabbyrium_silo_3" },
+    "level=4": { "model": "obesecat:block/tabbyrium_silo_4" }
   }
 }

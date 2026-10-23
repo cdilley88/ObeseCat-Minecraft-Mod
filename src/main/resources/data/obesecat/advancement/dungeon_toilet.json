@@ -1,0 +1,34 @@
+{
+  "parent": "obesecat:root",
+  "display": {
+    "icon": {
+      "id": "obesecat:toilet",
+      "count": 1
+    },
+    "title": {
+      "translate": "advancements.obesecat.dungeon_toilet.title"
+    },
+    "description": {
+      "translate": "advancements.obesecat.dungeon_toilet.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "criteria": {
+    "has_toilet": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          { "items": "obesecat:toilet" }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_toilet"
+    ]
+  ],
+  "sends_telemetry_event": true
+}
