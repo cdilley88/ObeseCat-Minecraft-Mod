@@ -97,7 +97,13 @@ Each recipe lives in:
 These are the currently confirmed transmutation recipe JSONs:
 
 - `hellhound_paco_transmutation.json`
-  - Paco + Blaze Powder -> Hellhound Paco
+  - Paco + Blaze Powder + Dragon's Breath -> Hellhound Paco
+- `explosive_paco_transmutation.json`
+  - Assault Paco + TNT -> Explosive Paco
+- `atomic_paco_transmutation.json`
+  - Explosive Paco + Trinitite -> Atomic Paco
+- `mirv_paco_transmutation.json`
+  - Atomic Paco + Firework Rocket -> MIRV Paco
 - `j_robert_pacoheimer_transmutation.json`
   - Paco + Oppenheimer's Hat -> J. Paco Barkkenheimer
 - `cow_level_portal_transmutation.json`

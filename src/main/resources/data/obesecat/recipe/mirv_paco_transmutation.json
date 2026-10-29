@@ -1,0 +1,17 @@
+{
+  "type": "obesecat:transmutation",
+  "ingredients": [
+    {
+      "item": "obesecat:atomic_paco",
+      "count": 1
+    },
+    {
+      "item": "minecraft:firework_rocket",
+      "count": 1
+    }
+  ],
+  "result": {
+    "id": "obesecat:mirv_paco",
+    "count": 1
+  }
+}

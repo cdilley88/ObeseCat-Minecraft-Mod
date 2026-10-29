@@ -1,6 +1,7 @@
 package com.fende.obesecat;
 
 import com.fende.obesecat.energy.CastItemEnergy;
+import com.fende.obesecat.item.ExplosivePacoItem;
 import com.fende.obesecat.item.SummonItem;
 import com.fende.obesecat.registry.ModBlocks;
 import com.fende.obesecat.registry.ModBlockEntities;
@@ -97,6 +98,7 @@ public class ObeseCatMod {
         NeoForge.EVENT_BUS.addListener(TelemetryDoritoManager::onLevelTick);
         NeoForge.EVENT_BUS.addListener(ScannerDoritoManager::onLevelTick);
         NeoForge.EVENT_BUS.addListener(PacoBarkBurst::onLevelTick);
+        NeoForge.EVENT_BUS.addListener(ExplosivePacoItem::onLevelTick);
         NeoForge.EVENT_BUS.addListener(ParadoxSummonManager::onLevelTick);
         NeoForge.EVENT_BUS.addListener(PortableCatChargerManager::onLevelTick);
         NeoForge.EVENT_BUS.addListener(VeritasSummonManager::onLevelTick);
@@ -252,7 +254,9 @@ public class ObeseCatMod {
             event.accept(ModItems.ATTACK_PACO.get());
             event.accept(ModItems.ASSAULT_PACO.get());
             event.accept(ModItems.SNIPER_PACO.get());
+            event.accept(ModItems.EXPLOSIVE_PACO.get());
             event.accept(ModItems.ATOMIC_PACO.get());
+            event.accept(ModItems.MIRV_PACO.get());
             event.accept(ModItems.J_ROBERT_PACOHEIMER.get());
             event.accept(ModItems.HELLHOUND_PACO.get());
             event.accept(ModItems.OPPENHEIMERS_HAT.get());

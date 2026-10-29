@@ -127,16 +127,18 @@ public final class GuideBookContents {
                 "§1§lCH. 9: TACTICAL CANINES§r\n" +
                 "§8-------------------§r\n" +
                 "§0Adopt §2Paco§0 from any village for §a1 Emerald§0.\n\n" +
-                "§6Tactical Field Upgrades:§0\n" +
+                "§6Field & Nuclear Upgrades:§0\n" +
                 "§8• Concussive:§0 Paco + Piston\n" +
                 "§8• Attack:§0 Concussive + Diamond\n" +
                 "§8• Assault:§0 Attack + Nether Star\n" +
                 "§8• Sniper:§0 Assault + Spyglass\n\n" +
                 "§5Cube Transmutations:§0\n" +
-                "§c• Hellhound:§0\n" +
-                "  Paco + Blaze Powder + Dragon's Breath\n" +
+                "§c• Explosive:§0 Assault + TNT\n" +
+                "§c• Atomic:§0 Explosive + Trinitite\n" +
+                "§c• MIRV:§0 Atomic + Firework Rocket\n" +
+                "§c• Hellhound:§0 Paco + Blaze + Breath\n" +
                 "§4• J. Paco Barkkenheimer:§0\n" +
-                "  Paco + Oppenheimer's Hat (Awards Paco Painting!)§r"
+                "  Paco + Oppenheimer's Hat§r"
         )));
 
         // Page 11: Chapter 10 - Mobility Felines & Runes

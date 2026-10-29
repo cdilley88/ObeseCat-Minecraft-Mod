@@ -33,6 +33,11 @@ public class SniperPacoItem extends PacoItem {
     }
 
     @Override
+    protected double getHitboxWiggleRoom() {
+        return 0.0D; // Precision aim weapon
+    }
+
+    @Override
     public boolean isFoil(ItemStack stack) {
         return true;
     }

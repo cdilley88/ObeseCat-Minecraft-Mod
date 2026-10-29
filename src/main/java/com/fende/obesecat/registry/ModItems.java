@@ -36,11 +36,13 @@ import com.fende.obesecat.item.EmberItem;
 import com.fende.obesecat.item.EmberSingularityItem;
 import com.fende.obesecat.item.EnigmaEmberItem;
 import com.fende.obesecat.item.EchoingBlastChamberItem;
+import com.fende.obesecat.item.ExplosivePacoItem;
 import com.fende.obesecat.item.FoilCaptionedItem;
 import com.fende.obesecat.item.SkeletonCrownItem;
 import com.fende.obesecat.item.FireBoomStickItem;
 import com.fende.obesecat.item.FireStickItem;
 import com.fende.obesecat.item.HellhoundPacoItem;
+import com.fende.obesecat.item.MirvPacoItem;
 import com.fende.obesecat.item.HolyExplosionSwordItem;
 import com.fende.obesecat.item.HolySwordItem;
 import com.fende.obesecat.item.MightySwordItem;
@@ -301,9 +303,21 @@ public final class ModItems {
             new Item.Properties().stacksTo(1).rarity(Rarity.EPIC)
     );
 
+    public static final DeferredItem<ExplosivePacoItem> EXPLOSIVE_PACO = ITEMS.registerItem(
+            "explosive_paco",
+            ExplosivePacoItem::new,
+            new Item.Properties().stacksTo(1).rarity(Rarity.RARE)
+    );
+
     public static final DeferredItem<AtomicPacoItem> ATOMIC_PACO = ITEMS.registerItem(
             "atomic_paco",
             AtomicPacoItem::new,
+            new Item.Properties().stacksTo(1).rarity(Rarity.EPIC)
+    );
+
+    public static final DeferredItem<MirvPacoItem> MIRV_PACO = ITEMS.registerItem(
+            "mirv_paco",
+            MirvPacoItem::new,
             new Item.Properties().stacksTo(1).rarity(Rarity.EPIC)
     );
 

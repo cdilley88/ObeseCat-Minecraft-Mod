@@ -28,9 +28,9 @@ import net.neoforged.neoforge.network.PacketDistributor;
  * - Miniature mushroom cloud with prompt optical ionization and shockwave roar
  */
 public final class TacticalNuclearExplosion {
-    public static final int CRATER_RADIUS = 10;
-    public static final int CRATER_MAX_DEPTH = 5;
-    public static final int PERIMETER_SCORCH_RADIUS = 16;
+    public static final int CRATER_RADIUS = 20;
+    public static final int CRATER_MAX_DEPTH = 10;
+    public static final int PERIMETER_SCORCH_RADIUS = 32;
     public static final int SHOCKWAVE_DELAY_TICKS = 4;
     public static final int TOTAL_SIMULATION_TICKS = 200;
 
@@ -56,6 +56,10 @@ public final class TacticalNuclearExplosion {
     }
 
     public static void detonateMirv(ServerLevel level, BlockPos centerOrigin) {
+        detonateMirv(level, centerOrigin, 0);
+    }
+
+    public static void detonateMirv(ServerLevel level, BlockPos centerOrigin, int baseDelayTicks) {
         double cx = centerOrigin.getX() + 0.5D;
         double cy = centerOrigin.getY() + 1.0D;
         double cz = centerOrigin.getZ() + 0.5D;
@@ -79,7 +83,7 @@ public final class TacticalNuclearExplosion {
             int surfaceY = level.getHeightmapPos(Heightmap.Types.MOTION_BLOCKING, new BlockPos(x, 0, z)).getY();
             BlockPos warheadPos = new BlockPos(x, Math.max(level.getMinBuildHeight() + 2, surfaceY), z);
 
-            int delayTicks = i * 4 + level.random.nextInt(3);
+            int delayTicks = baseDelayTicks + i * 4 + level.random.nextInt(3);
             detonateDelayed(level, warheadPos, delayTicks);
         }
     }

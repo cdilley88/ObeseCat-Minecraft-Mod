@@ -28,6 +28,11 @@ public class ConcussivePacoItem extends PacoItem {
     }
 
     @Override
+    protected double getHitboxWiggleRoom() {
+        return 1.1D; // Extra wide kinetic shockwave tolerance
+    }
+
+    @Override
     protected boolean usesStinkMeter() {
         return true;
     }

@@ -32,6 +32,11 @@ public class AttackPacoItem extends ConcussivePacoItem {
     }
 
     @Override
+    protected double getHitboxWiggleRoom() {
+        return 0.85D; // Generous bite tolerance
+    }
+
+    @Override
     protected String getCaptionKey() {
         return "item.obesecat.attack_paco.caption";
     }

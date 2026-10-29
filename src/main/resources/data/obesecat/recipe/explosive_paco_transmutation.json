@@ -1,0 +1,17 @@
+{
+  "type": "obesecat:transmutation",
+  "ingredients": [
+    {
+      "item": "obesecat:assault_paco",
+      "count": 1
+    },
+    {
+      "item": "minecraft:tnt",
+      "count": 1
+    }
+  ],
+  "result": {
+    "id": "obesecat:explosive_paco",
+    "count": 1
+  }
+}

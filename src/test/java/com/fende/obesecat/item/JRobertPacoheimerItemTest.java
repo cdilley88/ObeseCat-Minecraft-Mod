@@ -22,6 +22,11 @@ class JRobertPacoheimerItemTest {
         cooldownField.setAccessible(true);
         int cooldown = (int) cooldownField.get(null);
         assertEquals(100, cooldown, "Barkkenheimer should have a 5-second (100 ticks) anti-spam cooldown");
+
+        Field rangeField = JRobertPacoheimerItem.class.getDeclaredField("EXPLOSION_RANGE");
+        rangeField.setAccessible(true);
+        double range = (double) rangeField.get(null);
+        assertEquals(512.0D, range, "Barkkenheimer range should be extended to 512m");
     }
 
     @Test

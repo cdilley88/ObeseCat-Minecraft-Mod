@@ -1,0 +1,17 @@
+{
+  "type": "obesecat:transmutation",
+  "ingredients": [
+    {
+      "item": "obesecat:explosive_paco",
+      "count": 1
+    },
+    {
+      "item": "obesecat:trinitite",
+      "count": 1
+    }
+  ],
+  "result": {
+    "id": "obesecat:atomic_paco",
+    "count": 1
+  }
+}

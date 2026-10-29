@@ -18,6 +18,27 @@
     },
     {
       "type": "patchouli:spotlight",
+      "item": "obesecat:explosive_paco",
+      "title": "Explosive Paco",
+      "link_recipe": false,
+      "text": "Transmute in the Cube:$(br)$(bullet) Assault Paco$(br)$(bullet) TNT$(br2)Bridges the gap between field munitions and nuclear detonations. Unleashes a high-yield TNT explosion right at the targeted block or horizon."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "obesecat:atomic_paco",
+      "title": "Atomic Paco",
+      "link_recipe": false,
+      "text": "Transmute in the Cube:$(br)$(bullet) Explosive Paco$(br)$(bullet) Trinitite$(br2)Calls down a tactical sub-kiloton nuclear strike complete with prompt ionization flash, shockwave roar, and a wide vitrified crater."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "obesecat:mirv_paco",
+      "title": "MIRV Paco",
+      "link_recipe": false,
+      "text": "Transmute in the Cube:$(br)$(bullet) Atomic Paco$(br)$(bullet) Firework Rocket$(br2)Launches a multi-warhead carpet bombardment of $(4)7 tactical nuclear warheads$(0) scattered across the target zone."
+    },
+    {
+      "type": "patchouli:spotlight",
       "item": "obesecat:hellhound_paco",
       "title": "Hellhound Paco",
       "link_recipe": false,
